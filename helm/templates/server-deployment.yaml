@@ -1,0 +1,152 @@
+{{- if .Values.server.enabled -}}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "tiledesk.fullname" . }}-server
+  labels:
+    {{- include "tiledesk.labels" . | nindent 4 }}
+spec:
+{{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+{{- end }}
+  selector:
+    matchLabels:
+      {{- include "tiledesk.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+    {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+      labels:
+        {{- include "tiledesk.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "tiledesk.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.server.image.repository }}:{{ .Values.server.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.server.image.pullPolicy }}
+          env:   
+            - name: WS_SERVER_PATH
+              #value: {{ .Values.WS_SERVER_PATH | quote }}                    
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: WS_SERVER_PATH
+            - name: FIREBASE_PRIVATE_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}
+                  key: firebase-privatekey
+              #value: {{ .Values.FIREBASE_PRIVATE_KEY | quote }}    
+            - name: FIREBASE_CLIENT_EMAIL
+              #value: {{ .Values.FIREBASE_CLIENT_EMAIL | quote }}    
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: FIREBASE_CLIENT_EMAIL
+            - name: FIREBASE_PROJECT_ID
+              #value: {{ .Values.FIREBASE_PROJECT_ID | quote }}  
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: FIREBASE_PROJECT_ID
+            - name: CHAT21_ENABLED
+              #value: {{ .Values.CHAT21_ENABLED | quote }}    
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: CHAT21_ENABLED
+            - name: CHAT21_URL
+              #value: {{ .Values.CHAT21_URL | quote }}    
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: CHAT21_URL
+            - name: CHAT21_APPID
+              #value: {{ .Values.CHAT21_APPID | quote }} 
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: CHAT21_APPID
+            - name: CHAT21_ADMIN_TOKEN
+              #value: {{ .Values.CHAT21_ADMIN_TOKEN | quote }}
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: CHAT21_ADMIN_TOKEN          
+            - name: EMAIL_BASEURL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: EMAIL_BASEURL
+            - name: EMAIL_ENABLED
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: EMAIL_ENABLED
+            - name: EMAIL_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: EMAIL_PASSWORD    
+            - name: SUPER_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: SUPER_PASSWORD
+            - name: WIDGET_LOCATION
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: WIDGET_LOCATION
+            - name: WIDGET_TEST_LOCATION
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: WIDGET_TEST_LOCATION                  
+            - name: MONGODB_URI
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: MONGODB_URI
+            - name: MONGODB_LOGS_URI
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: MONGODB_LOGS_URI
+          ports:
+            - name: server-http
+              containerPort: 3000
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: server-http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: server-http
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+{{- end -}}

@@ -1,0 +1,17 @@
+{{- if .Values.ionic.enabled -}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "tiledesk.fullname" . }}-ionic
+  labels: {{ include "tiledesk.labels" . | nindent 4 }}
+    app.kubernetes.io/component: ionic
+spec:
+  type: {{ .Values.ionic.service.type }}
+  ports:
+    - port: {{ .Values.ionic.service.port }}
+      targetPort: ionic-http
+      protocol: TCP
+      name: ionic-http
+  selector: {{ include "tiledesk.selectorLabels" . | nindent 4 }}
+    app.kubernetes.io/component: ionic
+{{- end -}}

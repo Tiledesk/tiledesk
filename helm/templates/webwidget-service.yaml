@@ -1,0 +1,17 @@
+{{- if .Values.webwidget.enabled -}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "tiledesk.fullname" . }}-webwidget
+  labels: {{ include "tiledesk.labels" . | nindent 4 }}
+    app.kubernetes.io/component: webwidget
+spec:
+  type: {{ .Values.webwidget.service.type }}
+  ports:
+    - port: {{ .Values.webwidget.service.port }}
+      targetPort: webwidget-http
+      protocol: TCP
+      name: webwidget-http
+  selector: {{ include "tiledesk.selectorLabels" . | nindent 4 }}
+    app.kubernetes.io/component: webwidget
+{{- end -}}

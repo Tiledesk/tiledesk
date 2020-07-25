@@ -1,0 +1,17 @@
+{{- if .Values.server.enabled -}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "tiledesk.fullname" . }}-server
+  labels:
+    {{- include "tiledesk.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.server.service.type }}
+  ports:
+    - port: {{ .Values.server.service.port }}
+      targetPort: server-http
+      protocol: TCP
+      name: server-http
+  selector:
+    {{- include "tiledesk.selectorLabels" . | nindent 4 }}
+{{- end -}}

@@ -1,0 +1,130 @@
+{{- if .Values.ionic.enabled -}}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "tiledesk.fullname" . }}-ionic
+  labels: {{ include "tiledesk.labels" . | nindent 4 }}
+    app.kubernetes.io/component: ionic
+spec:
+{{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+{{- end }}
+  selector:
+    matchLabels: {{ include "tiledesk.selectorLabels" . | nindent 6 }}
+      app.kubernetes.io/component: ionic
+  template:
+    metadata:
+    {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+      labels: {{ include "tiledesk.selectorLabels" . | nindent 8 }}
+        app.kubernetes.io/component: ionic
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "tiledesk.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.ionic.image.repository }}:{{ .Values.ionic.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.ionic.image.pullPolicy }}
+          env:                                 
+            - name: SERVER_BASE_URL
+              valueFrom:
+                  configMapKeyRef:
+                    name: {{ include "tiledesk.fullname" . }}-config
+                    key: SERVER_BASE_URL
+              #value: {{ .Values.SERVER_BASE_URL | quote }}
+            - name: CHAT21_URL
+              valueFrom:
+                  configMapKeyRef:
+                    name: {{ include "tiledesk.fullname" . }}-config
+                    key: CHAT21_URL
+              #value: {{ .Values.CHAT21_URL | quote }}
+            - name: DASHBOARD_URL
+              valueFrom:
+                  configMapKeyRef:
+                    name: {{ include "tiledesk.fullname" . }}-config
+                    key: DASHBOARD_URL
+              #value: {{ .Values.DASHBOARD_URL | quote }} 
+            - name: FIREBASESTORAGE_BASE_URL_IMAGE
+              valueFrom:
+                  configMapKeyRef:
+                    name: {{ include "tiledesk.fullname" . }}-config
+                    key: FIREBASESTORAGE_BASE_URL_IMAGE
+              #value: {{ .Values.FIREBASESTORAGE_BASE_URL_IMAGE | quote }}       
+            - name: CHAT_SEND_BY_EMAIL_LINK
+              valueFrom:
+                  configMapKeyRef:
+                    name: {{ include "tiledesk.fullname" . }}-config
+                    key: CHAT_SEND_BY_EMAIL_LINK
+              #value: {{ .Values.CHAT_SEND_BY_EMAIL_LINK | quote }}         
+            - name: FIREBASE_PROJECT_ID
+              valueFrom:
+                  configMapKeyRef:
+                    name: {{ include "tiledesk.fullname" . }}-config
+                    key: FIREBASE_PROJECT_ID
+              #value: {{ .Values.FIREBASE_PROJECT_ID | quote }}
+            - name: FIREBASE_APIKEY
+              valueFrom:
+                  configMapKeyRef:
+                    name: {{ include "tiledesk.fullname" . }}-config
+                    key: FIREBASE_APIKEY
+              #value: {{ .Values.FIREBASE_APIKEY | quote }}
+            - name: FIREBASE_AUTHDOMAIN
+              valueFrom:
+                  configMapKeyRef:
+                    name: {{ include "tiledesk.fullname" . }}-config
+                    key: FIREBASE_AUTHDOMAIN
+              #value: {{ .Values.FIREBASE_AUTHDOMAIN | quote }}
+            - name: FIREBASE_DATABASEURL
+              valueFrom:
+                  configMapKeyRef:
+                    name: {{ include "tiledesk.fullname" . }}-config
+                    key: FIREBASE_DATABASEURL
+              #value: {{ .Values.FIREBASE_DATABASEURL | quote }}
+            - name: FIREBASE_STORAGEBUCKET
+              valueFrom:
+                  configMapKeyRef:
+                    name: {{ include "tiledesk.fullname" . }}-config
+                    key: FIREBASE_STORAGEBUCKET
+              #value: {{ .Values.FIREBASE_STORAGEBUCKET | quote }}
+            - name: FIREBASE_MESSAGINGSENDERID
+              valueFrom:
+                  configMapKeyRef:
+                    name: {{ include "tiledesk.fullname" . }}-config
+                    key: FIREBASE_MESSAGINGSENDERID
+              #value: {{ .Values.FIREBASE_MESSAGINGSENDERID | quote }}    
+          ports:
+            - name: ionic-http
+              containerPort: 80
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: ionic-http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: ionic-http
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+{{- end -}}

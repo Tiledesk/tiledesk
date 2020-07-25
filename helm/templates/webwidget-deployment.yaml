@@ -1,0 +1,106 @@
+{{- if .Values.webwidget.enabled -}}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "tiledesk.fullname" . }}-webwidget
+  labels: {{ include "tiledesk.labels" . | nindent 4 }}
+    app.kubernetes.io/component: webwidget
+spec:
+{{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+{{- end }}
+  selector:
+    matchLabels: {{ include "tiledesk.selectorLabels" . | nindent 6 }}
+      app.kubernetes.io/component: webwidget
+  template:
+    metadata:
+    {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+      labels: {{ include "tiledesk.selectorLabels" . | nindent 8 }}
+        app.kubernetes.io/component: webwidget
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "tiledesk.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.webwidget.image.repository }}:{{ .Values.webwidget.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.webwidget.image.pullPolicy }}
+          env:                                 
+            - name: API_URL
+              valueFrom:
+                  configMapKeyRef:
+                    name: {{ include "tiledesk.fullname" . }}-config
+                    key: API_URL
+              #value: {{ .Values.SERVER_BASE_URL | quote }}     
+            - name: FIREBASE_PROJECT_ID
+              valueFrom:
+                  configMapKeyRef:
+                    name: {{ include "tiledesk.fullname" . }}-config
+                    key: FIREBASE_PROJECT_ID
+              #value: {{ .Values.FIREBASE_PROJECT_ID | quote }}
+            - name: FIREBASE_APIKEY
+              valueFrom:
+                  configMapKeyRef:
+                    name: {{ include "tiledesk.fullname" . }}-config
+                    key: FIREBASE_APIKEY
+              #value: {{ .Values.FIREBASE_APIKEY | quote }}
+            - name: FIREBASE_AUTHDOMAIN
+              valueFrom:
+                  configMapKeyRef:
+                    name: {{ include "tiledesk.fullname" . }}-config
+                    key: FIREBASE_AUTHDOMAIN
+              #value: {{ .Values.FIREBASE_AUTHDOMAIN | quote }}
+            - name: FIREBASE_DATABASEURL
+              valueFrom:
+                  configMapKeyRef:
+                    name: {{ include "tiledesk.fullname" . }}-config
+                    key: FIREBASE_DATABASEURL
+              #value: {{ .Values.FIREBASE_DATABASEURL | quote }}
+            - name: FIREBASE_STORAGEBUCKET
+              valueFrom:
+                  configMapKeyRef:
+                    name: {{ include "tiledesk.fullname" . }}-config
+                    key: FIREBASE_STORAGEBUCKET
+              #value: {{ .Values.FIREBASE_STORAGEBUCKET | quote }}
+            - name: FIREBASE_MESSAGINGSENDERID
+              valueFrom:
+                  configMapKeyRef:
+                    name: {{ include "tiledesk.fullname" . }}-config
+                    key: FIREBASE_MESSAGINGSENDERID
+              #value: {{ .Values.FIREBASE_MESSAGINGSENDERID | quote }} 
+          ports:
+            - name: webwidget-http
+              containerPort: 80
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: webwidget-http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: webwidget-http
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+{{- end -}}

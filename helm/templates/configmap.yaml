@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "tiledesk.fullname" . }}-config
+  labels: {{ include "tiledesk.labels" . | nindent 4 }}
+data:
+  WS_SERVER_PATH: {{ .Values.WS_SERVER_PATH | quote }}
+  FIREBASE_CLIENT_EMAIL: {{ .Values.FIREBASE_CLIENT_EMAIL | quote }}
+  FIREBASE_PROJECT_ID: {{ .Values.FIREBASE_PROJECT_ID | quote }}
+  CHAT21_ENABLED: {{ .Values.CHAT21_ENABLED | quote }}
+  CHAT21_URL: {{ .Values.CHAT21_URL | quote }}
+  CHAT21_APPID: {{ .Values.CHAT21_APPID | quote }}
+  CHAT21_ADMIN_TOKEN: {{ .Values.CHAT21_ADMIN_TOKEN | quote }}
+  MONGODB_URI: mongodb://{{ include "tiledesk.fullname" . }}-mongodb/tiledesk
+
+  SERVER_BASE_URL: {{ .Values.SERVER_BASE_URL | quote }}
+  FEATURES_TOKEN: {{ .Values.FEATURES_TOKEN | quote }}  
+  CHAT_BASE_URL: {{ .Values.CHAT_BASE_URL | quote }}    
+  WS_URL_RELATIVE: {{ .Values.WS_URL_RELATIVE | quote }}
+  WIDGET_LOCATION: {{ .Values.WIDGET_LOCATION | quote }}
+  WIDGET_TEST_LOCATION: {{ .Values.WIDGET_TEST_LOCATION | quote }}
+  FIREBASE_APIKEY: {{ .Values.FIREBASE_APIKEY | quote }}        
+  FIREBASE_AUTHDOMAIN: {{ .Values.FIREBASE_AUTHDOMAIN | quote }}
+  FIREBASE_DATABASEURL: {{ .Values.FIREBASE_DATABASEURL | quote }}    
+  FIREBASE_STORAGEBUCKET: {{ .Values.FIREBASE_STORAGEBUCKET | quote }}  
+  FIREBASE_MESSAGINGSENDERID: {{ .Values.FIREBASE_MESSAGINGSENDERID | quote }}   
+
+
+  DASHBOARD_URL: {{ .Values.DASHBOARD_URL | quote }}   
+  FIREBASESTORAGE_BASE_URL_IMAGE: {{ .Values.FIREBASESTORAGE_BASE_URL_IMAGE | quote }}       
+  CHAT_SEND_BY_EMAIL_LINK: {{ .Values.CHAT_SEND_BY_EMAIL_LINK | quote }}         
+
+  API_URL: {{ .Values.SERVER_BASE_URL | quote }} 
+
+  EMAIL_BASEURL: {{ .Values.EMAIL_BASEURL | quote }} 
+  EMAIL_ENABLED: {{ .Values.EMAIL_ENABLED | quote }} 
+  EMAIL_PASSWORD: {{ .Values.EMAIL_PASSWORD | quote }} 
+  MONGODB_LOGS_URI: {{ .Values.MONGODB_LOGS_URI | quote }} 
+  SUPER_PASSWORD: {{ .Values.SUPER_PASSWORD | quote }} 
+  
