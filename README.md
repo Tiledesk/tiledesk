@@ -29,5 +29,5 @@ into your infrastructure. You typically want to remove the MongoDB container and
 directly to your database.
 Another typical change would be the integration of your company-wide monitoring and logging tools.
 
-## Other information
-* Tiledesk Enterprise customers can request enterprise credentials sending and email at: info@tiledesk.com. These credentials are required to pull private (Enterprise-only) Docker images.
+# Enterprise version
+Tiledesk Enterprise customers can request enterprise credentials sending and email at: info@tiledesk.com. These credentials are required to pull private (Enterprise-only) Docker images.
