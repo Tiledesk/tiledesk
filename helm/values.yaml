@@ -1,0 +1,269 @@
+# Default values for tiledesk.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+## Tiledesk Server
+## ref: https://developer.tiledesk.com/
+##
+
+
+#Requred properties
+CHAT21_URL: https://CHANGEIT.cloudfunctions.net
+CHAT21_ADMIN_TOKEN: CHANGEIT
+CHAT21_APPID: tilechat
+
+FIREBASE_PRIVATE_KEY: CHANGEIT
+FIREBASE_CLIENT_EMAIL: CHANGEIT
+FIREBASE_PROJECT_ID: CHANGEIT
+FIREBASE_APIKEY: CHANGEIT
+FIREBASE_AUTHDOMAIN: CHANGEIT.firebaseapp.com
+FIREBASE_DATABASEURL: https://CHANGEIT.firebaseio.com
+FIREBASE_STORAGEBUCKET: CHANGEIT.appspot.com
+FIREBASE_MESSAGINGSENDERID: CHANGEIT
+
+#Optional properties
+#MONGODB_URI: mongodb://mongo/tiledesk
+SERVER_BASE_URL: /api/
+WS_SERVER_PATH: /
+CHAT21_ENABLED: true
+WS_URL_RELATIVE: /ws/
+CHAT_BASE_URL: /chat/
+FEATURES_TOKEN: "PAY:F-ANA:F-ACT:F-TRI:F-GRO:F-DEP:F-OPH:F-MTL:F-DGF:F-NAT:T" 
+WIDGET_LOCATION: /widget/launch.js
+WIDGET_TEST_LOCATION: /widget/assets/twp/index.html
+
+DASHBOARD_URL: /dashboard/
+FIREBASESTORAGE_BASE_URL_IMAGE: https://firebasestorage.googleapis.com/v0/b/
+CHAT_SEND_BY_EMAIL_LINK: mailto:?subject=Transcript Chat Conversation&body=Hi,%0D%0A%0D%0Ahere the transcript:%0D%0A%0D%0Ahttps://api.tiledesk.com/v2/public/requests/
+
+EMAIL_BASEURL: http://console.tiledesk.local/dashboard
+EMAIL_ENABLED: false
+EMAIL_PASSWORD: CHANGEIT
+MONGODB_LOGS_URI: CHANGEIT
+SUPER_PASSWORD: superadmin
+
+
+
+server:
+  ## Enable deployment of Tiledesk Server
+  ##
+  enabled: true
+
+  image:  
+    repository: tiledesk/tiledesk-server
+    tag: latest
+    # pullPolicy: IfNotPresent  
+
+  service:
+   # type: ClusterIP
+    type: LoadBalancer
+    port: 80
+
+dashboard:
+  ## Enable deployment of Tiledesk Server
+  ##
+  enabled: true
+
+  image:
+    repository: tiledesk/tiledesk-dashboard
+    tag: latest  
+    # pullPolicy: IfNotPresent 
+
+  service:
+    type: NodePort
+    port: 80
+
+ionic:
+  ## Enable deployment of Tiledesk Server
+  ##
+  enabled: true
+
+  image:
+    repository: chat21/chat21-ionic
+    tag: latest
+
+  service:
+      type: NodePort
+      port: 80
+    # pullPolicy: IfNotPresent
+ 
+webwidget:
+  ## Enable deployment of Tiledesk Server
+  ##
+  enabled: true
+
+  image:
+    repository: chat21/chat21-web-widget
+    tag: latest
+
+  service:
+      type: NodePort
+      port: 80
+    # pullPolicy: IfNotPresent
+
+
+imagePullSecrets: #[]
+  - name: tiledesk-enterprise-image-secret
+
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+
+#unused ATTENTION
+service:
+  type: LoadBalancer
+  port: 80
+
+# https://cloud.google.com/community/tutorials/nginx-ingress-gke
+# helm install nginx-ingress stable/nginx-ingress --set rbac.create=true --set controller.publishService.enabled=true
+ingress:
+  enabled: true
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      rewrite ^/widget-config.json /widget/widget-config.json permanent;
+    #networking.gke.io/managed-certificates: certificate-tiledesk-prod
+      #rewrite ^ /dashboard/ permanent;
+      #rewrite ^/ /dashboard/ permanent;
+    # nginx.ingress.kubernetes.io/add-base-url : "true"
+    #nginx.ingress.kubernetes.io/service-upstream: "true"
+    # kubernetes.io/tls-acme: "true"
+  hosts:
+    - host: console.tiledesk.local
+      enabled: true
+      paths: 
+        - path: /api/(.*)
+          service: server
+        - path: /ws/(.*)
+          service: server
+        - path: /dashboard/(.*)
+          service: dashboard
+        - path: /chat/(.*)
+          service: ionic
+        - path: /widget/(.*)
+          service: webwidget
+        - path: /widget-config.json
+          service: webwidget
+        # - path: /(.*)
+        #   service: dashboard
+    - host: api.tiledesk.local
+      enabled: true
+      paths: #[] 
+        - path: #/(.*)
+          service: server
+    - host: rtm.tiledesk.local
+      enabled: true
+      paths: #[] 
+        - path: #/(.*)
+          service: server
+
+  tls: []
+    #  - secretName: tiledesk-tls-secret
+    #    hosts:
+    #      - console.tiledesk.local
+    #      - api.tiledesk.local
+
+
+# ## Enable persistence using Persistent Volume Claims
+# ## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/
+# ##
+# persistence:
+#   enabled: false
+#   ## parse data Persistent Volume Storage Class
+#   ## If defined, storageClassName: <storageClass>
+#   ## If set to "-", storageClassName: "", which disables dynamic provisioning
+#   ## If undefined (the default) or set to null, no storageClassName spec is
+#   ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
+#   ##   GKE, AWS & OpenStack)
+#   ##
+#   # storageClass: "-"
+#   accessMode: ReadWriteOnce
+#   size: 8Gi
+
+##
+## MongoDB chart configuration
+##
+## https://github.com/bitnami/charts/blob/master/bitnami/mongodb/values.yaml
+##
+mongodb:
+  enabled: true
+
+  # replicaSet: 
+  #   enabled: false
+
+  ## MongoDB Password authentication
+  usePassword: false
+  ## If the password is not specified, MongoDB will generate a random password
+  ##
+  # mongodbRootPassword:
+  ## Enable persistence using Persistent Volume Claims
+  ## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/
+  ##
+  persistence:
+    enabled: true
+    ## mongodb data Persistent Volume Storage Class
+    ## If defined, storageClassName: <storageClass>
+    ## If set to "-", storageClassName: "", which disables dynamic provisioning
+    ## If undefined (the default) or set to null, no storageClassName spec is
+    ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
+    ##   GKE, AWS & OpenStack)
+    ##
+    # storageClass: "-"
+    accessMode: ReadWriteOnce
+    size: 8Gi
+
+
+dependencies:
+  - name: mongodb
+    version: 7.x.x
+    repository: https://charts.bitnami.com/bitnami
+
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
