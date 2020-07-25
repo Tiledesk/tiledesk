@@ -82,6 +82,8 @@ helm install nginx-ingress stable/nginx-ingress --set rbac.create=true --set con
 
 If you are using Google GKE you must create the GCE Ingress.
 
+See here for more info: https://cloud.google.com/community/tutorials/nginx-ingress-gke
+
 If you have a TLS certificate please link it to the ManagedCertificate you created previously with:
 
 ```console
