@@ -22,6 +22,25 @@ git clone https://github.com/Tiledesk/tiledesk-deployment.git
 cd tiledesk-deployment
 ```
 
+## Configure the Chart
+Configure the required properties under values.yaml :
+
+CHAT21_URL: https://CHANGEIT.cloudfunctions.net
+CHAT21_ADMIN_TOKEN: CHANGEIT
+CHAT21_APPID: tilechat
+
+FIREBASE_PRIVATE_KEY: CHANGEIT
+FIREBASE_CLIENT_EMAIL: CHANGEIT
+FIREBASE_PROJECT_ID: CHANGEIT
+FIREBASE_APIKEY: CHANGEIT
+FIREBASE_AUTHDOMAIN: CHANGEIT.firebaseapp.com
+FIREBASE_DATABASEURL: https://CHANGEIT.firebaseio.com
+FIREBASE_STORAGEBUCKET: CHANGEIT.appspot.com
+FIREBASE_MESSAGINGSENDERID: CHANGEIT
+
+You can find more info about creating Firebase Project and configure it here: https://developer.tiledesk.com/installation/running-tiledesk-with-docker-compose#2-firebase-setup
+
+
 ## Installing the Chart
 
 To install the chart with the release name `my-tiledesk`:
