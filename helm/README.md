@@ -11,7 +11,7 @@ This chart bootstraps a [Tiledesk](https://github.com/tiledesk/tiledesk-deployme
 
 - Kubernetes 1.14+
 - Helm 3.2+
-- Minikube or GKE
+- Minikube or Google Kubernetes Engine (GKE)
 
 ## Download the project
 
