@@ -139,8 +139,6 @@ service:
   type: LoadBalancer
   port: 80
 
-# https://cloud.google.com/community/tutorials/nginx-ingress-gke
-# helm install nginx-ingress stable/nginx-ingress --set rbac.create=true --set controller.publishService.enabled=true
 ingress:
   enabled: true
   annotations:
