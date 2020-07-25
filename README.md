@@ -4,7 +4,7 @@
 This project contains the code for starting the entire Tiledesk product with **Docker** or **Kubernetes**.
 
 The **master** branch of this repository will endeavour to support the following deployments:
-- [Docker Compose](docker-compose/README.md) (latest): For development and trials
+- [Docker Compose](https://developer.tiledesk.com/installation/installation) (latest): For development and trials
 - [Helm - MiniKube and GKE](helm/README.md) (latest): For development, POCs and production
 
 
