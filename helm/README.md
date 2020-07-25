@@ -10,14 +10,23 @@ This chart bootstraps a [Tiledesk](https://github.com/tiledesk/tiledesk-deployme
 ## Prerequisites
 
 - Kubernetes 1.14+
+- Minikube
 - Helm 3.2+
+
+## Download the project
+
+Clone the repository with :
+
+```console
+git clone https://github.com/Tiledesk/tiledesk-deployment.git
+```
 
 ## Installing the Chart
 
 To install the chart with the release name `my-tiledesk`:
 
 ```console
-$ helm install my-tiledesk bitnami/parse
+$ helm install my-tiledesk helm
 ```
 
 The command deploys Tiledesk on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -39,26 +48,8 @@ The command removes all the Kubernetes components associated with the chart and 
 
 ## Create a custom nginx Ingress controller 
 
+Deploy nginx controller with:
+
 ```
 helm install nginx-ingress stable/nginx-ingress --set rbac.create=true --set controller.publishService.enabled=true
 ```
-
-
-
-## Create a GCE Ingress
-
-Create the Ingress, linking it to the ManagedCertificate you created previously with:
-
-```
-kubectl apply -f gce-ingress.yaml
-```
-
-
-Wait for the managed certificate to be provisioned. This may take up to 15 minutes. Create your DNS entry. You can check on the status of the certificate with the following command:
-
-
-Use the command below to the ingress ip:
-
-gcloud compute addresses list --project tiledesk-kube
-
-For GKE please use this guide: https://cloud.google.com/kubernetes-engine/docs/how-to/managed-certs
