@@ -62,4 +62,3 @@ Use the command below to the ingress ip:
 gcloud compute addresses list --project tiledesk-kube
 
 For GKE please use this guide: https://cloud.google.com/kubernetes-engine/docs/how-to/managed-certs
-
