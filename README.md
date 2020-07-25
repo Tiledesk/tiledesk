@@ -5,9 +5,7 @@ This project contains the code for starting the entire Tiledesk product with **D
 
 The **master** branch of this repository will endeavour to support the following deployments:
 - [Docker Compose](https://developer.tiledesk.com/installation/installation) (latest): For development and trials
-- [Helm - MiniKube and GKE](helm/README.md) (latest): For development and POCs
-- [Helm - Google Kubernetes Engine GKE](#) (latest): For production
-
+- [Helm - MiniKube and GKE](helm/README.md) (latest): For development, POCs and production
 
 
 ## Contents of the deployment
