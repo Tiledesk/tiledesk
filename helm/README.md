@@ -26,7 +26,7 @@ git clone https://github.com/Tiledesk/tiledesk-deployment.git
 To install the chart with the release name `my-tiledesk`:
 
 ```console
-$ helm install my-tiledesk helm
+helm install my-tiledesk helm
 ```
 
 The command deploys Tiledesk on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -37,7 +37,7 @@ The command deploys Tiledesk on the Kubernetes cluster in the default configurat
 To uninstall/delete the `my-tiledesk` deployment:
 
 ```console
-$ helm delete my-tiledesk
+helm delete my-tiledesk
 ```
 
 The command removes all the Kubernetes components associated with the chart and deletes the release.
@@ -50,6 +50,6 @@ The command removes all the Kubernetes components associated with the chart and 
 
 Deploy nginx controller with:
 
-```
+```console
 helm install nginx-ingress stable/nginx-ingress --set rbac.create=true --set controller.publishService.enabled=true
 ```
