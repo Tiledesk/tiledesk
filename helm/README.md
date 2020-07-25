@@ -15,10 +15,11 @@ This chart bootstraps a [Tiledesk](https://github.com/tiledesk/tiledesk-deployme
 
 ## Download the project
 
-Clone the repository with :
+Clone the repository and go to the deployment directory with :
 
 ```console
 git clone https://github.com/Tiledesk/tiledesk-deployment.git
+cd tiledesk-deployment
 ```
 
 ## Installing the Chart
