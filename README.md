@@ -29,5 +29,11 @@ into your infrastructure. You typically want to remove the MongoDB container and
 directly to your database.
 Another typical change would be the integration of your company-wide monitoring and logging tools.
 
+
+# Cluster Requirements
+To install the Tiledesk chart, you need an existing Kubernetes cluster.
+The requirements of the single pods can vary dependent on the model size and the number of users. We recommend providing at least the following resources:
+
+
 # Enterprise version
 Tiledesk Enterprise customers can request enterprise credentials sending and email at: info@tiledesk.com. These credentials are required to pull private (Enterprise-only) Docker images.
