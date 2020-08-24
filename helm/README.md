@@ -101,6 +101,23 @@ gcloud compute addresses list --project tiledesk-kube
 
 For GKE please use this guide: https://cloud.google.com/kubernetes-engine/docs/how-to/managed-certs
 
+# Accessing Logs
+This section describes how to get logs from the running containers.
+Get the name of the pod which you want to get the logs of.
+```console
+kubectl --namespace <your namespace> \
+    get pods
+
+# The output should be similar to this
+# NAME                                   READY   STATUS    RESTARTS   AGE
+nginx-ingress-controller-5c798c9ffc-t5wmb             1/1     Running   0          50d
+nginx-ingress-default-backend-7db6cc5bf-qgdtb         1/1     Running   0          50d
+tiledesk-helm-1593793077-dashboard-6f4654c465-f566q   1/1     Running   0          51d
+tiledesk-helm-1593793077-ionic-56b474d986-jgqsl       1/1     Running   0          51d
+tiledesk-helm-1593793077-mongodb-6d4fdf5965-kbcdg     1/1     Running   0          51d
+tiledesk-helm-1593793077-server-5c4cbf75f5-v2d67      1/1     Running   0          48d
+tiledesk-helm-1593793077-webwidget-7445fb45cc-gdpmd   1/1     Running   0          51d
+```
 
 
 # Cluster Requirements
