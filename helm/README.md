@@ -109,10 +109,9 @@ This section describes how to get logs from the running containers.
 kubectl --namespace <your namespace> \
     get pods
 ```
-
+The output should be similar to this
 ```
-# The output should be similar to this
-# NAME                                   READY   STATUS    RESTARTS   AGE
+NAME                                                  READY   STATUS    RESTARTS   AGE
 nginx-ingress-controller-5c798c9ffc-t5wmb             1/1     Running   0          50d
 nginx-ingress-default-backend-7db6cc5bf-qgdtb         1/1     Running   0          50d
 tiledesk-helm-1593793077-dashboard-6f4654c465-f566q   1/1     Running   0          51d
