@@ -103,11 +103,14 @@ For GKE please use this guide: https://cloud.google.com/kubernetes-engine/docs/h
 
 # Accessing Logs
 This section describes how to get logs from the running containers.
-Get the name of the pod which you want to get the logs of.
+
+1. Get the name of the pod which you want to get the logs of.
 ```console
 kubectl --namespace <your namespace> \
     get pods
+```
 
+```
 # The output should be similar to this
 # NAME                                   READY   STATUS    RESTARTS   AGE
 nginx-ingress-controller-5c798c9ffc-t5wmb             1/1     Running   0          50d
@@ -118,6 +121,16 @@ tiledesk-helm-1593793077-mongodb-6d4fdf5965-kbcdg     1/1     Running   0       
 tiledesk-helm-1593793077-server-5c4cbf75f5-v2d67      1/1     Running   0          48d
 tiledesk-helm-1593793077-webwidget-7445fb45cc-gdpmd   1/1     Running   0          51d
 ```
+tiledesk-helm-1593793077 is for example the name of the Tiledesk deployment.
+
+2. To get the logs of the container run:
+
+```console
+kubectl --namespace <your namespace> \
+    logs <name of the pod>
+```
+
+
 
 
 # Cluster Requirements
