@@ -51,8 +51,7 @@ To install the chart with the release name `my-tiledesk`:
 helm install my-tiledesk helm
 ```
 
-The command deploys Tiledesk on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
-
+The command deploys Tiledesk on the Kubernetes cluster in the default configuration. 
 
 ## Uninstalling the Chart
 
