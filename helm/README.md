@@ -100,3 +100,20 @@ gcloud compute addresses list --project tiledesk-kube
 ```
 
 For GKE please use this guide: https://cloud.google.com/kubernetes-engine/docs/how-to/managed-certs
+
+
+
+# Cluster Requirements
+To install the Tiledesk chart, you need an existing Kubernetes cluster.
+The requirements of the single pods can vary dependent on the model size and the number of users. We recommend providing at least the following resources:
+
+| Deployment         | CPU | Memory |
+|--------------------|-----|--------|
+| tiledesk-server    | 1   | 1GB    |
+| mongodb            | 0,5 | 512MB  |
+| tiledesk-dashboard | 0,2 | 200MB  |
+| chat21-web-widget  | 0,2 | 200MB  |
+| chat21-ionic       | 0,2 | 200MB  |
+
+We recommend a size at least 30 GiB for the database volume claim.
+
