@@ -116,4 +116,5 @@ The requirements of the single pods can vary dependent on the model size and the
 | chat21-ionic       | 0,2 | 200MB  |
 
 We recommend a size at least 20 GiB for the database volume claim.
+N1-standard-1 type is a good starting point if you choose GKE.
 
