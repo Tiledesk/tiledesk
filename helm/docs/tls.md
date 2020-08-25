@@ -17,6 +17,9 @@ openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
     -subj "/CN=console.tiledesk.local/O=tiledesk-ingress-tls"
 ```
 
+After creating the certificate please upload it using the following command:
+
+
 ```console
 kubectl create secret tls tiledesk-tls-secret --key tiledesk-ingress-tls.key --cert tiledesk-ingress-tls.crt
 ```
@@ -27,22 +30,49 @@ Please see [this example](https://github.com/kubernetes/contrib/tree/master/ingr
 
 Create a ManagedCertificate resource. This resource specifies the domains that the SSL certificate will be created for. Wildcard domains are not supported.
 
+Create a file named certificate-tiledesk.yaml like below:
+
+```
+apiVersion: networking.gke.io/v1beta1
+kind: ManagedCertificate
+metadata:
+name: certificate-tiledesk
+spec:
+domains:
+- api.tiledesk.com
+```
+
+Create a new certificate for each domains you need. After that run:
+
+```
 kubectl apply -f ./enterprise/certificate-tiledesk.yaml
+```
 
 
 View your ssl certificates with: 
 
+```
 gcloud beta compute ssl-certificates list --project tiledesk-kube2
+```
 
 or with:
 
+```
 kubectl describe managedcertificate certificate-tiledesk
+```
 
 or with:
 
+```
 kubectl get certificates
+```
 
+# Delete an existing GKE certificate
 
-delete with:
-gcloud compute ssl-certificates delete mcrt-761d3c43-595c-4084-8c3b-707ed7b22098 --project tiledesk-kube2
+If you want to delete an existing certificate please run the following command:
+
+```
+gcloud compute ssl-certificates delete mcrt-761d3c43-595c-4084-8c3b-XYZZZZZ --project tiledesk-kube
+```
+
 
