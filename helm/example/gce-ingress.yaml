@@ -1,0 +1,27 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    meta.helm.sh/release-name: tiledesk-helm-prod-01
+    meta.helm.sh/release-namespace: default
+    networking.gke.io/managed-certificates: certificate-tiledesk
+  labels:
+    app.kubernetes.io/instance: tiledesk-helm-prod-01
+    app.kubernetes.io/name: tiledesk
+    helm.sh/chart: tiledesk-0.1.4
+  name: tiledesk-ingress-gce-prod-01
+  namespace: default
+spec:
+  rules:
+  - host: eu.rtm.tiledesk.com
+    http:
+      paths:
+      - backend:
+          serviceName: tiledesk-helm-prod-01-server
+          servicePort: 80
+  - host: rtm.tiledesk.com
+    http:
+      paths:
+      - backend:
+          serviceName: tiledesk-helm-prod-01-server
+          servicePort: 80
