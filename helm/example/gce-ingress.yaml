@@ -17,7 +17,7 @@ spec:
     http:
       paths:
       - backend:
-          serviceName: tiledesk-helm-prod-01-server
+          serviceName: tiledesk-helm-1593793077-server
           servicePort: 80
   - host: widget.tiledesk.local
     http:
