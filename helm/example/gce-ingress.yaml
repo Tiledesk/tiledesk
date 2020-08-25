@@ -13,15 +13,21 @@ metadata:
   namespace: default
 spec:
   rules:
-  - host: eu.rtm.tiledesk.com
+  - host: api.tiledesk.local
     http:
       paths:
       - backend:
           serviceName: tiledesk-helm-prod-01-server
           servicePort: 80
-  - host: rtm.tiledesk.com
+  - host: widget.tiledesk.local
     http:
       paths:
       - backend:
-          serviceName: tiledesk-helm-prod-01-server
+          serviceName: tiledesk-helm-1593793077-webwidget
+          servicePort: 80
+  - host: console.tiledesk.local
+    http:
+      paths:
+      - backend:
+          serviceName: tiledesk-helm-1593793077-dashboard
           servicePort: 80
