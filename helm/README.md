@@ -143,6 +143,6 @@ The requirements of the single pods can vary dependent on the model size and the
 | chat21-web-widget  | 0,2 | 200MB  |
 | chat21-ionic       | 0,2 | 200MB  |
 
-We recommend a size at least 20 GiB for the database volume claim.
+We recommend a size at least 30 GiB for the database volume claim.
 N1-standard-1 type is the minimum cluster type if you choose GKE.
 
