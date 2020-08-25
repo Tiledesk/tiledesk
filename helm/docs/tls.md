@@ -45,7 +45,7 @@ domains:
 Create a new certificate for each domains you need. After that run:
 
 ```
-kubectl apply -f ./enterprise/certificate-tiledesk.yaml
+kubectl apply -f certificate-tiledesk.yaml
 ```
 
 
