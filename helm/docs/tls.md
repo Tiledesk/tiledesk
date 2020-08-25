@@ -44,26 +44,26 @@ domains:
 
 Create a new certificate for each domains you need. After that run:
 
-```
+```console
 kubectl apply -f certificate-tiledesk.yaml
 ```
 
 
 View your ssl certificates with: 
 
-```
+```console
 gcloud beta compute ssl-certificates list --project tiledesk-kube2
 ```
 
 or with:
 
-```
+```console
 kubectl describe managedcertificate certificate-tiledesk
 ```
 
 or with:
 
-```
+```console
 kubectl get certificates
 ```
 
@@ -71,7 +71,7 @@ kubectl get certificates
 
 If you want to delete an existing certificate please run the following command:
 
-```
+```console
 gcloud compute ssl-certificates delete mcrt-761d3c43-595c-4084-8c3b-XYZZZZZ --project tiledesk-kube
 ```
 
