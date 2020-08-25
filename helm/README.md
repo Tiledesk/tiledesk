@@ -115,6 +115,12 @@ Use the command below to the ingress ip:
 ```console
 gcloud compute addresses list --project tiledesk-kube
 ```
+The output should be similar to this:
+
+```
+NAME                                                           ADDRESS/RANGE   TYPE      PURPOSE  NETWORK  REGION  SUBNET  STATUS
+k8s-fw-default-tiledesk-ingress-gce-prod-01--387eebc4034db680  34.107.111.112  EXTERNAL                                    IN_USE
+```
 
 For GKE please use this guide: https://cloud.google.com/kubernetes-engine/docs/how-to/managed-certs
 
