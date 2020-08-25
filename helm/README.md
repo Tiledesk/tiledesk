@@ -83,7 +83,7 @@ If you are using Google GKE you must create the GCE Ingress.
 
 See here for more info: https://cloud.google.com/community/tutorials/nginx-ingress-gke
 
-[Create new kubernetes certificates](./tls.md) or if you already have a Kubernetes TLS certificate please link it to the ManagedCertificate you created previously with:
+[Create new kubernetes certificates](./docs/tls.md) or if you already have a Kubernetes TLS certificate please link it to the ManagedCertificate you created previously with:
 
 ```console
 kubectl apply -f gce-ingress.yaml
