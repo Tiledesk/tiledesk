@@ -13,6 +13,23 @@ This chart bootstraps a [Tiledesk](https://github.com/tiledesk/tiledesk-deployme
 - Helm 3.2+
 - Minikube or Google Kubernetes Engine (GKE)
 
+
+
+## Cluster Requirements
+To install the Tiledesk chart, you need an existing Kubernetes cluster.
+The requirements of the single pods can vary dependent on the model size and the number of users. We recommend providing at least the following resources:
+
+| Deployment         | CPU | Memory |
+|--------------------|-----|--------|
+| tiledesk-server    | 1   | 1GB    |
+| mongodb            | 0,5 | 512MB  |
+| tiledesk-dashboard | 0,2 | 200MB  |
+| chat21-web-widget  | 0,2 | 200MB  |
+| chat21-ionic       | 0,2 | 200MB  |
+
+We recommend a size at least 30 GiB for the database volume claim.
+N1-standard-1 type is the minimum cluster type if you choose GKE.
+
 ## Download the project
 
 Clone the repository and go to the deployment directory with :
@@ -129,21 +146,9 @@ kubectl --namespace <your namespace> \
     logs <name of the pod>
 ```
 
+# Open the dashboard
 
+Open the dashboard at /dashboard/ endpoint of the ingress and signin as admin with :
 
-
-# Cluster Requirements
-To install the Tiledesk chart, you need an existing Kubernetes cluster.
-The requirements of the single pods can vary dependent on the model size and the number of users. We recommend providing at least the following resources:
-
-| Deployment         | CPU | Memory |
-|--------------------|-----|--------|
-| tiledesk-server    | 1   | 1GB    |
-| mongodb            | 0,5 | 512MB  |
-| tiledesk-dashboard | 0,2 | 200MB  |
-| chat21-web-widget  | 0,2 | 200MB  |
-| chat21-ionic       | 0,2 | 200MB  |
-
-We recommend a size at least 30 GiB for the database volume claim.
-N1-standard-1 type is the minimum cluster type if you choose GKE.
-
+email: admin@tiledesk.com
+password: adminadmin
