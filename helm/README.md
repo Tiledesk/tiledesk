@@ -88,7 +88,7 @@ See here for more info: https://cloud.google.com/community/tutorials/nginx-ingre
 ```console
 kubectl apply -f gce-ingress.yaml
 ```
-You can find an example of the [gce-ingress.yaml here](helm/example/gce-ingress.yaml). Configure it appropriately.
+You can find an example of the [gce-ingress.yaml here](/helm/example/gce-ingress.yaml). Configure it appropriately.
 
 Wait for the managed certificate to be provisioned. This may take up to 15 minutes. Create your DNS entry. You can check on the status of the certificate with the following command:
 
