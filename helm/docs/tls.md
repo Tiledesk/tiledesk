@@ -36,10 +36,10 @@ Create a file named certificate-tiledesk.yaml like below:
 apiVersion: networking.gke.io/v1beta1
 kind: ManagedCertificate
 metadata:
-name: certificate-tiledesk
+ name: certificate-tiledesk
 spec:
-domains:
-- api.tiledesk.com
+ domains:
+  - api.tiledesk.com
 ```
 
 Create a new certificate for each domains you need. After that run:
