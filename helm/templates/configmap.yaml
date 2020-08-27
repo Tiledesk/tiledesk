@@ -32,9 +32,16 @@ data:
 
   API_URL: {{ .Values.SERVER_BASE_URL | quote }} 
 
-  EMAIL_BASEURL: {{ .Values.EMAIL_BASEURL | quote }} 
   EMAIL_ENABLED: {{ .Values.EMAIL_ENABLED | quote }} 
+  EMAIL_HOST: {{ .Values.EMAIL_HOST | quote }} 
+  EMAIL_USERNAME: {{ .Values.EMAIL_USERNAME | quote }} 
+  EMAIL_SECURE: {{ .Values.EMAIL_SECURE | quote }} 
+  EMAIL_PORT: {{ .Values.EMAIL_PORT | quote }} 
   EMAIL_PASSWORD: {{ .Values.EMAIL_PASSWORD | quote }} 
+  EMAIL_BASEURL: {{ .Values.EMAIL_BASEURL | quote }} 
+
+
+
   MONGODB_LOGS_URI: {{ .Values.MONGODB_LOGS_URI | quote }} 
   SUPER_PASSWORD: {{ .Values.SUPER_PASSWORD | quote }} 
   
