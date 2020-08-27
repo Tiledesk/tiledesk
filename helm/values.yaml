@@ -39,9 +39,14 @@ DASHBOARD_URL: /dashboard/
 FIREBASESTORAGE_BASE_URL_IMAGE: https://firebasestorage.googleapis.com/v0/b/
 CHAT_SEND_BY_EMAIL_LINK: mailto:?subject=Transcript Chat Conversation&body=Hi,%0D%0A%0D%0Ahere the transcript:%0D%0A%0D%0Ahttps://api.tiledesk.com/v2/public/requests/
 
-EMAIL_BASEURL: http://console.tiledesk.local/dashboard
 EMAIL_ENABLED: false
+#EMAIL_HOST: YOUR_EMAIL_HOST
+#EMAIL_USERNAME: YOUR_EMAIL_USERNAME
+#EMAIL_SECURE: true #defaults to 587 if is secure is false or 465 if true
+#EMAIL_PORT: 25
 EMAIL_PASSWORD: CHANGEIT
+EMAIL_BASEURL: http://console.tiledesk.local/dashboard
+
 MONGODB_LOGS_URI: CHANGEIT
 SUPER_PASSWORD: superadmin
 
