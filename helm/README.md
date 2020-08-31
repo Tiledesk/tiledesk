@@ -40,7 +40,7 @@ cd tiledesk-deployment
 ```
 
 ## Configure the Chart
-Configure the required properties under values.yaml :
+Configure the required properties under values.yaml. You can find more info about creating Firebase Project and configure it here: https://developer.tiledesk.com/installation/chat21-installation/chat21-firebase-installation
 
 ```
 CHAT21_URL: https://CHANGEIT.cloudfunctions.net
@@ -56,8 +56,6 @@ FIREBASE_DATABASEURL: https://CHANGEIT.firebaseio.com
 FIREBASE_STORAGEBUCKET: CHANGEIT.appspot.com
 FIREBASE_MESSAGINGSENDERID: CHANGEIT
 ```
-
-You can find more info about creating Firebase Project and configure it here: https://developer.tiledesk.com/installation/running-tiledesk-with-docker-compose#2-firebase-setup
 
 
 ## Installing the Chart
