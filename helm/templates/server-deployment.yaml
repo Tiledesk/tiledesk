@@ -98,18 +98,18 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: EMAIL_HOST
-             - name: EMAIL_USERNAME
-               valueFrom:
+            - name: EMAIL_USERNAME
+              valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: EMAIL_USERNAME
-             - name: EMAIL_SECURE
-               valueFrom:
+            - name: EMAIL_SECURE
+              valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: EMAIL_SECURE
-             - name: EMAIL_PORT
-               valueFrom:
+            - name: EMAIL_PORT
+              valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: EMAIL_PORT             
