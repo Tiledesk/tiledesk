@@ -82,47 +82,24 @@ The command removes all the Kubernetes components associated with the chart and 
 
 
 
-# Create Ingress
+## Create an nginx Ingress controller (Optional)
+If your cluster doesn't have a built-in nginx ingress controller (ex. GKE) you must deploy mannually it with :
 
+```console
+helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx/
+helm install --name ingress-nginx ingress-nginx/ingress-nginx
+```
 
-## Create a custom nginx Ingress controller 
+More info here: https://kubernetes.github.io/ingress-nginx/deploy/#using-helm
 
-Deploy nginx controller with:
+or with the old nginx ingress version :
 
 ```console
 helm install nginx-ingress stable/nginx-ingress --set rbac.create=true --set controller.publishService.enabled=true
 ```
+With rbac.create=true you configure Role Based Access Controll (https://kubernetes.github.io/ingress-nginx/deploy/rbac/)
 
 
-## Create a GCE Ingress
-
-If you are using Google GKE you must create the GCE Ingress.
-
-See here for more info: https://cloud.google.com/community/tutorials/nginx-ingress-gke
-
-[Create new kubernetes certificates](./docs/tls.md) or if you already have a Kubernetes TLS certificate please link it to the ManagedCertificate you created previously with:
-
-```console
-kubectl apply -f gce-ingress.yaml
-```
-You can find an example here of the [gce-ingress.yaml](/helm/example/gce-ingress.yaml). Configure it appropriately.
-
-Wait for the managed certificate to be provisioned. This may take up to 15 minutes. Create your DNS entry. You can check on the status of the certificate with the following command:
-
-
-Use the command below to the ingress ip:
-
-```console
-gcloud compute addresses list --project tiledesk-kube
-```
-The output should be similar to this:
-
-```
-NAME                                                           ADDRESS/RANGE   TYPE      PURPOSE  NETWORK  REGION  SUBNET  STATUS
-k8s-fw-default-tiledesk-ingress-gce-prod-01--387eebc4034db680  34.107.111.112  EXTERNAL                                    IN_USE
-```
-
-For GKE please use this guide: https://cloud.google.com/kubernetes-engine/docs/how-to/managed-certs
 
 # Accessing Logs
 This section describes how to get logs from the running containers.
