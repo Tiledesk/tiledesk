@@ -83,7 +83,7 @@ The command removes all the Kubernetes components associated with the chart and 
 
 
 ## Create an nginx Ingress controller (Optional)
-If your cluster doesn't have a built-in nginx ingress controller (ex. GKE) you must deploy mannually it with :
+If your cluster doesn't have a built-in nginx ingress controller (ex. GKE) you must mannually deploy it with :
 
 ```console
 helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx/
