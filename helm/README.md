@@ -131,5 +131,5 @@ kubectl --namespace <your namespace> \
 
 Open the dashboard at /dashboard/ endpoint of the ingress and signin as admin with :
 
-email: admin@tiledesk.com
-password: adminadmin
+* email: admin@tiledesk.com
+* password: adminadmin
