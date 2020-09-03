@@ -100,7 +100,13 @@ spec:
                   configMapKeyRef:
                     name: {{ include "tiledesk.fullname" . }}-config
                     key: FIREBASE_MESSAGINGSENDERID
-              #value: {{ .Values.FIREBASE_MESSAGINGSENDERID | quote }}    
+              #value: {{ .Values.FIREBASE_MESSAGINGSENDERID | quote }}
+            - name: FIREBASE_APP_ID
+              valueFrom:
+                  configMapKeyRef:
+                    name: {{ include "tiledesk.fullname" . }}-config
+                    key: FIREBASE_APP_ID
+              #value: {{ .Values.FIREBASE_APP_ID | quote }}              
           ports:
             - name: ionic-http
               containerPort: 80
