@@ -151,6 +151,7 @@ ingress:
     nginx.ingress.kubernetes.io/rewrite-target: /$1
     nginx.ingress.kubernetes.io/configuration-snippet: |
       rewrite ^/widget-config.json /widget/widget-config.json permanent;
+      rewrite ^/firebase-messaging-sw.js /chat/firebase-messaging-sw.js permanent;
     #networking.gke.io/managed-certificates: certificate-tiledesk-prod
       #rewrite ^ /dashboard/ permanent;
       #rewrite ^/ /dashboard/ permanent;
