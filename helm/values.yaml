@@ -150,6 +150,7 @@ ingress:
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/rewrite-target: /$1
+    nginx.ingress.kubernetes.io/enable-cors: "true"
     nginx.ingress.kubernetes.io/configuration-snippet: |
       rewrite ^/widget-config.json /widget/widget-config.json permanent;
       rewrite ^/firebase-messaging-sw.js /chat/firebase-messaging-sw.js last;
