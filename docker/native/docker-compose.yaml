@@ -1,0 +1,200 @@
+version: "3.7"
+# networks:
+#    backend:
+#    frontend:
+volumes:
+   tiledesk-datadb:
+   chat21-cf:
+   tiledesk-server-config2:
+
+
+services:
+  dashboard:
+   image: tiledesk/tiledesk-dashboard
+   container_name: tiledesk-dashboard
+   #required for old docker version
+   env_file: 
+      - .env
+   environment: 
+      - FEATURES_TOKEN=PAY:F-ANA:F-ACT:F-TRI:F-GRO:F-DEP:F-OPH:F-MTL:F-DGF:F-NAT:T
+      - SERVER_BASE_URL=/api/
+      - CHAT_BASE_URL=/chat/
+      - WS_URL
+      - WS_URL_RELATIVE=/ws/
+      - WIDGET_LOCATION=/widget/launch.js
+      - WIDGET_TEST_LOCATION=/widget/assets/twp/index.html
+      - FIREBASE_APIKEY
+      - FIREBASE_AUTHDOMAIN
+      - FIREBASE_DATABASEURL
+      - FIREBASE_PROJECT_ID
+      - FIREBASE_STORAGEBUCKET
+      - FIREBASE_MESSAGINGSENDERID
+   ports:
+      - "4500:80" #use expose if you want to block external access
+  #  networks:
+  #        frontend: 
+  #           aliases:
+  #               - dashboard
+  webwidget:
+   image: chat21/chat21-web-widget:latest
+   container_name: chat21-web-widget  
+   ports: 
+      - "4200:80" # specify port forewarding
+   env_file: 
+      - .env
+   environment: 
+      - FIREBASE_APIKEY
+      - FIREBASE_AUTHDOMAIN
+      - FIREBASE_DATABASEURL
+      - FIREBASE_PROJECT_ID
+      - FIREBASE_STORAGEBUCKET
+      - FIREBASE_MESSAGINGSENDERID
+      - API_URL=/api/
+   #links:
+    # - proxy
+  #  networks:
+  #       frontend:
+  #           aliases:
+  #               - web-widget
+  ionic:
+   image: chat21/chat21-ionic
+   container_name: chat21-ionic
+   ports:
+      - "8080:80" #use expose if you want to block external access
+   env_file: 
+      - .env
+   environment: 
+      - DASHBOARD_URL=/dashboard/
+      - CHAT_SEND_BY_EMAIL_LINK=mailto:?subject=Transcript Chat Conversation&body=Hi,%0D%0A%0D%0Ahere the transcript:%0D%0A%0D%0Ahttps://api.tiledesk.com/v1/public/requests/
+      - FIREBASESTORAGE_BASE_URL_IMAGE=https://firebasestorage.googleapis.com/v0/b/
+      - SERVER_BASE_URL=/api/
+      - FIREBASE_APIKEY
+      - FIREBASE_AUTHDOMAIN
+      - FIREBASE_DATABASEURL
+      - FIREBASE_PROJECT_ID
+      - FIREBASE_STORAGEBUCKET
+      - FIREBASE_MESSAGINGSENDERID
+  #  networks:
+  #     frontend: 
+  #           aliases:
+  #               - ionic
+  proxy:
+    image: tiledesk/tiledesk-docker-proxy
+    container_name: tiledesk-docker-proxy
+    #image: nginx
+    #container_name: proxy
+    #volumes:
+     # - ./nginx-proxy.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - "80:80" # specify port forewarding
+    depends_on:
+      - server
+      - dashboard
+      - webwidget
+    # networks:
+    #     frontend:
+    #         aliases:
+    #             - proxy
+    #     backend:
+    command: [nginx-debug, '-g', 'daemon off;']
+  cloud-functions:
+   image: chat21/chat21-cloud-functions
+   container_name: chat21-cloud-functions
+   volumes:
+     - chat21-cf:/home #persist firebase login
+   ports:
+     - "9005:9005" # specify port forewarding
+     - "5000:5000"
+  server:
+    image: tiledesk/tiledesk-server
+    container_name: tiledesk-server
+    restart: always
+    # networks:
+    #       backend:
+    #         aliases:
+    #             - server
+    volumes:    
+        #  - type: bind
+        #    source: ./
+        #    target: /usr/src/app/
+        - tiledesk-server-config2:/usr/src/app/confenv
+      # - ./:/usr/src/app/
+
+    #required for old docker version
+    env_file:
+      - .env
+    environment: 
+      - FIREBASE_PRIVATE_KEY=-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDSrVJxb3ZYLWF4\nB7n1yYdY9tnN8mHV+49IsDPTYCLnJrOFuDY2dlWdpZZoaNB/S6mogNNw4ImRnTpL\nr1BAaTqkIzTjbGlmk/G6mLtuB2kYr5WDHHyczDJompZwv7nc4LAxkOVa34/o4hJv\nqTDSBiy+FaSNlPdM6if5T9YZtW+ZMBe3msHXBeq0D8TbaJGl6nAJfIZlMC8/eH7/\nlMgWgAepNFP2ahIl7DYbSRbVjuto4sw7LUZ5np6R1wZFpmhROlTUKL07fWqiJLtI\n6jRTY0zilGQ3gWW8KJYYDEIrIph+36XWWyF54NkfpIm/P7HMzAnYdmJ/u42M+5eV\nFacm09xHAgMBAAECggEAFZe4FHJFIeJ80+2OzLc8DQ0345jNGD5xQBT3Ktn2mdRo\nn/Lyc4CLY9393XOosvNRTzjs8uvAjdEckXdFdWSToxEMsaaB4waUxvgydaOCzQnp\n/AcmanevTvNRKfsslIve4yWjrD2vpUHOe+1OWKhTW6QiOnSjKBnzwOTC392ts3h/\ntT4OAs6ABjEFimEv2lV8myFISrNdO4P2CPGuNI42JidASgLhY5VfeKIQWxEru1T+\niStxtGDzAsXFmP62toQ7zyN6wENmKy9AV+440ITs+VlW4W2418iGkfdoC9GT9zgx\n+eaPZnlRZvzQ3ehT79Hvpmc/cJM90mSp2By5qYl5+QKBgQD2fiTdkL6h8ILw3JZH\nkNlG+KlnTRrRpZU/oaBVuIbgFn4PlugRibOVWTNdHBc+nn1Wpk5HRsXHqTxdw1Ke\nnipizroXR9OIEKy678kFEihxMEcR1H5JCdX2FYW4FytMOHss1uTBNrZyMEmu17gt\nylIFZUnmcf0CHaN7KJTpkFgwLQKBgQDazYkg9FsSKSfXQfxRfox+c6dtwidH63qI\nPcLH4cmjzh0dfROTcGa0HnLVipuCFfH79YZGvfhOLCW3OrPXhoLXZ5kvi/4YvdqA\nXDu4bkAZUEPv/WHFyAhecCMkYsvldLFWbSrJt7lAZFAmrp7O5QVMvGQsLVn9SkfT\n+yKmZ9QSwwKBgQCXByVZaGWVXYMtR0sA4Hxwos1REQo8qALxcPuHaj+hr8ZfkOvy\nSvfwqy3wf9SyNnO/krhlrbRjKItnO9U0gN6hmd6lgwnV1bmv9FmrtLt41sbE4vjZ\nkaA6XmeHKxMJaZX3HFgfFoHlJzcOXPhpfgyRZ8VG4FLQaA6R2ISdMycFpQKBgHok\nrP1pi4Fq2iPPYTR5KaLZm0ipTtZWPPPbTmXYxICd6iDxFsGCyMKaEM7mboNDDu/x\nkwDgwcGZ4YAU1Bpnq5jl61zgkHttWJG5a1k8qqm25gYN88u+K/XUMbn5MQuphenS\nTUWIO3EXzqqZZmvm63t324/RzV+ZXNmYYzJz2a6TAoGAAT6cSGvi01J+/9euoIfc\n0yUuI1pRFe4FKF2DRRKSpV+GB24ccfExm7WYhjyKUXS9XWPO9Nfnj9VeinN+r1Hq\n8gaki8iMWdq60LxrZl2D5JD8eX+OvDXJOVkojWcaE1iiPGFCY7wCkjLuPdiYzj+S\nT0XhYCOVQlOyyTF42VlCNdE=\n-----END PRIVATE KEY-----\n
+      - FIREBASE_CONFIG_FILE
+      - FIREBASE_CLIENT_EMAIL=UNUSED@USED.it
+      - FIREBASE_PROJECT_ID
+      - CHAT21_ENABLED=true
+      - CHAT21_URL=http://chat21-http-server:8004/
+      - CHAT21_JWT_SECRET=tokenKey
+      - CHAT21_APPID
+      - CHAT21_ADMIN_TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI2YWI3MzY1Yi1hYWRhLTRlNTktOWZjZS0yMDQwZDgyOTA4MTgiLCJzdWIiOiIxMDAtQVBJQURNSU4iLCJzY29wZSI6WyJyYWJiaXRtcS5yZWFkOiovKi8qIiwicmFiYml0bXEud3JpdGU6Ki8qLyoiLCJyYWJiaXRtcS5jb25maWd1cmU6Ki8qLyoiXSwiY2xpZW50X2lkIjoiMTAwLUFQSUFETUlOIiwiY2lkIjoiMTAwLUFQSUFETUlOIiwiYXpwIjoiMTAwLUFQSUFETUlOIiwidXNlcl9pZCI6IjEwMC1BUElBRE1JTiIsImFwcF9pZCI6InRpbGVjaGF0IiwiaWF0IjoxNTk0Mzc3OTc4LCJleHAiOjE1OTY5Njk5NzgsImF1ZCI6WyJyYWJiaXRtcSIsIjEwMC1BUElBRE1JTiJdLCJraWQiOiJ0aWxlZGVzay1rZXkiLCJ0aWxlZGVza19hcGlfcm9sZXMiOiJhZG1pbiJ9.QnG5Bw83pBCvVex8WQXXBlirg9DdJFiLURHAbyezJZ8
+      - MONGODB_URI=mongodb://mongo/tiledesk
+    depends_on:
+      - mongo
+    ports:
+      - "3000:3000"
+
+  chat21-http-server:
+    image: chat21/chat21-http-server
+    container_name: chat21-http-server
+    restart: always
+    environment: 
+      - MONGODB_URI=mongodb://mongo/chat21
+      - JWT_KEY=tokenKey
+      - RABBITMQ_URI=amqp://ignored:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIyMDI2NjU0Ni05ZGMxLTQ3MzgtOWE5OC01OTQwYWFmZWJkMjgiLCJzdWIiOiIwMS1PQlNFUlZFUiIsInNjb3BlIjpbInJhYmJpdG1xLnJlYWQ6Ki8qLyoiLCJyYWJiaXRtcS53cml0ZToqLyovKiIsInJhYmJpdG1xLmNvbmZpZ3VyZToqLyovKiJdLCJjbGllbnRfaWQiOiIwMS1PQlNFUlZFUiIsImNpZCI6IjAxLU9CU0VSVkVSIiwiYXpwIjoiMDEtT0JTRVJWRVIiLCJ1c2VyX2lkIjoiMDEtT0JTRVJWRVIiLCJhcHBfaWQiOiJ0aWxlY2hhdCIsImlhdCI6MTU5Mzg1OTgzNiwiZXhwIjoxNTk2NDUxODM2LCJhdWQiOlsicmFiYml0bXEiLCIwMS1PQlNFUlZFUiJdLCJraWQiOiJ0aWxlZGVzay1rZXkiLCJ0aWxlZGVza19hcGlfcm9sZXMiOiJ1c2VyIn0.A6j60nv9DhQHS_FTBE2gN_otkfpFUogC_XFk7aeFWUs@rabbitmq:5672?heartbeat=60
+    depends_on:
+      - mongo
+    ports:
+      - "8004:8004"
+  chat21-server:
+    image: chat21/chat21-server
+    container_name: chat21-server
+    restart: always
+    environment: 
+      - MONGODB_URI=mongodb://mongo/chat21
+      - APP_ID=tilechat
+      - WEBHOOK_ENDPOINT=http://server:3000/chat21/requests
+      - RABBITMQ_URI=amqp://ignored:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIyMDI2NjU0Ni05ZGMxLTQ3MzgtOWE5OC01OTQwYWFmZWJkMjgiLCJzdWIiOiIwMS1PQlNFUlZFUiIsInNjb3BlIjpbInJhYmJpdG1xLnJlYWQ6Ki8qLyoiLCJyYWJiaXRtcS53cml0ZToqLyovKiIsInJhYmJpdG1xLmNvbmZpZ3VyZToqLyovKiJdLCJjbGllbnRfaWQiOiIwMS1PQlNFUlZFUiIsImNpZCI6IjAxLU9CU0VSVkVSIiwiYXpwIjoiMDEtT0JTRVJWRVIiLCJ1c2VyX2lkIjoiMDEtT0JTRVJWRVIiLCJhcHBfaWQiOiJ0aWxlY2hhdCIsImlhdCI6MTU5Mzg1OTgzNiwiZXhwIjoxNTk2NDUxODM2LCJhdWQiOlsicmFiYml0bXEiLCIwMS1PQlNFUlZFUiJdLCJraWQiOiJ0aWxlZGVzay1rZXkiLCJ0aWxlZGVza19hcGlfcm9sZXMiOiJ1c2VyIn0.A6j60nv9DhQHS_FTBE2gN_otkfpFUogC_XFk7aeFWUs@rabbitmq:5672?heartbeat=60
+    depends_on:
+      - mongo
+  rabbitmq:
+    #image: rabbitmq:3.8.5-management-alpine
+    image: chat21/chat21-rabbitmq
+    container_name: rabbitmq
+    environment:
+        RABBITMQ_ERLANG_COOKIE: ${RABBITMQ_ERLANG_COOKIE}
+        RABBITMQ_DEFAULT_USER: ${RABBITMQ_DEFAULT_USER}
+        RABBITMQ_DEFAULT_PASS: ${RABBITMQ_DEFAULT_PASS}
+    ports:
+        - 5672:5672
+        - 15672:15672
+        - 1883:1883
+        - 15675:15675
+  mongo:
+    container_name: mongo
+    image: mongo
+    command: --bind_ip_all
+    volumes:
+      - tiledesk-datadb:/data/db
+    # networks:
+    #       backend:
+    #         aliases:
+    #             - mongo
+      ### Uncoment below if you want to map mongodb port
+      #ports:
+      #   - "27017:27017"
+  ngrok:
+    container_name: ngrok
+    image: wernight/ngrok
+    command: ngrok http server:3000
+    # networks:
+    #       backend:
+    #         aliases:
+    #             - ngrok
+    ports:
+     -  '4040:4040'
