@@ -85,7 +85,7 @@ If your cluster doesn't have a built-in nginx ingress controller (ex. GKE) you m
 
 ```console
 helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx/
-helm install --name ingress-nginx ingress-nginx/ingress-nginx
+helm install ingress-nginx ingress-nginx/ingress-nginx
 ```
 
 More info here: https://kubernetes.github.io/ingress-nginx/deploy/#using-helm
