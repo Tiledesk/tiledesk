@@ -65,6 +65,8 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: CHAT21_ENABLED
+            - name: CHAT21_ENGINE
+              value: firebase
             - name: CHAT21_URL
               #value: {{ .Values.CHAT21_URL | quote }}    
               valueFrom:
