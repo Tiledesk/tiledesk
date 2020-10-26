@@ -40,12 +40,15 @@ cd tiledesk-deployment
 ```
 
 ## Configure the Chart
-Configure the required properties under values.yaml. You can find more info about creating Firebase Project and configure it here: https://developer.tiledesk.com/installation/chat21-installation/chat21-firebase-installation
+Configure the required properties under values.yaml. You can find more info about creating Firebase Project and configure it here: 
+* [Chat21 Firebase Installation](https://developer.tiledesk.com/installation/chat21-installation/chat21-firebase-installation)
+* [Chat21 Channel Configuration](https://developer.tiledesk.com/configuration/channel)
 
 ```
 CHAT21_URL: https://CHANGEIT.cloudfunctions.net
 CHAT21_ADMIN_TOKEN: CHANGEIT
 CHAT21_APPID: tilechat
+CHAT21_ENGINE: firebase
 
 FIREBASE_PRIVATE_KEY: CHANGEIT
 FIREBASE_CLIENT_EMAIL: CHANGEIT
