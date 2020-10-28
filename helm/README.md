@@ -48,8 +48,6 @@ Configure the required properties under values.yaml. You can find more info abou
 CHAT21_URL: https://CHANGEIT.cloudfunctions.net
 CHAT21_ADMIN_TOKEN: CHANGEIT
 CHAT21_APPID: tilechat
-CHAT21_ENGINE: firebase
-
 FIREBASE_PRIVATE_KEY: CHANGEIT
 FIREBASE_CLIENT_EMAIL: CHANGEIT
 FIREBASE_PROJECT_ID: CHANGEIT
@@ -71,16 +69,9 @@ helm install my-tiledesk helm
 
 The command deploys Tiledesk on the Kubernetes cluster in the default configuration. 
 
-## Uninstalling the Chart
+## Configure the Chat21 webhooks
 
-To uninstall/delete the `my-tiledesk` deployment:
-
-```console
-helm delete my-tiledesk
-```
-
-The command removes all the Kubernetes components associated with the chart and deletes the release.
-
+[Configure the Chat21 webhooks](https://developer.tiledesk.com/installation/chat21-installation/chat21-firebase-installation#2-2-configure-the-chat21-webhooks) to point to the new Kubernetes tiledesk-server endpoint (tiledesk-server service hostname or ip)
 
 
 ## Create an nginx Ingress controller (Optional)
@@ -136,3 +127,14 @@ Open the dashboard at /dashboard/ endpoint of the ingress and signin as admin wi
 
 * email: admin@tiledesk.com
 * password: adminadmin
+
+
+## Uninstalling the Chart
+
+To uninstall/delete the `my-tiledesk` deployment:
+
+```console
+helm delete my-tiledesk
+```
+
+The command removes all the Kubernetes components associated with the chart and deletes the release.
