@@ -28,7 +28,7 @@ Please see [this example](https://github.com/kubernetes/contrib/tree/master/ingr
 
 ## Generate GKE Managed TLS certificates
 
-Create a Google ManagedCertificate resource. This resource specifies the domains that the SSL certificate will be created for. Wildcard domains are not supported.
+If you are using GKE you can create a Google ManagedCertificate resource following these steps. This resource specifies the domains that the SSL certificate will be created for. Wildcard domains are not supported.
 
 Create a file named certificate-tiledesk.yaml like below:
 
