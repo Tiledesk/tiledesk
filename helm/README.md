@@ -128,6 +128,11 @@ Open the dashboard at /dashboard/ endpoint of the ingress and signin as admin wi
 * email: admin@tiledesk.com
 * password: adminadmin
 
+# Other configurations
+
+## Configure TLS
+
+See [here](https://github.com/Tiledesk/tiledesk-deployment/blob/master/helm/docs/tls.md) how to configure TLS certificate for the Tiledesk installation. 
 
 ## Uninstalling the Chart
 
