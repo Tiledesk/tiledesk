@@ -23,7 +23,23 @@ After creating the certificate please upload it using the following command:
 ```console
 kubectl create secret tls tiledesk-tls-secret --key tiledesk-ingress-tls.key --cert tiledesk-ingress-tls.crt
 ```
+Finally modify the ingress rule of the Tiledesk helm chart (File value.yaml) like below:
 
+```text
+ingress:
+  enabled: true
+  annotations:
+    ....
+  hosts:
+   ....
+
+  tls: []        # <---- Configure tls option
+      - secretName: tiledesk-tls-secret
+        hosts:
+          - console.tiledesk.local
+          - api.tiledesk.local**
+```    
+    
 Please see [this example](https://github.com/kubernetes/contrib/tree/master/ingress/controllers/nginx/examples/tls) for more information.
 
 ## Generate GKE Managed TLS certificates
