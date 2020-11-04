@@ -23,7 +23,7 @@ After creating the certificate please upload it using the following command:
 ```console
 kubectl create secret tls tiledesk-tls-secret --key tiledesk-ingress-tls.key --cert tiledesk-ingress-tls.crt
 ```
-Finally modify the ingress rule of the Tiledesk helm chart (File value.yaml) like below:
+Finally modify the ingress rule of the Tiledesk helm chart (File value.yaml) like below and update the helm deployment:
 
 ```text
 ingress:
