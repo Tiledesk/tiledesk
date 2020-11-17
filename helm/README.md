@@ -134,6 +134,15 @@ Open the dashboard at /dashboard/ endpoint of the ingress and signin as admin wi
 
 See [here](https://github.com/Tiledesk/tiledesk-deployment/blob/master/helm/docs/tls.md) how to configure TLS certificate for the Tiledesk installation. 
 
+## Upgrade the Chart
+
+
+To upgrade the `my-tiledesk` deployment:
+
+```console
+helm upgrade -f values.yaml my-tiledesk .
+```
+
 ## Uninstalling the Chart
 
 To uninstall/delete the `my-tiledesk` deployment:
