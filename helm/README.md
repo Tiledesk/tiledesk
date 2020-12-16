@@ -134,6 +134,8 @@ Open the dashboard at /dashboard/ endpoint of the ingress and signin as admin wi
 
 See [here](https://github.com/Tiledesk/tiledesk-deployment/blob/master/helm/docs/tls.md) how to configure TLS certificate for the Tiledesk installation. 
 
+# Usefull instructions
+
 ## Upgrade the Chart
 
 
@@ -142,7 +144,13 @@ To upgrade the `my-tiledesk` deployment:
 ```console
 helm upgrade -f values.yaml my-tiledesk .
 ```
+## Install the Chart passing inline parameters
 
+To install the `my-tiledesk` deployment passing the parameters inline without modifing the value.yaml file:
+
+```console
+helm install helm --set CHAT21_URL=https://CHANGE_IT.cloudfunctions.net --set FIREBASE_CLIENT_EMAIL=firebase-adminsdk-CHANGE_IT@CHANGE_IT.iam.gserviceaccount.com --set FIREBASE_PROJECT_ID=CHANGE_IT --set FIREBASE_APIKEY=CHANGE_IT --set FIREBASE_AUTHDOMAIN=CHANGE_IT.firebaseapp.com --set FIREBASE_DATABASEURL=https://CHANGE_IT.firebaseio.com --set FIREBASE_STORAGEBUCKET=CHANGE_IT.appspot.com --set FIREBASE_MESSAGINGSENDERID=CHANGE_IT --set FIREBASE_APP_ID=CHANGEIT 
+```
 ## Uninstalling the Chart
 
 To uninstall/delete the `my-tiledesk` deployment:
