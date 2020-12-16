@@ -60,6 +60,7 @@ FIREBASE_STORAGEBUCKET: CHANGEIT.appspot.com
 FIREBASE_MESSAGINGSENDERID: CHANGEIT
 FIREBASE_APP_ID: CHANGEIT
 ```
+Attention. The default configuration of the values.yaml download the *latest* docker images of each Tiledesk components. If you are deploying in a production environment please change the docker tag of each components to a stable version.
 
 ## Installing the Chart
 
