@@ -45,6 +45,8 @@ Configure the required properties under values.yaml. You can find more info abou
 * [Chat21 Channel Configuration](https://developer.tiledesk.com/configuration/channel)
 
 ```
+CHAT21_ENABLED: true
+
 CHAT21_URL: https://CHANGEIT.cloudfunctions.net
 CHAT21_ADMIN_TOKEN: CHANGEIT
 CHAT21_APPID: tilechat
@@ -56,8 +58,8 @@ FIREBASE_AUTHDOMAIN: CHANGEIT.firebaseapp.com
 FIREBASE_DATABASEURL: https://CHANGEIT.firebaseio.com
 FIREBASE_STORAGEBUCKET: CHANGEIT.appspot.com
 FIREBASE_MESSAGINGSENDERID: CHANGEIT
+FIREBASE_APP_ID: CHANGEIT
 ```
-
 
 ## Installing the Chart
 
