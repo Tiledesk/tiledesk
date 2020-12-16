@@ -11,7 +11,7 @@ This chart bootstraps a [Tiledesk](https://github.com/tiledesk/tiledesk-deployme
 
 - Kubernetes 1.14+
 - Helm 3.2+
-- Minikube or Google Kubernetes Engine (GKE)
+- Minikube with [Ingress plugin enabled](https://kubernetes.io/docs/tasks/access-application-cluster/ingress-minikube/#enable-the-ingress-controller) or Google Kubernetes Engine (GKE)
 
 
 
