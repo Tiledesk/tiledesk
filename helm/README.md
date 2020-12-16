@@ -136,11 +136,16 @@ Open the browser at http://console.tiledesk.local/dashboard/ and signin as admin
 * email: admin@tiledesk.com
 * password: adminadmin
 
+
 # Other configurations
 
 ## Configure TLS
 
 See [here](https://github.com/Tiledesk/tiledesk-deployment/blob/master/helm/docs/tls.md) how to configure TLS certificate for the Tiledesk installation. 
+
+## Push Notifications
+
+Push notifications are available only with a configured TLS certificate.
 
 # Usefull instructions
 
