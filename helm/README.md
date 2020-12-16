@@ -126,7 +126,12 @@ kubectl --namespace <your namespace> \
 
 # Open the dashboard
 
-Open the dashboard at /dashboard/ endpoint of the ingress and signin as admin with :
+As default setting the Tiledesk dashboard is esposed under http://console.tiledesk.local/dashboard/ url.
+
+So create a DNS entry (just for testing modify your /etc/hosts file) like below:
+console.tiledesk.local -> (A record) -> <YOUR_INGRESS_IP>
+
+Open the browser at http://console.tiledesk.local/dashboard/ and signin as admin with :
 
 * email: admin@tiledesk.com
 * password: adminadmin
