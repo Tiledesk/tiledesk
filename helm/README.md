@@ -87,15 +87,6 @@ helm install ingress-nginx ingress-nginx/ingress-nginx
 
 More info here: https://kubernetes.github.io/ingress-nginx/deploy/#using-helm
 
-or with the old nginx ingress version :
-
-```console
-helm install nginx-ingress stable/nginx-ingress --set rbac.create=true --set controller.publishService.enabled=true
-```
-With rbac.create=true you configure Role Based Access Controll (https://kubernetes.github.io/ingress-nginx/deploy/rbac/)
-
-
-
 # Accessing Logs
 This section describes how to get logs from the running containers.
 
@@ -123,14 +114,18 @@ tiledesk-helm-1593793077 is for example the name of the Tiledesk deployment.
 kubectl --namespace <your namespace> \
     logs <name of the pod>
 ```
-
-# Open the dashboard
+# Create DNS entries
 
 As default setting the Tiledesk dashboard is esposed under http://console.tiledesk.local/dashboard/ url.
 
-So create a DNS entry (just for testing modify your /etc/hosts file) like below:
-console.tiledesk.local -> (A record) -> <YOUR_INGRESS_IP>
+So create a DNS entries (just for testing modify your /etc/hosts file) like below:
+* console.tiledesk.local -> (A record) -> <YOUR_INGRESS_IP>
+* api.tiledesk.local -> (A record) -> <YOUR_INGRESS_IP>
+* widget.tiledesk.local -> (A record) -> <YOUR_INGRESS_IP>
 
+If you want to expose Tiledesk under different domain look at values.yaml file.
+
+# Open the dashboard
 Open the browser at http://console.tiledesk.local/dashboard/ and signin as admin with :
 
 * email: admin@tiledesk.com
