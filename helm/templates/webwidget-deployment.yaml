@@ -39,7 +39,7 @@ spec:
               valueFrom:
                   configMapKeyRef:
                     name: {{ include "tiledesk.fullname" . }}-config
-                    key: API_URL
+                    key: WIDGET_API_URL
               #value: {{ .Values.SERVER_BASE_URL | quote }}     
             - name: FIREBASE_PROJECT_ID
               valueFrom:
