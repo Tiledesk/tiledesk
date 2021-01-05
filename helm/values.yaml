@@ -35,8 +35,8 @@ CHAT_BASE_URL: /chat/
 FEATURES_TOKEN: "PAY:F-ANA:F-ACT:F-TRI:F-GRO:F-DEP:F-OPH:F-MTL:F-DGF:F-NAT:T" 
 
 WIDGET_API_URL: http://api.tiledesk.local/
-WIDGET_LOCATION: /widget/launch.js
-WIDGET_TEST_LOCATION: /widget/assets/twp/index.html
+WIDGET_LOCATION: http://widget.tiledesk.local/launch.js
+WIDGET_TEST_LOCATION: http://widget.tiledesk.local/assets/twp/index.html
 
 DASHBOARD_URL: /dashboard/
 FIREBASESTORAGE_BASE_URL_IMAGE: https://firebasestorage.googleapis.com/v0/b/
