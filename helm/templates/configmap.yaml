@@ -31,7 +31,7 @@ data:
   FIREBASESTORAGE_BASE_URL_IMAGE: {{ .Values.FIREBASESTORAGE_BASE_URL_IMAGE | quote }}       
   CHAT_SEND_BY_EMAIL_LINK: {{ .Values.CHAT_SEND_BY_EMAIL_LINK | quote }}         
 
-  API_URL: {{ .Values.SERVER_BASE_URL | quote }} 
+  WIDGET_API_URL: {{ .Values.WIDGET_API_URL | quote }} 
 
   EMAIL_ENABLED: {{ .Values.EMAIL_ENABLED | quote }} 
   EMAIL_HOST: {{ .Values.EMAIL_HOST | quote }} 
