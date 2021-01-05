@@ -155,7 +155,7 @@ Push notifications are available only with a configured TLS certificate.
 To upgrade the `my-tiledesk` deployment:
 
 ```console
-helm upgrade -f values.yaml my-tiledesk .
+helm upgrade -f ./helm/values.yaml my-tiledesk ./helm
 ```
 ## Install the Chart passing inline parameters
 
