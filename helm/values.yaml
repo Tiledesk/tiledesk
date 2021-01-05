@@ -33,6 +33,8 @@ WS_SERVER_PATH: /
 WS_URL_RELATIVE: /ws/
 CHAT_BASE_URL: /chat/
 FEATURES_TOKEN: "PAY:F-ANA:F-ACT:F-TRI:F-GRO:F-DEP:F-OPH:F-MTL:F-DGF:F-NAT:T" 
+
+WIDGET_API_URL: http://api.tiledesk.local/
 WIDGET_LOCATION: /widget/launch.js
 WIDGET_TEST_LOCATION: /widget/assets/twp/index.html
 
@@ -152,7 +154,6 @@ ingress:
     nginx.ingress.kubernetes.io/rewrite-target: /$1
     nginx.ingress.kubernetes.io/enable-cors: "true"
     nginx.ingress.kubernetes.io/configuration-snippet: |
-      rewrite ^/widget-config.json /widget/widget-config.json permanent;
       rewrite ^/firebase-messaging-sw.js /chat/firebase-messaging-sw.js last;
     #networking.gke.io/managed-certificates: certificate-tiledesk-prod
       #rewrite ^ /dashboard/ permanent;
@@ -180,14 +181,19 @@ ingress:
         #   service: dashboard
     - host: api.tiledesk.local
       enabled: true
-      paths: #[] 
-        - path: #/(.*)
+      paths: 
+        - path: /(.*)
           service: server
     - host: rtm.tiledesk.local
       enabled: true
-      paths: #[] 
-        - path: #/(.*)
+      paths: 
+        - path: /(.*)
           service: server
+    - host: widget.tiledesk.local
+      enabled: true
+      paths: 
+        - path: /(.*)
+          service: webwidget
 
   tls: []
     #  - secretName: tiledesk-tls-secret
