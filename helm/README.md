@@ -75,7 +75,7 @@ The command deploys Tiledesk on the Kubernetes cluster in the default configurat
 ## Configure the Chat21 webhooks
 
 [Configure the Chat21 webhooks](https://developer.tiledesk.com/installation/chat21-installation/chat21-firebase-installation#2-2-configure-the-chat21-webhooks) to point to the new Kubernetes tiledesk-server endpoint (tiledesk-server service hostname or ip)
-
+If you want to expose your local Tiledesk-server component to internet you can find usefull info [here](https://itnext.io/expose-local-kubernetes-service-on-internet-using-ngrok-2888a1118b5b).
 
 ## Create an nginx Ingress controller (Optional)
 If your cluster doesn't have a built-in nginx ingress controller (ex. GKE) you must mannually deploy it with :
