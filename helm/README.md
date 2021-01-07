@@ -112,7 +112,7 @@ tiledesk-helm-1593793077 is for example the name of the Tiledesk deployment.
 
 ```console
 kubectl --namespace <your namespace> \
-    logs <name of the pod>
+    logs -f <name of the pod>
 ```
 # Create DNS entries
 
