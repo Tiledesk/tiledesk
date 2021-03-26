@@ -129,6 +129,7 @@ services:
       - FIREBASE_CLIENT_EMAIL=UNUSED@USED.it
       - FIREBASE_PROJECT_ID
       - CHAT21_ENABLED=true
+      - CHAT21_ENGINE=native
       - CHAT21_URL=http://chat21-http-server:8004/
       - CHAT21_JWT_SECRET=tokenKey
       - CHAT21_APPID
