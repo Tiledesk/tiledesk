@@ -14,8 +14,10 @@ Tiledesk deployed via `docker-compose` or Kubernetes contains the following:
 2. Tiledesk Dashboard
 3. Chat21 ionic
 4. Chat21 Web Widget
-5. A Mongo DB  
-6. A proxy
+5. Chat21 Server
+6. Chat21 Http Server
+7. A Mongo DB  
+8. A proxy
 
 ## Production environments
 Tiledesk provides tested Helm charts as a "deployment template" for customers who want to take advantage of the container orchestration benefits of Kubernetes. These Helm charts are undergoing continual development and improvement, and should not be used "as is" for your production environments, but should help you save time and effort deploying Tiledesk for your organisation.
