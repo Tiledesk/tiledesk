@@ -14,14 +14,14 @@ To deploy Tiledesk Community using _docker-compose_, you'll need to install the 
 ## Deploying Tiledesk Community
 1. Download the [docker-compose](./docker-compose.yml) file running: 
 
-```
+```bash
 curl https://raw.githubusercontent.com/Tiledesk/tiledesk-deployment/master/docker-compose/docker-compose.yaml --output docker-compose.yml
 ```
 
 2. Navigate to the folder where the _docker-compose.yml_ file is located.
 
 3. Run Tiledesk with:
-```
+```bash
 docker-compose up
 ```
 
@@ -38,5 +38,24 @@ docker-compose up
 * If you're using the [Docker Toolbox](https://docs.docker.com/toolbox/toolbox_install_windows), run the following command to find the IP address:
 ```bash
 docker-machine ip
+```
+
+# Run in background
+To start Tiledesk in background run:
+
+```bash
+docker-compose up -d
+```
+If you want to see the log run:
+
+```bash
+docker-compose logs -t -f --tail 5
+```
+
+# Cleanup
+To bring the system down and cleanup the containers run the following command:
+
+```bash
+docker-compose down
 ```
 
