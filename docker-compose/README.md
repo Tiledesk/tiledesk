@@ -12,7 +12,7 @@ To deploy Tiledesk Community using _docker-compose_, you'll need to install the 
 | Docker Compose | https://docs.docker.com/compose/install/ |
 
 ## Deploying Tiledesk Community
-1. Download the [docker-compose](./docker-compose.yml) file running: 
+1. Download the [docker-compose](./docker-compose.yaml) file running: 
 
 ```bash
 curl https://raw.githubusercontent.com/Tiledesk/tiledesk-deployment/master/docker-compose/docker-compose.yaml --output docker-compose.yml
