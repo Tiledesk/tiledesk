@@ -51,6 +51,11 @@ If you want to see the log run:
 ```bash
 docker-compose logs -t -f --tail 5
 ```
+# Update
+To update Tiledesk images to the latest version, run:
+```bash
+docker-compose pull
+```
 
 # Cleanup
 To bring the system down and cleanup the containers run the following command:
