@@ -16,6 +16,8 @@ services:
       - WIDGET_LOCATION=/widget/launch.js
       - WIDGET_TEST_LOCATION=/widget/assets/twp/index.html
       - CHAT21_ENGINE=mqtt
+      - UPLOAD_ENGINE=native
+      - PUSH_ENGINE=none
       - FIREBASE_APIKEY
       - FIREBASE_AUTHDOMAIN
       - FIREBASE_DATABASEURL
