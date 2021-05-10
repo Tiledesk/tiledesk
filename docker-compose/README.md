@@ -63,4 +63,8 @@ To bring the system down and cleanup the containers run the following command:
 ```bash
 docker-compose down
 ```
+To delete also the volumes run: 
+```bash
+docker-compose down -v
+```
 
