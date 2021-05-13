@@ -7,13 +7,12 @@ services:
    image: tiledesk/tiledesk-dashboard
    container_name: tiledesk-dashboard 
    environment: 
-      #- FEATURES_TOKEN=PAY:F-ANA:F-ACT:F-TRI:F-GRO:F-DEP:F-OPH:F-MTL:F-DGF:F-NAT:F-CAR:F-V1L:F-PSA:F
       - FEATURES_TOKEN=NAT:T-CAR:T
       - SERVER_BASE_URL=/api/
       - CHAT_BASE_URL=/chat/
       - WS_URL
       - WS_URL_RELATIVE=/api/
-      - WIDGET_LOCATION=/widget/launch.js
+      - "WIDGET_LOCATION=${EXTERNAL_BASE_URL}/widget/launch.js"
       - WIDGET_TEST_LOCATION=/widget/assets/twp/index.html
       - CHAT21_ENGINE=mqtt
       - UPLOAD_ENGINE=native
@@ -38,8 +37,8 @@ services:
       - CHAT21_ENGINE=mqtt
       - MQTT_APPID=tilechat
       #- MQTT_ENDPOINT=mqtt://localhost/mqws/ws
-      - MQTT_ENDPOINT=/mqws/ws
-      - MQTT_APIENDPOINT=/chatapi/api
+      - "MQTT_ENDPOINT=${EXTERNAL_BASE_URL}/mqws/ws"
+      - "MQTT_APIENDPOINT=${EXTERNAL_BASE_URL}/chatapi/api"
       #- MQTT_LOGINSERVICE_ENDPOINT=/api/chat21/native/auth/createCustomToken
       #- FIREBASE_APIKEY=AIzaSyCoWXHNvP1-qOllCpTshhC6VjPXeRTK0T4
       #- FIREBASE_AUTHDOMAIN=chat21-pre-01.firebaseapp.com
@@ -54,8 +53,8 @@ services:
       - FIREBASE_STORAGEBUCKET
       - FIREBASE_MESSAGINGSENDERID
       - UPLOAD_ENGINE=native
-      - API_URL=/api/               
-      - TRANSLATE_URL=/api/
+      - "API_URL=${EXTERNAL_BASE_URL}/api/"
+      - "TRANSLATE_URL=${EXTERNAL_BASE_URL}/api/"
       - API_BASEIMAGE_URL=https://firebasestorage.googleapis.com/v0/b/
 
   ionic:
