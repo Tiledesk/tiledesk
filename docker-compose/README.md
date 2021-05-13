@@ -37,8 +37,6 @@ docker-compose up
 
 * If Docker is running on your local machine, the <machine_ip> address will be just _localhost_.
 
-```
-
 # Run in background
 To start Tiledesk in background run:
 
