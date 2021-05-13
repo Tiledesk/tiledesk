@@ -22,8 +22,9 @@ curl https://raw.githubusercontent.com/Tiledesk/tiledesk-deployment/master/docke
 
 3. Run Tiledesk with:
 ```bash
-docker-compose up
+EXTERNAL_BASE_URL="http://localhost" docker-compose up
 ```
+If you have a public ip specify it in the EXTERNAL_BASE_URL env parameter as follow:  ```EXTERNAL_BASE_URL="http://99.88.77.66" docker-compose up```
 
 4. Open the following URL in your browser to start 
 * Dashboard: [http://<machine_ip>/](http://localhost/)
@@ -34,7 +35,6 @@ docker-compose up
 
 **Note:**
 * Make sure that exposed ports are open on your host. Check the _docker-compose.yml_ file to determine the exposed ports - refer to the ```host:container``` port definitions. You'll see they include 3000, 4200, 4500, 8080, 8004, 80 and 5672,15672,1883,15675 for rabbitmq and 27017 for mongodb. Use for example ```sudo lsof -i -P -n | grep LISTEN``` linux command to check the ports are unused when Tiledesk is stopped.
-
 * If Docker is running on your local machine, the <machine_ip> address will be just _localhost_.
 
 # Run in background
