@@ -41,7 +41,7 @@ If you have a public ip specify it in the EXTERNAL_BASE_URL env parameter as fol
 To start Tiledesk in background run:
 
 ```bash
-docker-compose up -d
+EXTERNAL_BASE_URL="http://localhost" docker-compose up -d
 ```
 If you want to see the log run:
 
