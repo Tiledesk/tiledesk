@@ -64,4 +64,16 @@ To delete also the volumes run:
 ```bash
 docker-compose down -v
 ```
+# Service Endpoints
 
+| Service                                                                    | URL                         | Component             |
+|----------------------------------------------------------------------------|-----------------------------|-----------------------|
+| Reverse Proxy                                                              | http://localhost/           | tiledesk-docker-proxy |
+| [Tiledesk REST API](https://developer.tiledesk.com/apis/rest-api)          | http://localhost/api/       | tiledesk-server       |
+| [Tiledesk WebSocket API](https://developer.tiledesk.com/apis/realtime-api) | ws://localhost/ws/          | tiledesk-server       |
+| Tiledesk Dashboard                                                         | http://localhost/dashboard/ | tiledesk-dashboard    |
+| Web Chat                                                                   | http://localhost/chat/      | chat21-ionic          |
+| Widget                                                                     | http://localhost/widget/    | chat21-web-widget     |
+| Chat REST API                                                              | http://localhost/chatapi/   | chat21-http-server    |
+| Chat Server MQTT                                                           |                             | chat21-server         |
+| Rabbit MQ                                                                  | http://localhost/mqws/      | chat21-rabbitmq       |
