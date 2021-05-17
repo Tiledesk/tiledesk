@@ -2,6 +2,10 @@
 
 Use this information to quickly start up Tiledesk Community using Docker Compose.
 
+The default docker compose file is beta and contains the latest work-in-progress deployment scripts and installs the latest development version of Tiledesk.
+
+Our tests are executed using the latest version of Docker and Docker Compose provided by Travis.
+
 ## Prerequisites
 
 To deploy Tiledesk Community using _docker-compose_, you'll need to install the following software:
