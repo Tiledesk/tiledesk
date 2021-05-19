@@ -111,6 +111,8 @@ services:
       - EMAIL_FROM_ADDRESS
       - "EMAIL_BASEURL=${EXTERNAL_BASE_URL}/dashboard"
       - "WEBHOOK_ORIGIN=${EXTERNAL_BASE_URL}/api/"
+      - "WIDGET_LOCATION=${EXTERNAL_BASE_URL}/widget/launch.js"
+      - "WIDGET_TEST_LOCATION=${EXTERNAL_BASE_URL}/widget/assets/test_widget_page/index.html"      
     depends_on:
       - mongo
     ports:
