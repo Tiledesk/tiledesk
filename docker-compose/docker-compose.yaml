@@ -112,7 +112,7 @@ services:
     container_name: chat21httpserver
     restart: always    
     environment: 
-      - LOG_LEVEL=debug
+      - LOG_LEVEL=info
       #- AUTO_RESTART=false
       - MONGODB_URI=mongodb://mongo/chat21
       - JWT_KEY=tokenKey
@@ -129,7 +129,7 @@ services:
     restart: always
     environment: 
       #- AUTO_RESTART=false
-      - LOG_LEVEL=debug
+      - LOG_LEVEL=info
       - MONGODB_URI=mongodb://mongo/chat21
       - APP_ID=tilechat
       - WEBHOOK_ENDPOINT=http://server:3000/chat21/requests
