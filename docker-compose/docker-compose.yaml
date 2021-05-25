@@ -59,13 +59,13 @@ services:
       - "8080:80" #use expose if you want to block external access   
    environment: 
       - DASHBOARD_URL=/dashboard/      
-      - FIREBASESTORAGE_BASE_URL_IMAGE=https://firebasestorage.googleapis.com/v0/b/
+      - API_BASEIMAGE_URL=/api/
       - API_URL=/api/
       - CHAT21_ENGINE=mqtt
       - MQTT_APPID=tilechat
       - MQTT_ENDPOINT=/mqws/ws
       - MQTT_APIENDPOINT=/chatapi/api
-      - MQTT_LOGINSERVICE_ENDPOINT=/api/chat21/native/auth/createCustomToken
+      #- MQTT_LOGINSERVICE_ENDPOINT=/api/chat21/native/auth/createCustomToken
       - UPLOAD_ENGINE=native
       - FIREBASE_APIKEY
       - FIREBASE_AUTHDOMAIN
@@ -95,7 +95,7 @@ services:
       - LOG_LEVEL=verbose
       #- LOG_LEVEL=debug
       - CHAT21_ENABLED=true
-      - CHAT21_ENGINE=native
+      - CHAT21_ENGINE=mqtt
       - CHAT21_URL=http://chat21httpserver:8004
       - CHAT21_JWT_SECRET=tokenKey
       - CHAT21_APPID=tilechat
@@ -112,7 +112,8 @@ services:
       - "EMAIL_BASEURL=${EXTERNAL_BASE_URL}/dashboard"
       - "WEBHOOK_ORIGIN=${EXTERNAL_BASE_URL}/api/"
       - "WIDGET_LOCATION=${EXTERNAL_BASE_URL}/widget/launch.js"
-      - "WIDGET_TEST_LOCATION=${EXTERNAL_BASE_URL}/widget/assets/test_widget_page/index.html"      
+      - "WIDGET_TEST_LOCATION=${EXTERNAL_BASE_URL}/widget/assets/test_widget_page/index.html"
+      - WS_SERVER_PATH      
     depends_on:
       - mongo
     ports:
