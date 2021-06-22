@@ -29,6 +29,7 @@ spec:
   {{- end }}
   rules:
     {{- range .Values.ingress.hosts }}
+    
     {{- if .enabled }}
     - host: {{ .host | quote }}
       http:
@@ -43,5 +44,6 @@ spec:
                   number: {{- if .servicePort }} {{ .servicePort }}{{- else }} {{ $svcPort }}{{- end }}              
           {{- end }}
     {{- end }}
+
     {{- end }}
 {{- end }}
