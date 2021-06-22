@@ -54,14 +54,14 @@ spec:
             - name: c21httpsrv-http
               containerPort: 8004
               protocol: TCP
-          # livenessProbe:
-          #   httpGet:
-          #     path: /
-          #     port: c21httpsrv-http
-          # readinessProbe:
-          #   httpGet:
-          #     path: /
-          #     port: c21httpsrv-http
+          livenessProbe:
+            httpGet:
+              path: /
+              port: c21httpsrv-http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: c21httpsrv-http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
