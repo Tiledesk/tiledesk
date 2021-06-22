@@ -6,13 +6,13 @@
 
 This chart bootstraps a [Tiledesk](https://github.com/tiledesk/tiledesk-deployment/helm) deployment on a [Kubernetes](http://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
+Attention. The default configuration of the values.yaml download the *latest* docker images of each Tiledesk components. If you are deploying in a production environment please change the docker tag of each components to a stable version.
 
 ## Prerequisites
 
 - Kubernetes 1.14+
 - Helm 3.2+
-- Minikube or Google Kubernetes Engine (GKE)
-
+- Minikube with [Ingress plugin enabled](https://kubernetes.io/docs/tasks/access-application-cluster/ingress-minikube/#enable-the-ingress-controller) ([Minkube Tiledesk Guide](./MiNIKUBE.md)) or Google Kubernetes Engine (GKE)
 
 
 ## Cluster Requirements
@@ -39,24 +39,7 @@ git clone https://github.com/Tiledesk/tiledesk-deployment.git
 cd tiledesk-deployment
 ```
 
-## Configure the Chart
-Configure the required properties under values.yaml. You can find more info about creating Firebase Project and configure it here: https://developer.tiledesk.com/installation/chat21-installation/chat21-firebase-installation
-
-```
-CHAT21_URL: https://CHANGEIT.cloudfunctions.net
-CHAT21_ADMIN_TOKEN: CHANGEIT
-CHAT21_APPID: tilechat
-
-FIREBASE_PRIVATE_KEY: CHANGEIT
-FIREBASE_CLIENT_EMAIL: CHANGEIT
-FIREBASE_PROJECT_ID: CHANGEIT
-FIREBASE_APIKEY: CHANGEIT
-FIREBASE_AUTHDOMAIN: CHANGEIT.firebaseapp.com
-FIREBASE_DATABASEURL: https://CHANGEIT.firebaseio.com
-FIREBASE_STORAGEBUCKET: CHANGEIT.appspot.com
-FIREBASE_MESSAGINGSENDERID: CHANGEIT
-```
-
+Optional. See [Configure Tiledesk with Chat21 Firebase Engine](./firebase-config.md) if you want to use the Google Firebase chat engine instead the new RabbitMQ + MQTT chat engine
 
 ## Installing the Chart
 
@@ -68,45 +51,21 @@ helm install my-tiledesk helm
 
 The command deploys Tiledesk on the Kubernetes cluster in the default configuration. 
 
-## Uninstalling the Chart
-
-To uninstall/delete the `my-tiledesk` deployment:
-
-```console
-helm delete my-tiledesk
-```
-
-The command removes all the Kubernetes components associated with the chart and deletes the release.
-
-
-
 ## Create an nginx Ingress controller (Optional)
 If your cluster doesn't have a built-in nginx ingress controller (ex. GKE) you must mannually deploy it with :
 
 ```console
 helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx/
-helm install --name ingress-nginx ingress-nginx/ingress-nginx
+helm install ingress-nginx ingress-nginx/ingress-nginx
 ```
 
 More info here: https://kubernetes.github.io/ingress-nginx/deploy/#using-helm
 
-or with the old nginx ingress version :
-
-```console
-helm install nginx-ingress stable/nginx-ingress --set rbac.create=true --set controller.publishService.enabled=true
-```
-With rbac.create=true you configure Role Based Access Controll (https://kubernetes.github.io/ingress-nginx/deploy/rbac/)
-
-
-
 # Accessing Logs
 This section describes how to get logs from the running containers.
 
-1. Get the name of the pod which you want to get the logs of.
-```console
-kubectl --namespace <your namespace> \
-    get pods
-```
+1. Get the name of the pod which you want to get the logs of with: ```kubectl get pods```
+If namespace is used run : ```kubectl --namespace <your namespace> get pods ```
 The output should be similar to this
 ```
 NAME                                                  READY   STATUS    RESTARTS   AGE
@@ -120,16 +79,56 @@ tiledesk-helm-1593793077-webwidget-7445fb45cc-gdpmd   1/1     Running   0       
 ```
 tiledesk-helm-1593793077 is for example the name of the Tiledesk deployment.
 
-2. To get the logs of the container run:
-
-```console
-kubectl --namespace <your namespace> \
-    logs <name of the pod>
-```
+2. To get the logs of the container run: ```kubectl --namespace <your namespace> logs -f <name of the pod>```
 
 # Open the dashboard
-
-Open the dashboard at /dashboard/ endpoint of the ingress and signin as admin with :
+Open the browser at http://<YOUR_INGRESS_IP>/dashboard/ and signin as admin with :
 
 * email: admin@tiledesk.com
 * password: adminadmin
+
+You can get the Ingress Ip from the Address column running ```kubectl get ingress my-tiledesk-proxy-nginx```
+
+# Other configurations
+
+## Configure TLS
+
+See [here](https://github.com/Tiledesk/tiledesk-deployment/blob/master/helm/docs/tls.md) how to configure TLS certificate for the Tiledesk installation. 
+
+## Push Notifications
+
+Push notifications are available only with a configured TLS certificate.
+
+# Add a Domain
+
+As default setting for the Ingress configuration, the Tiledesk dashboard is esposed under http://console.tiledesk.local/dashboard/ url.
+
+If you want to add a domain create a DNS entries (just for testing modify your /etc/hosts file) like below:
+* console.tiledesk.local -> (A record) -> <YOUR_INGRESS_IP>
+* api.tiledesk.local -> (A record) -> <YOUR_INGRESS_IP>
+* widget.tiledesk.local -> (A record) -> <YOUR_INGRESS_IP>
+
+## Configure a Custom Domain
+
+If you want to change the Domain and other Ingress configuration look at values.yaml file.
+
+# Usefull instructions
+
+## Upgrade the Chart
+
+
+To upgrade the `my-tiledesk` deployment:
+
+```console
+helm upgrade -f ./helm/values.yaml my-tiledesk ./helm
+```
+
+## Uninstalling the Chart
+
+To uninstall/delete the `my-tiledesk` deployment:
+
+```console
+helm delete my-tiledesk
+```
+
+The command removes all the Kubernetes components associated with the chart and deletes the release.
