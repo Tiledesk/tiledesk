@@ -4,7 +4,7 @@
 
 ## Introduction
 
-This chart bootstraps a [Tiledesk](https://github.com/tiledesk/tiledesk-deployment/helm) deployment on a [Kubernetes](http://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart bootstraps a Tiledesk deployment on a [Kubernetes](http://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 Attention. The default configuration of the values.yaml download the *latest* docker images of each Tiledesk components. If you are deploying in a production environment please change the docker tag of each components to a stable version.
 
