@@ -51,6 +51,14 @@ helm install my-tiledesk helm
 
 The command deploys Tiledesk on the Kubernetes cluster in the default configuration. 
 
+# Open the dashboard
+Open the browser at http://<YOUR_INGRESS_IP>/dashboard/ and signin as admin with :
+
+* email: admin@tiledesk.com
+* password: adminadmin
+
+You can get the Ingress Ip from the Address column running ```kubectl get ingress my-tiledesk-proxy-nginx```
+
 # Accessing Logs
 This section describes how to get logs from the running containers.
 
@@ -70,14 +78,6 @@ tiledesk-helm-1593793077-webwidget-7445fb45cc-gdpmd   1/1     Running   0       
 tiledesk-helm-1593793077 is for example the name of the Tiledesk deployment.
 
 2. To get the logs of the container run: ```kubectl --namespace <your namespace> logs -f <name of the pod>```
-
-# Open the dashboard
-Open the browser at http://<YOUR_INGRESS_IP>/dashboard/ and signin as admin with :
-
-* email: admin@tiledesk.com
-* password: adminadmin
-
-You can get the Ingress Ip from the Address column running ```kubectl get ingress my-tiledesk-proxy-nginx```
 
 # Other configurations (Optional)
 
