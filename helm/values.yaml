@@ -52,15 +52,19 @@ FIREBASE_APP_ID: CHANGEIT
 #Optional properties
 #MONGODB_URI: mongodb://mongo/tiledesk
 
+#EXTERNAL_BASE_URL: http://console.tiledesk.local
+
 
 # Shared Config
 
-API_URL: http://console.tiledesk.local/api/
+API_URL: /api/
 UPLOAD_ENGINE: native
-API_BASEIMAGE_URL: http://console.tiledesk.local/api/
+API_BASEIMAGE_URL: /api/
 MQTT_APPID: tilechat
-MQTT_ENDPOINT: http://console.tiledesk.local/mqws/ws
-MQTT_APIENDPOINT: http://console.tiledesk.local/chatapi/api
+MQTT_ENDPOINT: /mqws/ws
+MQTT_APIENDPOINT: /chatapi/api
+
+
 
 # Dashboard Config
 FEATURES_TOKEN: "NAT:T-DEV:T"
@@ -68,12 +72,12 @@ SERVER_BASE_URL: /api/
 CHAT_BASE_URL: /chat/
 WS_SERVER_PATH: /
 WS_URL_RELATIVE: /ws/
-WIDGET_LOCATION: http://widget.tiledesk.local/launch.js
-WIDGET_TEST_LOCATION: http://widget.tiledesk.local/assets/twp/index.html
+WIDGET_LOCATION: /widget/launch.js
+WIDGET_TEST_LOCATION: /widget/assets/twp/index.html
 PUSH_ENGINE: none
 
 # Widget Config
-TRANSLATE_URL: http://console.tiledesk.local/api/
+TRANSLATE_URL: /api/
 
 
 # Ionic Config
@@ -244,14 +248,36 @@ ingress:
     nginx.ingress.kubernetes.io/configuration-snippet: |
       #rewrite ^/widget-config.json /widget/widget-config.json permanent;
       rewrite ^/firebase-messaging-sw.js /chat/firebase-messaging-sw.js last;
-    #networking.gke.io/managed-certificates: certificate-tiledesk-prod
+      #networking.gke.io/managed-certificates: certificate-tiledesk-prod
       #rewrite ^ /dashboard/ permanent;
       #rewrite ^/ /dashboard/ permanent;
     # nginx.ingress.kubernetes.io/add-base-url : "true"
     #nginx.ingress.kubernetes.io/service-upstream: "true"
     # kubernetes.io/tls-acme: "true"
   hosts:
-    - host: console.tiledesk.local #disable it
+    - host:
+      enabled: true
+      paths: 
+        - path: /api/(.*)
+          service: server
+        - path: /ws/(.*)
+          service: server
+        - path: /dashboard/(.*)
+          service: dashboard
+        - path: /chat/(.*)
+          service: ionic
+        - path: /widget/(.*)
+          service: webwidget
+        - path: /widget-config.json
+          service: webwidget
+        - path: /mqws/(.*)
+          service: rabbitmq
+          servicePort: 15675
+        # - path: /mq
+        #   service: rabbitmq
+        - path: /chatapi/(.*)
+          service: c21httpsrv
+    - host: console.tiledesk.local
       enabled: true
       paths: 
         - path: /api/(.*)
@@ -273,17 +299,15 @@ ingress:
         #   service: rabbitmq
         - path: /chatapi/(.*)
           service: c21httpsrv
-        # - path: /(.*)
-        #   service: dashboard
     - host: api.tiledesk.local
       enabled: true
       paths: 
-        - path: #/(.*)
+        - path: /(.*)
           service: server
     - host: rtm.tiledesk.local
       enabled: true
       paths: 
-        - path: #/(.*)
+        - path: /(.*)
           service: server
     - host: widget.tiledesk.local
       enabled: true
