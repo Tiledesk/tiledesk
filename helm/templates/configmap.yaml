@@ -4,45 +4,85 @@ metadata:
   name: {{ include "tiledesk.fullname" . }}-config
   labels: {{ include "tiledesk.labels" . | nindent 4 }}
 data:
-  WS_SERVER_PATH: {{ .Values.WS_SERVER_PATH | quote }}
+  CHAT21_ENABLED: {{ .Values.CHAT21_ENABLED | quote }}
+
+  CHAT21_ENGINE: {{ .Values.CHAT21_ENGINE | quote }}
+  CHAT21_APPID: {{ .Values.CHAT21_APPID | quote }}
+
+  RESTHOOK_ENABLED: {{ .Values.RESTHOOK_ENABLED | quote }}
+
+  CHAT21_URL: {{ .Values.CHAT21_URL | quote }}
+  CHAT21_URL_INTERNAL: {{if eq .Values.CHAT21_ENGINE "mqtt" }}http://{{ include "tiledesk.fullname" . }}-c21httpsrv{{ else }}{{ .Values.CHAT21_URL | quote }}{{ end }}
+
+  CHAT21_ADMIN_TOKEN: {{ .Values.CHAT21_ADMIN_TOKEN | quote }}
+  CHAT21_JWT_SECRET: {{ .Values.CHAT21_JWT_SECRET | quote }}
+
+
   FIREBASE_CLIENT_EMAIL: {{ .Values.FIREBASE_CLIENT_EMAIL | quote }}
   FIREBASE_PROJECT_ID: {{ .Values.FIREBASE_PROJECT_ID | quote }}
-  CHAT21_ENABLED: {{ .Values.CHAT21_ENABLED | quote }}
-  CHAT21_URL: {{ .Values.CHAT21_URL | quote }}
-  CHAT21_APPID: {{ .Values.CHAT21_APPID | quote }}
-  CHAT21_ADMIN_TOKEN: {{ .Values.CHAT21_ADMIN_TOKEN | quote }}
-  MONGODB_URI: mongodb://{{ include "tiledesk.fullname" . }}-mongodb/tiledesk
-
-  SERVER_BASE_URL: {{ .Values.SERVER_BASE_URL | quote }}
-  FEATURES_TOKEN: {{ .Values.FEATURES_TOKEN | quote }}  
-  CHAT_BASE_URL: {{ .Values.CHAT_BASE_URL | quote }}    
-  WS_URL_RELATIVE: {{ .Values.WS_URL_RELATIVE | quote }}
-  WIDGET_LOCATION: {{ .Values.WIDGET_LOCATION | quote }}
-  WIDGET_TEST_LOCATION: {{ .Values.WIDGET_TEST_LOCATION | quote }}
-  FIREBASE_APIKEY: {{ .Values.FIREBASE_APIKEY | quote }}        
+  FIREBASE_APIKEY: {{ .Values.FIREBASE_APIKEY | quote }}
   FIREBASE_AUTHDOMAIN: {{ .Values.FIREBASE_AUTHDOMAIN | quote }}
-  FIREBASE_DATABASEURL: {{ .Values.FIREBASE_DATABASEURL | quote }}    
-  FIREBASE_STORAGEBUCKET: {{ .Values.FIREBASE_STORAGEBUCKET | quote }}  
-  FIREBASE_MESSAGINGSENDERID: {{ .Values.FIREBASE_MESSAGINGSENDERID | quote }} 
-  FIREBASE_APP_ID: {{ .Values.FIREBASE_APP_ID | quote }} 
+  FIREBASE_DATABASEURL: {{ .Values.FIREBASE_DATABASEURL | quote }}
+  FIREBASE_STORAGEBUCKET: {{ .Values.FIREBASE_STORAGEBUCKET | quote }}
+  FIREBASE_MESSAGINGSENDERID: {{ .Values.FIREBASE_MESSAGINGSENDERID | quote }}
+  FIREBASE_APP_ID: {{ .Values.FIREBASE_APP_ID | quote }}
 
+  API_URL: {{if .Values.EXTERNAL_BASE_URL}}"{{ .Values.EXTERNAL_BASE_URL  }}{{ .Values.API_URL }}"{{ else }}{{ .Values.API_URL | quote }}{{ end }}
+  UPLOAD_ENGINE: {{ .Values.UPLOAD_ENGINE | quote }}
+  API_BASEIMAGE_URL: {{if .Values.EXTERNAL_BASE_URL}}"{{ .Values.EXTERNAL_BASE_URL  }}{{ .Values.API_BASEIMAGE_URL }}"{{ else }}{{ .Values.API_BASEIMAGE_URL | quote }}{{ end }}
 
-  DASHBOARD_URL: {{ .Values.DASHBOARD_URL | quote }}   
-  FIREBASESTORAGE_BASE_URL_IMAGE: {{ .Values.FIREBASESTORAGE_BASE_URL_IMAGE | quote }}       
-  CHAT_SEND_BY_EMAIL_LINK: {{ .Values.CHAT_SEND_BY_EMAIL_LINK | quote }}         
+  MQTT_APPID: {{ .Values.MQTT_APPID | quote }}
+  MQTT_ENDPOINT: {{if .Values.EXTERNAL_BASE_URL}}"{{ .Values.EXTERNAL_BASE_URL  }}{{ .Values.MQTT_ENDPOINT }}"{{ else }}{{ .Values.MQTT_ENDPOINT | quote }}{{ end }}
 
-  WIDGET_API_URL: {{ .Values.WIDGET_API_URL | quote }} 
+  MQTT_APIENDPOINT: {{if .Values.EXTERNAL_BASE_URL}}"{{ .Values.EXTERNAL_BASE_URL  }}{{ .Values.MQTT_APIENDPOINT }}"{{ else }}{{ .Values.MQTT_APIENDPOINT | quote }}{{ end }}
 
-  EMAIL_ENABLED: {{ .Values.EMAIL_ENABLED | quote }} 
-  EMAIL_HOST: {{ .Values.EMAIL_HOST | quote }} 
-  EMAIL_USERNAME: {{ .Values.EMAIL_USERNAME | quote }} 
-  EMAIL_SECURE: {{ .Values.EMAIL_SECURE | quote }} 
-  EMAIL_PORT: {{ .Values.EMAIL_PORT | quote }} 
-  EMAIL_PASSWORD: {{ .Values.EMAIL_PASSWORD | quote }} 
-  EMAIL_BASEURL: {{ .Values.EMAIL_BASEURL | quote }} 
+  FEATURES_TOKEN: {{ .Values.FEATURES_TOKEN | quote }}
+  SERVER_BASE_URL: {{ .Values.SERVER_BASE_URL | quote }}
+  CHAT_BASE_URL: {{ .Values.CHAT_BASE_URL | quote }}
+  WS_SERVER_PATH: {{ .Values.WS_SERVER_PATH | quote }}
+  WS_URL_RELATIVE: {{ .Values.WS_URL_RELATIVE | quote }}
+  WIDGET_LOCATION: {{if .Values.EXTERNAL_BASE_URL}}"{{ .Values.EXTERNAL_BASE_URL  }}{{ .Values.WIDGET_LOCATION }}"{{ else }}{{ .Values.WIDGET_LOCATION | quote }}{{ end }}
 
+  WIDGET_TEST_LOCATION: {{if .Values.EXTERNAL_BASE_URL}}"{{ .Values.EXTERNAL_BASE_URL  }}{{ .Values.WIDGET_TEST_LOCATION }}"{{ else }}{{ .Values.WIDGET_TEST_LOCATION | quote }}{{ end }}
 
-
-  MONGODB_LOGS_URI: {{ .Values.MONGODB_LOGS_URI | quote }} 
-  SUPER_PASSWORD: {{ .Values.SUPER_PASSWORD | quote }} 
+  PUSH_ENGINE: {{ .Values.PUSH_ENGINE | quote }}
   
+  TRANSLATE_URL: {{if .Values.EXTERNAL_BASE_URL}}"{{ .Values.EXTERNAL_BASE_URL  }}{{ .Values.TRANSLATE_URL }}"{{ else }}{{ .Values.TRANSLATE_URL | quote }}{{ end }}
+
+  DASHBOARD_URL: {{ .Values.DASHBOARD_URL | quote }}
+
+  EMAIL_ENABLED: {{ .Values.EMAIL_ENABLED | quote }}
+  EMAIL_HOST: {{ .Values.EMAIL_HOST | quote }}
+  EMAIL_USERNAME: {{ .Values.EMAIL_USERNAME | quote }}
+  EMAIL_SECURE: {{ .Values.EMAIL_SECURE | quote }}
+  EMAIL_PORT: {{ .Values.EMAIL_PORT | quote }}
+  EMAIL_PASSWORD: {{ .Values.EMAIL_PASSWORD | quote }}
+  EMAIL_BASEURL: {{ .Values.EMAIL_BASEURL | quote }}
+  
+  LOG_LEVEL: {{ .Values.LOG_LEVEL | quote }}
+  MONGODB_LOGS_URI: {{ .Values.MONGODB_LOGS_URI | quote }}
+
+  MONGODB_URI: {{if .Values.MONGODB_URI}}{{ .Values.MONGODB_URI | quote }}{{ else }}mongodb://{{ include "tiledesk.fullname" . }}-mongodb/tiledesk{{ end }}
+
+  CHAT21_MONGODB_URI: {{if .Values.CHAT21_MONGODB_URI}}{{ .Values.CHAT21_MONGODB_URI | quote }}{{ else }}mongodb://{{ include "tiledesk.fullname" . }}-mongodb/chat21{{ end }}
+  
+
+  SUPER_PASSWORD: {{ .Values.SUPER_PASSWORD | quote }}
+
+  RESTHOOK_ENABLED: {{ .Values.RESTHOOK_ENABLED | quote }}
+
+  
+  CHAT21_SRV_RABBITMQ_URI: {{if .Values.CHAT21_SRV_RABBITMQ_URI}}{{ .Values.CHAT21_SRV_RABBITMQ_URI | quote }}{{ else }}amqp://{{ .Values.CHAT21_SRV_RABBITMQ_CREDENTIAL }}@{{ include "tiledesk.fullname" . }}-rabbitmq:5672?heartbeat=60{{ end }}
+  CHAT21_HTTPSRV_RABBITMQ_URI: {{if .Values.CHAT21_HTTPSRV_RABBITMQ_URI}}{{ .Values.CHAT21_HTTPSRV_RABBITMQ_URI | quote }}{{ else }}amqp://{{ .Values.CHAT21_HTTPSRV_RABBITMQ_CREDENTIAL }}@{{ include "tiledesk.fullname" . }}-rabbitmq:5672?heartbeat=60{{ end }}
+    
+  
+  JWT_KEY: {{ .Values.JWT_KEY | quote }}
+
+  APP_ID: {{ .Values.APP_ID | quote }}
+
+  WEBHOOK_ENABLED: {{ .Values.WEBHOOK_ENABLED | quote }}
+  WEBHOOK_ORIGIN: {{ .Values.WEBHOOK_ORIGIN | quote }}
+  WEBHOOK_EVENTS: {{ .Values.WEBHOOK_EVENTS | quote }}
+  WEBHOOK_ENDPOINT: http://{{ include "tiledesk.fullname" . }}-server/chat21/requests
+  
+   

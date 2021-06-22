@@ -40,6 +40,21 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: SERVER_BASE_URL
+            - name: CHAT21_ENGINE
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: CHAT21_ENGINE
+            - name: UPLOAD_ENGINE
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: UPLOAD_ENGINE
+            - name: PUSH_ENGINE
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: PUSH_ENGINE
             - name: FEATURES_TOKEN  
               valueFrom:
                 configMapKeyRef:
@@ -85,7 +100,6 @@ spec:
                   configMapKeyRef:
                     name: {{ include "tiledesk.fullname" . }}-config
                     key: FIREBASE_DATABASEURL
-              #value: {{ .Values.FIREBASE_DATABASEURL | quote }}
             - name: FIREBASE_STORAGEBUCKET
               valueFrom:
                   configMapKeyRef:

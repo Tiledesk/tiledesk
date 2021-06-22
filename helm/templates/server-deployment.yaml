@@ -36,51 +36,51 @@ spec:
           imagePullPolicy: {{ .Values.server.image.pullPolicy }}
           env:   
             - name: WS_SERVER_PATH
-              #value: {{ .Values.WS_SERVER_PATH | quote }}                    
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: WS_SERVER_PATH
+            - name: CHAT21_JWT_SECRET
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: CHAT21_JWT_SECRET 
             - name: FIREBASE_PRIVATE_KEY
               valueFrom:
                 secretKeyRef:
                   name: {{ include "tiledesk.fullname" . }}
                   key: firebase-privatekey
-              #value: {{ .Values.FIREBASE_PRIVATE_KEY | quote }}    
             - name: FIREBASE_CLIENT_EMAIL
-              #value: {{ .Values.FIREBASE_CLIENT_EMAIL | quote }}    
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: FIREBASE_CLIENT_EMAIL
             - name: FIREBASE_PROJECT_ID
-              #value: {{ .Values.FIREBASE_PROJECT_ID | quote }}  
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: FIREBASE_PROJECT_ID
             - name: CHAT21_ENABLED
-              #value: {{ .Values.CHAT21_ENABLED | quote }}    
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: CHAT21_ENABLED
             - name: CHAT21_ENGINE
-              value: firebase
-            - name: CHAT21_URL
-              #value: {{ .Values.CHAT21_URL | quote }}    
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
-                  key: CHAT21_URL
+                  key: CHAT21_ENGINE                  
+            - name: CHAT21_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: CHAT21_URL_INTERNAL
             - name: CHAT21_APPID
-              #value: {{ .Values.CHAT21_APPID | quote }} 
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: CHAT21_APPID
             - name: CHAT21_ADMIN_TOKEN
-              #value: {{ .Values.CHAT21_ADMIN_TOKEN | quote }}
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
@@ -145,6 +145,16 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: MONGODB_LOGS_URI
+            - name: RESTHOOK_ENABLED
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: RESTHOOK_ENABLED
+            - name: WEBHOOK_ORIGIN
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: WEBHOOK_ORIGIN
           ports:
             - name: server-http
               containerPort: 3000

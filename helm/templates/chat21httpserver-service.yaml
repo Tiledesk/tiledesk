@@ -1,0 +1,17 @@
+{{- if and (.Values.c21httpsrv.enabled) (eq .Values.CHAT21_ENGINE "mqtt") -}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "tiledesk.fullname" . }}-c21httpsrv
+  labels:
+    {{- include "tiledesk.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.c21httpsrv.service.type }}
+  ports:
+    - port: {{ .Values.c21httpsrv.service.port }}
+      targetPort: c21httpsrv-http
+      protocol: TCP
+      name: c21httpsrv-http
+  selector:
+    {{- include "tiledesk.selectorLabels" . | nindent 4 }}
+{{- end -}}
