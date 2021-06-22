@@ -51,16 +51,6 @@ helm install my-tiledesk helm
 
 The command deploys Tiledesk on the Kubernetes cluster in the default configuration. 
 
-## Create an nginx Ingress controller (Optional)
-If your cluster doesn't have a built-in nginx ingress controller (ex. GKE) you must mannually deploy it with :
-
-```console
-helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx/
-helm install ingress-nginx ingress-nginx/ingress-nginx
-```
-
-More info here: https://kubernetes.github.io/ingress-nginx/deploy/#using-helm
-
 # Accessing Logs
 This section describes how to get logs from the running containers.
 
@@ -89,7 +79,18 @@ Open the browser at http://<YOUR_INGRESS_IP>/dashboard/ and signin as admin with
 
 You can get the Ingress Ip from the Address column running ```kubectl get ingress my-tiledesk-proxy-nginx```
 
-# Other configurations
+# Other configurations (Optional)
+
+## Create an nginx Ingress controller (Optional)
+If your cluster doesn't have a built-in nginx ingress controller (ex. GKE) you must mannually deploy it with :
+
+```console
+helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx/
+helm install ingress-nginx ingress-nginx/ingress-nginx
+```
+
+More info here: https://kubernetes.github.io/ingress-nginx/deploy/#using-helm
+
 
 ## Configure TLS
 
