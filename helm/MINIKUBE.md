@@ -12,7 +12,7 @@ After that remember to enable the ingress add-on with:
 minikube addons enable ingress
 ```
 
-# Useful commands
+# Useful commands (Optional)
 
 ## Using minikube tunnel
 Services of type LoadBalancer can be exposed via the minikube tunnel command. 
