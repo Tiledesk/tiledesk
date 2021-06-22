@@ -81,7 +81,7 @@ tiledesk-helm-1593793077 is for example the name of the Tiledesk deployment.
 
 # Other configurations (Optional)
 
-## Create an nginx Ingress controller (Optional)
+## Create an nginx Ingress controller
 If your cluster doesn't have a built-in nginx ingress controller (ex. GKE) you must mannually deploy it with :
 
 ```console
@@ -100,7 +100,7 @@ See [here](https://github.com/Tiledesk/tiledesk-deployment/blob/master/helm/docs
 
 Push notifications are available only with a configured TLS certificate.
 
-# Add a Domain
+## Add a Domain
 
 As default setting for the Ingress configuration, the Tiledesk dashboard is esposed under http://console.tiledesk.local/dashboard/ url.
 
