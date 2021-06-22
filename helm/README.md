@@ -12,7 +12,7 @@ Attention. The default configuration of the values.yaml download the *latest* do
 
 - Kubernetes 1.14+
 - Helm 3.2+
-- Minikube with [Ingress plugin enabled](https://kubernetes.io/docs/tasks/access-application-cluster/ingress-minikube/#enable-the-ingress-controller) ([Minkube Tiledesk Guide](./MiNIKUBE.md)) or Google Kubernetes Engine (GKE)
+- Minikube with [Ingress plugin enabled](https://kubernetes.io/docs/tasks/access-application-cluster/ingress-minikube/#enable-the-ingress-controller) (This [Minkube Tiledesk Guide](./MINIKUBE.md) can be helpful) or Google Kubernetes Engine (GKE)
 
 
 ## Cluster Requirements
