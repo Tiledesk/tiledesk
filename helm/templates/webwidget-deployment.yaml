@@ -34,49 +34,77 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.webwidget.image.repository }}:{{ .Values.webwidget.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.webwidget.image.pullPolicy }}
-          env:                                 
+          env:
+            - name: CHAT21_ENGINE
+              valueFrom:
+                  configMapKeyRef:
+                    name: {{ include "tiledesk.fullname" . }}-config
+                    key: CHAT21_ENGINE    
+            - name: MQTT_APPID
+              valueFrom:
+                  configMapKeyRef:
+                    name: {{ include "tiledesk.fullname" . }}-config
+                    key: MQTT_APPID
+            - name: MQTT_ENDPOINT
+              valueFrom:
+                  configMapKeyRef:
+                    name: {{ include "tiledesk.fullname" . }}-config
+                    key: MQTT_ENDPOINT  
+            - name: MQTT_APIENDPOINT
+              valueFrom:
+                  configMapKeyRef:
+                    name: {{ include "tiledesk.fullname" . }}-config
+                    key: MQTT_APIENDPOINT
+            - name: UPLOAD_ENGINE
+              valueFrom:
+                  configMapKeyRef:
+                    name: {{ include "tiledesk.fullname" . }}-config
+                    key: UPLOAD_ENGINE
+            - name: TRANSLATE_URL
+              valueFrom:
+                  configMapKeyRef:
+                    name: {{ include "tiledesk.fullname" . }}-config
+                    key: TRANSLATE_URL  
+            - name: API_BASEIMAGE_URL
+              valueFrom:
+                  configMapKeyRef:
+                    name: {{ include "tiledesk.fullname" . }}-config
+                    key: API_BASEIMAGE_URL                                           
             - name: API_URL
               valueFrom:
                   configMapKeyRef:
                     name: {{ include "tiledesk.fullname" . }}-config
                     key: API_URL
-              #value: {{ .Values.SERVER_BASE_URL | quote }}     
             - name: FIREBASE_PROJECT_ID
               valueFrom:
                   configMapKeyRef:
                     name: {{ include "tiledesk.fullname" . }}-config
                     key: FIREBASE_PROJECT_ID
-              #value: {{ .Values.FIREBASE_PROJECT_ID | quote }}
             - name: FIREBASE_APIKEY
               valueFrom:
                   configMapKeyRef:
                     name: {{ include "tiledesk.fullname" . }}-config
                     key: FIREBASE_APIKEY
-              #value: {{ .Values.FIREBASE_APIKEY | quote }}
             - name: FIREBASE_AUTHDOMAIN
               valueFrom:
                   configMapKeyRef:
                     name: {{ include "tiledesk.fullname" . }}-config
                     key: FIREBASE_AUTHDOMAIN
-              #value: {{ .Values.FIREBASE_AUTHDOMAIN | quote }}
             - name: FIREBASE_DATABASEURL
               valueFrom:
                   configMapKeyRef:
                     name: {{ include "tiledesk.fullname" . }}-config
                     key: FIREBASE_DATABASEURL
-              #value: {{ .Values.FIREBASE_DATABASEURL | quote }}
             - name: FIREBASE_STORAGEBUCKET
               valueFrom:
                   configMapKeyRef:
                     name: {{ include "tiledesk.fullname" . }}-config
                     key: FIREBASE_STORAGEBUCKET
-              #value: {{ .Values.FIREBASE_STORAGEBUCKET | quote }}
             - name: FIREBASE_MESSAGINGSENDERID
               valueFrom:
                   configMapKeyRef:
                     name: {{ include "tiledesk.fullname" . }}-config
                     key: FIREBASE_MESSAGINGSENDERID
-              #value: {{ .Values.FIREBASE_MESSAGINGSENDERID | quote }} 
           ports:
             - name: webwidget-http
               containerPort: 80

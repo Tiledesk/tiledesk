@@ -1,4 +1,4 @@
-{{- if .Values.c21httpsrv.enabled -}}
+{{- if and (.Values.c21httpsrv.enabled) (eq .Values.CHAT21_ENGINE "mqtt") -}}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -44,24 +44,24 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
-                  key: MONGODB_URI
+                  key: CHAT21_MONGODB_URI
             - name: RABBITMQ_URI
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
-                  key: RABBITMQ_URI                                                                   
+                  key: CHAT21_HTTPSRV_RABBITMQ_URI                                                                   
           ports:
             - name: c21httpsrv-http
               containerPort: 8004
               protocol: TCP
-          livenessProbe:
-            httpGet:
-              path: /
-              port: c21httpsrv-http
-          readinessProbe:
-            httpGet:
-              path: /
-              port: c21httpsrv-http
+          # livenessProbe:
+          #   httpGet:
+          #     path: /
+          #     port: c21httpsrv-http
+          # readinessProbe:
+          #   httpGet:
+          #     path: /
+          #     port: c21httpsrv-http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}

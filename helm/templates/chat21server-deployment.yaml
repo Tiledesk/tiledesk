@@ -1,4 +1,4 @@
-{{- if .Values.c21srv.enabled -}}
+{{- if and (.Values.c21srv.enabled) (eq .Values.CHAT21_ENGINE "mqtt") -}}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -36,7 +36,6 @@ spec:
           imagePullPolicy: {{ .Values.c21srv.image.pullPolicy }}
           env:                                             
             - name: APP_ID
-            #value: {{ .Values.CHAT21_APPID | quote }} 
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
@@ -46,16 +45,26 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: WEBHOOK_ENDPOINT 
+            - name: WEBHOOK_ENABLED
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: WEBHOOK_ENABLED 
+            - name: WEBHOOK_EVENTS
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: WEBHOOK_EVENTS
             - name: MONGODB_URI
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
-                  key: MONGODB_URI
+                  key: CHAT21_MONGODB_URI
             - name: RABBITMQ_URI
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
-                  key: RABBITMQ_URI
+                  key: CHAT21_SRV_RABBITMQ_URI
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}

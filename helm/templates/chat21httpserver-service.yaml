@@ -1,4 +1,4 @@
-{{- if .Values.server.enabled -}}
+{{- if and (.Values.c21httpsrv.enabled) (eq .Values.CHAT21_ENGINE "mqtt") -}}
 apiVersion: v1
 kind: Service
 metadata:
