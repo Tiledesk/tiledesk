@@ -45,7 +45,7 @@ Create a new certificate for each domains you need. Attention create the DNS ent
 kubectl apply -f certificate-tiledesk.yaml
 ```
 
-View your ssl certificates with:  ```kubectl describe managedcertificate certificate-tiledesk```. You can also use : ```gcloud beta compute ssl-certificates list --project GOOGLE_PROJECT_NAME```. If you want to delete an existing GKE certificate run: ```gcloud compute ssl-certificates delete mcrt-761d3c43-595c-4084-8c3b-XYZZZZZ --project GOOGLE_PROJECT_NAME```
+View your ssl certificates with:  ```kubectl describe managedcertificate certificate-tiledesk```. You can also use : ```gcloud beta compute ssl-certificates list --project GOOGLE_PROJECT_NAME```. If you want to delete an existing GKE certificate run: ```gcloud compute ssl-certificates delete CERTIFICATE_ID --project GOOGLE_PROJECT_NAME```
 
 ## Update the Ingress with TLS
 Update the tls Ingress rule with :
