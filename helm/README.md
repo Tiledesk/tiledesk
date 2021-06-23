@@ -26,6 +26,9 @@ The requirements of the single pods can vary dependent on the model size and the
 | tiledesk-dashboard | 0,2 | 200MB  |
 | chat21-web-widget  | 0,2 | 200MB  |
 | chat21-ionic       | 0,2 | 200MB  |
+| chat21-server      | 0,5 | 512MB  |
+| chat21-http-server | 0,2 | 200MB  |
+| rabbitmq           | 0,2 | 512MB  |
 
 We recommend a size at least 30 GiB for the database volume claim.
 N1-standard-1 type is the minimum cluster type if you choose GKE.
