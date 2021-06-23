@@ -23,28 +23,19 @@ After creating the certificate please upload it using the following command:
 ```console
 kubectl create secret tls tiledesk-tls-secret --key tiledesk-ingress-tls.key --cert tiledesk-ingress-tls.crt
 ```
-Finally modify the ingress rule of the Tiledesk helm chart (File value.yaml) like below and update the helm deployment:
+## Update the Ingress with TLS
+Update the tls Ingress rule with :
 
-```text
-ingress:
-  enabled: true
-  annotations:
-    ....
-  hosts:
-   ....
+```console
+helm upgrade -f ./helm/values.yaml my-tiledesk ./helm --set ingress.tls[0].secretName=tiledesk-tls-secret --set ingress.tls[0].hosts[0]=console.tiledesk.local --set MQTT_ENDPOINT=wss://console.tiledesk.local/mqws/ws
+```
+With the MQTT_ENDPOINT env variable we are setting an absolute secure (wss) websocket URL.
 
-  tls: []        # <---- Configure tls option
-      - secretName: tiledesk-tls-secret
-        hosts:
-          - console.tiledesk.local
-          - api.tiledesk.local**
-```    
-    
 Please see [this example](https://github.com/kubernetes/contrib/tree/master/ingress/controllers/nginx/examples/tls) for more information.
 
 ## Generate GKE Managed TLS certificates
 
-If you are using GKE you can create a Google ManagedCertificate resource following these steps. This resource specifies the domains that the SSL certificate will be created for. Wildcard domains are not supported.
+Create a ManagedCertificate resource. This resource specifies the domains that the SSL certificate will be created for. Wildcard domains are not supported.
 
 Create a file named certificate-tiledesk.yaml like below:
 
