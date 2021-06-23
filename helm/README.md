@@ -95,33 +95,35 @@ helm install ingress-nginx ingress-nginx/ingress-nginx
 More info here: https://kubernetes.github.io/ingress-nginx/deploy/#using-helm
 
 
+
+## Configure a Custom Domain
+
+As default setting for the Ingress configuration, the Tiledesk dashboard is also esposed under http://console.tiledesk.local/dashboard/ url.
+
+Create a DNS entries (just for testing modify your /etc/hosts file) like below:
+* console.tiledesk.local -> (A record) -> <YOUR_INGRESS_IP>
+* api.tiledesk.local -> (A record) -> <YOUR_INGRESS_IP>
+* widget.tiledesk.local -> (A record) -> <YOUR_INGRESS_IP>
+
+
+You can configure the Custom Domain passing the Ingress parameters inline without modifing the value.yaml file for the hosts as follow:
+
+
+```console
+helm upgrade -f ./helm/values.yaml my-tiledesk ./helm --set EXTERNAL_BASE_URL=http://console.YOUR_CUSTOM_DOMAIN --set ingress.hosts[1].host=console.YOUR_CUSTOM_DOMAIN
+```
+
+Remember to set also the EXTERNAL_BASE_URL environment variable
+
 ## Configure TLS
 
 See [here](https://github.com/Tiledesk/tiledesk-deployment/blob/master/helm/docs/tls.md) how to configure TLS certificate for the Tiledesk installation. 
+
 
 ## Push Notifications
 
 Push notifications are available only with a configured TLS certificate.
 
-## Add a Domain
-
-As default setting for the Ingress configuration, the Tiledesk dashboard is esposed under http://console.tiledesk.local/dashboard/ url.
-
-If you want to add a domain create a DNS entries (just for testing modify your /etc/hosts file) like below:
-* console.tiledesk.local -> (A record) -> <YOUR_INGRESS_IP>
-* api.tiledesk.local -> (A record) -> <YOUR_INGRESS_IP>
-* widget.tiledesk.local -> (A record) -> <YOUR_INGRESS_IP>
-
-## Configure a Custom Domain
-
-Configure the Custom Domain passing the Ingress parameters inline without modifing the value.yaml file for the hosts as follow:
-
-
-```console
-helm upgrade -f ./helm/values.yaml my-tiledesk ./helm --set EXTERNAL_BASE_URL=http://console.YOUR_CUSTOM_DOMAIN --set ingress.hosts[1].host=console.YOUR_CUSTOM_DOMAIN --set ingress.hosts[2].host=api.YOUR_CUSTOM_DOMAIN --set ingress.hosts[3].host=rtm.YOUR_CUSTOM_DOMAIN --set ingress.hosts[4].host=widget.YOUR_CUSTOM_DOMAIN
-```
-
-Remember to set also the EXTERNAL_BASE_URL environment variable
 
 # Usefull instructions
 
