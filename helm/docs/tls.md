@@ -23,15 +23,6 @@ After creating the certificate please upload it using the following command:
 ```console
 kubectl create secret tls tiledesk-tls-secret --key tiledesk-ingress-tls.key --cert tiledesk-ingress-tls.crt
 ```
-## Update the Ingress with TLS
-Update the tls Ingress rule with :
-
-```console
-helm upgrade -f ./helm/values.yaml my-tiledesk ./helm --set ingress.tls[0].secretName=tiledesk-tls-secret --set ingress.tls[0].hosts[0]=console.tiledesk.local --set MQTT_ENDPOINT=wss://console.tiledesk.local/mqws/ws
-```
-With the MQTT_ENDPOINT env variable we are setting an absolute secure (wss) websocket URL.
-
-Please see [this example](https://github.com/kubernetes/contrib/tree/master/ingress/controllers/nginx/examples/tls) for more information.
 
 ## Generate GKE Managed TLS certificates
 
@@ -48,31 +39,24 @@ spec:
  domains:
   - console.tiledesk.local
 ```
-
 Create a new certificate for each domains you need. Attention create the DNS entry before applying the command. After that run:
 
 ```console
 kubectl apply -f certificate-tiledesk.yaml
 ```
 
+View your ssl certificates with:  ```kubectl describe managedcertificate certificate-tiledesk```. You can also use : ```gcloud beta compute ssl-certificates list --project GOOGLE_PROJECT_NAME```
 
-View your ssl certificates with: 
-
-```console
-gcloud beta compute ssl-certificates list --project tiledesk-kube2
-```
-
-or with:
+## Update the Ingress with TLS
+Update the tls Ingress rule with :
 
 ```console
-kubectl describe managedcertificate certificate-tiledesk
+helm upgrade -f ./helm/values.yaml my-tiledesk ./helm --set ingress.tls[0].secretName=tiledesk-tls-secret --set ingress.tls[0].hosts[0]=console.tiledesk.local --set MQTT_ENDPOINT=wss://console.tiledesk.local/mqws/ws
 ```
+With the MQTT_ENDPOINT env variable we are setting an absolute secure (wss) websocket URL.
 
-or with:
+Please see [this example](https://github.com/kubernetes/contrib/tree/master/ingress/controllers/nginx/examples/tls) for more information.
 
-```console
-kubectl get certificates
-```
 
 # Delete an existing GKE certificate
 
