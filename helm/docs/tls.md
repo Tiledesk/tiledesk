@@ -23,6 +23,13 @@ After creating the certificate please upload it using the following command:
 ```console
 kubectl create secret tls tiledesk-tls-secret --key tiledesk-ingress-tls.key --cert tiledesk-ingress-tls.crt
 ```
+## Update the Ingress with TLS
+Update the tls Ingress rule with :
+
+```console
+helm upgrade -f ./helm/values.yaml my-tiledesk ./helm --set ingress.tls[0].secretName=tiledesk-tls-secret --set ingress.tls[0].hosts[0]=console.tiledesk.local --set MQTT_ENDPOINT=wss://console.tiledesk.local/mqws/ws
+```
+With the MQTT_ENDPOINT env variable we are setting an absolute secure (wss) websocket URL.
 
 Please see [this example](https://github.com/kubernetes/contrib/tree/master/ingress/controllers/nginx/examples/tls) for more information.
 

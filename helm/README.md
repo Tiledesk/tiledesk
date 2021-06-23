@@ -110,7 +110,14 @@ If you want to add a domain create a DNS entries (just for testing modify your /
 
 ## Configure a Custom Domain
 
-If you want to change the Domain and other Ingress configuration look at values.yaml file.
+Configure the Custom Domain passing the Ingress parameters inline without modifing the value.yaml file for the hosts as follow:
+
+
+```console
+helm upgrade -f ./helm/values.yaml my-tiledesk ./helm --set EXTERNAL_BASE_URL=http://console.YOUR_CUSTOM_DOMAIN --set ingress.hosts[1].host=console.YOUR_CUSTOM_DOMAIN --set ingress.hosts[2].host=api.YOUR_CUSTOM_DOMAIN --set ingress.hosts[3].host=rtm.YOUR_CUSTOM_DOMAIN --set ingress.hosts[4].host=widget.YOUR_CUSTOM_DOMAIN
+```
+
+Remember to set also the EXTERNAL_BASE_URL environment variable
 
 # Usefull instructions
 
@@ -121,6 +128,13 @@ To upgrade the `my-tiledesk` deployment:
 
 ```console
 helm upgrade -f ./helm/values.yaml my-tiledesk ./helm
+```
+##  Passing inline environment variables
+
+To install the `my-tiledesk` deployment passing the parameters inline without modifing the value.yaml you can for example :
+
+```console
+helm install helm --set EMAIL_ENABLED=true --set EMAIL_HOST=YOUR_EMAIL_HOST 
 ```
 
 ## Uninstalling the Chart
