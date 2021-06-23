@@ -46,7 +46,7 @@ metadata:
  name: certificate-tiledesk
 spec:
  domains:
-  - api.tiledesk.com
+  - console.tiledesk.local
 ```
 
 Create a new certificate for each domains you need. After that run:
