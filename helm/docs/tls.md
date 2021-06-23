@@ -49,7 +49,7 @@ spec:
   - console.tiledesk.local
 ```
 
-Create a new certificate for each domains you need. After that run:
+Create a new certificate for each domains you need. Attention create the DNS entry before applying the command. After that run:
 
 ```console
 kubectl apply -f certificate-tiledesk.yaml
