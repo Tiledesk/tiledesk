@@ -1,6 +1,6 @@
 # Install Tiledesk with Helm and Kubernetes
 
-[Tiledesk](https://www.tiledesk.com/) is an open source live chat platform that can be deployed to any infrastructure that can run Node.js.
+[Tiledesk](https://www.tiledesk.com/) is an open source live chat platform.
 
 ## Introduction
 
