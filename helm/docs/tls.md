@@ -45,7 +45,7 @@ Create a new certificate for each domains you need. Attention create the DNS ent
 kubectl apply -f certificate-tiledesk.yaml
 ```
 
-View your ssl certificates with:  ```kubectl describe managedcertificate certificate-tiledesk```. You can also use : ```gcloud beta compute ssl-certificates list --project GOOGLE_PROJECT_NAME```
+View your ssl certificates with:  ```kubectl describe managedcertificate certificate-tiledesk```. You can also use : ```gcloud beta compute ssl-certificates list --project GOOGLE_PROJECT_NAME```. If you want to delete an existing GKE certificate run: ```gcloud compute ssl-certificates delete mcrt-761d3c43-595c-4084-8c3b-XYZZZZZ --project GOOGLE_PROJECT_NAME```
 
 ## Update the Ingress with TLS
 Update the tls Ingress rule with :
@@ -57,13 +57,5 @@ With the MQTT_ENDPOINT env variable we are setting an absolute secure (wss) webs
 
 Please see [this example](https://github.com/kubernetes/contrib/tree/master/ingress/controllers/nginx/examples/tls) for more information.
 
-
-# Delete an existing GKE certificate
-
-If you want to delete an existing certificate please run the following command:
-
-```console
-gcloud compute ssl-certificates delete mcrt-761d3c43-595c-4084-8c3b-XYZZZZZ --project tiledesk-kube
-```
 
 
