@@ -66,7 +66,7 @@ Rename your SSL files like follow:
 
 ## Create a secret for the SSL certificate
 
-Create a Kubernetes secret of the certificate using the following command:
+Create a Kubernetes Secret of the certificate using the following command:
 
 ```console
 kubectl create secret tls tiledesk-tls-secret --key tiledesk-ingress-tls.key --cert tiledesk-ingress-tls.crt
