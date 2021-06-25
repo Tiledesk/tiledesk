@@ -32,6 +32,7 @@ The requirements of the single pods can vary dependent on the model size and the
 | rabbitmq           | 0,2 | 512MB  |
 
 We recommend a size at least 30 GiB for the database volume claim.
+
 N1-standard-1 type is the minimum cluster type if you choose GKE.
 
 ## Download the project
