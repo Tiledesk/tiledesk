@@ -1,4 +1,4 @@
-# Install Tiledesk with Helm and Kubernetes
+# Install Tiledesk with Kubernetes and Helm
 
 [Tiledesk](https://www.tiledesk.com/) is an open source live chat platform.
 
