@@ -44,7 +44,7 @@ git clone https://github.com/Tiledesk/tiledesk-deployment.git
 cd tiledesk-deployment
 ```
 
-Optional. See [Configure Tiledesk with Chat21 Firebase Engine](./firebase-config.md) if you want to use the Google Firebase chat engine instead the new RabbitMQ + MQTT chat engine
+Optional. See [Configure Tiledesk with Chat21 Firebase Engine](./firebase-config.md) if you want to use the Chat21 Google Firebase chat engine instead the new Chat21 RabbitMQ + MQTT chat engine
 
 ## Installing the Chart
 
