@@ -111,7 +111,7 @@ You can configure the Custom Domain passing the Ingress parameters inline withou
 helm upgrade -f ./helm/values.yaml my-tiledesk ./helm --set EXTERNAL_BASE_URL=http://console.YOUR_CUSTOM_DOMAIN --set ingress.hosts[1].enabled=true --set ingress.hosts[1].host=console.YOUR_CUSTOM_DOMAIN
 ```
 
-Disable the first ingress host (all inbound HTTP traffic through the IP address) if you want with : --set ingress.hosts[0].enabled=false
+Disable the first ingress host (all inbound HTTP traffic through the IP address) if you want adding : ```--set ingress.hosts[0].enabled=false```
 
 ## Configure TLS
 
