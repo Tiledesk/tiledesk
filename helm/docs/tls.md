@@ -77,7 +77,7 @@ The required files are:
 Update the TLS Ingress Rule with :
 
 ```console
-helm upgrade -f ./helm/values.yaml my-tiledesk ./helm --set ingress.tls[0].secretName=tiledesk-tls-secret --set ingress.tls[0].hosts[0]=console.YOUR_CUSTOM_DOMAIN --set MQTT_ENDPOINT=wss://console.YOUR_CUSTOM_DOMAIN/mqws/ws --set EXTERNAL_BASE_URL=http://console.YOUR_CUSTOM_DOMAIN --set ingress.hosts[0].enabled=false --set ingress.hosts[1].enabled=true --set ingress.hosts[1].host=console.YOUR_CUSTOM_DOMAIN
+helm upgrade -f ./helm/values.yaml my-tiledesk ./helm --set ingress.tls[0].secretName=tiledesk-tls-secret --set ingress.tls[0].hosts[0]=console.YOUR_CUSTOM_DOMAIN --set MQTT_ENDPOINT=wss://console.YOUR_CUSTOM_DOMAIN/mqws/ws --set EXTERNAL_BASE_URL=https://console.YOUR_CUSTOM_DOMAIN --set ingress.hosts[0].enabled=false --set ingress.hosts[1].enabled=true --set ingress.hosts[1].host=console.YOUR_CUSTOM_DOMAIN
 ```
 Add ```--recreate-pods``` option to the above command if you want to be sure all the pods are restarted with the new values.
 
