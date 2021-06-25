@@ -30,7 +30,7 @@ openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
 #### Generate GKE Managed TLS certificates
 
 
-Create a Google ManagedCertificate resource. This resource specifies the domains that the SSL certificate will be created for. [Google managed-certs are only supported for GKE External Ingress](https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs)
+If you are using Google Kubernetes Engine you can choose the Google ManagedCertificate resource. This resource specifies the domains that the SSL certificate will be created for. Remember that [Google managed-certs are only supported for GKE External Ingress](https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs)
 
 Create a file named certificate-tiledesk.yaml like below:
 
@@ -43,16 +43,15 @@ spec:
  domains:
   - console.tiledesk.local
 ```
-Create a new certificate for each domains you need. Attention create the DNS entry before applying the command. After that run:
+After you must:
+* Create the DNS entry
+* Create a new certificate running:
 
 ```console
 kubectl apply -f certificate-tiledesk.yaml
 ```
 
 View your ssl certificates with:  ```kubectl describe managedcertificate certificate-tiledesk```. You can also use : ```gcloud beta compute ssl-certificates list --project GOOGLE_PROJECT_NAME```. If you want to delete an existing GKE certificate run: ```gcloud compute ssl-certificates delete CERTIFICATE_ID --project GOOGLE_PROJECT_NAME```
-
-
-gce-ingress.yaml attento linkare??
 
 
 ### Use your existing SSL Certificate
