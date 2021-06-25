@@ -104,14 +104,6 @@ More info here: https://kubernetes.github.io/ingress-nginx/deploy/#using-helm
 
 ## Configure a Custom Domain
 
-As default setting for the Ingress configuration, the Tiledesk dashboard is also esposed under http://console.tiledesk.local/dashboard/ url.
-
-Create a DNS entries (just for testing modify your /etc/hosts file) like below:
-* console.tiledesk.local -> (A record) -> <YOUR_INGRESS_IP>
-* api.tiledesk.local -> (A record) -> <YOUR_INGRESS_IP>
-* widget.tiledesk.local -> (A record) -> <YOUR_INGRESS_IP>
-
-
 You can configure the Custom Domain passing the Ingress parameters inline without modifing the value.yaml file for the hosts as follow:
 
 
