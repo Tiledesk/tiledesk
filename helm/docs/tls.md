@@ -30,7 +30,7 @@ openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
 #### Generate GKE Managed TLS certificates
 
 
-If you are using Google Kubernetes Engine (GKE( you can optionally choose the Google ManagedCertificate resource. This resource specifies the domains that the SSL certificate will be created for. Remember that [Google managed-certs are only supported for GKE External Ingress](https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs)
+If you are using Google Kubernetes Engine (GKE) you can optionally choose the Google ManagedCertificate resource. This resource specifies the domains that the SSL certificate will be created for. Remember that [Google managed-certs are only supported for GKE External Ingress](https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs)
 
 Create a file named certificate-tiledesk.yaml like below:
 
