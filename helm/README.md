@@ -86,7 +86,7 @@ tiledesk-helm-1593793077 is for example the name of the Tiledesk deployment.
 
 ## Ingress
 
-The default Tiledesk Ingress is configured whitout the hostname, so the rule applies to all inbound HTTP traffic through the IP address specified. There are other ingress host in the configuration but they are disabled by default. See the values.yaml file.
+The default Tiledesk Ingress is configured whitout the hostname, so the rule applies to all inbound HTTP traffic through the IP address specified. There are other ingress hosts in the configuration but they are disabled by default. See the values.yaml file.
 
 # Other configurations (Optional)
 
