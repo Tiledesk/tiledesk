@@ -234,6 +234,10 @@ securityContext: {}
   # runAsUser: 1000
 
 
+service: #do not remove
+  type: LoadBalancer
+  port: 80
+
 ingress:
   enabled: true
   annotations:
