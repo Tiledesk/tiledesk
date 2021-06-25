@@ -55,9 +55,7 @@ View your ssl certificates with:  ```kubectl describe managedcertificate certifi
 
 
 ### Use your existing SSL Certificate
-Copy your existing SSL certificate to the project folder.
-
-Rename your SSL files like follow:
+if you already have a valid SSL certificate released by a truster CA, copy the certificate to the project folder and  rename your SSL files like follow:
 * tiledesk-ingress-tls.crt. This must be the server certificate
 * tiledesk-ingress-tls.key. This must be the private key.
 
