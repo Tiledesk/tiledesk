@@ -56,7 +56,7 @@ View your ssl certificates with:  ```kubectl describe managedcertificate certifi
 gce-ingress.yaml attento linkare??
 
 
-#### Use your existing SSL Certificate
+### Use your existing SSL Certificate
 Copy your existing SSL certificate to the project folder.
 
 Rename your SSL files like follow:
