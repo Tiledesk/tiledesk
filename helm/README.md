@@ -113,6 +113,8 @@ helm upgrade -f ./helm/values.yaml my-tiledesk ./helm --set EXTERNAL_BASE_URL=ht
 
 Disable the first ingress host (all inbound HTTP traffic through the IP address) if you want adding : ```--set ingress.hosts[0].enabled=false```
 
+Add ```--recreate-pods``` option to the above command if you want to be sure all the pods are restarted with the new values.
+
 ## Configure TLS
 
 See [here](https://github.com/Tiledesk/tiledesk-deployment/blob/master/helm/docs/tls.md) how to configure TLS certificate for the Tiledesk installation. 
