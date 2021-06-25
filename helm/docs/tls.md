@@ -74,7 +74,7 @@ The required files are:
 
 
 ## Update the Ingress with the TLS configuration
-Update the tls Ingress rule with :
+Update the TLS Ingress Rule with :
 
 ```console
 helm upgrade -f ./helm/values.yaml my-tiledesk ./helm --set ingress.tls[0].secretName=tiledesk-tls-secret --set ingress.tls[0].hosts[0]=console.YOUR_CUSTOM_DOMAIN --set MQTT_ENDPOINT=wss://console.YOUR_CUSTOM_DOMAIN/mqws/ws --set EXTERNAL_BASE_URL=http://console.YOUR_CUSTOM_DOMAIN --set ingress.hosts[0].enabled=false --set ingress.hosts[1].enabled=true --set ingress.hosts[1].host=console.YOUR_CUSTOM_DOMAIN
