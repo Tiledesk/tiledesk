@@ -27,27 +27,27 @@ data:
   FIREBASE_MESSAGINGSENDERID: {{ .Values.FIREBASE_MESSAGINGSENDERID | quote }}
   FIREBASE_APP_ID: {{ .Values.FIREBASE_APP_ID | quote }}
 
-  API_URL: {{if and .Values.EXTERNAL_BASE_URL (not (hasPrefix "/" .Values.API_URL))}}"{{ .Values.EXTERNAL_BASE_URL  }}{{ .Values.API_URL }}"{{ else }}{{ .Values.API_URL | quote }}{{ end }}
+  API_URL: {{if and .Values.EXTERNAL_BASE_URL (hasPrefix "/" .Values.API_URL)}}"{{ .Values.EXTERNAL_BASE_URL  }}{{ .Values.API_URL }}"{{ else }}{{ .Values.API_URL | quote }}{{ end }}
   UPLOAD_ENGINE: {{ .Values.UPLOAD_ENGINE | quote }}
-  API_BASEIMAGE_URL: {{if and .Values.EXTERNAL_BASE_URL (not (hasPrefix "/" .Values.API_BASEIMAGE_URL))}}"{{ .Values.EXTERNAL_BASE_URL  }}{{ .Values.API_BASEIMAGE_URL }}"{{ else }}{{ .Values.API_BASEIMAGE_URL | quote }}{{ end }}
+  API_BASEIMAGE_URL: {{if and .Values.EXTERNAL_BASE_URL (hasPrefix "/" .Values.API_BASEIMAGE_URL)}}"{{ .Values.EXTERNAL_BASE_URL  }}{{ .Values.API_BASEIMAGE_URL }}"{{ else }}{{ .Values.API_BASEIMAGE_URL | quote }}{{ end }}
 
   MQTT_APPID: {{ .Values.MQTT_APPID | quote }}
   
-  MQTT_ENDPOINT: {{if and .Values.EXTERNAL_BASE_URL (not (hasPrefix "/" .Values.MQTT_ENDPOINT))}}"{{ .Values.EXTERNAL_BASE_URL  }}{{ .Values.MQTT_ENDPOINT }}"{{ else }}{{ .Values.MQTT_ENDPOINT | quote }}{{ end }}
-  MQTT_APIENDPOINT: {{if and .Values.EXTERNAL_BASE_URL (not (hasPrefix "/" .Values.MQTT_APIENDPOINT))}}"{{ .Values.EXTERNAL_BASE_URL  }}{{ .Values.MQTT_APIENDPOINT }}"{{ else }}{{ .Values.MQTT_APIENDPOINT | quote }}{{ end }}
+  MQTT_ENDPOINT: {{if and .Values.EXTERNAL_BASE_URL (hasPrefix "/" .Values.MQTT_ENDPOINT)}}"{{ .Values.EXTERNAL_BASE_URL  }}{{ .Values.MQTT_ENDPOINT }}"{{ else }}{{ .Values.MQTT_ENDPOINT | quote }}{{ end }}
+  MQTT_APIENDPOINT: {{if and .Values.EXTERNAL_BASE_URL (hasPrefix "/" .Values.MQTT_APIENDPOINT)}}"{{ .Values.EXTERNAL_BASE_URL  }}{{ .Values.MQTT_APIENDPOINT }}"{{ else }}{{ .Values.MQTT_APIENDPOINT | quote }}{{ end }}
 
   FEATURES_TOKEN: {{ .Values.FEATURES_TOKEN | quote }}
   SERVER_BASE_URL: {{ .Values.SERVER_BASE_URL | quote }}
   CHAT_BASE_URL: {{ .Values.CHAT_BASE_URL | quote }}
   WS_SERVER_PATH: {{ .Values.WS_SERVER_PATH | quote }}
   WS_URL_RELATIVE: {{ .Values.WS_URL_RELATIVE | quote }}
-  WIDGET_LOCATION: {{if and .Values.EXTERNAL_BASE_URL (not (hasPrefix "/" .Values.WIDGET_LOCATION))}}"{{ .Values.EXTERNAL_BASE_URL  }}{{ .Values.WIDGET_LOCATION }}"{{ else }}{{ .Values.WIDGET_LOCATION | quote }}{{ end }}
+  WIDGET_LOCATION: {{if and .Values.EXTERNAL_BASE_URL (hasPrefix "/" .Values.WIDGET_LOCATION)}}"{{ .Values.EXTERNAL_BASE_URL  }}{{ .Values.WIDGET_LOCATION }}"{{ else }}{{ .Values.WIDGET_LOCATION | quote }}{{ end }}
 
-  WIDGET_TEST_LOCATION: {{if and .Values.EXTERNAL_BASE_URL (not (hasPrefix "/" .Values.WIDGET_TEST_LOCATION))}}"{{ .Values.EXTERNAL_BASE_URL  }}{{ .Values.WIDGET_TEST_LOCATION }}"{{ else }}{{ .Values.WIDGET_TEST_LOCATION | quote }}{{ end }}
+  WIDGET_TEST_LOCATION: {{if and .Values.EXTERNAL_BASE_URL (hasPrefix "/" .Values.WIDGET_TEST_LOCATION)}}"{{ .Values.EXTERNAL_BASE_URL  }}{{ .Values.WIDGET_TEST_LOCATION }}"{{ else }}{{ .Values.WIDGET_TEST_LOCATION | quote }}{{ end }}
 
   PUSH_ENGINE: {{ .Values.PUSH_ENGINE | quote }}
   
-  TRANSLATE_URL: {{if and .Values.EXTERNAL_BASE_URL (not (hasPrefix "/" .Values.TRANSLATE_URL))}}"{{ .Values.EXTERNAL_BASE_URL  }}{{ .Values.TRANSLATE_URL }}"{{ else }}{{ .Values.TRANSLATE_URL | quote }}{{ end }}
+  TRANSLATE_URL: {{if and .Values.EXTERNAL_BASE_URL (hasPrefix "/" .Values.TRANSLATE_URL)}}"{{ .Values.EXTERNAL_BASE_URL  }}{{ .Values.TRANSLATE_URL }}"{{ else }}{{ .Values.TRANSLATE_URL | quote }}{{ end }}
 
   DASHBOARD_URL: {{ .Values.DASHBOARD_URL | quote }}
 
