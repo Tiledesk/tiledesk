@@ -12,7 +12,7 @@ Attention. The default configuration of the values.yaml download the *latest* do
 
 - Kubernetes 1.14+
 - Helm 3.2+
-- A Kubernetes Cluster. This guide is tested with: Minikube with [Ingress plugin enabled](https://kubernetes.io/docs/tasks/access-application-cluster/ingress-minikube/#enable-the-ingress-controller) (This [Minkube Tiledesk Guide](./MINIKUBE.md) can be helpful) and Google Kubernetes Engine (GKE)
+- A Kubernetes Cluster. This guide is tested with: Minikube with [Ingress plugin enabled](https://kubernetes.io/docs/tasks/access-application-cluster/ingress-minikube/#enable-the-ingress-controller) (This [Minkube Tiledesk Guide](./docs/MINIKUBE.md) can be helpful) and Google Kubernetes Engine (GKE)
 
 
 ## Cluster Requirements
@@ -44,7 +44,7 @@ git clone https://github.com/Tiledesk/tiledesk-deployment.git
 cd tiledesk-deployment
 ```
 
-Optional. See [Configure Tiledesk with Chat21 Firebase Engine](./firebase-config.md) if you want to use the Chat21 Google Firebase chat engine instead the new Chat21 RabbitMQ + MQTT chat engine
+Optional. See [Configure Tiledesk with Chat21 Firebase Engine](./docs/firebase-config.md) if you want to use the Chat21 Google Firebase chat engine instead the new Chat21 RabbitMQ + MQTT chat engine
 
 ## Installing the Chart
 
