@@ -39,6 +39,12 @@ minikube service my-tiledesk-c21httpsrv
 kubectl get ingress my-tiledesk-proxy-nginx
 ```
 
+## Get ingress 
+
+```console
+kubectl describe ing my-tiledesk
+```
+
 ## Get the SVC
 ```console
 kubectl get svc 

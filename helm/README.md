@@ -19,6 +19,7 @@ Attention. The default configuration of the values.yaml download the *latest* do
 To install the Tiledesk chart, you need an existing Kubernetes cluster.
 The requirements of the single pods can vary dependent on the model size and the number of users. We recommend providing at least the following resources:
 
+
 | Deployment         | CPU | Memory |
 |--------------------|-----|--------|
 | tiledesk-server    | 1   | 1GB    |
@@ -82,6 +83,10 @@ tiledesk-helm-1593793077 is for example the name of the Tiledesk deployment.
 
 2. To get the logs of the container run: ```kubectl --namespace <your namespace> logs -f <name of the pod>```
 
+## Ingress
+
+The default Tiledesk Ingress is configured whitout the hostname, so the rule applies to all inbound HTTP traffic through the IP address specified. There are other ingress host in the configuration but they are disabled by default. See the values.yaml file.
+
 # Other configurations (Optional)
 
 ## Create an nginx Ingress controller
@@ -110,10 +115,10 @@ You can configure the Custom Domain passing the Ingress parameters inline withou
 
 
 ```console
-helm upgrade -f ./helm/values.yaml my-tiledesk ./helm --set EXTERNAL_BASE_URL=http://console.YOUR_CUSTOM_DOMAIN --set ingress.hosts[1].host=console.YOUR_CUSTOM_DOMAIN
+helm upgrade -f ./helm/values.yaml my-tiledesk ./helm --set EXTERNAL_BASE_URL=http://console.YOUR_CUSTOM_DOMAIN --set ingress.hosts[1].enabled=true --set ingress.hosts[1].host=console.YOUR_CUSTOM_DOMAIN
 ```
 
-Remember to set also the EXTERNAL_BASE_URL environment variable
+Disable the first ingress host (all inbound HTTP traffic through the IP address) if you want with : --set ingress.hosts[0].enabled=false
 
 ## Configure TLS
 
