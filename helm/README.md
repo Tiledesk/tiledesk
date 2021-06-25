@@ -54,7 +54,7 @@ To install the chart with the release name `my-tiledesk`:
 helm install my-tiledesk helm
 ```
 
-The command deploys Tiledesk on the Kubernetes cluster in the default configuration. 
+The command deploys Tiledesk on the Kubernetes cluster in the default namespace. 
 
 # Open the dashboard
 Open the browser at http://<YOUR_INGRESS_IP>/dashboard/ and signin as admin with :
