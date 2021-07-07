@@ -28,8 +28,10 @@ changes and are still flexible to be adopted to your actual environment.
 
 For your environment, you should use these charts as a starting point and modify them so that Tiledesk integrates
 into your infrastructure. You typically want to remove the MongoDB container and connect the tiledesk-server
-directly to your database.
+directly to your database. For the production environment we suggest you not to use the internal instance of K8s MongoDB but to use MongoAtlas or an external installation of MongoDB with Replica Set.
 Another typical change would be the integration of your company-wide monitoring and logging tools.
+
+
 
 # Enterprise version
 Tiledesk Enterprise customers can request enterprise credentials sending and email at: info@tiledesk.com. These credentials are required to pull private (Enterprise-only) Docker images.
