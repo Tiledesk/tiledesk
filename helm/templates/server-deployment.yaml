@@ -155,6 +155,11 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: WEBHOOK_ORIGIN
+            - name: LICENSE_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: tiledesk-license
+                  key: licensekey
           ports:
             - name: server-http
               containerPort: 3000
