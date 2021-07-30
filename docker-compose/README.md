@@ -26,9 +26,9 @@ curl https://raw.githubusercontent.com/Tiledesk/tiledesk-deployment/master/docke
 
 3. Run Tiledesk with:
 ```bash
-EXTERNAL_BASE_URL="http://localhost" docker-compose up
+EXTERNAL_BASE_URL="http://localhost" EXTERNAL_MQTT_BASE_URL="ws://localhost" docker-compose up
 ```
-If you have a public ip specify it in the EXTERNAL_BASE_URL env parameter as follow:  ```EXTERNAL_BASE_URL="http://99.88.77.66" docker-compose up```
+If you have a public ip specify it in the EXTERNAL_BASE_URL and EXTERNAL_MQTT_BASE_URL env parameters as follow:  ```EXTERNAL_BASE_URL="http://99.88.77.66" EXTERNAL_MQTT_BASE_URL="ws://99.88.77.66" docker-compose up```
 
 4. Open the following URL in your browser to start 
 * Dashboard: [http://<machine_ip>/](http://localhost/)
@@ -45,7 +45,7 @@ If you have a public ip specify it in the EXTERNAL_BASE_URL env parameter as fol
 To start Tiledesk in background run:
 
 ```bash
-EXTERNAL_BASE_URL="http://localhost" docker-compose up -d
+EXTERNAL_BASE_URL="http://localhost" EXTERNAL_MQTT_BASE_URL="ws://localhost" docker-compose up -d
 ```
 If you want to see the log run:
 

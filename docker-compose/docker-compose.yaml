@@ -36,8 +36,7 @@ services:
    environment: 
       - CHAT21_ENGINE=mqtt
       - MQTT_APPID=tilechat
-      #- MQTT_ENDPOINT=mqtt://localhost/mqws/ws
-      - "MQTT_ENDPOINT=${EXTERNAL_BASE_URL}/mqws/ws"
+      - "MQTT_ENDPOINT=${EXTERNAL_MQTT_BASE_URL}/mqws/ws"
       - "MQTT_APIENDPOINT=${EXTERNAL_BASE_URL}/chatapi/api"
       #- MQTT_LOGINSERVICE_ENDPOINT=/api/chat21/native/auth/createCustomToken      
       - FIREBASE_APIKEY
@@ -63,7 +62,7 @@ services:
       - API_URL=/api/
       - CHAT21_ENGINE=mqtt
       - MQTT_APPID=tilechat
-      - MQTT_ENDPOINT=/mqws/ws
+      - "MQTT_ENDPOINT=${EXTERNAL_MQTT_BASE_URL}/mqws/ws"
       - MQTT_APIENDPOINT=/chatapi/api
       #- MQTT_LOGINSERVICE_ENDPOINT=/api/chat21/native/auth/createCustomToken
       - UPLOAD_ENGINE=native
