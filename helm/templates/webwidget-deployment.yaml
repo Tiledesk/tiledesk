@@ -60,11 +60,11 @@ spec:
                   configMapKeyRef:
                     name: {{ include "tiledesk.fullname" . }}-config
                     key: UPLOAD_ENGINE
-            - name: TRANSLATE_URL
+            - name: TRANSLATIONS_URL
               valueFrom:
                   configMapKeyRef:
                     name: {{ include "tiledesk.fullname" . }}-config
-                    key: TRANSLATE_URL  
+                    key: TRANSLATIONS_URL  
             - name: API_BASEIMAGE_URL
               valueFrom:
                   configMapKeyRef:

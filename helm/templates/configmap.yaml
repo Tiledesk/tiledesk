@@ -47,7 +47,7 @@ data:
 
   PUSH_ENGINE: {{ .Values.PUSH_ENGINE | quote }}
   
-  TRANSLATE_URL: {{if and .Values.EXTERNAL_BASE_URL (hasPrefix "/" .Values.TRANSLATE_URL)}}"{{ .Values.EXTERNAL_BASE_URL  }}{{ .Values.TRANSLATE_URL }}"{{ else }}{{ .Values.TRANSLATE_URL | quote }}{{ end }}
+  TRANSLATIONS_URL: {{if and .Values.EXTERNAL_BASE_URL (hasPrefix "/" .Values.TRANSLATIONS_URL)}}"{{ .Values.EXTERNAL_BASE_URL  }}{{ .Values.TRANSLATIONS_URL }}"{{ else }}{{ .Values.TRANSLATIONS_URL | quote }}{{ end }}
 
   DASHBOARD_URL: {{ .Values.DASHBOARD_URL | quote }}
 

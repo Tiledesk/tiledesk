@@ -77,7 +77,7 @@ WIDGET_TEST_LOCATION: /widget/assets/twp/index.html
 PUSH_ENGINE: none
 
 # Widget Config
-TRANSLATE_URL: /api/
+TRANSLATIONS_URL: /api/
 
 
 # Ionic Config

@@ -51,7 +51,7 @@ services:
       - FIREBASE_MESSAGINGSENDERID
       - UPLOAD_ENGINE=native
       - "API_URL=${EXTERNAL_BASE_URL}/api/"
-      - "TRANSLATE_URL=${EXTERNAL_BASE_URL}/api/"
+      - "TRANSLATIONS_URL=${EXTERNAL_BASE_URL}/api/"
       #- API_BASEIMAGE_URL=https://firebasestorage.googleapis.com/v0/b/
       - "API_BASEIMAGE_URL=${EXTERNAL_BASE_URL}/api/"
 
@@ -80,7 +80,6 @@ services:
       - FIREBASE_PROJECT_ID
       - FIREBASE_STORAGEBUCKET
       - FIREBASE_MESSAGINGSENDERID 
-
   proxy:
     image: tiledesk/tiledesk-docker-proxy
     container_name: tiledesk-docker-proxy   
