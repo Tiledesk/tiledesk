@@ -36,6 +36,10 @@ services:
    environment: 
       - CHAT21_ENGINE=mqtt
       - MQTT_APPID=tilechat
+      - PUSH_ENGINE=none
+      - TENANT=tilechat
+      - LOG_LEVEL=2
+      - FILE_UPLOAD_ACCEPT=*/*
       - "MQTT_ENDPOINT=${EXTERNAL_MQTT_BASE_URL}/mqws/ws"
       - "MQTT_APIENDPOINT=${EXTERNAL_BASE_URL}/chatapi/api"
       #- MQTT_LOGINSERVICE_ENDPOINT=/api/chat21/native/auth/createCustomToken      
@@ -60,6 +64,10 @@ services:
       - DASHBOARD_URL=/dashboard/      
       - API_BASEIMAGE_URL=/api/
       - API_URL=/api/
+      - PUSH_ENGINE=none
+      - TENANT=tilechat
+      - LOG_LEVEL=2
+      - FILE_UPLOAD_ACCEPT=*/*
       - CHAT21_ENGINE=mqtt
       - MQTT_APPID=tilechat
       - "MQTT_ENDPOINT=${EXTERNAL_MQTT_BASE_URL}/mqws/ws"
