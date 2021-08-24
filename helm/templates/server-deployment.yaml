@@ -160,6 +160,7 @@ spec:
                 secretKeyRef:
                   name: tiledesk-license
                   key: licensekey
+                  optional: true
           ports:
             - name: server-http
               containerPort: 3000
