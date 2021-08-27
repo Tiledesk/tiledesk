@@ -33,7 +33,7 @@ data:
 
   MQTT_APPID: {{ .Values.MQTT_APPID | quote }}
   
-  MQTT_ENDPOINT: {{if and .Values.EXTERNAL_BASE_URL (hasPrefix "/" .Values.MQTT_ENDPOINT)}}"{{ .Values.EXTERNAL_BASE_URL  }}{{ .Values.MQTT_ENDPOINT }}"{{ else }}{{ .Values.MQTT_ENDPOINT | quote }}{{ end }}
+  MQTT_ENDPOINT: {{if and .Values.EXTERNAL_MQTT_BASE_URL (hasPrefix "/" .Values.MQTT_ENDPOINT)}}"{{ .Values.EXTERNAL_MQTT_BASE_URL  }}{{ .Values.MQTT_ENDPOINT }}"{{ else }}{{ .Values.MQTT_ENDPOINT | quote }}{{ end }}
   MQTT_APIENDPOINT: {{if and .Values.EXTERNAL_BASE_URL (hasPrefix "/" .Values.MQTT_APIENDPOINT)}}"{{ .Values.EXTERNAL_BASE_URL  }}{{ .Values.MQTT_APIENDPOINT }}"{{ else }}{{ .Values.MQTT_APIENDPOINT | quote }}{{ end }}
 
   FEATURES_TOKEN: {{ .Values.FEATURES_TOKEN | quote }}
@@ -46,7 +46,10 @@ data:
   WIDGET_TEST_LOCATION: {{if and .Values.EXTERNAL_BASE_URL (hasPrefix "/" .Values.WIDGET_TEST_LOCATION)}}"{{ .Values.EXTERNAL_BASE_URL  }}{{ .Values.WIDGET_TEST_LOCATION }}"{{ else }}{{ .Values.WIDGET_TEST_LOCATION | quote }}{{ end }}
 
   PUSH_ENGINE: {{ .Values.PUSH_ENGINE | quote }}
+  FIREBASE_TENANT: {{ .Values.FIREBASE_TENANT | quote }}
   
+  FILE_UPLOAD_ACCEPT: {{ .Values.FILE_UPLOAD_ACCEPT | quote }}
+
   TRANSLATIONS_URL: {{if and .Values.EXTERNAL_BASE_URL (hasPrefix "/" .Values.TRANSLATIONS_URL)}}"{{ .Values.EXTERNAL_BASE_URL  }}{{ .Values.TRANSLATIONS_URL }}"{{ else }}{{ .Values.TRANSLATIONS_URL | quote }}{{ end }}
 
   DASHBOARD_URL: {{ .Values.DASHBOARD_URL | quote }}

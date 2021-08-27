@@ -53,7 +53,7 @@ FIREBASE_APP_ID: CHANGEIT
 #MONGODB_URI: mongodb://mongo/tiledesk
 
 #EXTERNAL_BASE_URL: http://console.tiledesk.local
-
+#EXTERNAL_MQTT_BASE_URL: ws://console.tiledesk.local
 
 # Shared Config
 
@@ -63,7 +63,9 @@ API_BASEIMAGE_URL: /api/
 MQTT_APPID: tilechat
 MQTT_ENDPOINT: /mqws/ws
 MQTT_APIENDPOINT: /chatapi/api
-
+PUSH_ENGINE: none
+FIREBASE_TENANT: tilechat
+FILE_UPLOAD_ACCEPT: "*/*"
 
 
 # Dashboard Config
@@ -74,7 +76,6 @@ WS_SERVER_PATH: /
 WS_URL_RELATIVE: /ws/
 WIDGET_LOCATION: /widget/launch.js
 WIDGET_TEST_LOCATION: /widget/assets/twp/index.html
-PUSH_ENGINE: none
 
 # Widget Config
 TRANSLATIONS_URL: /api/
@@ -94,7 +95,7 @@ EMAIL_PASSWORD: CHANGEIT
 EMAIL_BASEURL: http://console.tiledesk.local/dashboard
 
 # Log Config
-LOG_LEVEL: verbose
+LOG_LEVEL: info
 MONGODB_LOGS_URI: CHANGEIT
 
 # Server Config
@@ -130,7 +131,7 @@ server:
 
   image:  
     repository: tiledesk/tiledesk-server
-    tag: latest
+    tag: 2.1.40.16
     # pullPolicy: IfNotPresent  
 
   service:
@@ -145,7 +146,7 @@ dashboard:
 
   image:
     repository: tiledesk/tiledesk-dashboard
-    tag: latest  
+    tag: 2.2.10-rc.10  
     # pullPolicy: IfNotPresent 
 
   service:
@@ -159,7 +160,7 @@ ionic:
 
   image:
     repository: chat21/chat21-ionic
-    tag: latest
+    tag: 3.0.49-beta
 
   service:
       type: NodePort
@@ -173,7 +174,7 @@ webwidget:
 
   image:
     repository: chat21/chat21-web-widget
-    tag: latest
+    tag: 5.0.17-rc.3
 
   service:
       type: NodePort
@@ -187,7 +188,7 @@ c21httpsrv:
 
   image:  
     repository: chat21/chat21-http-server
-    tag: latest
+    tag: v-docker0.1.15
     # pullPolicy: IfNotPresent  
 
   service:
@@ -202,7 +203,7 @@ c21srv:
 
   image:  
     repository: chat21/chat21-server
-    tag: latest
+    tag: 0.1.14
     # pullPolicy: IfNotPresent  
 
 imagePullSecrets: #[]

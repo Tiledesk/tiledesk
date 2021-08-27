@@ -65,6 +65,26 @@ spec:
                   configMapKeyRef:
                     name: {{ include "tiledesk.fullname" . }}-config
                     key: UPLOAD_ENGINE
+            - name: PUSH_ENGINE
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: PUSH_ENGINE
+            - name: FIREBASE_TENANT
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: FIREBASE_TENANT
+            - name: LOG_LEVEL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: LOG_LEVEL
+            - name: FILE_UPLOAD_ACCEPT
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: FILE_UPLOAD_ACCEPT
             - name: CHAT21_URL
               valueFrom:
                   configMapKeyRef:

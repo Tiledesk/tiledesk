@@ -83,6 +83,13 @@ Add ```--recreate-pods``` option to the above command if you want to be sure all
 
 With the MQTT_ENDPOINT env variable we are setting an absolute secure (wss) websocket URL.
 
+
+Complete example with console.tiledesk.local domain and TLS:
+
+```console
+helm upgrade --recreate-pods -f ./helm/values.yaml my-tiledesk ./helm --set ingress.tls[0].secretName=tiledesk-tls-secret --set ingress.tls[0].hosts[0]=console.tiledesk.local --set MQTT_ENDPOINT=wss://console.tiledesk.local/mqws/ws --set EXTERNAL_BASE_URL=https://console.tiledesk.local --set ingress.hosts[0].enabled=false --set ingress.hosts[1].enabled=true --set ingress.hosts[1].host=console.tiledesk.local 
+```
+
 Please see [this example](https://github.com/kubernetes/contrib/tree/master/ingress/controllers/nginx/examples/tls) for more information.
 
 

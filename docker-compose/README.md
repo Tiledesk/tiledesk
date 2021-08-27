@@ -30,6 +30,9 @@ EXTERNAL_BASE_URL="http://localhost" EXTERNAL_MQTT_BASE_URL="ws://localhost" doc
 ```
 If you have a public ip specify it in the EXTERNAL_BASE_URL and EXTERNAL_MQTT_BASE_URL env parameters as follow:  ```EXTERNAL_BASE_URL="http://99.88.77.66" EXTERNAL_MQTT_BASE_URL="ws://99.88.77.66" docker-compose up```
 
+If you want to run the latest (unstable) version: ```EXTERNAL_BASE_URL="http://localhost" EXTERNAL_MQTT_BASE_URL="ws://localhost" docker-compose -f docker-compose-latest.yaml up```
+
+
 4. Open the following URL in your browser to start 
 * Dashboard: [http://<machine_ip>/](http://localhost/)
 
