@@ -8,10 +8,10 @@ services:
    container_name: tiledesk-dashboard 
    environment: 
       - FEATURES_TOKEN=NAT:T-DEV:T
-      - SERVER_BASE_URL=/api/
+      - SERVER_BASE_URL=http://localhost:3000/
       - CHAT_BASE_URL=/chat/
-      - WS_URL
-      - WS_URL_RELATIVE=/api/
+      - WS_URL=ws://localhost:3000/
+      - WS_URL_RELATIVE
       - "WIDGET_LOCATION=${EXTERNAL_BASE_URL}/widget/launch.js"
       - WIDGET_TEST_LOCATION=/widget/assets/twp/index.html
       - CHAT21_ENGINE=mqtt
@@ -26,7 +26,7 @@ services:
       - FIREBASE_APP_ID
       - FIREBASE_VAPID
       - LOG_LEVEL=info
-
+     
    ports:
       - "4500:80" #use expose if you want to block external access
 
@@ -52,11 +52,12 @@ services:
       - FIREBASE_MESSAGINGSENDERID
       - FIREBASE_TENANT=tilechat
       - UPLOAD_ENGINE=native
-      - "API_URL=${EXTERNAL_BASE_URL}/api/"
-      - "TRANSLATIONS_URL=${EXTERNAL_BASE_URL}/api/"
-      #- API_BASEIMAGE_URL=https://firebasestorage.googleapis.com/v0/b/    For firebase
-      - "API_BASEIMAGE_URL=${EXTERNAL_BASE_URL}/api/"
+      - "API_URL=http://localhost:3000/"
+      - "TRANSLATIONS_URL=http://localhost:3000/"
+      #- API_BASEIMAGE_URL=https://firebasestorage.googleapis.com/v0/b/
+      - "API_BASEIMAGE_URL=http://localhost:3000/"
       - AUTH_PERSISTENCE=LOCAL
+
   ionic:
    image: chat21/chat21-ionic:3.0.58
    container_name: chat21-ionic
@@ -64,8 +65,8 @@ services:
       - "8080:80" #use expose if you want to block external access   
    environment: 
       - DASHBOARD_URL=/dashboard/      
-      - API_BASEIMAGE_URL=/api/
-      - API_URL=/api/
+      - API_BASEIMAGE_URL=http://localhost:3000/
+      - API_URL=http://localhost:3000/
       - PUSH_ENGINE=none
       - LOG_LEVEL=info
       - FILE_UPLOAD_ACCEPT=*/*
@@ -97,7 +98,7 @@ services:
     command: [nginx-debug, '-g', 'daemon off;']
     
   server:
-    image: tiledesk/tiledesk-server:2.2.0
+    image: tiledesk/tiledesk-server:2.2.1
     container_name: tiledesk-server
     restart: always       
     environment: 
@@ -118,14 +119,14 @@ services:
       - EMAIL_PASSWORD
       - EMAIL_FROM_ADDRESS
       - "EMAIL_BASEURL=${EXTERNAL_BASE_URL}/dashboard"
-      - "WEBHOOK_ORIGIN=${EXTERNAL_BASE_URL}/api/"
+      - "WEBHOOK_ORIGIN=http://localhost:3000/"
       - "WIDGET_LOCATION=${EXTERNAL_BASE_URL}/widget/launch.js"
       - "WIDGET_TEST_LOCATION=${EXTERNAL_BASE_URL}/widget/assets/test_widget_page/index.html"
       - WS_SERVER_PATH      
     depends_on:
       - mongo
     ports:
-      - "3000:3000"
+      - "4000:4000"
 
   chat21httpserver:
     image: chat21/chat21-http-server:0.1.39
@@ -152,7 +153,7 @@ services:
       - LOG_LEVEL=info
       - MONGODB_URI=mongodb://mongo/chat21
       - APP_ID=tilechat
-      - WEBHOOK_ENDPOINT=http://server:3000/chat21/requests
+      - WEBHOOK_ENDPOINT=http://192.168.1.232:3000/chat21/requests
       - WEBHOOK_ENABLED=true
       - WEBHOOK_EVENTS=message-sent
       - RABBITMQ_URI=amqp://ignored:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIyMDI2NjU0Ni05ZGMxLTQ3MzgtOWE5OC01OTQwYWFmZWJkMjgiLCJzdWIiOiIwMS1PQlNFUlZFUiIsInNjb3BlIjpbInJhYmJpdG1xLnJlYWQ6Ki8qLyoiLCJyYWJiaXRtcS53cml0ZToqLyovKiIsInJhYmJpdG1xLmNvbmZpZ3VyZToqLyovKiJdLCJjbGllbnRfaWQiOiIwMS1PQlNFUlZFUiIsImNpZCI6IjAxLU9CU0VSVkVSIiwiYXpwIjoiMDEtT0JTRVJWRVIiLCJ1c2VyX2lkIjoiMDEtT0JTRVJWRVIiLCJhcHBfaWQiOiJ0aWxlY2hhdCIsImlhdCI6MTU5Mzg1OTgzNiwiZXhwIjoxNjk2NDUxODM2LCJhdWQiOlsicmFiYml0bXEiLCIwMS1PQlNFUlZFUiJdLCJraWQiOiJ0aWxlZGVzay1rZXkiLCJ0aWxlZGVza19hcGlfcm9sZXMiOiJ1c2VyIn0.N6bs-WXVZJTNW2jztzph4SYc9_Szs0cb0kBM9n0k8hY@rabbitmq:5672?heartbeat=60

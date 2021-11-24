@@ -24,6 +24,8 @@ services:
       - FIREBASE_STORAGEBUCKET
       - FIREBASE_MESSAGINGSENDERID
       - FIREBASE_APP_ID
+      - FIREBASE_VAPID
+      - LOG_LEVEL=info
      
    ports:
       - "4500:80" #use expose if you want to block external access
@@ -54,6 +56,7 @@ services:
       - "TRANSLATIONS_URL=${EXTERNAL_BASE_URL}/api/"
       #- API_BASEIMAGE_URL=https://firebasestorage.googleapis.com/v0/b/
       - "API_BASEIMAGE_URL=${EXTERNAL_BASE_URL}/api/"
+      - AUTH_PERSISTENCE=LOCAL
 
   ionic:
    image: chat21/chat21-ionic:latest
@@ -80,6 +83,7 @@ services:
       - FIREBASE_STORAGEBUCKET
       - FIREBASE_MESSAGINGSENDERID
       - FIREBASE_TENANT=tilechat
+      - FIREBASE_VAPID 
   proxy:
     image: tiledesk/tiledesk-docker-proxy
     container_name: tiledesk-docker-proxy   
@@ -99,7 +103,6 @@ services:
     restart: always       
     environment: 
       - LOG_LEVEL=verbose
-      #- LOG_LEVEL=debug
       - CHAT21_ENABLED=true
       - CHAT21_ENGINE=mqtt
       - CHAT21_URL=http://chat21httpserver:8004
@@ -178,7 +181,6 @@ services:
   mongo:
     container_name: mongo
     image: mongo:4.0.23
-    #image: mongo
     command: --bind_ip_all
     volumes:
       - tiledesk-datadb:/data/db    
