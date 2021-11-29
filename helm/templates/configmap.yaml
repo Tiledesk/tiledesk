@@ -26,6 +26,7 @@ data:
   FIREBASE_STORAGEBUCKET: {{ .Values.FIREBASE_STORAGEBUCKET | quote }}
   FIREBASE_MESSAGINGSENDERID: {{ .Values.FIREBASE_MESSAGINGSENDERID | quote }}
   FIREBASE_APP_ID: {{ .Values.FIREBASE_APP_ID | quote }}
+  FIREBASE_VAPID: {{ .Values.FIREBASE_VAPID | quote }}
 
   API_URL: {{if and .Values.EXTERNAL_BASE_URL (hasPrefix "/" .Values.API_URL)}}"{{ .Values.EXTERNAL_BASE_URL  }}{{ .Values.API_URL }}"{{ else }}{{ .Values.API_URL | quote }}{{ end }}
   UPLOAD_ENGINE: {{ .Values.UPLOAD_ENGINE | quote }}
@@ -54,6 +55,8 @@ data:
 
   DASHBOARD_URL: {{ .Values.DASHBOARD_URL | quote }}
 
+  AUTH_PERSISTENCE: {{ .Values.AUTH_PERSISTENCE | quote }}
+  
   EMAIL_ENABLED: {{ .Values.EMAIL_ENABLED | quote }}
   EMAIL_HOST: {{ .Values.EMAIL_HOST | quote }}
   EMAIL_USERNAME: {{ .Values.EMAIL_USERNAME | quote }}

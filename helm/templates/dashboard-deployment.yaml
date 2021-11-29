@@ -115,6 +115,16 @@ spec:
                   configMapKeyRef:
                     name: {{ include "tiledesk.fullname" . }}-config
                     key: FIREBASE_APP_ID
+            - name: FIREBASE_VAPID
+              valueFrom:
+                  configMapKeyRef:
+                    name: {{ include "tiledesk.fullname" . }}-config
+                    key: FIREBASE_VAPID
+            - name: LOG_LEVEL
+              valueFrom:
+                  configMapKeyRef:
+                    name: {{ include "tiledesk.fullname" . }}-config
+                    key: LOG_LEVEL
           ports:
             - name: dashboard-http
               containerPort: 80

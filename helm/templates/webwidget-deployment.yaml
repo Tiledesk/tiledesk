@@ -125,6 +125,11 @@ spec:
                   configMapKeyRef:
                     name: {{ include "tiledesk.fullname" . }}-config
                     key: FIREBASE_MESSAGINGSENDERID
+            - name: AUTH_PERSISTENCE
+              valueFrom:
+                  configMapKeyRef:
+                    name: {{ include "tiledesk.fullname" . }}-config
+                    key: AUTH_PERSISTENCE                    
           ports:
             - name: webwidget-http
               containerPort: 80
