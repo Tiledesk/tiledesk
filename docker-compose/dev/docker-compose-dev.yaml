@@ -59,7 +59,7 @@ services:
       - AUTH_PERSISTENCE=LOCAL
 
   ionic:
-   image: chat21/chat21-ionic:3.0.58
+   image: chat21/chat21-ionic:3.0.58.1
    container_name: chat21-ionic
    ports:
       - "8080:80" #use expose if you want to block external access   
