@@ -6,9 +6,6 @@ The Tiledesk Community Docker Compose file is beta and contains the latest work-
 
 Our tests are executed using the latest version of Docker and Docker Compose provided by CircleCI.
 
-<a href="https://labs.play-with-docker.com/?stack=https://raw.githubusercontent.com/Tiledesk/tiledesk-deployment/master/docker-compose/dev/docker-compose.yml" class="btn btn-default btn-lg">
-  <img src="https://cdn.jsdelivr.net/gh/play-with-docker/stacks@cff22438/assets/images/button.png">
-</a>
       
 ## Prerequisites
 
