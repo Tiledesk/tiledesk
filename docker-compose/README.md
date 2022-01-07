@@ -5,7 +5,6 @@ Use this information to quickly start up Tiledesk Community using Docker Compose
 The Tiledesk Community Docker Compose file is beta and contains the latest work-in-progress deployment scripts and installs the latest development version of Tiledesk.
 
 Our tests are executed using the latest version of Docker and Docker Compose provided by CircleCI.
-
       
 ## Prerequisites
 
@@ -72,6 +71,12 @@ To delete also the volumes run:
 ```bash
 docker-compose down -v
 ```
+# Try online with Play With Docker
+
+<a href="https://labs.play-with-docker.com/?stack=https://raw.githubusercontent.com/Tiledesk/tiledesk-deployment/master/docker-compose/dev/docker-compose.yml" class="btn btn-default btn-lg">
+  <img src="https://cdn.jsdelivr.net/gh/play-with-docker/stacks@cff22438/assets/images/button.png">
+</a>
+
 # Service Endpoints
 
 | Service                                                                    | URL                         | Component             |
