@@ -16,10 +16,10 @@ To deploy Tiledesk Community using _docker-compose_, you'll need to install the 
 | Docker Compose | https://docs.docker.com/compose/install/ |
 
 ## Deploying Tiledesk Community
-1. Download the [docker-compose](./docker-compose.yaml) file running: 
+1. Download the [docker-compose](./docker-compose.yml) file running: 
 
 ```bash
-curl https://raw.githubusercontent.com/Tiledesk/tiledesk-deployment/master/docker-compose/docker-compose.yaml --output docker-compose.yml
+curl https://raw.githubusercontent.com/Tiledesk/tiledesk-deployment/master/docker-compose/docker-compose.yml --output docker-compose.yml
 ```
 
 2. Navigate to the folder where the _docker-compose.yml_ file is located.
@@ -30,7 +30,7 @@ EXTERNAL_BASE_URL="http://localhost:8081" EXTERNAL_MQTT_BASE_URL="ws://localhost
 ```
 If you have a public ip specify it in the EXTERNAL_BASE_URL and EXTERNAL_MQTT_BASE_URL env parameters as follow:  ```EXTERNAL_BASE_URL="http://99.88.77.66:8081" EXTERNAL_MQTT_BASE_URL="ws://99.88.77.66:8081" docker-compose up```
 
-If you want to run the latest (unstable) version: ```EXTERNAL_BASE_URL="http://localhost:8081" EXTERNAL_MQTT_BASE_URL="ws://localhost:8081" docker-compose -f docker-compose-latest.yaml up```
+If you want to run the latest (unstable) version: ```EXTERNAL_BASE_URL="http://localhost:8081" EXTERNAL_MQTT_BASE_URL="ws://localhost:8081" docker-compose -f docker-compose-latest.yml up```
 
 
 4. Open the following URL in your browser to start 
