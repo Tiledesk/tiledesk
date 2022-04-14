@@ -59,7 +59,7 @@ services:
       - AUTH_PERSISTENCE=LOCAL
 
   ionic:
-   image: chat21/chat21-ionic:latest
+   image: chat21/chat21-ionic
    container_name: chat21-ionic
    ports:
       - "8082:80" #use expose if you want to block external access   
@@ -83,7 +83,10 @@ services:
       - FIREBASE_STORAGEBUCKET
       - FIREBASE_MESSAGINGSENDERID
       - FIREBASE_TENANT=tilechat
-      - FIREBASE_VAPID 
+      - FIREBASE_VAPID
+      - SUPPORT_MODE=true
+      - WRITE_TO_BUTTON=true
+      - ARCHIVED_BUTTON=true
   proxy:
     image: tiledesk/tiledesk-docker-proxy
     container_name: tiledesk-docker-proxy   
@@ -98,7 +101,7 @@ services:
     command: [nginx-debug, '-g', 'daemon off;']
     
   server:
-    image: tiledesk/tiledesk-server
+    image: tiledesk/tiledesk-server:latest
     container_name: tiledesk-server
     restart: always       
     environment: 
@@ -122,7 +125,7 @@ services:
       - "WEBHOOK_ORIGIN=${EXTERNAL_BASE_URL}/api/"
       - "WIDGET_LOCATION=${EXTERNAL_BASE_URL}/widget/launch.js"
       - "WIDGET_TEST_LOCATION=${EXTERNAL_BASE_URL}/widget/assets/test_widget_page/index.html"
-      - WS_SERVER_PATH      
+      - WS_SERVER_PATH
       - LICENSE_KEY
     depends_on:
       - mongo
@@ -130,7 +133,7 @@ services:
       - "3000:3000"
 
   chat21httpserver:
-    image: chat21/chat21-http-server
+    image: chat21/chat21-http-server:latest
     container_name: chat21httpserver
     restart: always    
     environment: 
@@ -154,7 +157,7 @@ services:
       - "8004:8004"
 
   chat21server:
-    image: chat21/chat21-server
+    image: chat21/chat21-server:latest
     container_name: chat21server
     restart: always
     environment: 
@@ -171,7 +174,7 @@ services:
       - rabbitmq
       - server 
   rabbitmq:
-    image: chat21/chat21-rabbitmq
+    image: chat21/chat21-rabbitmq:latest
     container_name: rabbitmq
     environment:
         RABBITMQ_ERLANG_COOKIE: ${RABBITMQ_ERLANG_COOKIE}

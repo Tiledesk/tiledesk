@@ -83,6 +83,9 @@ services:
       - FIREBASE_MESSAGINGSENDERID
       - FIREBASE_TENANT=tilechat
       - FIREBASE_VAPID
+      - SUPPORT_MODE=true
+      - WRITE_TO_BUTTON=true
+      - ARCHIVED_BUTTON=true
   proxy:
     image: tiledesk/tiledesk-docker-proxy:v1.1.0
     container_name: tiledesk-docker-proxy   

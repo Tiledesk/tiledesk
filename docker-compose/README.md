@@ -138,6 +138,14 @@ docker-compose down -v
 </a>
 
 
+# Run latest releases
+
+Run the latest Tiledesk releases with:
+
+```bash
+EXTERNAL_BASE_URL="http://localhost:8081" EXTERNAL_MQTT_BASE_URL="ws://localhost:8081" docker-compose -f docker-compose-latest.yml up
+```
+
 # Service Endpoints
 
 | Service                                                                    | URL                              | Component             |
