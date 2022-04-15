@@ -138,9 +138,9 @@ docker-compose down -v
 </a>
 
 
-# Run latest releases
+# Run the last nightly build release
 
-Run the latest Tiledesk releases with:
+Run the last nightly build Tiledesk release with:
 
 ```bash
 EXTERNAL_BASE_URL="http://localhost:8081" EXTERNAL_MQTT_BASE_URL="ws://localhost:8081" docker-compose -f docker-compose-latest.yml up
