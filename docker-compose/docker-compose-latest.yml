@@ -87,6 +87,9 @@ services:
       - SUPPORT_MODE=true
       - WRITE_TO_BUTTON=true
       - ARCHIVED_BUTTON=true
+      - AUTH_PERSISTENCE=LOCAL
+      - WS_URL_RELATIVE=/ws/
+
   proxy:
     image: tiledesk/tiledesk-docker-proxy
     container_name: tiledesk-docker-proxy   
