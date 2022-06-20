@@ -3,7 +3,7 @@ entries:
   tiledesk:
   - apiVersion: v2
     appVersion: 2.2.0
-    created: "2022-06-20T19:06:21.688538+02:00"
+    created: "2022-06-20T19:09:30.899399+02:00"
     dependencies:
     - condition: mongodb.enabled
       name: mongodb
@@ -26,6 +26,6 @@ entries:
     - https://github.com/tiledesk/tiledesk-deployment
     type: application
     urls:
-    - https://tiledesk.github.io/tiledesk-deployment/tiledesk-0.3.0.tgz
+    - https://tiledesk.github.io/tiledesk-deployment/helm/releases/tiledesk-0.3.0.tgz
     version: 0.3.0
-generated: "2022-06-20T19:06:21.675802+02:00"
+generated: "2022-06-20T19:09:30.88798+02:00"
