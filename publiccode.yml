@@ -97,6 +97,9 @@ localisation:
     - de
     - ru
     - tr
+    - ar
+    - hr
+    - sr
   localisationReady: true
 maintenance:
   contacts:
