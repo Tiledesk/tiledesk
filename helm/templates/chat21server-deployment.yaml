@@ -3,23 +3,23 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ include "tiledesk.fullname" . }}-c21srv
-  labels:
-    {{- include "tiledesk.labels" . | nindent 4 }}
+  labels: {{ include "tiledesk.labels" . | nindent 4 }}
+    app.kubernetes.io/component: c21srv
 spec:
 {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
 {{- end }}
   selector:
-    matchLabels:
-      {{- include "tiledesk.selectorLabels" . | nindent 6 }}
+    matchLabels: {{ include "tiledesk.selectorLabels" . | nindent 6 }}
+      app.kubernetes.io/component: c21srv
   template:
     metadata:
     {{- with .Values.podAnnotations }}
       annotations:
         {{- toYaml . | nindent 8 }}
     {{- end }}
-      labels:
-        {{- include "tiledesk.selectorLabels" . | nindent 8 }}
+      labels: {{ include "tiledesk.selectorLabels" . | nindent 8 }}
+        app.kubernetes.io/component: c21srv
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
@@ -40,11 +40,11 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: CHAT21_APPID 
-            - name: WEBHOOK_ENDPOINT
+            - name: WEBHOOK_ENDPOINTS
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
-                  key: WEBHOOK_ENDPOINT 
+                  key: WEBHOOK_ENDPOINTS
             - name: WEBHOOK_ENABLED
               valueFrom:
                 configMapKeyRef:

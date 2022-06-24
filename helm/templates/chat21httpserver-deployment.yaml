@@ -3,23 +3,23 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ include "tiledesk.fullname" . }}-c21httpsrv
-  labels:
-    {{- include "tiledesk.labels" . | nindent 4 }}
+  labels: {{ include "tiledesk.labels" . | nindent 4 }}
+    app.kubernetes.io/component: c21httpsrv
 spec:
 {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
 {{- end }}
   selector:
-    matchLabels:
-      {{- include "tiledesk.selectorLabels" . | nindent 6 }}
+    matchLabels: {{ include "tiledesk.selectorLabels" . | nindent 6 }}
+      app.kubernetes.io/component: c21httpsrv
   template:
     metadata:
     {{- with .Values.podAnnotations }}
       annotations:
         {{- toYaml . | nindent 8 }}
     {{- end }}
-      labels:
-        {{- include "tiledesk.selectorLabels" . | nindent 8 }}
+      labels: {{ include "tiledesk.selectorLabels" . | nindent 8 }}
+        app.kubernetes.io/component: c21httpsrv
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
@@ -49,7 +49,52 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
-                  key: CHAT21_HTTPSRV_RABBITMQ_URI                                                                   
+                  key: CHAT21_HTTPSRV_RABBITMQ_URI       
+            - name: FIREBASE_PRIVATE_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}
+                  key: firebase-privatekey
+            - name: FIREBASE_CLIENT_EMAIL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: FIREBASE_CLIENT_EMAIL
+            - name: FIREBASE_PROJECT_ID
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: FIREBASE_PROJECT_ID      
+            - name: FIREBASE_APIKEY
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: FIREBASE_APIKEY
+            - name: PUSH_ENABLED
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: PUSH_ENABLED
+            - name: PUSH_WH_CHAT21_API_ADMIN_TOKEN
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: PUSH_WH_CHAT21_API_ADMIN_TOKEN
+            - name: PUSH_WH_NOTIFY_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: PUSH_WH_NOTIFY_URL              
+            - name: PUSH_WH_WEBHOOK_TOKEN
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: PUSH_WH_WEBHOOK_TOKEN
+            - name: WEB_CLICK_ACTION
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: WEB_CLICK_ACTION                                                                                          
           ports:
             - name: c21httpsrv-http
               containerPort: 8004

@@ -3,23 +3,23 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ include "tiledesk.fullname" . }}-server
-  labels:
-    {{- include "tiledesk.labels" . | nindent 4 }}
+  labels: {{ include "tiledesk.labels" . | nindent 4 }}
+    app.kubernetes.io/component: server
 spec:
 {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
 {{- end }}
   selector:
-    matchLabels:
-      {{- include "tiledesk.selectorLabels" . | nindent 6 }}
+    matchLabels: {{ include "tiledesk.selectorLabels" . | nindent 6 }}
+      app.kubernetes.io/component: server
   template:
     metadata:
     {{- with .Values.podAnnotations }}
       annotations:
         {{- toYaml . | nindent 8 }}
     {{- end }}
-      labels:
-        {{- include "tiledesk.selectorLabels" . | nindent 8 }}
+      labels: {{ include "tiledesk.selectorLabels" . | nindent 8 }}
+        app.kubernetes.io/component: server
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
@@ -155,6 +155,11 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: WEBHOOK_ORIGIN
+            - name: SYNC_CHAT21_GROUPS
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: SYNC_CHAT21_GROUPS                  
             - name: LICENSE_KEY
               valueFrom:
                 secretKeyRef:

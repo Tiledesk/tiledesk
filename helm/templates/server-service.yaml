@@ -3,8 +3,8 @@ apiVersion: v1
 kind: Service
 metadata:
   name: {{ include "tiledesk.fullname" . }}-server
-  labels:
-    {{- include "tiledesk.labels" . | nindent 4 }}
+  labels: {{ include "tiledesk.labels" . | nindent 4 }}
+    app.kubernetes.io/component: server
 spec:
   type: {{ .Values.server.service.type }}
   ports:
@@ -12,6 +12,6 @@ spec:
       targetPort: server-http
       protocol: TCP
       name: server-http
-  selector:
-    {{- include "tiledesk.selectorLabels" . | nindent 4 }}
+  selector: {{ include "tiledesk.selectorLabels" . | nindent 4 }}
+    app.kubernetes.io/component: server
 {{- end -}}

@@ -89,6 +89,19 @@ data:
   WEBHOOK_ENABLED: {{ .Values.WEBHOOK_ENABLED | quote }}
   WEBHOOK_ORIGIN: {{ .Values.WEBHOOK_ORIGIN | quote }}
   WEBHOOK_EVENTS: {{ .Values.WEBHOOK_EVENTS | quote }}
-  WEBHOOK_ENDPOINT: http://{{ include "tiledesk.fullname" . }}-server/chat21/requests
+  WEBHOOK_ENDPOINTS: http://{{ include "tiledesk.fullname" . }}-server/chat21/requests,http://{{ include "tiledesk.fullname" . }}-c21httpsrv/api/tilechat/push/webhook/endpoint/WHFyAhecCMkYsvldLFWbSrJt7lAZFAmrp7O5QVMvGQsLVn9SkfT
   
-   
+  
+  
+  SUPPORT_MODE: {{ .Values.SUPPORT_MODE | quote }}
+  WRITE_TO_BUTTON: {{ .Values.WRITE_TO_BUTTON | quote }}
+  ARCHIVED_BUTTON: {{ .Values.ARCHIVED_BUTTON | quote }}
+  AUTH_PERSISTENCE: {{ .Values.AUTH_PERSISTENCE | quote }}
+
+  PUSH_ENABLED: {{ .Values.PUSH_ENABLED | quote }}
+  PUSH_WH_WEBHOOK_TOKEN: {{ .Values.PUSH_WH_WEBHOOK_TOKEN | quote }}
+  PUSH_WH_NOTIFY_URL: {{ .Values.PUSH_WH_NOTIFY_URL | quote }}
+  PUSH_WH_CHAT21_API_ADMIN_TOKEN: {{ .Values.PUSH_WH_CHAT21_API_ADMIN_TOKEN | quote }}
+  WEB_CLICK_ACTION: {{ .Values.WEB_CLICK_ACTION | quote }}
+  
+  SYNC_CHAT21_GROUPS: {{ .Values.SYNC_CHAT21_GROUPS | quote }}

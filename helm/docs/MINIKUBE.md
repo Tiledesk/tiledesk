@@ -60,5 +60,5 @@ kubectl get svc my-tiledesk-c21httpsrv -o wide
 
 ## Increase disk space
 ```console
-minikube config set disk-size 8000
+minikube config set disk-size 20000
 ```

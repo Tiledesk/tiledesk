@@ -135,6 +135,31 @@ spec:
                   configMapKeyRef:
                     name: {{ include "tiledesk.fullname" . }}-config
                     key: FIREBASE_APP_ID
+            - name: WS_URL_RELATIVE
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: WS_URL_RELATIVE
+            - name: WRITE_TO_BUTTON
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: WRITE_TO_BUTTON
+            - name: ARCHIVED_BUTTON
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: ARCHIVED_BUTTON   
+            - name: AUTH_PERSISTENCE
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: AUTH_PERSISTENCE       
+            - name: SUPPORT_MODE
+              valueFrom:
+                  configMapKeyRef:
+                    name: {{ include "tiledesk.fullname" . }}-config
+                    key: SUPPORT_MODE                    
           ports:
             - name: ionic-http
               containerPort: 80
