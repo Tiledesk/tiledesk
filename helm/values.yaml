@@ -95,6 +95,20 @@ EMAIL_PORT: 587
 EMAIL_PASSWORD: CHANGEIT
 EMAIL_BASEURL: http://console.tiledesk.local/dashboard
 
+EMAIL_FROM_ADDRESS: CHANGEIT
+#EMAIL_BCC:
+#EMAIL_ASSIGN_REQUEST_HTML_TEMPLATE: 
+#EMAIL_ASSIGN_MESSAGE_EMAIL_HTML_TEMPLATE:
+#EMAIL_POOLED_REQUEST_HTML_TEMPLATE:
+#EMAIL_POOLED_MESSAGE_EMAIL_HTML_TEMPLATE:
+#EMAIL_NEW_MESSAGE_HTML_TEMPLATE:
+#EMAIL_TICKET_HTML_TEMPLATE:
+#EMAIL_RESET_PASSWORD_HTML_TEMPLATE:
+#EMAIL_PASSWORD_CHANGED_HTML_TEMPLATE:
+#EMAIL_NEWUSER_INVITED_HTML_TEMPLATE:
+#EMAIL_VERIFY_HTML_TEMPLATE:
+#EMAIL_SEND_TRANSCRIPT_HTML_TEMPLATE:
+
 # Log Config
 LOG_LEVEL: info
 MONGODB_LOGS_URI: CHANGEIT
@@ -135,7 +149,7 @@ server:
     tag: 2.2.35
 
   service:
-    type: LoadBalancer
+    type: ClusterIP
     port: 80
 
 dashboard:
@@ -172,7 +186,7 @@ webwidget:
 
   image:
     repository: chat21/chat21-web-widget
-    tag: 5.0.23
+    tag: 5.0.25
 
   service:
       type: ClusterIP
@@ -232,7 +246,7 @@ securityContext: {}
   # runAsUser: 1000
 
 
-service: #do not remove ??????
+service: #do not remove ??????---remove it
   type: LoadBalancer
   port: 80
 
@@ -349,6 +363,7 @@ mongodb:
   ##
   persistence:
     enabled: true
+    resourcePolicy: "keep"
     size: 3Gi
 
 rabbitmq:
