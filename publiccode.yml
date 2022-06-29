@@ -68,9 +68,9 @@ description:
       Tiledesk is an **open source **project, made with passion in Salento
       (Southern Italy).
     shortDescription: |-
-      Tiledesk è la piattaforma AI * Umani, open source, disegnata per la 
-      Pubblica Amministrazione, per connettere cittadini e servizi pubblici 
-      nell’era dell’instant messaging e dell’Intelligenza Artificiale
+      Tiledesk è la piattaforma Chatbot e Umani open source che connette 
+      cittadini e PA nell’era dell’instant messaging e dell’Intelligenza 
+      Artificiale
 developmentStatus: stable
 it:
   conforme:
@@ -100,6 +100,7 @@ localisation:
     - ar
     - hr
     - sr
+    - uk
   localisationReady: true
 maintenance:
   contacts:
