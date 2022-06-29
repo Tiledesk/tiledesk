@@ -1,9 +1,12 @@
-
 {{- if .Values.ingress.enabled -}}
 {{- $fullName := include "tiledesk.fullname" . -}}
 {{- $svcPort := .Values.service.port -}}
-{{- if semverCompare ">=1.19-0" .Capabilities.KubeVersion.GitVersion -}}
-apiVersion: networking.k8s.io/v1
+{{- if semverCompare "<1.19-0" .Capabilities.KubeVersion.GitVersion -}}
+{{- if semverCompare ">1.14-0" .Capabilities.KubeVersion.GitVersion -}}
+apiVersion: networking.k8s.io/v1beta1
+{{- else -}}
+apiVersion: extensions/v1beta1
+{{- end }}
 kind: Ingress
 metadata:
   name: {{ $fullName }}-proxy-nginx
@@ -11,10 +14,10 @@ metadata:
     {{- include "tiledesk.labels" . | nindent 4 }}
   {{- with .Values.ingress.annotations }}
   annotations:
+    kubernetes.io/ingress.class: nginx
     {{- toYaml . | nindent 4 }}
   {{- end }}
-spec:
-  ingressClassName: nginx
+spec:  
   {{- if .Values.ingress.tls }}
   tls:
     {{- range .Values.ingress.tls }}
@@ -33,13 +36,14 @@ spec:
       http:
         paths:
           {{- range .paths }}
-          - path: {{ .path }}
-            pathType: Prefix          
-            backend:
-              service:
-                name: {{ $fullName }}-{{ .service }}
-                port:
-                  number: {{- if .servicePort }} {{ .servicePort }}{{- else }} {{ $svcPort }}{{- end }}                       
+          - path: {{ .path }}            
+            backend:              
+              serviceName: {{ $fullName }}-{{ .service }}
+              {{- if .servicePort }}
+              servicePort: {{ .servicePort }}
+              {{- else }}
+              servicePort: {{ $svcPort }}
+              {{- end }}                     
           {{- end }}
     {{- end }}
 
