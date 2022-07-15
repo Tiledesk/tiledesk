@@ -15,7 +15,7 @@ spec:
   template:
     metadata:
     {{- with .Values.podAnnotations }}
-      annotations:
+      annotations:       
         {{- toYaml . | nindent 8 }}
     {{- end }}
       labels: {{ include "tiledesk.selectorLabels" . | nindent 8 }}
@@ -125,6 +125,11 @@ spec:
                   configMapKeyRef:
                     name: {{ include "tiledesk.fullname" . }}-config
                     key: LOG_LEVEL
+            - name: RASA_BOT_CREDENTIAL_URL
+              valueFrom:
+                  configMapKeyRef:
+                    name: {{ include "tiledesk.fullname" . }}-config
+                    key: RASA_BOT_CREDENTIAL_URL                    
           ports:
             - name: dashboard-http
               containerPort: 80

@@ -119,3 +119,5 @@ data:
   WEB_CLICK_ACTION: {{ .Values.WEB_CLICK_ACTION | quote }}
   
   SYNC_CHAT21_GROUPS: {{ .Values.SYNC_CHAT21_GROUPS | quote }}
+
+  RASA_BOT_CREDENTIAL_URL: {{ .Values.RASA_BOT_CREDENTIAL_URL | quote }}
