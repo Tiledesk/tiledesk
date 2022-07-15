@@ -4,7 +4,7 @@ volumes:
    tiledesk-datadb:
 services:
   dashboard:
-   image: tiledesk/tiledesk-dashboard:2.2.35.1
+   image: tiledesk/tiledesk-dashboard:2.2.41.1
    container_name: tiledesk-dashboard 
    environment: 
       - FEATURES_TOKEN=NAT:T-DEV:T
@@ -31,7 +31,7 @@ services:
       - "4500:80" #use expose if you want to block external access
 
   webwidget:
-   image: chat21/chat21-web-widget:5.0.23
+   image: chat21/chat21-web-widget:5.0.26
    container_name: chat21-web-widget  
    ports: 
       - "4200:80" # specify port forewarding
@@ -58,7 +58,7 @@ services:
       - "API_BASEIMAGE_URL=${EXTERNAL_BASE_URL}/api/"
       - AUTH_PERSISTENCE=LOCAL
   ionic:
-   image: chat21/chat21-ionic:3.0.62.3
+   image: chat21/chat21-ionic:3.0.67
    container_name: chat21-ionic
    ports:
       - "8082:80" #use expose if you want to block external access   
@@ -102,7 +102,7 @@ services:
     command: [nginx-debug, '-g', 'daemon off;']
     
   server:
-    image: tiledesk/tiledesk-server:2.2.26
+    image: tiledesk/tiledesk-server:2.2.37
     container_name: tiledesk-server
     restart: always       
     environment: 
