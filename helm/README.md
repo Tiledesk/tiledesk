@@ -6,8 +6,6 @@
 
 This chart bootstraps a Tiledesk deployment on a [Kubernetes](http://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
-Attention. The default configuration of the values.yaml download the *latest* docker images of each Tiledesk components. If you are deploying in a production environment please change the docker tag of each components to a stable version.
-
 ## Prerequisites
 
 - Kubernetes 1.14+
@@ -35,23 +33,18 @@ We recommend a size at least 30 GiB for the database volume claim.
 
 N1-standard-1 type is the minimum cluster type if you choose GKE.
 
-## Download the project
-
-Clone the repository and go to the deployment directory with :
+## Adding repo
 
 ```console
-git clone https://github.com/Tiledesk/tiledesk-deployment.git
-cd tiledesk-deployment
+helm repo add tiledesk https://tiledesk.github.io/tiledesk-deployment/helm/releases
 ```
-
-Optional. See [Configure Tiledesk with Chat21 Firebase Engine](./docs/firebase-config.md) if you want to use the Chat21 Google Firebase chat engine instead the new Chat21 RabbitMQ + MQTT chat engine
 
 ## Installing the Chart
 
 To install the chart with the release name `my-tiledesk`:
 
 ```console
-helm install my-tiledesk helm
+helm install my-tiledesk tiledesk/tiledesk
 ```
 
 The command deploys Tiledesk on the Kubernetes cluster in the default namespace. 
