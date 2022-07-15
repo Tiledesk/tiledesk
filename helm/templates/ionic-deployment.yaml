@@ -34,12 +34,17 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.ionic.image.repository }}:{{ .Values.ionic.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.ionic.image.pullPolicy }}
-          env:                                 
+          env:      
             - name: API_URL
               valueFrom:
                   configMapKeyRef:
                     name: {{ include "tiledesk.fullname" . }}-config
                     key: API_URL
+            - name: FEATURES_TOKEN  
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: FEATURES_TOKEN
             - name: CHAT21_ENGINE
               valueFrom:
                   configMapKeyRef:
