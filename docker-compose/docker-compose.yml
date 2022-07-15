@@ -4,10 +4,10 @@ volumes:
    tiledesk-datadb:
 services:
   dashboard:
-   image: tiledesk/tiledesk-dashboard:2.2.41.1
+   image: tiledesk/tiledesk-dashboard:2.2.43.2
    container_name: tiledesk-dashboard 
    environment: 
-      - FEATURES_TOKEN=NAT:T-DEV:T
+      - FEATURES_TOKEN=NAT:T-DEV:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-LBS:T-NOT:T-MTT:T-RAS:T
       - SERVER_BASE_URL=/api/
       - CHAT_BASE_URL=/chat/
       - WS_URL
@@ -25,13 +25,14 @@ services:
       - FIREBASE_MESSAGINGSENDERID
       - FIREBASE_APP_ID
       - FIREBASE_VAPID
+      - RASA_BOT_CREDENTIAL_URL=/api/modules/rasa/botcredendials/
       - LOG_LEVEL=info
 
    ports:
       - "4500:80" #use expose if you want to block external access
 
   webwidget:
-   image: chat21/chat21-web-widget:5.0.26
+   image: chat21/chat21-web-widget:5.0.27
    container_name: chat21-web-widget  
    ports: 
       - "4200:80" # specify port forewarding
@@ -58,7 +59,7 @@ services:
       - "API_BASEIMAGE_URL=${EXTERNAL_BASE_URL}/api/"
       - AUTH_PERSISTENCE=LOCAL
   ionic:
-   image: chat21/chat21-ionic:3.0.67
+   image: chat21/chat21-ionic:3.0.69
    container_name: chat21-ionic
    ports:
       - "8082:80" #use expose if you want to block external access   
@@ -66,6 +67,7 @@ services:
       - DASHBOARD_URL=/dashboard/      
       - API_BASEIMAGE_URL=/api/
       - API_URL=/api/
+      - FEATURES_TOKEN=NAT:T-DEV:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-LBS:T-NOT:T-MTT:T-RAS:T
       - PUSH_ENGINE=none
       - LOG_LEVEL=info
       - FILE_UPLOAD_ACCEPT=*/*
@@ -102,7 +104,7 @@ services:
     command: [nginx-debug, '-g', 'daemon off;']
     
   server:
-    image: tiledesk/tiledesk-server:2.2.37
+    image: tiledesk/tiledesk-server:2.2.39
     container_name: tiledesk-server
     restart: always       
     environment: 
