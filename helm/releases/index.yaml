@@ -3,7 +3,34 @@ entries:
   tiledesk:
   - apiVersion: v2
     appVersion: 2.2.35
-    created: "2022-07-15T18:34:43.344887+02:00"
+    created: "2022-07-15T18:35:02.51667+02:00"
+    dependencies:
+    - condition: mongodb.enabled
+      name: mongodb
+      repository: https://charts.bitnami.com/bitnami
+      version: 12.x.x
+    - condition: rabbitmq.enabled
+      name: rabbitmq
+      repository: https://charts.bitnami.com/bitnami
+      version: 9.x.x
+    description: A Tiledesk Helm chart for Kubernetes
+    digest: f3d7e79af5b4d9bdccf3bd7516de12d8d921bad725d652cd0cc1c9813985988e
+    home: https://www.tiledesk.com
+    icon: https://avatars2.githubusercontent.com/u/39886277?s=200&v=4
+    keywords:
+    - live chat
+    - chatbot
+    - tiledesk
+    name: tiledesk
+    sources:
+    - https://github.com/tiledesk/tiledesk-deployment
+    type: application
+    urls:
+    - https://tiledesk.github.io/tiledesk-deployment/helm/releases/tiledesk-1.0.8.tgz
+    version: 1.0.8
+  - apiVersion: v2
+    appVersion: 2.2.35
+    created: "2022-07-15T18:35:02.504063+02:00"
     dependencies:
     - condition: mongodb.enabled
       name: mongodb
@@ -30,7 +57,7 @@ entries:
     version: 1.0.7
   - apiVersion: v2
     appVersion: 2.2.35
-    created: "2022-07-15T18:34:43.335173+02:00"
+    created: "2022-07-15T18:35:02.492176+02:00"
     dependencies:
     - condition: mongodb.enabled
       name: mongodb
@@ -57,7 +84,7 @@ entries:
     version: 1.0.6
   - apiVersion: v2
     appVersion: 2.2.35
-    created: "2022-07-15T18:34:43.322951+02:00"
+    created: "2022-07-15T18:35:02.481801+02:00"
     dependencies:
     - condition: mongodb.enabled
       name: mongodb
@@ -84,7 +111,7 @@ entries:
     version: 1.0.5
   - apiVersion: v2
     appVersion: 2.2.35
-    created: "2022-07-15T18:34:43.310304+02:00"
+    created: "2022-07-15T18:35:02.471261+02:00"
     dependencies:
     - condition: mongodb.enabled
       name: mongodb
@@ -111,7 +138,7 @@ entries:
     version: 1.0.4
   - apiVersion: v2
     appVersion: 2.2.35
-    created: "2022-07-15T18:34:43.298693+02:00"
+    created: "2022-07-15T18:35:02.460252+02:00"
     dependencies:
     - condition: mongodb.enabled
       name: mongodb
@@ -138,7 +165,7 @@ entries:
     version: 1.0.3
   - apiVersion: v2
     appVersion: 2.2.35
-    created: "2022-07-15T18:34:43.286246+02:00"
+    created: "2022-07-15T18:35:02.44912+02:00"
     dependencies:
     - condition: mongodb.enabled
       name: mongodb
@@ -165,7 +192,7 @@ entries:
     version: 1.0.2
   - apiVersion: v2
     appVersion: 2.2.35
-    created: "2022-07-15T18:34:43.265437+02:00"
+    created: "2022-07-15T18:35:02.430236+02:00"
     dependencies:
     - condition: mongodb.enabled
       name: mongodb
@@ -192,7 +219,7 @@ entries:
     version: 1.0.1
   - apiVersion: v2
     appVersion: 2.2.35
-    created: "2022-07-15T18:34:43.249208+02:00"
+    created: "2022-07-15T18:35:02.41535+02:00"
     dependencies:
     - condition: mongodb.enabled
       name: mongodb
@@ -219,7 +246,7 @@ entries:
     version: 1.0.0
   - apiVersion: v2
     appVersion: 2.2.0
-    created: "2022-07-15T18:34:43.233641+02:00"
+    created: "2022-07-15T18:35:02.40017+02:00"
     dependencies:
     - condition: mongodb.enabled
       name: mongodb
@@ -244,4 +271,4 @@ entries:
     urls:
     - https://tiledesk.github.io/tiledesk-deployment/helm/releases/tiledesk-0.3.0.tgz
     version: 0.3.0
-generated: "2022-07-15T18:34:43.224444+02:00"
+generated: "2022-07-15T18:35:02.392101+02:00"
