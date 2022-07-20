@@ -148,7 +148,7 @@ server:
 
   image:  
     repository: tiledesk/tiledesk-server
-    tag: 2.2.39
+    tag: 2.3.1
 
   service:
     type: ClusterIP
@@ -161,7 +161,7 @@ dashboard:
 
   image:
     repository: tiledesk/tiledesk-dashboard
-    tag: 2.2.43.2
+    tag: 2.2.43.3
 
   service:
     type: ClusterIP
@@ -188,7 +188,7 @@ webwidget:
 
   image:
     repository: chat21/chat21-web-widget
-    tag: 5.0.27
+    tag: 5.0.28
 
   service:
       type: ClusterIP
