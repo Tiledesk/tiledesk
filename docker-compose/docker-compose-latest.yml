@@ -7,7 +7,7 @@ services:
    image: tiledesk/tiledesk-dashboard
    container_name: tiledesk-dashboard 
    environment: 
-      - FEATURES_TOKEN=NAT:T-DEV:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-LBS:T-NOT:T-MTT:T-RAS:T
+      - FEATURES_TOKEN=NAT:T-DEV:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-LBS:T-NOT:T-MTT:T-RAS:T-ANA:T-ACT:T
       - SERVER_BASE_URL=/api/
       - CHAT_BASE_URL=/chat/
       - WS_URL
@@ -67,7 +67,7 @@ services:
       - DASHBOARD_URL=/dashboard/      
       - API_BASEIMAGE_URL=/api/
       - API_URL=/api/
-      - FEATURES_TOKEN=NAT:T-DEV:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-LBS:T-NOT:T-MTT:T-RAS:T
+      - FEATURES_TOKEN=NAT:T-DEV:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-LBS:T-NOT:T-MTT:T-RAS:T-ANA:T-ACT:T
       - PUSH_ENGINE=none
       - LOG_LEVEL=info
       - FILE_UPLOAD_ACCEPT=*/*
