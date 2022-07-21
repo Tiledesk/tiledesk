@@ -188,7 +188,7 @@ webwidget:
 
   image:
     repository: chat21/chat21-web-widget
-    tag: 5.0.28
+    tag: 5.0.27
 
   service:
       type: ClusterIP
