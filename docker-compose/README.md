@@ -26,7 +26,7 @@ curl https://raw.githubusercontent.com/Tiledesk/tiledesk-deployment/master/docke
 
 3. Run Tiledesk with:
 ```bash
-EXTERNAL_BASE_URL="http://localhost:8081" EXTERNAL_MQTT_BASE_URL="ws://localhost:8081" docker-compose up
+docker-compose up
 ```
 
 4. Open the following URL in your browser to start 
