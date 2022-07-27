@@ -42,7 +42,8 @@ into your infrastructure. You typically want to remove the MongoDB container and
 directly to your database. For the production environment we suggest you not to use the internal instance of K8s MongoDB but to use MongoAtlas or an external installation of MongoDB with Replica Set.
 Another typical change would be the integration of your company-wide monitoring and logging tools.
 
-
-
 # Enterprise version
 Tiledesk Enterprise customers can request enterprise credentials sending and email at: info@tiledesk.com. These credentials are required to pull private (Enterprise-only) Docker images.
+
+# Community? Questions? Support ?
+If you need help or just want to hang out, come, say hi on our [<img width="15" alt="Tiledesk discord" src="https://seeklogo.com/images/D/discord-color-logo-E5E6DFEF80-seeklogo.com.png"> Discord](https://discord.gg/nERZEZ7SmG) server or make a post on our [Forum](https://tiledesk.discourse.group)
