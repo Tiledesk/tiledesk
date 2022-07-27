@@ -45,14 +45,14 @@ docker-compose up
 Run the lastest nightly build Tiledesk release with:
 
 ```bash
-EXTERNAL_BASE_URL="http://localhost:8081" EXTERNAL_MQTT_BASE_URL="ws://localhost:8081" docker-compose -f docker-compose-latest.yml up
+docker-compose -f docker-compose-latest.yml up
 ```
 
 # Run in background
 To start Tiledesk in background run:
 
 ```bash
-EXTERNAL_BASE_URL="http://localhost:8081" EXTERNAL_MQTT_BASE_URL="ws://localhost:8081" docker-compose up -d
+docker-compose up -d
 ```
 If you want to see the log run:
 
