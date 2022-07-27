@@ -34,10 +34,10 @@ docker-compose up
 * Make sure that exposed ports are open on your host. Check the _docker-compose.yml_ file to determine the exposed ports - refer to the ```host:container``` port definitions. You'll see they include 3000, 4200, 4500, 8082, 8004, 8081 and 5672,15672,1883,15675 for rabbitmq and 27017 for mongodb. Use for example ```sudo lsof -i -P -n | grep LISTEN``` linux command to check the ports are unused when Tiledesk is stopped.
 
 # Run in background
-To start Tiledesk in background run: ```bash docker-compose up -d```. If you want to see the log run: ```bash docker-compose logs -t -f --tail 5```
+To start Tiledesk in background: ```docker-compose up -d```. If you want to see the log: ```docker-compose logs -t -f --tail 5```
 
 ## Run the lastest nightly build release
-Run the lastest nightly build Tiledesk release with: ```bash docker-compose -f docker-compose-latest.yml up```
+Run the lastest nightly build Tiledesk release with: ```docker-compose -f docker-compose-latest.yml up```
 
 
 
@@ -102,10 +102,10 @@ Your installation should be accessible from the https://mydomain.com now.
 
 
 # Update
-To update Tiledesk images to the latest version, run: ```bash docker-compose pull```
+To update Tiledesk images to the latest version, run: ```docker-compose pull```
 
 # Cleanup
-To bring the system down and cleanup the containers run the following command: ```bash docker-compose down```. To delete also the volumes run:  ```bash docker-compose down -v```
+To bring the system down and cleanup the containers run: ```docker-compose down```. To delete also the volumes :  ```docker-compose down -v```
 
 # Try online with Play With Docker
 
