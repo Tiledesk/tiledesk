@@ -16,16 +16,18 @@ To deploy Tiledesk Community using _docker-compose_, you'll need to install the 
 | Docker Compose | https://docs.docker.com/compose/install/ |
 
 ## Deploying Tiledesk Community
-1. Run Tiledesk with:
+1. Download Tiledesk with:
 ```bash
 curl https://raw.githubusercontent.com/Tiledesk/tiledesk-deployment/master/docker-compose/docker-compose.yml --output docker-compose.yml
+```
+2. Run with: 
+```bash
 docker-compose up
 ```
-
-2. Open the following URL in your browser to start 
+3. Open the following URL in your browser to start 
 * Dashboard: [http://<machine_ip>:8081/](http://localhost:8081/)
 
-3. Signin as admin with :
+4. Signin as admin with :
 * email: admin@tiledesk.com
 * password: adminadmin
 
