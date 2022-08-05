@@ -224,7 +224,12 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
-                  key: SYNC_CHAT21_GROUPS                  
+                  key: SYNC_CHAT21_GROUPS   
+            - name: CREATE_INITIAL_DATA
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: CREATE_INITIAL_DATA                                    
             - name: LICENSE_KEY
               valueFrom:
                 secretKeyRef:

@@ -121,3 +121,5 @@ data:
   SYNC_CHAT21_GROUPS: {{ .Values.SYNC_CHAT21_GROUPS | quote }}
 
   RASA_BOT_CREDENTIAL_URL: {{ .Values.RASA_BOT_CREDENTIAL_URL | quote }}
+  
+  CREATE_INITIAL_DATA: {{ .Values.CREATE_INITIAL_DATA | quote }}

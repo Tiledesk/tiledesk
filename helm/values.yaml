@@ -141,6 +141,8 @@ CHAT21_HTTPSRV_RABBITMQ_CREDENTIAL: ignored:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
 
 RASA_BOT_CREDENTIAL_URL: /api/modules/rasa/botcredendials/
 
+CREATE_INITIAL_DATA: true
+
 server:
   ## Enable deployment of Tiledesk Server
   ##
@@ -148,7 +150,7 @@ server:
 
   image:  
     repository: tiledesk/tiledesk-server
-    tag: 2.3.1
+    tag: 2.3.4
 
   service:
     type: ClusterIP
@@ -161,7 +163,7 @@ dashboard:
 
   image:
     repository: tiledesk/tiledesk-dashboard
-    tag: 2.2.43.3
+    tag: 2.2.46
 
   service:
     type: ClusterIP
@@ -174,7 +176,7 @@ ionic:
 
   image:
     repository: chat21/chat21-ionic
-    tag: 3.0.69
+    tag: 3.0.73
 
   service:
       type: ClusterIP
@@ -188,7 +190,7 @@ webwidget:
 
   image:
     repository: chat21/chat21-web-widget
-    tag: 5.0.27
+    tag: 5.0.33
 
   service:
       type: ClusterIP
@@ -216,7 +218,7 @@ c21srv:
 
   image:  
     repository: chat21/chat21-server
-    tag: 0.2.11
+    tag: 0.2.12
     # pullPolicy: IfNotPresent  
 
 imagePullSecrets: #[]

@@ -15,7 +15,7 @@ type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 1.0.10
+version: 1.0.11
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
@@ -37,12 +37,14 @@ icon: https://avatars2.githubusercontent.com/u/39886277?s=200&v=4
  #10.1.9-> 3.10.5
  #9.1.4 3.9.18
  #8.32.2 -> 3.9.16
+  # helm search repo rabbitmq --versions    
+  # 7.6.8 -> 3.8.5???
 dependencies:
     - name: mongodb
       version: 12.x.x
       repository: https://charts.bitnami.com/bitnami
       condition: mongodb.enabled
     - name: rabbitmq
-      version: 9.x.x
+      version: 7.6.8
       repository: https://charts.bitnami.com/bitnami
       condition: rabbitmq.enabled
