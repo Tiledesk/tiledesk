@@ -6,3 +6,4 @@ helm repo index --url https://tiledesk.github.io/tiledesk-deployment/helm/releas
 git add .
 git commit -m "helm package" 
 git push
+helm repo update

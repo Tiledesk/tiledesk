@@ -150,7 +150,7 @@ server:
 
   image:  
     repository: tiledesk/tiledesk-server
-    tag: 2.3.4
+    tag: 2.3.5
 
   service:
     type: ClusterIP
@@ -163,7 +163,7 @@ dashboard:
 
   image:
     repository: tiledesk/tiledesk-dashboard
-    tag: 2.2.46
+    tag: 2.2.47.1
 
   service:
     type: ClusterIP
@@ -218,7 +218,7 @@ c21srv:
 
   image:  
     repository: chat21/chat21-server
-    tag: 0.2.12
+    tag: 0.2.13
     # pullPolicy: IfNotPresent  
 
 imagePullSecrets: #[]
