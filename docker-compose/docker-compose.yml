@@ -104,7 +104,7 @@ services:
     command: [nginx-debug, '-g', 'daemon off;']
     
   server:
-    image: tiledesk/tiledesk-server:2.3.8
+    image: tiledesk/tiledesk-server:2.3.9
     container_name: tiledesk-server
     restart: always       
     environment: 
