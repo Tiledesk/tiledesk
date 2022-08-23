@@ -15,8 +15,9 @@ description:
     features:
       - live chat widget
       - chatbot
+      - adaptive multichannel technology with WhatsApp, FB Messenger and many other messaging channels 
       - 'integration with DialogFlow, Rasa and all major AI solutions'
-      - ticketing
+      - conversational ticketing
       - multi-project management
       - SLAs setting
       - 'smart assignment of the queues '
@@ -44,6 +45,9 @@ description:
 
       - Resolution Bot to automate customer support; 
 
+      - Adaptive multichannel technology to design conversational flow once, 
+      then run it on every channel, from Whatsapp Business to Company Website
+      
       - Easy Integration with all major AI-platforms, cloud and Open source,
       from DialogFlow to RASA; 
 
@@ -65,7 +69,7 @@ description:
 
            
 
-      Tiledesk is an **open source **project, made with passion in Salento
+      Tiledesk is an **open source** project, made with passion in Salento
       (Southern Italy).
     shortDescription: |-
       Tiledesk è la piattaforma Chatbot e Umani open source che connette 
@@ -98,9 +102,14 @@ localisation:
     - ru
     - tr
     - ar
-    - hr
     - sr
     - uk
+    - zh
+    - sv
+    - uz
+    - kk
+    - az
+    - he
   localisationReady: true
 maintenance:
   contacts:
