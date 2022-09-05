@@ -10,13 +10,17 @@ You can use Tiledesk to increase sales for your website or for post-sales custom
 
 Tiledesk is multichannel in a totally new way. You can write your chatbot scripts with images, buttons and other cool elements that your channels support. But you will configureyour chatbot replies only once. They will run on every channel, auto-adapting the responses to the target channel whatever it is, Whatsapp, Facebook Messenger, Telegram etc.
 
-# Tiledesk Installation
+# Install Tiledesk
 
 This project contains the code for starting the entire Tiledesk product with **Docker** or **Kubernetes**.
 
-The **master** branch of this repository will endeavour to support the following deployments:
-- [Docker Compose](./docker-compose/README.md) (latest): For development and trials
-- [Kubernetes with Helm](helm/README.md) (latest): For development, POCs and production
+## Development and trials
+
+[Docker Compose](./docker-compose/README.md) (latest): 
+
+## Development, POCs and production
+
+[Kubernetes with Helm](helm/README.md) (latest): 
 
 
 ## Contents of the deployment
