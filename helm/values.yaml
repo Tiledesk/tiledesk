@@ -143,6 +143,12 @@ RASA_BOT_CREDENTIAL_URL: /api/modules/rasa/botcredendials/
 
 CREATE_INITIAL_DATA: true
 
+CACHE_ENABLED: false
+CACHE_ENGINE: redis
+CACHE_REDIS_PORT: 6379
+CACHE_REDIS_HOST: my-tiledesk-redis-master
+#CACHE_REDIS_PASSWORD: EMPTY
+
 server:
   ## Enable deployment of Tiledesk Server
   ##
@@ -150,7 +156,7 @@ server:
 
   image:  
     repository: tiledesk/tiledesk-server
-    tag: 2.3.5
+    tag: 2.3.13
 
   service:
     type: ClusterIP
@@ -176,7 +182,7 @@ ionic:
 
   image:
     repository: chat21/chat21-ionic
-    tag: 3.0.73
+    tag: 3.0.75
 
   service:
       type: ClusterIP
@@ -190,7 +196,7 @@ webwidget:
 
   image:
     repository: chat21/chat21-web-widget
-    tag: 5.0.33
+    tag: 5.0.35
 
   service:
       type: ClusterIP
@@ -218,7 +224,7 @@ c21srv:
 
   image:  
     repository: chat21/chat21-server
-    tag: 0.2.13
+    tag: 0.2.17
     # pullPolicy: IfNotPresent  
 
 imagePullSecrets: #[]
@@ -345,6 +351,8 @@ ingress:
 #   # storageClass: "-"
 #   accessMode: ReadWriteOnce
 #   size: 8Gi
+
+
 
 ##
 ## MongoDB chart configuration

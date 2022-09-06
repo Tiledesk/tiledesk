@@ -123,3 +123,13 @@ data:
   RASA_BOT_CREDENTIAL_URL: {{ .Values.RASA_BOT_CREDENTIAL_URL | quote }}
   
   CREATE_INITIAL_DATA: {{ .Values.CREATE_INITIAL_DATA | quote }}
+
+
+  CREATE_INITIAL_DATA: {{ .Values.CREATE_INITIAL_DATA | quote }}
+
+
+  CACHE_ENABLED: {{ .Values.CACHE_ENABLED | quote }}
+  CACHE_ENGINE: {{ .Values.CACHE_ENGINE | quote }}
+  CACHE_REDIS_PORT: {{ .Values.CACHE_REDIS_PORT | quote }}
+  CACHE_REDIS_HOST: {{ .Values.CACHE_REDIS_HOST | quote }}
+  # CACHE_REDIS_PASSWORD: {{ .Values.CACHE_REDIS_PASSWORD | quote }}

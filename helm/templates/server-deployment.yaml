@@ -229,7 +229,32 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
-                  key: CREATE_INITIAL_DATA                                    
+                  key: CREATE_INITIAL_DATA
+            - name: CACHE_ENABLED
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: CACHE_ENABLED 
+            - name: CACHE_ENGINE
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: CACHE_ENGINE      
+            - name: CACHE_REDIS_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: CACHE_REDIS_PORT    
+            - name: CACHE_REDIS_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: CACHE_REDIS_HOST  
+            # - name: CACHE_REDIS_PASSWORD
+            #   valueFrom:
+            #     configMapKeyRef:
+            #       name: {{ include "tiledesk.fullname" . }}-config
+            #       key: CACHE_REDIS_PASSWORD                                       
             - name: LICENSE_KEY
               valueFrom:
                 secretKeyRef:
