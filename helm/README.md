@@ -36,7 +36,7 @@ N1-standard-1 type is the minimum cluster type if you choose GKE.
 ## Adding repo
 
 ```console
-helm repo add tiledesk https://tiledesk.github.io/tiledesk-deployment/helm/releases
+helm repo add tiledesk https://tiledesk.github.io/tiledesk/helm/releases
 ```
 
 ## Installing the Chart
@@ -100,7 +100,7 @@ More info here: https://kubernetes.github.io/ingress-nginx/deploy/#using-helm
 You can configure the Custom Domain passing the Ingress parameters inline without modifing the value.yaml file for the hosts as follow:
 
 ```console
-helm upgrade -f ./helm/values.yaml my-tiledesk ./helm --set EXTERNAL_BASE_URL=http://console.YOUR_CUSTOM_DOMAIN --set ingress.hosts[1].enabled=true --set ingress.hosts[1].host=console.YOUR_CUSTOM_DOMAIN
+helm upgrade --recreate-pods my-tiledesk tiledesk/tiledesk --set EXTERNAL_BASE_URL=http://console.YOUR_CUSTOM_DOMAIN --set ingress.hosts[1].enabled=true --set ingress.hosts[1].host=console.YOUR_CUSTOM_DOMAIN
 ```
 Remember to create a DNS entry for your "console.YOUR_CUSTOM_DOMAIN" domain or add it to your /etc/hosts file (just for local testing).
 
@@ -111,7 +111,7 @@ Add ```--recreate-pods``` option to the above command if you want to be sure all
 Complete example with console.tiledesk.local domain:
 
 ```console
-helm upgrade --recreate-pods -f ./helm/values.yaml my-tiledesk ./helm --set EXTERNAL_BASE_URL=http://console.tiledesk.local --set ingress.hosts[1].enabled=true --set ingress.hosts[1].host=console.tiledesk.local --set ingress.hosts[0].enabled=false
+helm upgrade --recreate-pods my-tiledesk tiledesk/tiledesk --set EXTERNAL_BASE_URL=http://console.tiledesk.local --set ingress.hosts[1].enabled=true --set ingress.hosts[1].host=console.tiledesk.local --set ingress.hosts[0].enabled=false
 ```
 
 ## Configure TLS
@@ -132,14 +132,14 @@ Push notifications are available only with a configured TLS certificate.
 To upgrade the `my-tiledesk` deployment:
 
 ```console
-helm upgrade -f ./helm/values.yaml my-tiledesk ./helm
+helm upgrade --recreate-pods my-tiledesk tiledesk/tiledesk
 ```
 ##  Passing inline environment variables
 
 To install the `my-tiledesk` deployment passing the parameters inline without modifing the value.yaml you can for example :
 
 ```console
-helm install helm --set EMAIL_ENABLED=true --set EMAIL_HOST=YOUR_EMAIL_HOST 
+helm install my-tiledesk tiledesk/tiledesk --set EMAIL_ENABLED=true --set EMAIL_HOST=YOUR_EMAIL_HOST 
 ```
 
 ## Uninstalling the Chart
