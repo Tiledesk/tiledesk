@@ -25,7 +25,7 @@ services:
       - FIREBASE_MESSAGINGSENDERID
       - FIREBASE_APP_ID
       - FIREBASE_VAPID
-      - DIALOGFLOW_BOT_CREDENTIAL_URL=/api/modules/dialogflow/botcredendials/
+      - BOT_CREDENTIAL_URL=/api/modules/dialogflow/botcredendials/
       - RASA_BOT_CREDENTIAL_URL=/api/modules/rasa/botcredendials/
       - LOG_LEVEL=info
 
