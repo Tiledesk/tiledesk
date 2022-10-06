@@ -60,7 +60,7 @@ services:
       - "API_BASEIMAGE_URL=${EXTERNAL_BASE_URL:-http://localhost:8081}/api/"      
       - AUTH_PERSISTENCE=LOCAL
   ionic:
-   image: chat21/chat21-ionic:3.0.77
+   image: chat21/chat21-ionic:3.0.78
    container_name: chat21-ionic
    ports:
       - "8082:80" #use expose if you want to block external access   
