@@ -182,7 +182,7 @@ ionic:
 
   image:
     repository: chat21/chat21-ionic
-    tag: 3.0.75
+    tag: 3.0.78
 
   service:
       type: ClusterIP
