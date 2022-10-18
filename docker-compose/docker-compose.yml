@@ -4,7 +4,7 @@ volumes:
    tiledesk-datadb:
 services:
   dashboard:
-   image: tiledesk/tiledesk-dashboard:2.2.52
+   image: tiledesk/tiledesk-dashboard:2.2.52.2
    container_name: tiledesk-dashboard 
    environment: 
       - FEATURES_TOKEN=NAT:T-DEV:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-LBS:T-NOT:T-MTT:T-RAS:T-ANA:T-ACT:T
@@ -60,7 +60,7 @@ services:
       - "API_BASEIMAGE_URL=${EXTERNAL_BASE_URL:-http://localhost:8081}/api/"      
       - AUTH_PERSISTENCE=LOCAL
   ionic:
-   image: chat21/chat21-ionic:3.0.78
+   image: chat21/chat21-ionic:3.0.79
    container_name: chat21-ionic
    ports:
       - "8082:80" #use expose if you want to block external access   
@@ -69,6 +69,7 @@ services:
       - API_BASEIMAGE_URL=/api/
       - API_URL=/api/
       - FEATURES_TOKEN=NAT:T-DEV:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-LBS:T-NOT:T-MTT:T-RAS:T-ANA:T-ACT:T
+      - WIDGET_TEST_LOCATION=/widget/assets/twp/index.html
       - PUSH_ENGINE=none
       - LOG_LEVEL=info
       - FILE_UPLOAD_ACCEPT=*/*
@@ -105,7 +106,7 @@ services:
     command: [nginx-debug, '-g', 'daemon off;']
     
   server:
-    image: tiledesk/tiledesk-server:2.3.26
+    image: tiledesk/tiledesk-server:2.3.36
     container_name: tiledesk-server
     restart: always       
     environment: 
@@ -116,6 +117,7 @@ services:
       - CHAT21_JWT_SECRET=tokenKey
       - CHAT21_APPID=tilechat
       - RESTHOOK_ENABLED=true
+      - ALLOW_REOPEN_CHAT=true
       - CHAT21_ADMIN_TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIzNDU2MTBkNy03MmYxLTQ5OWUtODQzMS0xMTNhZWJkOWVmOTgiLCJzdWIiOiIxMDAtQVBJQURNSU4iLCJzY29wZSI6WyJyYWJiaXRtcS5yZWFkOiovKi8qIiwicmFiYml0bXEud3JpdGU6Ki8qLyoiLCJyYWJiaXRtcS5jb25maWd1cmU6Ki8qLyoiXSwiY2xpZW50X2lkIjoiMTAwLUFQSUFETUlOIiwiY2lkIjoiMTAwLUFQSUFETUlOIiwiYXpwIjoiMTAwLUFQSUFETUlOIiwidXNlcl9pZCI6IjEwMC1BUElBRE1JTiIsImFwcF9pZCI6InRpbGVjaGF0IiwiaWF0IjoxNjE0OTQzNDkyLCJleHAiOjE5MjU5ODM0OTIsImF1ZCI6WyJyYWJiaXRtcSIsIjEwMC1BUElBRE1JTiJdLCJraWQiOiJ0aWxlZGVzay1rZXkiLCJ0aWxlZGVza19hcGlfcm9sZXMiOiJhZG1pbiJ9.KptGMsTKjd3wUiiP1GGSTYqW1XXK1vjSRJnetC3wjxU
       - MONGODB_URI=mongodb://mongo/tiledesk
       - EMAIL_ENABLED
@@ -172,7 +174,7 @@ services:
       - APP_ID=tilechat
       - WEBHOOK_ENDPOINTS=http://server:3000/chat21/requests,http://chat21httpserver:8004/api/tilechat/push/webhook/endpoint/WHFyAhecCMkYsvldLFWbSrJt7lAZFAmrp7O5QVMvGQsLVn9SkfT
       - WEBHOOK_ENABLED=true
-      - WEBHOOK_EVENTS=message-sent
+      - WEBHOOK_EVENTS=message-sent,conversation-unarchived
       - RABBITMQ_URI=amqp://ignored:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIyMDI2NjU0Ni05ZGMxLTQ3MzgtOWE5OC01OTQwYWFmZWJkMjgiLCJzdWIiOiIwMS1PQlNFUlZFUiIsInNjb3BlIjpbInJhYmJpdG1xLnJlYWQ6Ki8qLyoiLCJyYWJiaXRtcS53cml0ZToqLyovKiIsInJhYmJpdG1xLmNvbmZpZ3VyZToqLyovKiJdLCJjbGllbnRfaWQiOiIwMS1PQlNFUlZFUiIsImNpZCI6IjAxLU9CU0VSVkVSIiwiYXpwIjoiMDEtT0JTRVJWRVIiLCJ1c2VyX2lkIjoiMDEtT0JTRVJWRVIiLCJhcHBfaWQiOiJ0aWxlY2hhdCIsImlhdCI6MTU5Mzg1OTgzNiwiZXhwIjoxNjk2NDUxODM2LCJhdWQiOlsicmFiYml0bXEiLCIwMS1PQlNFUlZFUiJdLCJraWQiOiJ0aWxlZGVzay1rZXkiLCJ0aWxlZGVza19hcGlfcm9sZXMiOiJ1c2VyIn0.N6bs-WXVZJTNW2jztzph4SYc9_Szs0cb0kBM9n0k8hY@rabbitmq:5672?heartbeat=60
     depends_on:
       - mongo
