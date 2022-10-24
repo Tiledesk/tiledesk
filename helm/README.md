@@ -124,7 +124,7 @@ See [here](https://github.com/Tiledesk/tiledesk-deployment/blob/master/helm/docs
 Push notifications are available only with a configured TLS certificate.
 
 
-# Usefull instructions
+# Useful instructions
 
 ## Upgrade the Chart
 
