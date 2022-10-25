@@ -169,7 +169,7 @@ dashboard:
 
   image:
     repository: tiledesk/tiledesk-dashboard
-    tag: 2.2.47.1
+    tag: 2.2.53.1
 
   service:
     type: ClusterIP
