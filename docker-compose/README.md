@@ -25,7 +25,7 @@ curl https://raw.githubusercontent.com/Tiledesk/tiledesk-deployment/master/docke
 docker-compose up
 ```
 3. Open the following URL in your browser to start 
-* Dashboard: [http://<machine_ip>:8081/](http://localhost:8081/)
+4. [http://localhost:8081/](http://localhost:8081/)
 
 4. Signin as admin with :
 * email: admin@tiledesk.com

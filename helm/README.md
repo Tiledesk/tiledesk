@@ -50,7 +50,7 @@ helm install my-tiledesk tiledesk/tiledesk
 The command deploys Tiledesk on the Kubernetes cluster in the default namespace. 
 
 # Open the dashboard
-Open the browser at http://<YOUR_INGRESS_IP>/dashboard/ and signin as admin with :
+Open the browser at http://<YOUR_INGRESS_IP>*/dashboard/* (ATTENTION the final slash is required) and signin as admin with :
 
 * email: admin@tiledesk.com
 * password: adminadmin
@@ -124,7 +124,7 @@ See [here](https://github.com/Tiledesk/tiledesk-deployment/blob/master/helm/docs
 Push notifications are available only with a configured TLS certificate.
 
 
-# Usefull instructions
+# Useful instructions
 
 ## Upgrade the Chart
 
