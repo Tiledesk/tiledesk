@@ -221,10 +221,10 @@ c21srv:
   ## Enable deployment of Chat21 Server
   ##
   enabled: true
-
+  resources: {}
   image:  
     repository: chat21/chat21-server
-    tag: 0.2.17
+    tag: 0.2.20
     # pullPolicy: IfNotPresent  
 
 imagePullSecrets: #[]
