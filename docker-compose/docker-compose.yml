@@ -4,10 +4,10 @@ volumes:
    tiledesk-datadb:
 services:
   dashboard:
-   image: tiledesk/tiledesk-dashboard:2.2.53
+   image: tiledesk/tiledesk-dashboard:2.2.54.1
    container_name: tiledesk-dashboard 
    environment: 
-      - FEATURES_TOKEN=NAT:T-DEV:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-LBS:T-NOT:T-MTT:T-RAS:T-ANA:T-ACT:T
+      - FEATURES_TOKEN=NAT:T-DEV:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-LBS:T-NOT:T-MTT:T-RAS:T-ANA:T-ACT:T-TIL:T
       - SERVER_BASE_URL=/api/
       - CHAT_BASE_URL=/chat/
       - WS_URL
@@ -33,8 +33,8 @@ services:
       - "4500:80" #use expose if you want to block external access
 
   webwidget:
-   image: chat21/chat21-web-widget:5.0.38
-   container_name: chat21-web-widget  
+   image: chat21/chat21-web-widget:5.0.41
+   container_name: chat21-web-widget 
    ports: 
       - "4200:80" # specify port forewarding
    environment: 
@@ -68,7 +68,7 @@ services:
       - DASHBOARD_URL=/dashboard/      
       - API_BASEIMAGE_URL=/api/
       - API_URL=/api/
-      - FEATURES_TOKEN=NAT:T-DEV:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-LBS:T-NOT:T-MTT:T-RAS:T-ANA:T-ACT:T
+      - FEATURES_TOKEN=NAT:T-DEV:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-LBS:T-NOT:T-MTT:T-RAS:T-ANA:T-ACT:T-TIL:T
       - WIDGET_TEST_LOCATION=/widget/assets/twp/index.html
       - PUSH_ENGINE=none
       - LOG_LEVEL=info
@@ -134,13 +134,17 @@ services:
       - WS_SERVER_PATH     
       #PLEASE DON'T PASTE THE LICENSE KEY HERE USE .ENV FILE. DOCKER ISSUE WITH /n char
       - LICENSE_KEY
+      - CACHE_ENABLED=true
+      - CACHE_ENGINE=redis
+      - CACHE_REDIS_HOST=redis
+      - CACHE_REDIS_PORT=6379
     depends_on:
       - mongo
     ports:
       - "3000:3000"
 
   chat21httpserver:
-    image: chat21/chat21-http-server:0.2.9
+    image: chat21/chat21-http-server:0.2.15
     container_name: chat21httpserver
     restart: always    
     environment: 
@@ -157,6 +161,7 @@ services:
       - PUSH_WH_CHAT21_API_ADMIN_TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI5NGFjNjNmNy1hOGM3LTRkZGMtYjJkNS01MWE2MjBmNTdhNmIiLCJzdWIiOiIxMDAtQVBJQURNSU4iLCJzY29wZSI6WyJyYWJiaXRtcS5yZWFkOiovKi8qIiwicmFiYml0bXEud3JpdGU6Ki8qLyoiLCJyYWJiaXRtcS5jb25maWd1cmU6Ki8qLyoiXSwiY2xpZW50X2lkIjoiMTAwLUFQSUFETUlOIiwiY2lkIjoiMTAwLUFQSUFETUlOIiwiYXpwIjoiMTAwLUFQSUFETUlOIiwidXNlcl9pZCI6IjEwMC1BUElBRE1JTiIsImFwcF9pZCI6InRpbGVjaGF0IiwiaWF0IjoxNjM3NzYxNDM0LCJleHAiOjE5NDg4MDE0MzQsImF1ZCI6WyJyYWJiaXRtcSIsIjEwMC1BUElBRE1JTiJdLCJraWQiOiJ0aWxlZGVzay1rZXkiLCJ0aWxlZGVza19hcGlfcm9sZXMiOiJhZG1pbiJ9.fLPrGArRlnyC04552oBsUjohf6l_BIpxwB847xWvugo
       - PUSH_WH_NOTIFY_URL=http://localhost:8004/api/tilechat/notify
       - PUSH_WH_WEBHOOK_TOKEN=WHFyAhecCMkYsvldLFWbSrJt7lAZFAmrp7O5QVMvGQsLVn9SkfT
+      - CACHE_ENABLED=false
     depends_on:
       - mongo
       - rabbitmq
@@ -164,7 +169,7 @@ services:
       - "8004:8004"
 
   chat21server:
-    image: chat21/chat21-server:0.2.20
+    image: chat21/chat21-server:0.2.25
     container_name: chat21server
     restart: always
     environment: 
@@ -203,7 +208,11 @@ services:
     command: --bind_ip_all
     volumes:
       - tiledesk-datadb:/data/db    
-
+  redis:
+    container_name: redis
+    image: redis:7.0.5
+    ports:
+      - "6379:6379"
 
   #ngrok:
   #  container_name: ngrok
