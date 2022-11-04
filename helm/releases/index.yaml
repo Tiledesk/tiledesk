@@ -33,7 +33,7 @@ entries:
     version: 1.1.0
   - apiVersion: v2
     appVersion: 2.2.39
-    created: "2022-11-04T17:25:52.0714+01:00"
+    created: "2022-11-04T16:42:28.063231+01:00"
     dependencies:
     - condition: mongodb.enabled
       name: mongodb
