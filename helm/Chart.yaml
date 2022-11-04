@@ -39,6 +39,9 @@ icon: https://avatars2.githubusercontent.com/u/39886277?s=200&v=4
  #8.32.2 -> 3.9.16
   # helm search repo rabbitmq --versions    
   # 7.6.8 -> 3.8.5???
+
+  # mongo 12 higth cpu usage
+  #helm dependency update
 dependencies:
     - name: mongodb
       version: 12.x.x
@@ -46,5 +49,10 @@ dependencies:
       condition: mongodb.enabled
     - name: rabbitmq
       version: 10.1.9
+      #version: 10.x.x change to this
       repository: https://charts.bitnami.com/bitnami
       condition: rabbitmq.enabled
+    - name: redis
+      version: 17.1.3
+      #version: 17.x.x change to this
+      repository: https://charts.bitnami.com/bitnami

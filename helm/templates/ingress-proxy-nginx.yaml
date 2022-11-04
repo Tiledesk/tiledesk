@@ -1,4 +1,3 @@
-
 {{- if .Values.ingress.enabled -}}
 {{- $fullName := include "tiledesk.fullname" . -}}
 {{- $svcPort := .Values.service.port -}}
@@ -26,13 +25,12 @@ spec:
     {{- end }}
   {{- end }}
   rules:
-    {{- range .Values.ingress.hosts }}
     
-    {{- if .enabled }}
-    - host: {{ .host | quote }}
+    {{- if .Values.ingress.hosts.hostip.enabled }}
+    - host: {{ .Values.ingress.hosts.hostip.name | quote }}
       http:
         paths:
-          {{- range .paths }}
+          {{- range .Values.ingress.hosts.hostip.paths }}
           - path: {{ .path }}
             pathType: Prefix          
             backend:
@@ -43,6 +41,65 @@ spec:
           {{- end }}
     {{- end }}
 
+    {{- if .Values.ingress.hosts.hostconsole.enabled }}
+    - host: {{ .Values.ingress.hosts.hostconsole.name | quote }}
+      http:
+        paths:
+          {{- range .Values.ingress.hosts.hostconsole.paths }}
+          - path: {{ .path }}
+            pathType: Prefix          
+            backend:
+              service:
+                name: {{ $fullName }}-{{ .service }}
+                port:
+                  number: {{- if .servicePort }} {{ .servicePort }}{{- else }} {{ $svcPort }}{{- end }}                       
+          {{- end }}
     {{- end }}
+
+    {{- if .Values.ingress.hosts.hostapi.enabled }}
+    - host: {{ .Values.ingress.hosts.hostapi.name | quote }}
+      http:
+        paths:
+          {{- range .Values.ingress.hosts.hostapi.paths }}
+          - path: {{ .path }}
+            pathType: Prefix          
+            backend:
+              service:
+                name: {{ $fullName }}-{{ .service }}
+                port:
+                  number: {{- if .servicePort }} {{ .servicePort }}{{- else }} {{ $svcPort }}{{- end }}                       
+          {{- end }}
+    {{- end }}
+
+    {{- if .Values.ingress.hosts.hostrtm.enabled }}
+    - host: {{ .Values.ingress.hosts.hostrtm.name | quote }}
+      http:
+        paths:
+          {{- range .Values.ingress.hosts.hostrtm.paths }}
+          - path: {{ .path }}
+            pathType: Prefix          
+            backend:
+              service:
+                name: {{ $fullName }}-{{ .service }}
+                port:
+                  number: {{- if .servicePort }} {{ .servicePort }}{{- else }} {{ $svcPort }}{{- end }}                       
+          {{- end }}
+    {{- end }}
+
+    {{- if .Values.ingress.hosts.hostwidget.enabled }}
+    - host: {{ .Values.ingress.hosts.hostwidget.name | quote }}
+      http:
+        paths:
+          {{- range .Values.ingress.hosts.hostwidget.paths }}
+          - path: {{ .path }}
+            pathType: Prefix          
+            backend:
+              service:
+                name: {{ $fullName }}-{{ .service }}
+                port:
+                  number: {{- if .servicePort }} {{ .servicePort }}{{- else }} {{ $svcPort }}{{- end }}                       
+          {{- end }}
+    {{- end }}
+
 {{- end }}
 {{- end }}

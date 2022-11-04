@@ -32,7 +32,7 @@ spec:
     {{- range .Values.ingress.hosts }}
     
     {{- if .enabled }}
-    - host: {{ .host | quote }}
+    - host: {{ .name | quote }}
       http:
         paths:
           {{- range .paths }}

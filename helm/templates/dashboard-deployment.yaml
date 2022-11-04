@@ -125,6 +125,11 @@ spec:
                   configMapKeyRef:
                     name: {{ include "tiledesk.fullname" . }}-config
                     key: LOG_LEVEL
+            - name: BOT_CREDENTIAL_URL
+              valueFrom:
+                  configMapKeyRef:
+                    name: {{ include "tiledesk.fullname" . }}-config
+                    key: DIALOGFLOW_BOT_CREDENTIAL_URL  
             - name: RASA_BOT_CREDENTIAL_URL
               valueFrom:
                   configMapKeyRef:
@@ -143,7 +148,7 @@ spec:
               path: /
               port: dashboard-http
           resources:
-            {{- toYaml .Values.resources | nindent 12 }}
+            {{- toYaml .Values.dashboard.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

@@ -1,17 +1,11 @@
 {{- if .Values.server.enabled -}}
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: batch/v1
+kind: Job
 metadata:
-  name: {{ include "tiledesk.fullname" . }}-server
+  name: {{ include "tiledesk.fullname" . }}-serverworker
   labels: {{ include "tiledesk.labels" . | nindent 4 }}
     app.kubernetes.io/component: server
-spec:
-{{- if not .Values.autoscaling.enabled }}
-  replicas: {{ .Values.replicaCount }}
-{{- end }}
-  selector:
-    matchLabels: {{ include "tiledesk.selectorLabels" . | nindent 6 }}
-      app.kubernetes.io/component: server
+spec:  
   template:
     metadata:
     {{- with .Values.podAnnotations }}
@@ -32,8 +26,8 @@ spec:
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
-          image: "{{ .Values.server.image.repository }}:{{ .Values.server.image.tag | default .Chart.AppVersion }}"
-          imagePullPolicy: {{ .Values.server.image.pullPolicy }}
+          image: "{{ .Values.serverworker.image.repository }}:{{ .Values.serverworker.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.serverworker.image.pullPolicy }}
           env:   
             - name: WS_SERVER_PATH
               valueFrom:
@@ -279,7 +273,7 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
-                  key: JOB_WORKER_ENABLED   
+                  key: JOB_WORKER_ENABLED 
             - name: QUEUE_ENABLED
               valueFrom:
                 configMapKeyRef:
@@ -289,7 +283,7 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
-                  key: CLOUDAMQP_URL                                  
+                  key: CLOUDAMQP_URL             
             # - name: CACHE_REDIS_PASSWORD
             #   valueFrom:
             #     configMapKeyRef:
@@ -300,21 +294,9 @@ spec:
                 secretKeyRef:
                   name: tiledesk-license
                   key: licensekey
-                  optional: true
-          ports:
-            - name: server-http
-              containerPort: 3000
-              protocol: TCP
-          livenessProbe:
-            httpGet:
-              path: /
-              port: server-http
-          readinessProbe:
-            httpGet:
-              path: /
-              port: server-http
+                  optional: true                   
           resources:
-            {{- toYaml .Values.server.resources | nindent 12 }}
+            {{- toYaml .Values.serverworker.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
@@ -323,6 +305,7 @@ spec:
       affinity:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+      restartPolicy: OnFailure
       {{- with .Values.tolerations }}
       tolerations:
         {{- toYaml . | nindent 8 }}

@@ -164,7 +164,12 @@ spec:
               valueFrom:
                   configMapKeyRef:
                     name: {{ include "tiledesk.fullname" . }}-config
-                    key: SUPPORT_MODE                    
+                    key: SUPPORT_MODE      
+            - name: WIDGET_TEST_LOCATION
+              valueFrom:
+                  configMapKeyRef:
+                    name: {{ include "tiledesk.fullname" . }}-config
+                    key: WIDGET_TEST_LOCATION                    
           ports:
             - name: ionic-http
               containerPort: 80
@@ -178,7 +183,7 @@ spec:
               path: /
               port: ionic-http
           resources:
-            {{- toYaml .Values.resources | nindent 12 }}
+            {{- toYaml .Values.ionic.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

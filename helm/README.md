@@ -100,18 +100,18 @@ More info here: https://kubernetes.github.io/ingress-nginx/deploy/#using-helm
 You can configure the Custom Domain passing the Ingress parameters inline without modifing the value.yaml file for the hosts as follow:
 
 ```console
-helm upgrade --recreate-pods my-tiledesk tiledesk/tiledesk --set EXTERNAL_BASE_URL=http://console.YOUR_CUSTOM_DOMAIN --set ingress.hosts[1].enabled=true --set ingress.hosts[1].host=console.YOUR_CUSTOM_DOMAIN
+helm upgrade --recreate-pods my-tiledesk tiledesk/tiledesk --set EXTERNAL_BASE_URL=http://console.YOUR_CUSTOM_DOMAIN --set ingress.hosts.hostconsole.enabled=true --set ingress.hosts.hostconsole.name=console.YOUR_CUSTOM_DOMAIN
 ```
 Remember to create a DNS entry for your "console.YOUR_CUSTOM_DOMAIN" domain or add it to your /etc/hosts file (just for local testing).
 
-If you want you can disable the first ingress host "all inbound HTTP traffic through the IP address" adding : ```--set ingress.hosts[0].enabled=false```. So you only have to log in using the domain name and not the ip.
+If you want you can disable the first ingress host "all inbound HTTP traffic through the IP address" adding : ```--set ingress.hosts.hostip.enabled=false```. So you only have to log in using the domain name and not the ip.
 
 Add ```--recreate-pods``` option to the above command if you want to be sure all the pods are restarted with the new values.
 
 Complete example with console.tiledesk.local domain:
 
 ```console
-helm upgrade --recreate-pods my-tiledesk tiledesk/tiledesk --set EXTERNAL_BASE_URL=http://console.tiledesk.local --set ingress.hosts[1].enabled=true --set ingress.hosts[1].host=console.tiledesk.local --set ingress.hosts[0].enabled=false
+helm upgrade --recreate-pods my-tiledesk tiledesk/tiledesk --set EXTERNAL_BASE_URL=http://console.tiledesk.local --set ingress.hosts.hostconsole.enabled=true --set ingress.hosts.hostconsole.name=console.tiledesk.local --set ingress.hosts.hostip.enabled=false
 ```
 
 ## Configure TLS

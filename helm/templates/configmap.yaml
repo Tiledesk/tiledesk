@@ -120,6 +120,7 @@ data:
   
   SYNC_CHAT21_GROUPS: {{ .Values.SYNC_CHAT21_GROUPS | quote }}
 
+  DIALOGFLOW_BOT_CREDENTIAL_URL: {{ .Values.DIALOGFLOW_BOT_CREDENTIAL_URL | quote }}
   RASA_BOT_CREDENTIAL_URL: {{ .Values.RASA_BOT_CREDENTIAL_URL | quote }}
   
   CREATE_INITIAL_DATA: {{ .Values.CREATE_INITIAL_DATA | quote }}
@@ -133,3 +134,16 @@ data:
   CACHE_REDIS_PORT: {{ .Values.CACHE_REDIS_PORT | quote }}
   CACHE_REDIS_HOST: {{ .Values.CACHE_REDIS_HOST | quote }}
   # CACHE_REDIS_PASSWORD: {{ .Values.CACHE_REDIS_PASSWORD | quote }}
+
+
+
+  REQUEST_HISTORY_ENABLED: {{ .Values.REQUEST_HISTORY_ENABLED | quote }}
+  ACTIVITY_HISTORY_ENABLED: {{ .Values.ACTIVITY_HISTORY_ENABLED | quote }}
+  EMAIL_NOTIFICATION_ENABLED: {{ .Values.EMAIL_NOTIFICATION_ENABLED | quote }}
+  GEO_SERVICE_ENABLED: {{ .Values.GEO_SERVICE_ENABLED | quote }}
+  ALLOW_REOPEN_CHAT: {{ .Values.ALLOW_REOPEN_CHAT | quote }}
+
+  JOB_WORKER_ENABLED: {{ .Values.JOB_WORKER_ENABLED | quote }}
+
+  QUEUE_ENABLED: {{ .Values.QUEUE_ENABLED | quote }}
+  CLOUDAMQP_URL: {{if .Values.CLOUDAMQP_URL}}{{ .Values.CLOUDAMQP_URL | quote }}{{ else }}amqp://{{ .Values.QUEUE_CREDENTIAL }}@{{ include "tiledesk.fullname" . }}-rabbitmq:5672?heartbeat=60{{ end }}

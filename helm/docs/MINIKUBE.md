@@ -12,6 +12,11 @@ After that remember to enable the ingress add-on with:
 minikube addons enable ingress
 ```
 
+You can specify the version: 
+```console
+minikube start --vm=true --driver=hyperkit --kubernetes-version v1.18.0
+```
+
 # Useful commands (Optional)
 
 ## Using minikube tunnel
@@ -37,6 +42,9 @@ minikube service my-tiledesk-c21httpsrv
 
 ```console
 kubectl get ingress my-tiledesk-proxy-nginx
+
+kubectl get ingress  my-tiledesk-proxy-nginx -o yaml
+
 ```
 
 ## Get ingress 
