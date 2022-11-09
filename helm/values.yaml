@@ -156,7 +156,7 @@ server:
 
   image:  
     repository: tiledesk/tiledesk-server
-    tag: 2.3.13
+    tag: 2.3.41
 
   service:
     type: ClusterIP
@@ -169,7 +169,7 @@ dashboard:
 
   image:
     repository: tiledesk/tiledesk-dashboard
-    tag: 2.2.53.1
+    tag: 2.2.54.1
 
   service:
     type: ClusterIP
@@ -182,7 +182,7 @@ ionic:
 
   image:
     repository: chat21/chat21-ionic
-    tag: 3.0.81
+    tag: 3.0.81.2
 
   service:
       type: ClusterIP
@@ -196,7 +196,7 @@ webwidget:
 
   image:
     repository: chat21/chat21-web-widget
-    tag: 5.0.35
+    tag: 5.0.42
 
   service:
       type: ClusterIP
@@ -210,7 +210,7 @@ c21httpsrv:
 
   image:  
     repository: chat21/chat21-http-server
-    tag: 0.2.9
+    tag: 0.2.16
     # pullPolicy: IfNotPresent  
 
   service:    
@@ -224,7 +224,7 @@ c21srv:
   resources: {}
   image:  
     repository: chat21/chat21-server
-    tag: 0.2.20
+    tag: 0.2.26
     # pullPolicy: IfNotPresent  
 
 imagePullSecrets: #[]
