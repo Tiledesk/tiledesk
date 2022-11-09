@@ -33,7 +33,7 @@ services:
       - "4500:80" #use expose if you want to block external access
 
   webwidget:
-   image: chat21/chat21-web-widget:5.0.41
+   image: chat21/chat21-web-widget:5.0.43
    container_name: chat21-web-widget 
    ports: 
       - "4200:80" # specify port forewarding
@@ -57,8 +57,10 @@ services:
       - "API_URL=${EXTERNAL_BASE_URL:-http://localhost:8081}/api/"
       - "TRANSLATIONS_URL=${EXTERNAL_BASE_URL:-http://localhost:8081}/api/"
       #- API_BASEIMAGE_URL=https://firebasestorage.googleapis.com/v0/b/    For firebase
-      - "API_BASEIMAGE_URL=${EXTERNAL_BASE_URL:-http://localhost:8081}/api/"      
+      - "API_BASEIMAGE_URL=${EXTERNAL_BASE_URL:-http://localhost:8081}/api/"   
+      - DASHBOARD_URL=/dashboard/   
       - AUTH_PERSISTENCE=LOCAL
+      - ENBED_JS=true
   ionic:
    image: chat21/chat21-ionic:3.0.79
    container_name: chat21-ionic
