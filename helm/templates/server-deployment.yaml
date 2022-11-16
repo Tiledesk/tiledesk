@@ -261,6 +261,11 @@ spec:
                   name: tiledesk-license
                   key: licensekey
                   optional: true
+            - name: GLOBAL_SECRET
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: GLOBAL_SECRET
           ports:
             - name: server-http
               containerPort: 3000
