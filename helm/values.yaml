@@ -158,7 +158,7 @@ server:
 
   image:  
     repository: tiledesk/tiledesk-server
-    tag: 2.3.45
+    tag: 2.3.41
 
   service:
     type: ClusterIP
