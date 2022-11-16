@@ -56,6 +56,7 @@ data:
   DASHBOARD_URL: {{ .Values.DASHBOARD_URL | quote }}
 
   AUTH_PERSISTENCE: {{ .Values.AUTH_PERSISTENCE | quote }}
+  ENBED_JS: {{ .Values.ENBED_JS | quote }}
   
   EMAIL_ENABLED: {{ .Values.EMAIL_ENABLED | quote }}
   EMAIL_HOST: {{ .Values.EMAIL_HOST | quote }}
@@ -147,3 +148,5 @@ data:
 
   QUEUE_ENABLED: {{ .Values.QUEUE_ENABLED | quote }}
   CLOUDAMQP_URL: {{if .Values.CLOUDAMQP_URL}}{{ .Values.CLOUDAMQP_URL | quote }}{{ else }}amqp://{{ .Values.QUEUE_CREDENTIAL }}@{{ include "tiledesk.fullname" . }}-rabbitmq:5672?heartbeat=60{{ end }}
+  UNIQUE_CONVERSATIONS_INDEX: {{ .Values.UNIQUE_CONVERSATIONS_INDEX | quote }}
+  GLOBAL_SECRET: {{ .Values.GLOBAL_SECRET | quote }}

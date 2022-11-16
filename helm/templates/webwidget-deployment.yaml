@@ -89,7 +89,12 @@ spec:
               valueFrom:
                   configMapKeyRef:
                     name: {{ include "tiledesk.fullname" . }}-config
-                    key: API_BASEIMAGE_URL                                           
+                    key: API_BASEIMAGE_URL
+            - name: DASHBOARD_URL
+              valueFrom:
+                  configMapKeyRef:
+                    name: {{ include "tiledesk.fullname" . }}-config
+                    key: DASHBOARD_URL                                           
             - name: API_URL
               valueFrom:
                   configMapKeyRef:
@@ -129,7 +134,12 @@ spec:
               valueFrom:
                   configMapKeyRef:
                     name: {{ include "tiledesk.fullname" . }}-config
-                    key: AUTH_PERSISTENCE                    
+                    key: AUTH_PERSISTENCE 
+            - name: ENBED_JS
+              valueFrom:
+                  configMapKeyRef:
+                    name: {{ include "tiledesk.fullname" . }}-config
+                    key: ENBED_JS                    
           ports:
             - name: webwidget-http
               containerPort: 80

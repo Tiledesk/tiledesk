@@ -78,6 +78,7 @@ WIDGET_TEST_LOCATION: /widget/assets/twp/index.html
 # Widget Config
 TRANSLATIONS_URL: /api/
 AUTH_PERSISTENCE: LOCAL
+ENBED_JS: true
 
 # Ionic Config
 DASHBOARD_URL: /dashboard/
@@ -115,6 +116,7 @@ MONGODB_LOGS_URI: CHANGEIT
 
 # Server Config
 SUPER_PASSWORD: superadmin
+GLOBAL_SECRET: nodeauthsecret
 
 # Modules Config
 RESTHOOK_ENABLED: true
@@ -161,7 +163,7 @@ CACHE_REDIS_HOST: my-tiledesk-redis-master
 QUEUE_ENABLED: true
 #CLOUDAMQP_URL: amqp://ignored:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI2YWI3MzY1Yi1hYWRhLTRlNTktOWZjZS0yMDQwZDgyOTA4MTgiLCJzdWIiOiIxMDAtQVBJQURNSU4iLCJzY29wZSI6WyJyYWJiaXRtcS5yZWFkOiovKi8qIiwicmFiYml0bXEud3JpdGU6Ki8qLyoiLCJyYWJiaXRtcS5jb25maWd1cmU6Ki8qLyoiXSwiY2xpZW50X2lkIjoiMTAwLUFQSUFETUlOIiwiY2lkIjoiMTAwLUFQSUFETUlOIiwiYXpwIjoiMTAwLUFQSUFETUlOIiwidXNlcl9pZCI6IjEwMC1BUElBRE1JTiIsImFwcF9pZCI6InRpbGVjaGF0IiwiaWF0IjoxNTk0Mzc3OTc4LCJleHAiOjE2OTY5Njk5NzgsImF1ZCI6WyJyYWJiaXRtcSIsIjEwMC1BUElBRE1JTiJdLCJraWQiOiJ0aWxlZGVzay1rZXkiLCJ0aWxlZGVza19hcGlfcm9sZXMiOiJhZG1pbiJ9.g2YL6RZp5SuLcQyBTYf4cn9SnRIyifNb1f1-Si1inbs@localhost:5672?heartbeat=60
 QUEUE_CREDENTIAL: ignored:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI2YWI3MzY1Yi1hYWRhLTRlNTktOWZjZS0yMDQwZDgyOTA4MTgiLCJzdWIiOiIxMDAtQVBJQURNSU4iLCJzY29wZSI6WyJyYWJiaXRtcS5yZWFkOiovKi8qIiwicmFiYml0bXEud3JpdGU6Ki8qLyoiLCJyYWJiaXRtcS5jb25maWd1cmU6Ki8qLyoiXSwiY2xpZW50X2lkIjoiMTAwLUFQSUFETUlOIiwiY2lkIjoiMTAwLUFQSUFETUlOIiwiYXpwIjoiMTAwLUFQSUFETUlOIiwidXNlcl9pZCI6IjEwMC1BUElBRE1JTiIsImFwcF9pZCI6InRpbGVjaGF0IiwiaWF0IjoxNTk0Mzc3OTc4LCJleHAiOjE2OTY5Njk5NzgsImF1ZCI6WyJyYWJiaXRtcSIsIjEwMC1BUElBRE1JTiJdLCJraWQiOiJ0aWxlZGVzay1rZXkiLCJ0aWxlZGVza19hcGlfcm9sZXMiOiJhZG1pbiJ9.g2YL6RZp5SuLcQyBTYf4cn9SnRIyifNb1f1-Si1inbs
-
+UNIQUE_CONVERSATIONS_INDEX: 1
 
 server:
   ## Enable deployment of Tiledesk Server
@@ -170,7 +172,7 @@ server:
   resources: {}
   image:  
     repository: tiledesk/tiledesk-server
-    tag: 2.3.39
+    tag: 2.3.45
 
   service:
     type: ClusterIP
@@ -183,7 +185,7 @@ serverworker:
   resources: {}
   image:  
     repository: tiledesk/tiledesk-server-worker
-    tag: 2.3.39
+    tag: 2.3.45
 
 dashboard:
   ## Enable deployment of Tiledesk Server
@@ -192,7 +194,7 @@ dashboard:
   resources: {}
   image:
     repository: tiledesk/tiledesk-dashboard
-    tag: 2.2.54.1
+    tag: 2.3.1
 
   service:
     type: ClusterIP
@@ -205,7 +207,7 @@ ionic:
   resources: {}
   image:
     repository: chat21/chat21-ionic
-    tag: 3.0.79
+    tag: 3.0.81.2
 
   service:
       type: ClusterIP
@@ -219,7 +221,7 @@ webwidget:
   resources: {}
   image:
     repository: chat21/chat21-web-widget
-    tag: 5.0.41
+    tag: 5.0.43
 
   service:
       type: ClusterIP
@@ -233,7 +235,7 @@ c21httpsrv:
   resources: {}
   image:  
     repository: chat21/chat21-http-server
-    tag: 0.2.15
+    tag: 0.2.16
     # pullPolicy: IfNotPresent  
 
   service:    
@@ -247,7 +249,7 @@ c21srv:
   resources: {}
   image:  
     repository: chat21/chat21-server
-    tag: 0.2.25
+    tag: 0.2.28
     # pullPolicy: IfNotPresent  
 
 imagePullSecrets: #[]
