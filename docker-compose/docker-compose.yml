@@ -4,10 +4,10 @@ volumes:
    tiledesk-datadb:
 services:
   dashboard:
-   image: tiledesk/tiledesk-dashboard:2.2.54.1
+   image: tiledesk/tiledesk-dashboard:2.3.2
    container_name: tiledesk-dashboard 
    environment: 
-      - FEATURES_TOKEN=NAT:T-DEV:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-LBS:T-NOT:T-MTT:T-RAS:T-ANA:T-ACT:T-TIL:T
+      - FEATURES_TOKEN=NAT:T-DEV:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-LBS:T-NOT:T-MTT:T-RAS:T-ANA:T-ACT:T-TIL:T-SUP:T
       - SERVER_BASE_URL=/api/
       - CHAT_BASE_URL=/chat/
       - WS_URL
@@ -33,7 +33,7 @@ services:
       - "4500:80" #use expose if you want to block external access
 
   webwidget:
-   image: chat21/chat21-web-widget:5.0.43
+   image: chat21/chat21-web-widget:5.0.44
    container_name: chat21-web-widget 
    ports: 
       - "4200:80" # specify port forewarding
@@ -62,7 +62,7 @@ services:
       - AUTH_PERSISTENCE=LOCAL
       - ENBED_JS=true
   ionic:
-   image: chat21/chat21-ionic:3.0.79
+   image: chat21/chat21-ionic:3.0.83
    container_name: chat21-ionic
    ports:
       - "8082:80" #use expose if you want to block external access   
@@ -108,7 +108,7 @@ services:
     command: [nginx-debug, '-g', 'daemon off;']
     
   server:
-    image: tiledesk/tiledesk-server:2.3.39
+    image: tiledesk/tiledesk-server:2.3.49
     container_name: tiledesk-server
     restart: always       
     environment: 
@@ -146,7 +146,7 @@ services:
       - "3000:3000"
 
   chat21httpserver:
-    image: chat21/chat21-http-server:0.2.15
+    image: chat21/chat21-http-server:0.2.16
     container_name: chat21httpserver
     restart: always    
     environment: 
@@ -164,6 +164,7 @@ services:
       - PUSH_WH_NOTIFY_URL=http://localhost:8004/api/tilechat/notify
       - PUSH_WH_WEBHOOK_TOKEN=WHFyAhecCMkYsvldLFWbSrJt7lAZFAmrp7O5QVMvGQsLVn9SkfT
       - CACHE_ENABLED=false
+      - CONTACTS_LOOKUP_ENDPOINT=http://server:3000/users_util
     depends_on:
       - mongo
       - rabbitmq
@@ -171,7 +172,7 @@ services:
       - "8004:8004"
 
   chat21server:
-    image: chat21/chat21-server:0.2.25
+    image: chat21/chat21-server:0.2.28
     container_name: chat21server
     restart: always
     environment: 
@@ -183,6 +184,7 @@ services:
       - WEBHOOK_ENABLED=true
       - WEBHOOK_EVENTS=message-sent,conversation-unarchived
       - RABBITMQ_URI=amqp://ignored:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIyMDI2NjU0Ni05ZGMxLTQ3MzgtOWE5OC01OTQwYWFmZWJkMjgiLCJzdWIiOiIwMS1PQlNFUlZFUiIsInNjb3BlIjpbInJhYmJpdG1xLnJlYWQ6Ki8qLyoiLCJyYWJiaXRtcS53cml0ZToqLyovKiIsInJhYmJpdG1xLmNvbmZpZ3VyZToqLyovKiJdLCJjbGllbnRfaWQiOiIwMS1PQlNFUlZFUiIsImNpZCI6IjAxLU9CU0VSVkVSIiwiYXpwIjoiMDEtT0JTRVJWRVIiLCJ1c2VyX2lkIjoiMDEtT0JTRVJWRVIiLCJhcHBfaWQiOiJ0aWxlY2hhdCIsImlhdCI6MTU5Mzg1OTgzNiwiZXhwIjoxNjk2NDUxODM2LCJhdWQiOlsicmFiYml0bXEiLCIwMS1PQlNFUlZFUiJdLCJraWQiOiJ0aWxlZGVzay1rZXkiLCJ0aWxlZGVza19hcGlfcm9sZXMiOiJ1c2VyIn0.N6bs-WXVZJTNW2jztzph4SYc9_Szs0cb0kBM9n0k8hY@rabbitmq:5672?heartbeat=60
+      - UNIQUE_CONVERSATIONS_INDEX=1
     depends_on:
       - mongo
       - rabbitmq
