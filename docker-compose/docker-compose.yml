@@ -7,7 +7,7 @@ services:
    image: tiledesk/tiledesk-dashboard:2.3.2
    container_name: tiledesk-dashboard 
    environment: 
-      - FEATURES_TOKEN=NAT:T-DEV:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-LBS:T-NOT:T-MTT:T-RAS:T-ANA:T-ACT:T-TIL:T-SUP:T
+      - FEATURES_TOKEN=NAT:T-DEV:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-LBS:T-NOT:T-MTT:T-RAS:T-ANA:T-ACT:T-TIL:T-SUP:T-APP:T
       - SERVER_BASE_URL=/api/
       - CHAT_BASE_URL=/chat/
       - WS_URL
@@ -28,7 +28,7 @@ services:
       - BOT_CREDENTIAL_URL=/api/modules/dialogflow/botcredendials/
       - RASA_BOT_CREDENTIAL_URL=/api/modules/rasa/botcredendials/
       - LOG_LEVEL=info
-
+      - APPS_URL=/api/modules/apps/
    ports:
       - "4500:80" #use expose if you want to block external access
 
@@ -62,7 +62,7 @@ services:
       - AUTH_PERSISTENCE=LOCAL
       - ENBED_JS=true
   ionic:
-   image: chat21/chat21-ionic:3.0.83
+   image: chat21/chat21-ionic:3.0.84
    container_name: chat21-ionic
    ports:
       - "8082:80" #use expose if you want to block external access   
@@ -108,7 +108,7 @@ services:
     command: [nginx-debug, '-g', 'daemon off;']
     
   server:
-    image: tiledesk/tiledesk-server:2.3.49
+    image: tiledesk/tiledesk-server:2.3.50
     container_name: tiledesk-server
     restart: always       
     environment: 
@@ -140,6 +140,10 @@ services:
       - CACHE_ENGINE=redis
       - CACHE_REDIS_HOST=redis
       - CACHE_REDIS_PORT=6379
+      - APPS_ACCESS_TOKEN_SECRET=nodeauthsecret
+      - BOOT_LOADING=true
+      - META_GRAPH_URL=https://graph.facebook.com/v14.0/
+      - WHATSAPP_LOG=false
     depends_on:
       - mongo
     ports:

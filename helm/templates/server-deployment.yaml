@@ -305,7 +305,27 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
-                  key: GLOBAL_SECRET    
+                  key: GLOBAL_SECRET 
+            - name: APPS_ACCESS_TOKEN_SECRET
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: APPS_ACCESS_TOKEN_SECRET 
+            - name: BOOT_LOADING
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: BOOT_LOADING 
+            - name: META_GRAPH_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: META_GRAPH_URL
+            - name: WHATSAPP_LOG
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: WHATSAPP_LOG 
           ports:
             - name: server-http
               containerPort: 3000

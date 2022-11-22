@@ -7,7 +7,7 @@ services:
    image: tiledesk/tiledesk-dashboard
    container_name: tiledesk-dashboard 
    environment: 
-      - FEATURES_TOKEN=NAT:T-DEV:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-LBS:T-NOT:T-MTT:T-RAS:T-ANA:T-ACT:T-TIL:T
+      - FEATURES_TOKEN=NAT:T-DEV:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-LBS:T-NOT:T-MTT:T-RAS:T-ANA:T-ACT:T-TIL:T-SUP:T-APP:T
       - SERVER_BASE_URL=/api/
       - CHAT_BASE_URL=/chat/
       - WS_URL
@@ -140,6 +140,10 @@ services:
       - CACHE_ENGINE=redis
       - CACHE_REDIS_HOST=redis
       - CACHE_REDIS_PORT=6379
+      - APPS_ACCESS_TOKEN_SECRET=nodeauthsecret
+      - BOOT_LOADING=true
+      - META_GRAPH_URL=https://graph.facebook.com/v14.0/
+      - WHATSAPP_LOG=false
     depends_on:
       - mongo
     ports:
