@@ -1,7 +1,7 @@
 apiVersion: v1
 entries:
   tiledesk:
-   - apiVersion: v2
+  - apiVersion: v2
     appVersion: 2.2.50
     created: "2022-11-23T17:47:04.97985+01:00"
     dependencies:
