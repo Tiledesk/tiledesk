@@ -226,7 +226,7 @@ c21srv:
   resources: {}
   image:  
     repository: chat21/chat21-server
-    tag: 0.2.29
+    tag: 0.2.31
     # pullPolicy: IfNotPresent  
 
 imagePullSecrets: #[]
