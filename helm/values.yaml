@@ -184,7 +184,7 @@ ionic:
 
   image:
     repository: chat21/chat21-ionic
-    tag: 3.0.83
+    tag: 3.0.85
 
   service:
       type: ClusterIP
@@ -226,7 +226,7 @@ c21srv:
   resources: {}
   image:  
     repository: chat21/chat21-server
-    tag: 0.2.31
+    tag: 0.2.32
     # pullPolicy: IfNotPresent  
 
 imagePullSecrets: #[]
