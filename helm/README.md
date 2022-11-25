@@ -47,6 +47,8 @@ To install the chart with the release name `my-tiledesk`:
 helm install my-tiledesk tiledesk/tiledesk
 ```
 
+ **PAY-ATTENTION: helm release-name must contains 'tiledesk' word as suffix or prefix (e.g. *my-tiledesk*)**
+
 The command deploys Tiledesk on the Kubernetes cluster in the default namespace. 
 
 # Open the dashboard
