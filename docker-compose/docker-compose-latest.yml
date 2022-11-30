@@ -1,4 +1,4 @@
-version: "3.9"
+version: "3.10"
 
 volumes:
    tiledesk-datadb:
@@ -28,6 +28,7 @@ services:
       - BOT_CREDENTIAL_URL=/api/modules/dialogflow/botcredendials/
       - RASA_BOT_CREDENTIAL_URL=/api/modules/rasa/botcredendials/
       - LOG_LEVEL=info
+      - APPS_URL=/api/modules/apps/
      
    ports:
       - "4500:80" #use expose if you want to block external access

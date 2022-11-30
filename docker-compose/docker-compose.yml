@@ -1,10 +1,10 @@
-version: "3.9"
+version: "3.10"
 
 volumes:
    tiledesk-datadb:
 services:
   dashboard:
-   image: tiledesk/tiledesk-dashboard:2.3.4
+   image: tiledesk/tiledesk-dashboard:2.3.6
    container_name: tiledesk-dashboard 
    environment: 
       - FEATURES_TOKEN=NAT:T-DEV:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-LBS:T-NOT:T-MTT:T-RAS:T-ANA:T-ACT:T-TIL:T-SUP:T-APP:T
@@ -108,7 +108,7 @@ services:
     command: [nginx-debug, '-g', 'daemon off;']
     
   server:
-    image: tiledesk/tiledesk-server:2.3.50
+    image: tiledesk/tiledesk-server:2.3.51
     container_name: tiledesk-server
     restart: always       
     environment: 
