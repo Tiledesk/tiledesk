@@ -1,4 +1,4 @@
-version: "3.10"
+version: "3.11"
 
 volumes:
    tiledesk-datadb:
@@ -8,15 +8,22 @@ services:
    container_name: tiledesk-dashboard 
    environment: 
       - FEATURES_TOKEN=NAT:T-DEV:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-LBS:T-NOT:T-MTT:T-RAS:T-ANA:T-ACT:T-TIL:T-SUP:T-APP:T
+      - "WIDGET_LOCATION=${EXTERNAL_BASE_URL:-http://localhost:8081}/widget/launch.js"
+      - BOT_CREDENTIAL_URL=/api/modules/dialogflow/botcredendials/
+      - RASA_BOT_CREDENTIAL_URL=/api/modules/rasa/botcredendials/
       - SERVER_BASE_URL=/api/
       - CHAT_BASE_URL=/chat/
+      - WIDGET_TEST_LOCATION=/widget/assets/twp/index.html
       - WS_URL
       - WS_URL_RELATIVE=/ws/
-      - "WIDGET_LOCATION=${EXTERNAL_BASE_URL:-http://localhost:8081}/widget/launch.js"
-      - WIDGET_TEST_LOCATION=/widget/assets/twp/index.html
-      - CHAT21_ENGINE=mqtt
+      - BRAND_SRC
+      - REMOTE_JS_SRC
+      - CHAT_ENGINE=mqtt
       - UPLOAD_ENGINE=native
       - PUSH_ENGINE=none
+      - LOG_LEVEL=info
+      - APPS_URL=/api/modules/apps/
+      - PROMO_BANNER_URL
       - FIREBASE_APIKEY
       - FIREBASE_AUTHDOMAIN
       - FIREBASE_DATABASEURL
@@ -25,10 +32,6 @@ services:
       - FIREBASE_MESSAGINGSENDERID
       - FIREBASE_APP_ID
       - FIREBASE_VAPID
-      - BOT_CREDENTIAL_URL=/api/modules/dialogflow/botcredendials/
-      - RASA_BOT_CREDENTIAL_URL=/api/modules/rasa/botcredendials/
-      - LOG_LEVEL=info
-      - APPS_URL=/api/modules/apps/
      
    ports:
       - "4500:80" #use expose if you want to block external access
