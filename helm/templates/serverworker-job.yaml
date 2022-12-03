@@ -13,7 +13,7 @@ spec:
         {{- toYaml . | nindent 8 }}
     {{- end }}
       labels: {{ include "tiledesk.selectorLabels" . | nindent 8 }}
-        app.kubernetes.io/component: server
+        app.kubernetes.io/component: serverworker
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:

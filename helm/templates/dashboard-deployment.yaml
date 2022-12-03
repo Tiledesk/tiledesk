@@ -34,12 +34,57 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.dashboard.image.repository }}:{{ .Values.dashboard.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.dashboard.image.pullPolicy }}
-          env:            
+          env:  
+            - name: FEATURES_TOKEN  
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: FEATURES_TOKEN
+            - name: WIDGET_LOCATION
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: WIDGET_LOCATION
+            - name: BOT_CREDENTIAL_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: DIALOGFLOW_BOT_CREDENTIAL_URL  
+            - name: RASA_BOT_CREDENTIAL_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: RASA_BOT_CREDENTIAL_URL 
             - name: SERVER_BASE_URL
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: SERVER_BASE_URL
+            - name: CHAT_BASE_URL  
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: CHAT_BASE_URL
+            - name: WIDGET_TEST_LOCATION
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: WIDGET_TEST_LOCATION
+            - name: WS_URL_RELATIVE
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: WS_URL_RELATIVE
+            - name: BRAND_SRC
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: BRAND_SRC
+            - name: REMOTE_JS_SRC
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: REMOTE_JS_SRC
             - name: CHAT21_ENGINE
               valueFrom:
                 configMapKeyRef:
@@ -55,86 +100,61 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: PUSH_ENGINE
-            - name: FEATURES_TOKEN  
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "tiledesk.fullname" . }}-config
-                  key: FEATURES_TOKEN
-            - name: CHAT_BASE_URL  
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "tiledesk.fullname" . }}-config
-                  key: CHAT_BASE_URL
-            - name: WS_URL_RELATIVE
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "tiledesk.fullname" . }}-config
-                  key: WS_URL_RELATIVE
-            - name: WIDGET_LOCATION
-              valueFrom:
-                  configMapKeyRef:
-                    name: {{ include "tiledesk.fullname" . }}-config
-                    key: WIDGET_LOCATION
-            - name: WIDGET_TEST_LOCATION
-              valueFrom:
-                  configMapKeyRef:
-                    name: {{ include "tiledesk.fullname" . }}-config
-                    key: WIDGET_TEST_LOCATION
-            - name: FIREBASE_PROJECT_ID
-              valueFrom:
-                  configMapKeyRef:
-                    name: {{ include "tiledesk.fullname" . }}-config
-                    key: FIREBASE_PROJECT_ID
-            - name: FIREBASE_APIKEY
-              valueFrom:
-                  configMapKeyRef:
-                    name: {{ include "tiledesk.fullname" . }}-config
-                    key: FIREBASE_APIKEY
-            - name: FIREBASE_AUTHDOMAIN
-              valueFrom:
-                  configMapKeyRef:
-                    name: {{ include "tiledesk.fullname" . }}-config
-                    key: FIREBASE_AUTHDOMAIN
-            - name: FIREBASE_DATABASEURL
-              valueFrom:
-                  configMapKeyRef:
-                    name: {{ include "tiledesk.fullname" . }}-config
-                    key: FIREBASE_DATABASEURL
-            - name: FIREBASE_STORAGEBUCKET
-              valueFrom:
-                  configMapKeyRef:
-                    name: {{ include "tiledesk.fullname" . }}-config
-                    key: FIREBASE_STORAGEBUCKET
-            - name: FIREBASE_MESSAGINGSENDERID
-              valueFrom:
-                  configMapKeyRef:
-                    name: {{ include "tiledesk.fullname" . }}-config
-                    key: FIREBASE_MESSAGINGSENDERID
-            - name: FIREBASE_APP_ID
-              valueFrom:
-                  configMapKeyRef:
-                    name: {{ include "tiledesk.fullname" . }}-config
-                    key: FIREBASE_APP_ID
-            - name: FIREBASE_VAPID
-              valueFrom:
-                  configMapKeyRef:
-                    name: {{ include "tiledesk.fullname" . }}-config
-                    key: FIREBASE_VAPID
             - name: LOG_LEVEL
               valueFrom:
-                  configMapKeyRef:
-                    name: {{ include "tiledesk.fullname" . }}-config
-                    key: LOG_LEVEL
-            - name: BOT_CREDENTIAL_URL
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: LOG_LEVEL
+            - name: APPS_URL
               valueFrom:
-                  configMapKeyRef:
-                    name: {{ include "tiledesk.fullname" . }}-config
-                    key: DIALOGFLOW_BOT_CREDENTIAL_URL  
-            - name: RASA_BOT_CREDENTIAL_URL
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: APPS_URL
+            - name: PROMO_BANNER_URL
               valueFrom:
-                  configMapKeyRef:
-                    name: {{ include "tiledesk.fullname" . }}-config
-                    key: RASA_BOT_CREDENTIAL_URL                    
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: PROMO_BANNER_URL
+            - name: FIREBASE_APIKEY 
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: FIREBASE_APIKEY
+            - name: FIREBASE_AUTHDOMAIN
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: FIREBASE_AUTHDOMAIN
+            - name: FIREBASE_DATABASEURL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: FIREBASE_DATABASEURL
+            - name: FIREBASE_PROJECT_ID
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: FIREBASE_PROJECT_ID
+            - name: FIREBASE_STORAGEBUCKET
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: FIREBASE_STORAGEBUCKET
+            - name: FIREBASE_MESSAGINGSENDERID
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: FIREBASE_MESSAGINGSENDERID
+            - name: FIREBASE_APP_ID
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: FIREBASE_APP_ID
+            - name: FIREBASE_VAPID
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: FIREBASE_VAPID                     
           ports:
             - name: dashboard-http
               containerPort: 80
