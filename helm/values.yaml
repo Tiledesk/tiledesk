@@ -198,7 +198,7 @@ ionic:
   resources: {}
   image:
     repository: chat21/chat21-ionic
-    tag: 3.0.86-rc.3
+    tag: 3.0.86
 
   service:
       type: ClusterIP
@@ -212,7 +212,7 @@ webwidget:
   resources: {}
   image:
     repository: chat21/chat21-web-widget
-    tag: 5.0.45
+    tag: 5.0.46
 
   service:
       type: ClusterIP
