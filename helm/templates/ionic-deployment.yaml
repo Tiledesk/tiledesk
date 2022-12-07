@@ -164,7 +164,12 @@ spec:
               valueFrom:
                   configMapKeyRef:
                     name: {{ include "tiledesk.fullname" . }}-config
-                    key: SUPPORT_MODE                    
+                    key: SUPPORT_MODE      
+            - name: WIDGET_TEST_LOCATION
+              valueFrom:
+                  configMapKeyRef:
+                    name: {{ include "tiledesk.fullname" . }}-config
+                    key: WIDGET_TEST_LOCATION                    
           ports:
             - name: ionic-http
               containerPort: 80
