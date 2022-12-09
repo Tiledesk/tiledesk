@@ -4,7 +4,7 @@ volumes:
    tiledesk-datadb:
 services:
   dashboard:
-   image: tiledesk/tiledesk-dashboard:2.3.6
+   image: tiledesk/tiledesk-dashboard:2.3.7
    container_name: tiledesk-dashboard 
    environment: 
       - FEATURES_TOKEN=NAT:T-DEV:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-LBS:T-NOT:T-MTT:T-RAS:T-ANA:T-ACT:T-TIL:T-SUP:T-APP:T
@@ -32,6 +32,7 @@ services:
       - FIREBASE_MESSAGINGSENDERID
       - FIREBASE_APP_ID
       - FIREBASE_VAPID
+      - CHAT_STORAGE_PREFIX=chat_sv5
    ports:
       - "4500:80" #use expose if you want to block external access
 
@@ -65,7 +66,7 @@ services:
       - AUTH_PERSISTENCE=LOCAL
       - ENBED_JS=true
   ionic:
-   image: chat21/chat21-ionic:3.0.86
+   image: chat21/chat21-ionic:3.0.88
    container_name: chat21-ionic
    ports:
       - "8082:80" #use expose if you want to block external access   
@@ -96,6 +97,8 @@ services:
       - WRITE_TO_BUTTON=true
       - ARCHIVED_BUTTON=true
       - AUTH_PERSISTENCE=LOCAL
+      - EMAIL_SECTION=true
+      - CHAT_STORAGE_PREFIX=chat_sv5
       - WS_URL_RELATIVE=/ws/
   proxy:
     image: tiledesk/tiledesk-docker-proxy:v1.1.0
