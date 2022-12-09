@@ -3,6 +3,33 @@ entries:
   tiledesk:
   - apiVersion: v2
     appVersion: 2.2.52
+    created: "2022-12-09T17:49:06.347739+01:00"
+    dependencies:
+    - condition: mongodb.enabled
+      name: mongodb
+      repository: https://charts.bitnami.com/bitnami
+      version: 12.x.x
+    - condition: rabbitmq.enabled
+      name: rabbitmq
+      repository: https://charts.bitnami.com/bitnami
+      version: 10.1.9
+    description: A Tiledesk Helm chart for Kubernetes
+    digest: 756df9f71c967fdc3a6ce1820a975a4d1de6670c50cac495d3d2d449671c5e65
+    home: https://www.tiledesk.com
+    icon: https://avatars2.githubusercontent.com/u/39886277?s=200&v=4
+    keywords:
+    - live chat
+    - chatbot
+    - tiledesk
+    name: tiledesk
+    sources:
+    - https://github.com/tiledesk/tiledesk-deployment
+    type: application
+    urls:
+    - https://tiledesk.github.io/tiledesk/helm/releases/tiledesk-1.0.29.tgz
+    version: 1.0.29
+  - apiVersion: v2
+    appVersion: 2.2.52
     created: "2022-12-09T15:31:21.823946+01:00"
     dependencies:
     - condition: mongodb.enabled
