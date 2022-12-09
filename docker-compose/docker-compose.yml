@@ -4,7 +4,7 @@ volumes:
    tiledesk-datadb:
 services:
   dashboard:
-   image: tiledesk/tiledesk-dashboard:2.3.7
+   image: tiledesk/tiledesk-dashboard:2.3.8
    container_name: tiledesk-dashboard 
    environment: 
       - FEATURES_TOKEN=NAT:T-DEV:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-LBS:T-NOT:T-MTT:T-RAS:T-ANA:T-ACT:T-TIL:T-SUP:T-APP:T
@@ -66,7 +66,7 @@ services:
       - AUTH_PERSISTENCE=LOCAL
       - ENBED_JS=true
   ionic:
-   image: chat21/chat21-ionic:3.0.88
+   image: chat21/chat21-ionic:3.0.88.1
    container_name: chat21-ionic
    ports:
       - "8082:80" #use expose if you want to block external access   
