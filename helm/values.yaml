@@ -187,7 +187,7 @@ dashboard:
   resources: {}
   image:
     repository: tiledesk/tiledesk-dashboard
-    tag: 2.3.7
+    tag: 2.3.8
 
   service:
     type: ClusterIP
