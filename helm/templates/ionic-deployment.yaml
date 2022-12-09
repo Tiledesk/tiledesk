@@ -159,7 +159,17 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
-                  key: AUTH_PERSISTENCE       
+                  key: AUTH_PERSISTENCE
+            - name: CHAT_STORAGE_PREFIX
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: CHAT_STORAGE_PREFIX
+            - name: EMAIL_SECTION
+              valueFrom:
+                  configMapKeyRef:
+                    name: {{ include "tiledesk.fullname" . }}-config
+                    key: EMAIL_SECTION        
             - name: SUPPORT_MODE
               valueFrom:
                   configMapKeyRef:
@@ -169,12 +179,7 @@ spec:
               valueFrom:
                   configMapKeyRef:
                     name: {{ include "tiledesk.fullname" . }}-config
-                    key: WIDGET_TEST_LOCATION      
-            - name: EMAIL_SECTION
-              valueFrom:
-                  configMapKeyRef:
-                    name: {{ include "tiledesk.fullname" . }}-config
-                    key: EMAIL_SECTION                
+                    key: WIDGET_TEST_LOCATION                 
           ports:
             - name: ionic-http
               containerPort: 80

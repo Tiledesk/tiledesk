@@ -64,6 +64,7 @@ MQTT_APIENDPOINT: /chatapi/api
 PUSH_ENGINE: none
 FIREBASE_TENANT: tilechat
 FILE_UPLOAD_ACCEPT: "*/*"
+CHAT_STORAGE_PREFIX: chat_sv5
 
 
 # Dashboard Config
@@ -92,7 +93,7 @@ SUPPORT_MODE: true
 WRITE_TO_BUTTON: true
 ARCHIVED_BUTTON: true
 WEB_CLICK_ACTION: CHANGEIT #move to another section
-EMAIL_SECTION: true
+EMAIL_SECTION: false
 
 # Email Config
 EMAIL_ENABLED: false
@@ -153,7 +154,7 @@ CREATE_INITIAL_DATA: true
 CACHE_ENABLED: false
 CACHE_ENGINE: redis
 CACHE_REDIS_PORT: 6379
-CACHE_REDIS_HOST: my-tiledesk-redis-master
+# CACHE_REDIS_HOST: my-tiledesk-redis-master
 #CACHE_REDIS_PASSWORD: EMPTY
 
 server:
@@ -189,7 +190,7 @@ ionic:
 
   image:
     repository: chat21/chat21-ionic
-    tag: 3.0.86
+    tag: 3.0.88.1
 
   service:
       type: ClusterIP

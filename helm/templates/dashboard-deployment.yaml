@@ -154,7 +154,12 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
-                  key: FIREBASE_VAPID                     
+                  key: FIREBASE_VAPID
+            - name: CHAT_STORAGE_PREFIX
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: CHAT_STORAGE_PREFIX                     
           ports:
             - name: dashboard-http
               containerPort: 80
