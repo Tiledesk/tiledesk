@@ -29,6 +29,7 @@ PROMO_BANNER_URL: ''
 WRITE_TO_BUTTON: true
 ARCHIVED_BUTTON: true
 SUPPORT_MODE: true
+EMAIL_SECTION: true
 ###### ------CHAT IONIC : END------ ######
 
 
@@ -78,7 +79,7 @@ CREATE_INITIAL_DATA: true
 CACHE_ENABLED: true
 CACHE_ENGINE: redis
 CACHE_REDIS_PORT: 6379
-CACHE_REDIS_HOST: my-tiledesk-redis-master
+# CACHE_REDIS_HOST: my-tiledesk-redis-master
 #CACHE_REDIS_PASSWORD: EMPTY
 
 REQUEST_HISTORY_ENABLED: false
@@ -131,6 +132,7 @@ UPLOAD_ENGINE: native
 PUSH_ENGINE: none
 LOG_LEVEL: info # Log Config
 AUTH_PERSISTENCE: LOCAL
+CHAT_STORAGE_PREFIX: chat_sv5
 
 FIREBASE_TENANT: tilechat
 FIREBASE_APIKEY: CHANGEIT
@@ -185,7 +187,7 @@ dashboard:
   resources: {}
   image:
     repository: tiledesk/tiledesk-dashboard
-    tag: 2.3.6
+    tag: 2.3.7
 
   service:
     type: ClusterIP

@@ -34,6 +34,7 @@ data:
   WRITE_TO_BUTTON: {{ .Values.WRITE_TO_BUTTON | quote }}
   ARCHIVED_BUTTON: {{ .Values.ARCHIVED_BUTTON | quote }}
   SUPPORT_MODE: {{ .Values.SUPPORT_MODE | quote }}
+  EMAIL_SECTION: {{ .Values.EMAIL_SECTION | quote }}
 
   # ----- WIDGET ------- 
   TRANSLATIONS_URL: {{if and .Values.EXTERNAL_BASE_URL (hasPrefix "/" .Values.TRANSLATIONS_URL)}}"{{ .Values.EXTERNAL_BASE_URL  }}{{ .Values.TRANSLATIONS_URL }}"{{ else }}{{ .Values.TRANSLATIONS_URL | quote }}{{ end }}
@@ -64,7 +65,7 @@ data:
   CACHE_ENABLED: {{ .Values.CACHE_ENABLED | quote }}
   CACHE_ENGINE: {{ .Values.CACHE_ENGINE | quote }}
   CACHE_REDIS_PORT: {{ .Values.CACHE_REDIS_PORT | quote }}
-  CACHE_REDIS_HOST: {{ .Values.CACHE_REDIS_HOST | quote }}
+  CACHE_REDIS_HOST: {{ include "tiledesk.fullname" . }}-redis-master
 
   REQUEST_HISTORY_ENABLED: {{ .Values.REQUEST_HISTORY_ENABLED | quote }}
   ACTIVITY_HISTORY_ENABLED: {{ .Values.ACTIVITY_HISTORY_ENABLED | quote }}
@@ -108,6 +109,7 @@ data:
   PUSH_ENGINE: {{ .Values.PUSH_ENGINE | quote }}
   LOG_LEVEL: {{ .Values.LOG_LEVEL | quote }}
   AUTH_PERSISTENCE: {{ .Values.AUTH_PERSISTENCE | quote }}
+  CHAT_STORAGE_PREFIX: {{ .Values.CHAT_STORAGE_PREFIX | quote }}
   
   FIREBASE_TENANT: {{ .Values.FIREBASE_TENANT | quote }}
   FIREBASE_APIKEY: {{ .Values.FIREBASE_APIKEY | quote }}
