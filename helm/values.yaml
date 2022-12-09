@@ -67,13 +67,19 @@ FILE_UPLOAD_ACCEPT: "*/*"
 
 
 # Dashboard Config
-FEATURES_TOKEN: "NAT:T-DEV:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-LBS:T-NOT:T-MTT:T-RAS:T"
+FEATURES_TOKEN: "NAT:T-DEV:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-LBS:T-NOT:T-MTT:T-RAS:T-ANA:T"
 SERVER_BASE_URL: /api/
 CHAT_BASE_URL: /chat/
 WS_SERVER_PATH: /
 WS_URL_RELATIVE: /ws/
 WIDGET_LOCATION: /widget/launch.js
 WIDGET_TEST_LOCATION: /widget/assets/twp/index.html
+DIALOGFLOW_BOT_CREDENTIAL_URL: /api/modules/dialogflow/botcredendials/
+RASA_BOT_CREDENTIAL_URL: /api/modules/rasa/botcredendials/
+BRAND_SRC: ''
+REMOTE_JS_SRC: ''
+APPS_URL: /api/modules/apps/
+PROMO_BANNER_URL: ''
 
 # Widget Config
 TRANSLATIONS_URL: /api/
@@ -86,6 +92,7 @@ SUPPORT_MODE: true
 WRITE_TO_BUTTON: true
 ARCHIVED_BUTTON: true
 WEB_CLICK_ACTION: CHANGEIT #move to another section
+EMAIL_SECTION: true
 
 # Email Config
 EMAIL_ENABLED: false
@@ -141,8 +148,6 @@ SYNC_CHAT21_GROUPS: false
 
 CHAT21_HTTPSRV_RABBITMQ_CREDENTIAL: ignored:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI2YWI3MzY1Yi1hYWRhLTRlNTktOWZjZS0yMDQwZDgyOTA4MTgiLCJzdWIiOiIxMDAtQVBJQURNSU4iLCJzY29wZSI6WyJyYWJiaXRtcS5yZWFkOiovKi8qIiwicmFiYml0bXEud3JpdGU6Ki8qLyoiLCJyYWJiaXRtcS5jb25maWd1cmU6Ki8qLyoiXSwiY2xpZW50X2lkIjoiMTAwLUFQSUFETUlOIiwiY2lkIjoiMTAwLUFQSUFETUlOIiwiYXpwIjoiMTAwLUFQSUFETUlOIiwidXNlcl9pZCI6IjEwMC1BUElBRE1JTiIsImFwcF9pZCI6InRpbGVjaGF0IiwiaWF0IjoxNTk0Mzc3OTc4LCJleHAiOjE2OTY5Njk5NzgsImF1ZCI6WyJyYWJiaXRtcSIsIjEwMC1BUElBRE1JTiJdLCJraWQiOiJ0aWxlZGVzay1rZXkiLCJ0aWxlZGVza19hcGlfcm9sZXMiOiJhZG1pbiJ9.g2YL6RZp5SuLcQyBTYf4cn9SnRIyifNb1f1-Si1inbs
 
-RASA_BOT_CREDENTIAL_URL: /api/modules/rasa/botcredendials/
-
 CREATE_INITIAL_DATA: true
 
 CACHE_ENABLED: false
@@ -171,7 +176,7 @@ dashboard:
 
   image:
     repository: tiledesk/tiledesk-dashboard
-    tag: 2.3.6
+    tag: 2.2.54.1
 
   service:
     type: ClusterIP

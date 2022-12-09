@@ -169,7 +169,12 @@ spec:
               valueFrom:
                   configMapKeyRef:
                     name: {{ include "tiledesk.fullname" . }}-config
-                    key: WIDGET_TEST_LOCATION                    
+                    key: WIDGET_TEST_LOCATION      
+            - name: EMAIL_SECTION
+              valueFrom:
+                  configMapKeyRef:
+                    name: {{ include "tiledesk.fullname" . }}-config
+                    key: EMAIL_SECTION                
           ports:
             - name: ionic-http
               containerPort: 80

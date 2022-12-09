@@ -135,3 +135,10 @@ data:
   CACHE_REDIS_HOST: {{ .Values.CACHE_REDIS_HOST | quote }}
   # CACHE_REDIS_PASSWORD: {{ .Values.CACHE_REDIS_PASSWORD | quote }}
   GLOBAL_SECRET: {{ .Values.GLOBAL_SECRET | quote }}
+
+  DIALOGFLOW_BOT_CREDENTIAL_URL: {{ .Values.DIALOGFLOW_BOT_CREDENTIAL_URL | quote }}
+  BRAND_SRC: {{ .Values.BRAND_SRC | quote }}
+  REMOTE_JS_SRC: {{ .Values.REMOTE_JS_SRC | quote }}
+  APPS_URL: {{ .Values.APPS_URL | quote }}
+  PROMO_BANNER_URL: {{ .Values.PROMO_BANNER_URL | quote }}
+  EMAIL_SECTION: {{ .Values.EMAIL_SECTION | quote }}
