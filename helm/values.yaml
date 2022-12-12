@@ -200,7 +200,7 @@ ionic:
   resources: {}
   image:
     repository: chat21/chat21-ionic
-    tag: 3.0.86
+    tag: 3.0.89
 
   service:
       type: ClusterIP

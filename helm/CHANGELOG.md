@@ -1,3 +1,7 @@
+# 1.1.7 ( app v. 2.2.52 )
+- Updated Tiledesk Dashboard 2.3.8
+- Updated Tiledesk Ionic 3.0.89
+
 # 1.1.6 ( app v. 2.2.52 )
 - Updated Tiledesk Dashboard 2.3.8
 - Updated Tiledesk Ionic 3.0.88.1 
