@@ -1,0 +1,45 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: my-tiledesk-prod-proxy-nginx  
+  namespace: default
+  labels:
+    helm.sh/chart: tiledesk-1.1.3
+    app.kubernetes.io/name: tiledesk
+    app.kubernetes.io/instance: my-tiledesk-prod
+    app.kubernetes.io/version: "2.2.49"
+    app.kubernetes.io/managed-by: Helm
+  annotations:   
+    nginx.ingress.kubernetes.io/enable-cors: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - eu.rtmv3.tiledesk.com
+      secretName: tiledesk-tls-secret
+  rules:
+    - host: eu.rtmv3.tiledesk.com
+      http:
+        paths:
+          - path: /api/(.*)
+            pathType: Prefix          
+            backend:
+              service:
+                name: my-tiledesk-prod-server
+                port:
+                  number: 80          
+          - path: /mqws/(.*)
+            pathType: Prefix          
+            backend:
+              service:
+                name: my-tiledesk-prod-rabbitmq
+                port:
+                  number: 15675
+          - path: /chatapi/(.*)
+            pathType: Prefix          
+            backend:
+              service:
+                name: my-tiledesk-prod-c21httpsrv
+                port:
+                  number: 80
