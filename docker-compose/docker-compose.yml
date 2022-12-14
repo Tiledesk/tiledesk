@@ -114,11 +114,11 @@ services:
     command: [nginx-debug, '-g', 'daemon off;']
     
   server:
-    image: tiledesk/tiledesk-server:2.3.53
+    image: tiledesk/tiledesk-server:2.3.56
     container_name: tiledesk-server
     restart: always       
     environment: 
-      - LOG_LEVEL=verbose
+      - LOG_LEVEL=info
       - CHAT21_ENABLED=true
       - CHAT21_ENGINE=mqtt
       - CHAT21_URL=http://chat21httpserver:8004
