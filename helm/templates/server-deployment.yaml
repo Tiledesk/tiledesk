@@ -326,6 +326,61 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: WHATSAPP_LOG 
+            - name: WRITE_LOG_TO_MONGODB
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: WRITE_LOG_TO_MONGODB
+            - name: LOG_MONGODB_LEVEL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: LOG_MONGODB_LEVEL
+            # - name: BOT_DIALOGFLOW_ENDPOINT
+            #   valueFrom:
+            #     configMapKeyRef:
+            #       name: {{ include "tiledesk.fullname" . }}-config
+            #       key: BOT_DIALOGFLOW_ENDPOINT
+            - name: JWT_HISTORY_ENABLED
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: JWT_HISTORY_ENABLED
+            - name: TRIGGER_ENABLED
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: TRIGGER_ENABLED
+            - name: TRIAL_MODE_ENABLED
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: TRIAL_MODE_ENABLED
+            - name: EMAIL_REPLY_ENABLED
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: EMAIL_REPLY_ENABLED
+            - name: EMAIL_INBOUND_DOMAIN
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: EMAIL_INBOUND_DOMAIN
+            - name: API_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: API_URL
+            - name: DISABLE_SEND_OFFLINE_EMAIL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: DISABLE_SEND_OFFLINE_EMAIL
+            # - name: BOT_RASA_ENDPOINT
+            #   valueFrom:
+            #     configMapKeyRef:
+            #       name: {{ include "tiledesk.fullname" . }}-config
+            #       key: BOT_RASA_ENDPOINT                  
           ports:
             - name: server-http
               containerPort: 3000
