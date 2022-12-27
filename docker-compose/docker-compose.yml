@@ -4,7 +4,7 @@ volumes:
    tiledesk-datadb:
 services:
   dashboard:
-   image: tiledesk/tiledesk-dashboard:2.3.8
+   image: tiledesk/tiledesk-dashboard:2.3.12
    container_name: tiledesk-dashboard 
    environment: 
       - FEATURES_TOKEN=NAT:T-DEV:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-LBS:T-NOT:T-MTT:T-RAS:T-ANA:T-ACT:T-TIL:T-SUP:T-APP:T
@@ -33,11 +33,12 @@ services:
       - FIREBASE_APP_ID
       - FIREBASE_VAPID
       - CHAT_STORAGE_PREFIX=chat_sv5
+      - "API_BASEIMAGE_URL=${EXTERNAL_BASE_URL:-http://localhost:8081}/api/"
    ports:
       - "4500:80" #use expose if you want to block external access
 
   webwidget:
-   image: chat21/chat21-web-widget:5.0.46
+   image: chat21/chat21-web-widget:5.0.51
    container_name: chat21-web-widget 
    ports: 
       - "4200:80" # specify port forewarding
@@ -101,7 +102,7 @@ services:
       - CHAT_STORAGE_PREFIX=chat_sv5
       - WS_URL_RELATIVE=/ws/
   proxy:
-    image: tiledesk/tiledesk-docker-proxy:v1.1.0
+    image: tiledesk/tiledesk-docker-proxy:latest
     container_name: tiledesk-docker-proxy   
     ports:
       - "8081:80" # specify port forewarding
@@ -114,7 +115,7 @@ services:
     command: [nginx-debug, '-g', 'daemon off;']
     
   server:
-    image: tiledesk/tiledesk-server:2.3.57
+    image: tiledesk/tiledesk-server:2.3.69
     container_name: tiledesk-server
     restart: always       
     environment: 
