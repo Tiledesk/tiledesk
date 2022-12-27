@@ -29,7 +29,7 @@ data:
   REMOTE_JS_SRC: {{ .Values.REMOTE_JS_SRC | quote }}
   APPS_URL: {{ .Values.APPS_URL | quote }}
   PROMO_BANNER_URL: {{ .Values.PROMO_BANNER_URL | quote }}
-
+  
   # ----- CHAT IONIC ------- 
   WRITE_TO_BUTTON: {{ .Values.WRITE_TO_BUTTON | quote }}
   ARCHIVED_BUTTON: {{ .Values.ARCHIVED_BUTTON | quote }}
