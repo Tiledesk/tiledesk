@@ -101,7 +101,7 @@ services:
       - CHAT_STORAGE_PREFIX=chat_sv5
       - WS_URL_RELATIVE=/ws/
   proxy:
-    image: tiledesk/tiledesk-docker-proxy:v1.1.0
+    image: tiledesk/tiledesk-docker-proxy:v1.1.1
     container_name: tiledesk-docker-proxy   
     ports:
       - "8081:80" # specify port forewarding
