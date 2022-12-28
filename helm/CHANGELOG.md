@@ -1,3 +1,6 @@
+# 1.1.11 ( app v. 2.3.69 )
+- Fixed: missing SERVER_BASE_URL
+
 # 1.1.10 ( app v. 2.3.69 )
 - Updated Tiledesk Dashboard 2.3.12
 - Updated Tiledesk Ionic 3.0.89 
