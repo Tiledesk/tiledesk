@@ -190,7 +190,7 @@ ionic:
 
   image:
     repository: chat21/chat21-ionic
-    tag: 3.0.88.1
+    tag: 3.0.90-rc.6
 
   service:
       type: ClusterIP
@@ -204,7 +204,7 @@ webwidget:
 
   image:
     repository: chat21/chat21-web-widget
-    tag: 5.0.51
+    tag: 5.0.52
 
   service:
       type: ClusterIP
