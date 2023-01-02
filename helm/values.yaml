@@ -190,7 +190,7 @@ ionic:
 
   image:
     repository: chat21/chat21-ionic
-    tag: 3.0.90-rc.6
+    tag: 3.0.90
 
   service:
       type: ClusterIP
