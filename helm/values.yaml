@@ -176,7 +176,7 @@ server:
   resources: {}
   image:  
     repository: tiledesk/tiledesk-server
-    tag: 2.3.69
+    tag: 2.3.70
 
   service:
     type: ClusterIP
@@ -189,7 +189,7 @@ serverworker:
   resources: {}
   image:  
     repository: tiledesk/tiledesk-server-worker
-    tag: 2.3.69
+    tag: 2.3.70
 
 dashboard:
   ## Enable deployment of Tiledesk Server
@@ -225,7 +225,7 @@ webwidget:
   resources: {}
   image:
     repository: chat21/chat21-web-widget
-    tag: 5.0.51
+    tag: 5.0.52
 
   service:
       type: ClusterIP
@@ -293,6 +293,7 @@ ingress:
   enabled: true  
   annotations:
     #kubernetes.io/ingress.class: nginx #deprecated
+    nginx.ingress.kubernetes.io/proxy-body-size: "50m"
     nginx.ingress.kubernetes.io/rewrite-target: /$1
     nginx.ingress.kubernetes.io/enable-cors: "true"
     nginx.ingress.kubernetes.io/configuration-snippet: |
