@@ -8,20 +8,21 @@ categories:
   - communications
   - marketing
   - mobile-marketing
+  - conversational-commerce
 description:
   it:
     apiDocumentation: 'https://developer.tiledesk.com/apis/rest-api'
     documentation: 'https://gethelp.tiledesk.com'
     features:
       - live chat widget
-      - chatbot
+      - no-code chatbot builder
       - adaptive multichannel technology for WhatsApp, FB Messenger and 
       many other messaging channels 
       - 'integration with DialogFlow, Rasa and all major AI solutions'
       - conversational ticketing
       - multi-project management
       - SLAs setting
-      - 'smart assignment of the queues '
+      - 'smart assignment of the queues'
       - seamless conversation
       - dashboard
       - knowledge base
@@ -44,7 +45,8 @@ description:
 
       - Live Chat Widget with full multichannel experience on Web and Mobile; 
 
-      - Resolution Bot to automate customer support; 
+      - No-Code Chatbot Builder to qualify more leads and automate customer 
+      support; 
 
       - Adaptive multichannel technology to design conversational flow once, 
       then run it on every channel, from Whatsapp Business to Company Website
@@ -56,11 +58,11 @@ description:
       instant conversation flow; 
 
       - Team Organization with multi-project management, SLAs setting, smart
-      assignment of the 
-       queues, departments organization and much more; 
+      assignment of the queues, departments organization and much more;
+      
       - Seamless conversation to “jump” between different channels in a
-      transparent way for end 
-       customers and agents; 
+      transparent way for end customers and agents; 
+      
       - Chat Tools like typing indicator, off-line access, delivery receipts,
       contact list and much more; 
 
@@ -91,7 +93,7 @@ it:
     spid: false
 landingURL: 'https://tiledesk.com/install'
 legal:
-  license: AGPL-3.0-only
+  license: MIT
 localisation:
   availableLanguages:
     - it
