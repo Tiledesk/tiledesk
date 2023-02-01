@@ -129,3 +129,5 @@ To bring the system down and cleanup the containers run: ```docker-compose down`
 | Chat REST API                                                              | http://localhost:8081/chatapi/   | chat21-http-server    |
 | Chat Server MQTT                                                           |                                  | chat21-server         |
 | Rabbit MQ                                                                  | http://localhost:8081/mqws/      | chat21-rabbitmq       |
+
+Note: Change http to https and ws (for websocket) to wss if an SSL certificate is configured.
