@@ -92,10 +92,17 @@ QUEUE_ENABLED: true
 #CLOUDAMQP_URL: amqp://ignored:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI2YWI3MzY1Yi1hYWRhLTRlNTktOWZjZS0yMDQwZDgyOTA4MTgiLCJzdWIiOiIxMDAtQVBJQURNSU4iLCJzY29wZSI6WyJyYWJiaXRtcS5yZWFkOiovKi8qIiwicmFiYml0bXEud3JpdGU6Ki8qLyoiLCJyYWJiaXRtcS5jb25maWd1cmU6Ki8qLyoiXSwiY2xpZW50X2lkIjoiMTAwLUFQSUFETUlOIiwiY2lkIjoiMTAwLUFQSUFETUlOIiwiYXpwIjoiMTAwLUFQSUFETUlOIiwidXNlcl9pZCI6IjEwMC1BUElBRE1JTiIsImFwcF9pZCI6InRpbGVjaGF0IiwiaWF0IjoxNTk0Mzc3OTc4LCJleHAiOjE2OTY5Njk5NzgsImF1ZCI6WyJyYWJiaXRtcSIsIjEwMC1BUElBRE1JTiJdLCJraWQiOiJ0aWxlZGVzay1rZXkiLCJ0aWxlZGVza19hcGlfcm9sZXMiOiJhZG1pbiJ9.g2YL6RZp5SuLcQyBTYf4cn9SnRIyifNb1f1-Si1inbs@localhost:5672?heartbeat=60
 QUEUE_CREDENTIAL: ignored:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI2YWI3MzY1Yi1hYWRhLTRlNTktOWZjZS0yMDQwZDgyOTA4MTgiLCJzdWIiOiIxMDAtQVBJQURNSU4iLCJzY29wZSI6WyJyYWJiaXRtcS5yZWFkOiovKi8qIiwicmFiYml0bXEud3JpdGU6Ki8qLyoiLCJyYWJiaXRtcS5jb25maWd1cmU6Ki8qLyoiXSwiY2xpZW50X2lkIjoiMTAwLUFQSUFETUlOIiwiY2lkIjoiMTAwLUFQSUFETUlOIiwiYXpwIjoiMTAwLUFQSUFETUlOIiwidXNlcl9pZCI6IjEwMC1BUElBRE1JTiIsImFwcF9pZCI6InRpbGVjaGF0IiwiaWF0IjoxNTk0Mzc3OTc4LCJleHAiOjE2OTY5Njk5NzgsImF1ZCI6WyJyYWJiaXRtcSIsIjEwMC1BUElBRE1JTiJdLCJraWQiOiJ0aWxlZGVzay1rZXkiLCJ0aWxlZGVza19hcGlfcm9sZXMiOiJhZG1pbiJ9.g2YL6RZp5SuLcQyBTYf4cn9SnRIyifNb1f1-Si1inbs
 GLOBAL_SECRET: nodeauthsecret
+
+GLOBAL_SECRET_OR_PRIVATE_KEY: "" #if value is an empty string node evaluates it as an undefined env variable
+GLOBAL_SECRET_OR_PUB_KEY: "" #if value is an empty string node evaluates it an undefined env variable
+GLOBAL_SECRET_ALGORITHM: HS256
+CHATBOT_TEMPLATES_API_URL: ""
+
 APPS_ACCESS_TOKEN_SECRET: nodeauthsecret
 BOOT_LOADING: true
 META_GRAPH_URL: https://graph.facebook.com/v14.0/
 WHATSAPP_LOG: false
+TILEBOT_LOG: false
 WRITE_LOG_TO_MONGODB: false
 LOG_MONGODB_LEVEL: info
 JWT_HISTORY_ENABLED: false
@@ -114,7 +121,7 @@ DISABLE_SEND_OFFLINE_EMAIL: false
 APP_ID: tilechat
 #EXTERNAL_MQTT_BASE_URL: ws://console.tiledesk.local
 WEBHOOK_ENABLED: true
-WEBHOOK_EVENTS: message-sent
+WEBHOOK_EVENTS: message-sent,message-delivered
 #CHAT21_MONGODB_URI: mongodb://mongo/chat21
 #CHAT21_SRV_RABBITMQ_URI: amqp://ignored:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI2YWI3MzY1Yi1hYWRhLTRlNTktOWZjZS0yMDQwZDgyOTA4MTgiLCJzdWIiOiIxMDAtQVBJQURNSU4iLCJzY29wZSI6WyJyYWJiaXRtcS5yZWFkOiovKi8qIiwicmFiYml0bXEud3JpdGU6Ki8qLyoiLCJyYWJiaXRtcS5jb25maWd1cmU6Ki8qLyoiXSwiY2xpZW50X2lkIjoiMTAwLUFQSUFETUlOIiwiY2lkIjoiMTAwLUFQSUFETUlOIiwiYXpwIjoiMTAwLUFQSUFETUlOIiwidXNlcl9pZCI6IjEwMC1BUElBRE1JTiIsImFwcF9pZCI6InRpbGVjaGF0IiwiaWF0IjoxNTk0Mzc3OTc4LCJleHAiOjE2OTY5Njk5NzgsImF1ZCI6WyJyYWJiaXRtcSIsIjEwMC1BUElBRE1JTiJdLCJraWQiOiJ0aWxlZGVzay1rZXkiLCJ0aWxlZGVza19hcGlfcm9sZXMiOiJhZG1pbiJ9.g2YL6RZp5SuLcQyBTYf4cn9SnRIyifNb1f1-Si1inbs@rabbitmq:5672?heartbeat=60
 CHAT21_SRV_RABBITMQ_CREDENTIAL: ignored:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIyMDI2NjU0Ni05ZGMxLTQ3MzgtOWE5OC01OTQwYWFmZWJkMjgiLCJzdWIiOiIwMS1PQlNFUlZFUiIsInNjb3BlIjpbInJhYmJpdG1xLnJlYWQ6Ki8qLyoiLCJyYWJiaXRtcS53cml0ZToqLyovKiIsInJhYmJpdG1xLmNvbmZpZ3VyZToqLyovKiJdLCJjbGllbnRfaWQiOiIwMS1PQlNFUlZFUiIsImNpZCI6IjAxLU9CU0VSVkVSIiwiYXpwIjoiMDEtT0JTRVJWRVIiLCJ1c2VyX2lkIjoiMDEtT0JTRVJWRVIiLCJhcHBfaWQiOiJ0aWxlY2hhdCIsImlhdCI6MTU5Mzg1OTgzNiwiZXhwIjoxNjk2NDUxODM2LCJhdWQiOlsicmFiYml0bXEiLCIwMS1PQlNFUlZFUiJdLCJraWQiOiJ0aWxlZGVzay1rZXkiLCJ0aWxlZGVza19hcGlfcm9sZXMiOiJ1c2VyIn0.N6bs-WXVZJTNW2jztzph4SYc9_Szs0cb0kBM9n0k8hY
@@ -176,7 +183,7 @@ server:
   resources: {}
   image:  
     repository: tiledesk/tiledesk-server
-    tag: 2.3.70
+    tag: 2.3.77
 
   service:
     type: ClusterIP
@@ -189,7 +196,7 @@ serverworker:
   resources: {}
   image:  
     repository: tiledesk/tiledesk-server-worker
-    tag: 2.3.70
+    tag: 2.3.77
 
 dashboard:
   ## Enable deployment of Tiledesk Server
@@ -198,7 +205,7 @@ dashboard:
   resources: {}
   image:
     repository: tiledesk/tiledesk-dashboard
-    tag: 2.3.15
+    tag: 2.4.1
 
   service:
     type: ClusterIP
@@ -211,7 +218,7 @@ ionic:
   resources: {}
   image:
     repository: chat21/chat21-ionic
-    tag: 3.0.90
+    tag: 3.0.92
 
   service:
       type: ClusterIP
@@ -225,7 +232,7 @@ webwidget:
   resources: {}
   image:
     repository: chat21/chat21-web-widget
-    tag: 5.0.52
+    tag: 5.0.54
 
   service:
       type: ClusterIP
@@ -239,7 +246,7 @@ c21httpsrv:
   resources: {}
   image:  
     repository: chat21/chat21-http-server
-    tag: 0.2.16
+    tag: 0.2.21
     # pullPolicy: IfNotPresent  
 
   service:    

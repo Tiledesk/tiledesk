@@ -305,7 +305,33 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
-                  key: GLOBAL_SECRET 
+                  key: GLOBAL_SECRET
+            - name: GLOBAL_SECRET_OR_PRIVATE_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}
+                  key: global-private-key
+                # configMapKeyRef:
+                #   name: {{ include "tiledesk.fullname" . }}-config
+                #   key: GLOBAL_SECRET_OR_PRIVATE_KEY
+            - name: GLOBAL_SECRET_OR_PUB_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}
+                  key: global-public-key
+                # configMapKeyRef:
+                #   name: {{ include "tiledesk.fullname" . }}-config
+                #   key: GLOBAL_SECRET_OR_PUB_KEY
+            - name: GLOBAL_SECRET_ALGORITHM
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: GLOBAL_SECRET_ALGORITHM
+            - name: CHATBOT_TEMPLATES_API_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: CHATBOT_TEMPLATES_API_URL
             - name: APPS_ACCESS_TOKEN_SECRET
               valueFrom:
                 configMapKeyRef:
@@ -325,7 +351,12 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
-                  key: WHATSAPP_LOG 
+                  key: WHATSAPP_LOG
+            - name: TILEBOT_LOG
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: TILEBOT_LOG
             - name: WRITE_LOG_TO_MONGODB
               valueFrom:
                 configMapKeyRef:
