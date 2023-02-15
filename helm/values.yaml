@@ -183,7 +183,7 @@ server:
   resources: {}
   image:  
     repository: tiledesk/tiledesk-server
-    tag: 2.3.77
+    tag: 2.3.80
 
   service:
     type: ClusterIP
@@ -196,7 +196,7 @@ serverworker:
   resources: {}
   image:  
     repository: tiledesk/tiledesk-server-worker
-    tag: 2.3.77
+    tag: 2.3.80
 
 dashboard:
   ## Enable deployment of Tiledesk Server
@@ -246,7 +246,7 @@ c21httpsrv:
   resources: {}
   image:  
     repository: chat21/chat21-http-server
-    tag: 0.2.21
+    tag: 0.2.24
     # pullPolicy: IfNotPresent  
 
   service:    
