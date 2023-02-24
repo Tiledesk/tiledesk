@@ -273,7 +273,7 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
-                  key: JOB_WORKER_ENABLED 
+                  key: JOB_WORKER_ENABLED
             - name: QUEUE_ENABLED
               valueFrom:
                 configMapKeyRef:
@@ -283,7 +283,7 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
-                  key: CLOUDAMQP_URL             
+                  key: CLOUDAMQP_URL
             # - name: CACHE_REDIS_PASSWORD
             #   valueFrom:
             #     configMapKeyRef:
@@ -294,7 +294,113 @@ spec:
                 secretKeyRef:
                   name: tiledesk-license
                   key: licensekey
-                  optional: true                   
+                  optional: true
+            - name: GLOBAL_SECRET
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: GLOBAL_SECRET
+            - name: GLOBAL_SECRET_OR_PRIVATE_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}
+                  key: global-private-key
+                # configMapKeyRef:
+                #   name: {{ include "tiledesk.fullname" . }}-config
+                #   key: GLOBAL_SECRET_OR_PRIVATE_KEY
+            - name: GLOBAL_SECRET_OR_PUB_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}
+                  key: global-public-key
+                # configMapKeyRef:
+                #   name: {{ include "tiledesk.fullname" . }}-config
+                #   key: GLOBAL_SECRET_OR_PUB_KEY
+            - name: GLOBAL_SECRET_ALGORITHM
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: GLOBAL_SECRET_ALGORITHM
+            - name: CHATBOT_TEMPLATES_API_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: CHATBOT_TEMPLATES_API_URL
+            - name: APPS_ACCESS_TOKEN_SECRET
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: APPS_ACCESS_TOKEN_SECRET 
+            - name: BOOT_LOADING
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: BOOT_LOADING 
+            - name: META_GRAPH_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: META_GRAPH_URL
+            - name: WHATSAPP_LOG
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: WHATSAPP_LOG
+            - name: TILEBOT_LOG
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: TILEBOT_LOG
+            - name: WRITE_LOG_TO_MONGODB
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: WRITE_LOG_TO_MONGODB
+            - name: LOG_MONGODB_LEVEL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: LOG_MONGODB_LEVEL
+            # - name: BOT_DIALOGFLOW_ENDPOINT
+            #   valueFrom:
+            #     configMapKeyRef:
+            #       name: {{ include "tiledesk.fullname" . }}-config
+            #       key: BOT_DIALOGFLOW_ENDPOINT
+            - name: JWT_HISTORY_ENABLED
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: JWT_HISTORY_ENABLED
+            - name: TRIGGER_ENABLED
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: TRIGGER_ENABLED
+            - name: TRIAL_MODE_ENABLED
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: TRIAL_MODE_ENABLED
+            - name: EMAIL_REPLY_ENABLED
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: EMAIL_REPLY_ENABLED
+            - name: EMAIL_INBOUND_DOMAIN
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: EMAIL_INBOUND_DOMAIN
+            - name: API_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: API_URL
+            - name: DISABLE_SEND_OFFLINE_EMAIL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: DISABLE_SEND_OFFLINE_EMAIL              
           resources:
             {{- toYaml .Values.serverworker.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}

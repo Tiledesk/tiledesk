@@ -279,7 +279,7 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
-                  key: JOB_WORKER_ENABLED   
+                  key: JOB_WORKER_ENABLED
             - name: QUEUE_ENABLED
               valueFrom:
                 configMapKeyRef:
@@ -289,7 +289,7 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
-                  key: CLOUDAMQP_URL                                  
+                  key: CLOUDAMQP_URL
             # - name: CACHE_REDIS_PASSWORD
             #   valueFrom:
             #     configMapKeyRef:
