@@ -115,7 +115,7 @@ services:
     command: [nginx-debug, '-g', 'daemon off;']
     
   server:
-    image: tiledesk/tiledesk-server:2.3.90
+    image: tiledesk/tiledesk-server:2.3.107
     container_name: tiledesk-server
     restart: always       
     environment: 
@@ -183,7 +183,7 @@ services:
       - "8004:8004"
 
   chat21server:
-    image: chat21/chat21-server:0.2.32
+    image: chat21/chat21-server:0.2.33
     container_name: chat21server
     restart: always
     environment: 

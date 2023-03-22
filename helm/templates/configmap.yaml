@@ -85,7 +85,7 @@ data:
   BOOT_LOADING: {{ .Values.BOOT_LOADING | quote }}
   META_GRAPH_URL: {{ .Values.META_GRAPH_URL | quote }}
   WHATSAPP_LOG: {{ .Values.WHATSAPP_LOG | quote }}
-  TILEBOT_LOG: {{ .Values.TILEBOT_LOG | quote }}
+  # TILEBOT_LOG: {{ .Values.TILEBOT_LOG | quote }}
   WRITE_LOG_TO_MONGODB: {{ .Values.WRITE_LOG_TO_MONGODB | quote }}
   LOG_MONGODB_LEVEL: {{ .Values.LOG_MONGODB_LEVEL | quote }}
   # BOT_DIALOGFLOW_ENDPOINT: {{ .Values.BOT_DIALOGFLOW_ENDPOINT | quote }}

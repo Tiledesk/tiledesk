@@ -102,7 +102,7 @@ APPS_ACCESS_TOKEN_SECRET: nodeauthsecret
 BOOT_LOADING: true
 META_GRAPH_URL: https://graph.facebook.com/v14.0/
 WHATSAPP_LOG: false
-TILEBOT_LOG: false
+# TILEBOT_LOG: false
 WRITE_LOG_TO_MONGODB: false
 LOG_MONGODB_LEVEL: info
 JWT_HISTORY_ENABLED: false
@@ -183,7 +183,7 @@ server:
   resources: {}
   image:  
     repository: tiledesk/tiledesk-server
-    tag: 2.3.90
+    tag: 2.3.107
 
   service:
     type: ClusterIP
@@ -196,7 +196,7 @@ serverworker:
   resources: {}
   image:  
     repository: tiledesk/tiledesk-server-worker
-    tag: 2.3.90
+    tag: 2.3.107
 
 dashboard:
   ## Enable deployment of Tiledesk Server
@@ -205,7 +205,7 @@ dashboard:
   resources: {}
   image:
     repository: tiledesk/tiledesk-dashboard
-    tag: 2.4.7
+    tag: 2.4.19
 
   service:
     type: ClusterIP
@@ -218,7 +218,7 @@ ionic:
   resources: {}
   image:
     repository: chat21/chat21-ionic
-    tag: 3.0.93
+    tag: 3.0.95
 
   service:
       type: ClusterIP
@@ -260,7 +260,7 @@ c21srv:
   resources: {}
   image:  
     repository: chat21/chat21-server
-    tag: 0.2.32
+    tag: 0.2.33
     # pullPolicy: IfNotPresent  
 
 imagePullSecrets: #[]

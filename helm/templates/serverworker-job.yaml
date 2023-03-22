@@ -346,11 +346,11 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: WHATSAPP_LOG
-            - name: TILEBOT_LOG
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "tiledesk.fullname" . }}-config
-                  key: TILEBOT_LOG
+            # - name: TILEBOT_LOG
+            #   valueFrom:
+            #     configMapKeyRef:
+            #       name: {{ include "tiledesk.fullname" . }}-config
+            #       key: TILEBOT_LOG
             - name: WRITE_LOG_TO_MONGODB
               valueFrom:
                 configMapKeyRef:
