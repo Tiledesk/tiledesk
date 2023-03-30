@@ -22,6 +22,8 @@ BRAND_SRC: ''
 REMOTE_JS_SRC: ''
 APPS_URL: /api/modules/apps/
 PROMO_BANNER_URL: ''
+COMMUNITY_TEMPLATES_URL: 'https://chatbot-templates-app-v3.herokuapp.com/chatbots/public/community'
+TEMPLATES_URL: 'https://chatbot-templates-app-v3.herokuapp.com/chatbots/public/templates'
 ###### ------DASHBOARD : END------ ######
 
 
@@ -30,6 +32,7 @@ WRITE_TO_BUTTON: true
 ARCHIVED_BUTTON: true
 SUPPORT_MODE: true
 EMAIL_SECTION: true
+FILE_UPLOAD_ACCEPT: "*/*"
 ###### ------CHAT IONIC : END------ ######
 
 
@@ -167,7 +170,6 @@ MQTT_APPID: tilechat
 MQTT_ENDPOINT: /mqws/ws
 MQTT_APIENDPOINT: /chatapi/api
 
-FILE_UPLOAD_ACCEPT: "*/*"
 #CHAT21_URL: https://CHANGEIT.cloudfunctions.net
 CHAT21_APPID: tilechat
 DASHBOARD_URL: /dashboard/
@@ -205,7 +207,7 @@ dashboard:
   resources: {}
   image:
     repository: tiledesk/tiledesk-dashboard
-    tag: 2.4.19
+    tag: 2.4.22
 
   service:
     type: ClusterIP
@@ -218,7 +220,7 @@ ionic:
   resources: {}
   image:
     repository: chat21/chat21-ionic
-    tag: 3.0.95
+    tag: 3.0.96
 
   service:
       type: ClusterIP
@@ -232,7 +234,7 @@ webwidget:
   resources: {}
   image:
     repository: chat21/chat21-web-widget
-    tag: 5.0.55
+    tag: 5.0.57
 
   service:
       type: ClusterIP
