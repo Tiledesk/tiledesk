@@ -38,7 +38,7 @@ services:
       - "4500:80" #use expose if you want to block external access
 
   webwidget:
-   image: chat21/chat21-web-widget:5.0.55
+   image: chat21/chat21-web-widget:5.0.57
    container_name: chat21-web-widget 
    ports: 
       - "4200:80" # specify port forewarding
@@ -47,7 +47,6 @@ services:
       - MQTT_APPID=tilechat
       - PUSH_ENGINE=none
       - LOG_LEVEL=info
-      - FILE_UPLOAD_ACCEPT=*/*
       - "MQTT_ENDPOINT=${EXTERNAL_MQTT_BASE_URL:-ws://localhost:8081}/mqws/ws"
       - "MQTT_APIENDPOINT=${EXTERNAL_BASE_URL:-http://localhost:8081}/chatapi/api"      
       #- MQTT_LOGINSERVICE_ENDPOINT=/api/chat21/native/auth/createCustomToken      
@@ -67,7 +66,7 @@ services:
       - AUTH_PERSISTENCE=LOCAL
       - ENBED_JS=true
   ionic:
-   image: chat21/chat21-ionic:3.0.93
+   image: chat21/chat21-ionic:3.0.96
    container_name: chat21-ionic
    ports:
       - "8082:80" #use expose if you want to block external access   
