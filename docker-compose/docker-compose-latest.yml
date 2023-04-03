@@ -46,7 +46,6 @@ services:
       - MQTT_APPID=tilechat
       - PUSH_ENGINE=none
       - LOG_LEVEL=info
-      - FILE_UPLOAD_ACCEPT=*/*
       - "MQTT_ENDPOINT=${EXTERNAL_MQTT_BASE_URL:-ws://localhost:8081}/mqws/ws"
       - "MQTT_APIENDPOINT=${EXTERNAL_BASE_URL:-http://localhost:8081}/chatapi/api"      
       #- MQTT_LOGINSERVICE_ENDPOINT=/api/chat21/native/auth/createCustomToken      

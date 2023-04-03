@@ -75,11 +75,6 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: LOG_LEVEL
-            - name: FILE_UPLOAD_ACCEPT
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "tiledesk.fullname" . }}-config
-                  key: FILE_UPLOAD_ACCEPT
             - name: TRANSLATIONS_URL
               valueFrom:
                   configMapKeyRef:

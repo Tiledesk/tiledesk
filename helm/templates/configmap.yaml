@@ -29,12 +29,15 @@ data:
   REMOTE_JS_SRC: {{ .Values.REMOTE_JS_SRC | quote }}
   APPS_URL: {{ .Values.APPS_URL | quote }}
   PROMO_BANNER_URL: {{ .Values.PROMO_BANNER_URL | quote }}
+  COMMUNITY_TEMPLATES_URL: {{ .Values.COMMUNITY_TEMPLATES_URL | quote }}
+  TEMPLATES_URL: {{ .Values.TEMPLATES_URL | quote }}
   
   # ----- CHAT IONIC ------- 
   WRITE_TO_BUTTON: {{ .Values.WRITE_TO_BUTTON | quote }}
   ARCHIVED_BUTTON: {{ .Values.ARCHIVED_BUTTON | quote }}
   SUPPORT_MODE: {{ .Values.SUPPORT_MODE | quote }}
   EMAIL_SECTION: {{ .Values.EMAIL_SECTION | quote }}
+  FILE_UPLOAD_ACCEPT: {{ .Values.FILE_UPLOAD_ACCEPT | quote }}
 
   # ----- WIDGET ------- 
   TRANSLATIONS_URL: {{if and .Values.EXTERNAL_BASE_URL (hasPrefix "/" .Values.TRANSLATIONS_URL)}}"{{ .Values.EXTERNAL_BASE_URL  }}{{ .Values.TRANSLATIONS_URL }}"{{ else }}{{ .Values.TRANSLATIONS_URL | quote }}{{ end }}
@@ -144,7 +147,6 @@ data:
   MQTT_ENDPOINT: {{if and .Values.EXTERNAL_MQTT_BASE_URL (hasPrefix "/" .Values.MQTT_ENDPOINT)}}"{{ .Values.EXTERNAL_MQTT_BASE_URL  }}{{ .Values.MQTT_ENDPOINT }}"{{ else }}{{ .Values.MQTT_ENDPOINT | quote }}{{ end }}
   MQTT_APIENDPOINT: {{if and .Values.EXTERNAL_BASE_URL (hasPrefix "/" .Values.MQTT_APIENDPOINT)}}"{{ .Values.EXTERNAL_BASE_URL  }}{{ .Values.MQTT_APIENDPOINT }}"{{ else }}{{ .Values.MQTT_APIENDPOINT | quote }}{{ end }}
 
-  FILE_UPLOAD_ACCEPT: {{ .Values.FILE_UPLOAD_ACCEPT | quote }}
   CHAT21_URL: {{ .Values.CHAT21_URL | quote }}
   CHAT21_APPID: {{ .Values.CHAT21_APPID | quote }}
   DASHBOARD_URL: {{ .Values.DASHBOARD_URL | quote }}

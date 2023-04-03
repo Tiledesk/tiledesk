@@ -164,7 +164,17 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
-                  key: CHAT_STORAGE_PREFIX                     
+                  key: CHAT_STORAGE_PREFIX
+            - name: COMMUNITY_TEMPLATES_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: COMMUNITY_TEMPLATES_URL
+            - name: TEMPLATES_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: TEMPLATES_URL                 
           ports:
             - name: dashboard-http
               containerPort: 80
