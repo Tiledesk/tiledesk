@@ -346,6 +346,11 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: WHATSAPP_LOG
+            - name: MESSENGER_LOG
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: MESSENGER_LOG
             # - name: TILEBOT_LOG
             #   valueFrom:
             #     configMapKeyRef:

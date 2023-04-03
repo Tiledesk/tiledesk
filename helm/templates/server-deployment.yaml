@@ -347,11 +347,26 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: META_GRAPH_URL
+            - name: FB_APP_ID
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: FB_APP_ID
+            - name: FB_APP_SECRET
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: FB_APP_SECRET
             - name: WHATSAPP_LOG
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: WHATSAPP_LOG
+            - name: MESSENGER_LOG
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: MESSENGER_LOG
             # - name: TILEBOT_LOG
             #   valueFrom:
             #     configMapKeyRef:

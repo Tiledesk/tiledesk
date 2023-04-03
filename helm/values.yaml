@@ -101,7 +101,10 @@ CHATBOT_TEMPLATES_API_URL: ""
 APPS_ACCESS_TOKEN_SECRET: nodeauthsecret
 BOOT_LOADING: true
 META_GRAPH_URL: https://graph.facebook.com/v14.0/
+FB_APP_ID: changeit
+FB_APP_SECRET: changeit
 WHATSAPP_LOG: false
+MESSENGER_LOG: false
 # TILEBOT_LOG: false
 WRITE_LOG_TO_MONGODB: false
 LOG_MONGODB_LEVEL: info
@@ -175,6 +178,8 @@ API_BASEIMAGE_URL: /api/
 API_URL: /api/
 #MONGODB_URI: mongodb://tiledesk-mongo/tiledesk
 ###### ------COMMON CONF : END------ ######
+PREFETCH_MESSAGES: 50
+PRESENCE_ENABLED: false
 
 server:
   ## Enable deployment of Tiledesk Server
@@ -183,7 +188,7 @@ server:
   resources: {}
   image:  
     repository: tiledesk/tiledesk-server
-    tag: 2.3.107
+    tag: 2.3.117
 
   service:
     type: ClusterIP
@@ -196,7 +201,7 @@ serverworker:
   resources: {}
   image:  
     repository: tiledesk/tiledesk-server-worker
-    tag: 2.3.107
+    tag: 2.3.117
 
 dashboard:
   ## Enable deployment of Tiledesk Server

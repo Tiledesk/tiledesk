@@ -65,6 +65,16 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: CHAT21_SRV_RABBITMQ_URI
+            - name: PRESENCE_ENABLED
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: PRESENCE_ENABLED
+            - name: PREFETCH_MESSAGES
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: PREFETCH_MESSAGES
           resources:
             {{- toYaml .Values.c21srv.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}

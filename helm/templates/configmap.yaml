@@ -84,7 +84,10 @@ data:
   APPS_ACCESS_TOKEN_SECRET: {{ .Values.APPS_ACCESS_TOKEN_SECRET | quote }}
   BOOT_LOADING: {{ .Values.BOOT_LOADING | quote }}
   META_GRAPH_URL: {{ .Values.META_GRAPH_URL | quote }}
+  FB_APP_ID: {{ .Values.FB_APP_ID | quote }}
+  FB_APP_SECRET: {{ .Values.FB_APP_SECRET | quote }}
   WHATSAPP_LOG: {{ .Values.WHATSAPP_LOG | quote }}
+  MESSENGER_LOG: {{ .Values.MESSENGER_LOG | quote }}
   # TILEBOT_LOG: {{ .Values.TILEBOT_LOG | quote }}
   WRITE_LOG_TO_MONGODB: {{ .Values.WRITE_LOG_TO_MONGODB | quote }}
   LOG_MONGODB_LEVEL: {{ .Values.LOG_MONGODB_LEVEL | quote }}
@@ -149,5 +152,6 @@ data:
   API_URL: {{if and .Values.EXTERNAL_BASE_URL (hasPrefix "/" .Values.API_URL)}}"{{ .Values.EXTERNAL_BASE_URL  }}{{ .Values.API_URL }}"{{ else }}{{ .Values.API_URL | quote }}{{ end }}
 
   MONGODB_URI: {{if .Values.MONGODB_URI}}{{ .Values.MONGODB_URI | quote }}{{ else }}mongodb://{{ include "tiledesk.fullname" . }}-mongodb/tiledesk{{ end }}
-  
+  PREFETCH_MESSAGES: {{ .Values.PREFETCH_MESSAGES | quote }}
+  PRESENCE_ENABLED: {{ .Values.PRESENCE_ENABLED | quote }}
   
