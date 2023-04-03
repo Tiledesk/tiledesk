@@ -34,6 +34,7 @@ sources:
 
 icon: https://avatars2.githubusercontent.com/u/39886277?s=200&v=4
 
+ #11.12.2 -> 3.11.x
  #10.1.9-> 3.10.5
  #9.1.4 3.9.18
  #8.32.2 -> 3.9.16
@@ -48,8 +49,7 @@ dependencies:
       repository: https://charts.bitnami.com/bitnami
       condition: mongodb.enabled
     - name: rabbitmq
-      version: 10.1.9
-      #version: 10.x.x change to this
+      version: 11.12.2
       repository: https://charts.bitnami.com/bitnami
       condition: rabbitmq.enabled
     - name: redis
