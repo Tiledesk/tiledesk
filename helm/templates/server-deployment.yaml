@@ -357,6 +357,11 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: FB_APP_SECRET
+            - name: MESSENGER_VERIFY_TOKEN
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: MESSENGER_VERIFY_TOKEN
             - name: WHATSAPP_LOG
               valueFrom:
                 configMapKeyRef:

@@ -106,6 +106,7 @@ BOOT_LOADING: true
 META_GRAPH_URL: https://graph.facebook.com/v14.0/
 FB_APP_ID: changeit
 FB_APP_SECRET: changeit
+MESSENGER_VERIFY_TOKEN: changeit
 WHATSAPP_LOG: false
 MESSENGER_LOG: false
 # TILEBOT_LOG: false
@@ -190,7 +191,7 @@ server:
   resources: {}
   image:  
     repository: tiledesk/tiledesk-server
-    tag: 2.3.118
+    tag: 2.3.121
 
   service:
     type: ClusterIP
@@ -203,7 +204,7 @@ serverworker:
   resources: {}
   image:  
     repository: tiledesk/tiledesk-server-worker
-    tag: 2.3.118
+    tag: 2.3.121
 
 dashboard:
   ## Enable deployment of Tiledesk Server

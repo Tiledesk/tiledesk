@@ -89,6 +89,7 @@ data:
   META_GRAPH_URL: {{ .Values.META_GRAPH_URL | quote }}
   FB_APP_ID: {{ .Values.FB_APP_ID | quote }}
   FB_APP_SECRET: {{ .Values.FB_APP_SECRET | quote }}
+  MESSENGER_VERIFY_TOKEN: {{ .Values.MESSENGER_VERIFY_TOKEN | quote }}
   WHATSAPP_LOG: {{ .Values.WHATSAPP_LOG | quote }}
   MESSENGER_LOG: {{ .Values.MESSENGER_LOG | quote }}
   # TILEBOT_LOG: {{ .Values.TILEBOT_LOG | quote }}
