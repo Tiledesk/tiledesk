@@ -157,4 +157,8 @@ data:
   MONGODB_URI: {{if .Values.MONGODB_URI}}{{ .Values.MONGODB_URI | quote }}{{ else }}mongodb://{{ include "tiledesk.fullname" . }}-mongodb/tiledesk{{ end }}
   PREFETCH_MESSAGES: {{ .Values.PREFETCH_MESSAGES | quote }}
   PRESENCE_ENABLED: {{ .Values.PRESENCE_ENABLED | quote }}
+
+  PAYMENT_STRIPE_APIKEY: {{ .Values.PAYMENT_STRIPE_APIKEY | quote }}
+  PAYMENT_STRIPE_SECRET: {{ .Values.PAYMENT_STRIPE_SECRET | quote }}
+  PAYMENT_STRIPE_API_SECRET_KEY: {{ .Values.PAYMENT_STRIPE_API_SECRET_KEY | quote }}
   

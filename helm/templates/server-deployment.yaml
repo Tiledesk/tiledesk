@@ -427,6 +427,22 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: DISABLE_SEND_OFFLINE_EMAIL
+            - name: PAYMENT_STRIPE_SECRET
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: PAYMENT_STRIPE_SECRET
+            - name: PAYMENT_STRIPE_APIKEY
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: PAYMENT_STRIPE_APIKEY
+            - name: PAYMENT_STRIPE_API_SECRET_KEY
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: PAYMENT_STRIPE_API_SECRET_KEY
+                  
             # - name: BOT_RASA_ENDPOINT
             #   valueFrom:
             #     configMapKeyRef:
