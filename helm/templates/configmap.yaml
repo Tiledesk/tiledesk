@@ -120,6 +120,7 @@ data:
   PUSH_WH_NOTIFY_URL: {{ .Values.PUSH_WH_NOTIFY_URL | quote }}
   PUSH_WH_CHAT21_API_ADMIN_TOKEN: {{ .Values.PUSH_WH_CHAT21_API_ADMIN_TOKEN | quote }}
   WEB_CLICK_ACTION: {{ .Values.WEB_CLICK_ACTION | quote }}
+  MOBILE_CLICK_ACTION: {{ .Values.MOBILE_CLICK_ACTION | quote }}
   CONTACTS_LOOKUP_ENDPOINT: http://{{ include "tiledesk.fullname" . }}-server/users_util
 
   # ----- COMMON -------

@@ -95,6 +95,11 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: WEB_CLICK_ACTION
+            - name: MOBILE_CLICK_ACTION
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: MOBILE_CLICK_ACTION
             - name: CONTACTS_LOOKUP_ENDPOINT
               valueFrom:
                 configMapKeyRef:

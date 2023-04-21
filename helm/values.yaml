@@ -143,6 +143,7 @@ PUSH_WH_WEBHOOK_TOKEN: WHFyAhecCMkYsvldLFWbSrJt7lAZFAmrp7O5QVMvGQsLVn9SkfT
 PUSH_WH_NOTIFY_URL: http://localhost:8004/api/tilechat/notify
 PUSH_WH_CHAT21_API_ADMIN_TOKEN: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI5NGFjNjNmNy1hOGM3LTRkZGMtYjJkNS01MWE2MjBmNTdhNmIiLCJzdWIiOiIxMDAtQVBJQURNSU4iLCJzY29wZSI6WyJyYWJiaXRtcS5yZWFkOiovKi8qIiwicmFiYml0bXEud3JpdGU6Ki8qLyoiLCJyYWJiaXRtcS5jb25maWd1cmU6Ki8qLyoiXSwiY2xpZW50X2lkIjoiMTAwLUFQSUFETUlOIiwiY2lkIjoiMTAwLUFQSUFETUlOIiwiYXpwIjoiMTAwLUFQSUFETUlOIiwidXNlcl9pZCI6IjEwMC1BUElBRE1JTiIsImFwcF9pZCI6InRpbGVjaGF0IiwiaWF0IjoxNjM3NzYxNDM0LCJleHAiOjE5NDg4MDE0MzQsImF1ZCI6WyJyYWJiaXRtcSIsIjEwMC1BUElBRE1JTiJdLCJraWQiOiJ0aWxlZGVzay1rZXkiLCJ0aWxlZGVza19hcGlfcm9sZXMiOiJhZG1pbiJ9.fLPrGArRlnyC04552oBsUjohf6l_BIpxwB847xWvugo
 WEB_CLICK_ACTION: CHANGEIT #move to another section
+MOBILE_CLICK_ACTION: CHANGEIT #move to another section
 ###### ------CHAT21HTTP SERVER : END------ ######
 
 
@@ -195,7 +196,7 @@ server:
   resources: {}
   image:  
     repository: tiledesk/tiledesk-server
-    tag: 2.3.126
+    tag: 2.3.130
 
   service:
     type: ClusterIP
@@ -208,7 +209,7 @@ serverworker:
   resources: {}
   image:  
     repository: tiledesk/tiledesk-server-worker
-    tag: 2.3.126
+    tag: 2.3.130
 
 dashboard:
   ## Enable deployment of Tiledesk Server
