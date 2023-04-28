@@ -326,11 +326,11 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: CHATBOT_TEMPLATES_API_URL
-            - name: APPS_ACCESS_TOKEN_SECRET
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "tiledesk.fullname" . }}-config
-                  key: APPS_ACCESS_TOKEN_SECRET 
+            # - name: APPS_ACCESS_TOKEN_SECRET
+            #   valueFrom:
+            #     configMapKeyRef:
+            #       name: {{ include "tiledesk.fullname" . }}-config
+            #       key: APPS_ACCESS_TOKEN_SECRET 
             - name: BOOT_LOADING
               valueFrom:
                 configMapKeyRef:

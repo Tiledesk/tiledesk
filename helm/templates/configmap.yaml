@@ -84,7 +84,7 @@ data:
   GLOBAL_SECRET_ALGORITHM: {{ .Values.GLOBAL_SECRET_ALGORITHM | quote }}
 
   CHATBOT_TEMPLATES_API_URL: {{ .Values.CHATBOT_TEMPLATES_API_URL | quote }}
-  APPS_ACCESS_TOKEN_SECRET: {{ .Values.APPS_ACCESS_TOKEN_SECRET | quote }}
+  # APPS_ACCESS_TOKEN_SECRET: {{ .Values.APPS_ACCESS_TOKEN_SECRET | quote }}
   BOOT_LOADING: {{ .Values.BOOT_LOADING | quote }}
   META_GRAPH_URL: {{ .Values.META_GRAPH_URL | quote }}
   FB_APP_ID: {{ .Values.FB_APP_ID | quote }}

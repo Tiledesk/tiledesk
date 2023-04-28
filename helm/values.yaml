@@ -101,7 +101,7 @@ GLOBAL_SECRET_OR_PUB_KEY: "" #if value is an empty string node evaluates it an u
 GLOBAL_SECRET_ALGORITHM: HS256
 CHATBOT_TEMPLATES_API_URL: ""
 
-APPS_ACCESS_TOKEN_SECRET: nodeauthsecret
+# APPS_ACCESS_TOKEN_SECRET: nodeauthsecret
 BOOT_LOADING: true
 META_GRAPH_URL: https://graph.facebook.com/v14.0/
 FB_APP_ID: changeit
