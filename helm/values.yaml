@@ -218,7 +218,7 @@ dashboard:
   resources: {}
   image:
     repository: tiledesk/tiledesk-dashboard
-    tag: 2.4.22
+    tag: 2.4.32
 
   service:
     type: ClusterIP
@@ -245,7 +245,7 @@ webwidget:
   resources: {}
   image:
     repository: chat21/chat21-web-widget
-    tag: 5.0.57
+    tag: 5.0.59
 
   service:
       type: ClusterIP
