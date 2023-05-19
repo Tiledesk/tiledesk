@@ -34,6 +34,9 @@ sources:
 
 icon: https://avatars2.githubusercontent.com/u/39886277?s=200&v=4
 
+#update with: helm dependency update
+
+ #11.15.2 -> 
  #11.12.2 -> 3.11.x
  #10.1.9-> 3.10.5
  #9.1.4 3.9.18
@@ -42,14 +45,13 @@ icon: https://avatars2.githubusercontent.com/u/39886277?s=200&v=4
   # 7.6.8 -> 3.8.5???
 
   # mongo 12 higth cpu usage
-  #helm dependency update
 dependencies:
     - name: mongodb
       version: 12.x.x
       repository: https://charts.bitnami.com/bitnami
       condition: mongodb.enabled
     - name: rabbitmq
-      version: 11.12.2
+      version: 11.15.2
       repository: https://charts.bitnami.com/bitnami
       condition: rabbitmq.enabled
     - name: redis
