@@ -3,8 +3,8 @@
 # Declare variables to be passed into your templates.
 
 replicaCount: 1
+chatReplicaCount: 1
 serverReplicaCount: 1
-# prod 3
 
 ## Tiledesk Server
 ## ref: https://developer.tiledesk.com/
@@ -448,7 +448,6 @@ mongodb:
 rabbitmq: #consumer_timeout = 31622400000
   #fullnameOverride: rabbitmq
   enabled: true
-  #prod 3
   replicaCount: 1
   maxAvailableSchedulers: 3
   onlineSchedulers: 3
