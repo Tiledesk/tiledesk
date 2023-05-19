@@ -3,6 +3,8 @@
 # Declare variables to be passed into your templates.
 
 replicaCount: 1
+serverReplicaCount: 1
+# prod 3
 
 ## Tiledesk Server
 ## ref: https://developer.tiledesk.com/
@@ -196,7 +198,7 @@ server:
   resources: {}
   image:  
     repository: tiledesk/tiledesk-server
-    tag: 2.4.6
+    tag: 2.4.14
 
   service:
     type: ClusterIP
@@ -209,7 +211,7 @@ serverworker:
   resources: {}
   image:  
     repository: tiledesk/tiledesk-server-worker
-    tag: 2.4.6
+    tag: 2.4.14
 
 dashboard:
   ## Enable deployment of Tiledesk Server
@@ -273,7 +275,7 @@ c21srv:
   resources: {}
   image:  
     repository: chat21/chat21-server
-    tag: 0.2.34
+    tag: 0.2.38
     # pullPolicy: IfNotPresent  
 
 imagePullSecrets: #[]
@@ -412,6 +414,10 @@ ingress:
 #
 redis:
   architecture: standalone
+  resources:
+    requests: 
+      cpu: 0.5
+      memory: 1000M
   auth:
     enabled: false
 
@@ -442,6 +448,32 @@ mongodb:
 rabbitmq: #consumer_timeout = 31622400000
   #fullnameOverride: rabbitmq
   enabled: true
+  #prod 3
+  replicaCount: 1
+  maxAvailableSchedulers: 3
+  onlineSchedulers: 3
+  metrics:
+    enabled: false
+  resources:
+    requests: 
+      cpu: 0.5
+      memory: 1000M
+  livenessProbe:
+    enabled: false
+    # enabled: true
+    # initialDelaySeconds: 240 #x2
+    # timeoutSeconds: 40
+    # periodSeconds: 6
+    # failureThreshold: 6
+    # successThreshold: 1
+  readinessProbe:
+    enabled: false
+    # enabled: true
+    # initialDelaySeconds: 20 #x2
+    # timeoutSeconds: 40
+    # periodSeconds: 60
+    # failureThreshold: 3
+    # successThreshold: 1
   auth:
     username: rabbitmq
     password: rabbitmq-password-changeit
