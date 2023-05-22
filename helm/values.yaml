@@ -129,7 +129,7 @@ DISABLE_SEND_OFFLINE_EMAIL: false
 ###### ------CHAT21 SERVER : START------ ######
 APP_ID: tilechat
 #EXTERNAL_MQTT_BASE_URL: ws://console.tiledesk.local
-DURABLE_ENABLED: false
+DURABLE_ENABLED: true
 WEBHOOK_ENABLED: true
 WEBHOOK_EVENTS: message-sent,message-delivered
 #CHAT21_MONGODB_URI: mongodb://mongo/chat21
@@ -264,7 +264,8 @@ c21httpsrv:
   resources: {}
   image:  
     repository: chat21/chat21-http-server
-    tag: 0.2.27
+    tag: 0.2.26
+    # tag: 0.2.27
     # pullPolicy: IfNotPresent  
 
   service:    
@@ -278,7 +279,8 @@ c21srv:
   resources: {}
   image:  
     repository: chat21/chat21-server
-    tag: 0.2.41
+    tag: 0.2.38
+    #tag: 0.2.41
     # pullPolicy: IfNotPresent  
 
 imagePullSecrets: #[]
@@ -452,25 +454,26 @@ rabbitmq: #consumer_timeout = 31622400000
   #fullnameOverride: rabbitmq
   enabled: true
   replicaCount: 1
-  maxAvailableSchedulers: 3
-  onlineSchedulers: 3
+  # maxAvailableSchedulers: 3
+  # onlineSchedulers: 3
   metrics:
-    enabled: false
-  resources:
-    requests: 
-      cpu: 4
-      memory: 8000M
+    # enabled: false
+    enabled: true
+  # resources:
+  #   requests: 
+  #     cpu: 4
+  #     memory: 8000M
   livenessProbe:
-    enabled: false
-    # enabled: true
+    # enabled: false
+    enabled: true
     # initialDelaySeconds: 240 #x2
     # timeoutSeconds: 40
     # periodSeconds: 6
     # failureThreshold: 6
     # successThreshold: 1
   readinessProbe:
-    enabled: false
-    # enabled: true
+    # enabled: false
+    enabled: true
     # initialDelaySeconds: 20 #x2
     # timeoutSeconds: 40
     # periodSeconds: 60

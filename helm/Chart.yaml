@@ -51,7 +51,7 @@ dependencies:
       repository: https://charts.bitnami.com/bitnami
       condition: mongodb.enabled
     - name: rabbitmq
-      version: 11.15.2
+      version: 11.15.3
       repository: https://charts.bitnami.com/bitnami
       condition: rabbitmq.enabled
     - name: redis
