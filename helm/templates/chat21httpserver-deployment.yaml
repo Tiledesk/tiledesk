@@ -104,7 +104,12 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
-                  key: CONTACTS_LOOKUP_ENDPOINT                                                                                          
+                  key: CONTACTS_LOOKUP_ENDPOINT 
+            - name: LOG_LEVEL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: LOG_LEVEL                                                                                       
           ports:
             - name: c21httpsrv-http
               containerPort: 8004

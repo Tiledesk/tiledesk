@@ -75,6 +75,11 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: PREFETCH_MESSAGES
+            - name: DURABLE_ENABLED
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: DURABLE_ENABLED
           resources:
             {{- toYaml .Values.c21srv.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
