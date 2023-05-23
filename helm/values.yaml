@@ -464,16 +464,16 @@ rabbitmq: #consumer_timeout = 31622400000
   #     cpu: 4
   #     memory: 8000M
   livenessProbe:
-    # enabled: false
-    enabled: true
+    enabled: false
+    # enabled: true
     # initialDelaySeconds: 240 #x2
     # timeoutSeconds: 40
     # periodSeconds: 6
     # failureThreshold: 6
     # successThreshold: 1
   readinessProbe:
-    # enabled: false
-    enabled: true
+    enabled: false
+    # enabled: true
     # initialDelaySeconds: 20 #x2
     # timeoutSeconds: 40
     # periodSeconds: 60
