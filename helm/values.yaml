@@ -492,7 +492,7 @@ rabbitmq: #consumer_timeout = 31622400000
       - name: mqtt-web
         port: 15675
         targetPort: 15675     
-  extraPlugins: "rabbitmq_mqtt rabbitmq_web_mqtt rabbitmq_auth_backend_oauth2 rabbitmq_federation_management rabbitmq_stomp"
+  extraPlugins: "rabbitmq_mqtt rabbitmq_web_mqtt rabbitmq_auth_backend_oauth2 rabbitmq_federation_management rabbitmq_stomp rabbitmq_prometheus"
   extraConfiguration: |-
     mqtt.listeners.tcp.default = 1883
     ## Default MQTT with TLS port is 8883
