@@ -18,7 +18,7 @@ services:
       - WS_URL_RELATIVE=/ws/
       - BRAND_SRC
       - REMOTE_JS_SRC
-      - CHAT_ENGINE=mqtt
+      - CHAT21_ENGINE=mqtt
       - UPLOAD_ENGINE=native
       - PUSH_ENGINE=none
       - LOG_LEVEL=info
@@ -32,7 +32,8 @@ services:
       - FIREBASE_MESSAGINGSENDERID
       - FIREBASE_APP_ID
       - FIREBASE_VAPID
-     
+      - CHAT_STORAGE_PREFIX=chat_sv5
+      - "API_BASEIMAGE_URL=${EXTERNAL_BASE_URL:-http://localhost:8081}/api/"
    ports:
       - "4500:80" #use expose if you want to block external access
 
@@ -60,12 +61,12 @@ services:
       - "API_URL=${EXTERNAL_BASE_URL:-http://localhost:8081}/api/"
       - "TRANSLATIONS_URL=${EXTERNAL_BASE_URL:-http://localhost:8081}/api/"
       #- API_BASEIMAGE_URL=https://firebasestorage.googleapis.com/v0/b/    For firebase
-      - "API_BASEIMAGE_URL=${EXTERNAL_BASE_URL:-http://localhost:8081}/api/"            
+      - "API_BASEIMAGE_URL=${EXTERNAL_BASE_URL:-http://localhost:8081}/api/"   
       - DASHBOARD_URL=/dashboard/   
       - AUTH_PERSISTENCE=LOCAL
       - ENBED_JS=true
   ionic:
-   image: chat21/chat21-ionic
+   image: chat21/chat21-ionic:latest
    container_name: chat21-ionic
    ports:
       - "8082:80" #use expose if you want to block external access   
@@ -96,6 +97,8 @@ services:
       - WRITE_TO_BUTTON=true
       - ARCHIVED_BUTTON=true
       - AUTH_PERSISTENCE=LOCAL
+      - EMAIL_SECTION=true
+      - CHAT_STORAGE_PREFIX=chat_sv5
       - WS_URL_RELATIVE=/ws/
   proxy:
     image: tiledesk/tiledesk-docker-proxy
@@ -115,7 +118,7 @@ services:
     container_name: tiledesk-server
     restart: always       
     environment: 
-      - LOG_LEVEL=verbose
+      - LOG_LEVEL=info
       - CHAT21_ENABLED=true
       - CHAT21_ENGINE=mqtt
       - CHAT21_URL=http://chat21httpserver:8004
@@ -189,7 +192,7 @@ services:
       - APP_ID=tilechat
       - WEBHOOK_ENDPOINTS=http://server:3000/chat21/requests,http://chat21httpserver:8004/api/tilechat/push/webhook/endpoint/WHFyAhecCMkYsvldLFWbSrJt7lAZFAmrp7O5QVMvGQsLVn9SkfT
       - WEBHOOK_ENABLED=true
-      - WEBHOOK_EVENTS=message-sent,conversation-unarchived
+      - WEBHOOK_EVENTS=message-sent,message-delivered,conversation-unarchived
       - RABBITMQ_URI=amqp://ignored:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIyMDI2NjU0Ni05ZGMxLTQ3MzgtOWE5OC01OTQwYWFmZWJkMjgiLCJzdWIiOiIwMS1PQlNFUlZFUiIsInNjb3BlIjpbInJhYmJpdG1xLnJlYWQ6Ki8qLyoiLCJyYWJiaXRtcS53cml0ZToqLyovKiIsInJhYmJpdG1xLmNvbmZpZ3VyZToqLyovKiJdLCJjbGllbnRfaWQiOiIwMS1PQlNFUlZFUiIsImNpZCI6IjAxLU9CU0VSVkVSIiwiYXpwIjoiMDEtT0JTRVJWRVIiLCJ1c2VyX2lkIjoiMDEtT0JTRVJWRVIiLCJhcHBfaWQiOiJ0aWxlY2hhdCIsImlhdCI6MTU5Mzg1OTgzNiwiZXhwIjoxNjk2NDUxODM2LCJhdWQiOlsicmFiYml0bXEiLCIwMS1PQlNFUlZFUiJdLCJraWQiOiJ0aWxlZGVzay1rZXkiLCJ0aWxlZGVza19hcGlfcm9sZXMiOiJ1c2VyIn0.N6bs-WXVZJTNW2jztzph4SYc9_Szs0cb0kBM9n0k8hY@rabbitmq:5672?heartbeat=60
     depends_on:
       - mongo
