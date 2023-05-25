@@ -40,6 +40,11 @@ spec:
                   configMapKeyRef:
                     name: {{ include "tiledesk.fullname" . }}-config
                     key: API_URL
+            - name: WHATSAPP_TEMPLATES_BASE_URL
+              valueFrom:
+                  configMapKeyRef:
+                    name: {{ include "tiledesk.fullname" . }}-config
+                    key: WHATSAPP_TEMPLATES_BASE_URL
             - name: FEATURES_TOKEN  
               valueFrom:
                 configMapKeyRef:
@@ -100,11 +105,6 @@ spec:
                   configMapKeyRef:
                     name: {{ include "tiledesk.fullname" . }}-config
                     key: DASHBOARD_URL
-            - name: SERVER_BASE_URL
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "tiledesk.fullname" . }}-config
-                  key: SERVER_BASE_URL
             - name: API_BASEIMAGE_URL
               valueFrom:
                   configMapKeyRef:
@@ -174,7 +174,12 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
-                  key: EMAIL_SECTION       
+                  key: EMAIL_SECTION
+            - name: WHATSAPP_TEMPLATES_SECTION
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: WHATSAPP_TEMPLATES_SECTION        
             - name: SUPPORT_MODE
               valueFrom:
                   configMapKeyRef:

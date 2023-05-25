@@ -33,10 +33,12 @@ data:
   TEMPLATES_URL: {{ .Values.TEMPLATES_URL | quote }}
   
   # ----- CHAT IONIC ------- 
+  WHATSAPP_TEMPLATES_BASE_URL: {{ .Values.WHATSAPP_TEMPLATES_BASE_URL | quote }}
   WRITE_TO_BUTTON: {{ .Values.WRITE_TO_BUTTON | quote }}
   ARCHIVED_BUTTON: {{ .Values.ARCHIVED_BUTTON | quote }}
   SUPPORT_MODE: {{ .Values.SUPPORT_MODE | quote }}
   EMAIL_SECTION: {{ .Values.EMAIL_SECTION | quote }}
+  WHATSAPP_TEMPLATES_SECTION: {{ .Values.WHATSAPP_TEMPLATES_SECTION | quote }}
   FILE_UPLOAD_ACCEPT: {{ .Values.FILE_UPLOAD_ACCEPT | quote }}
 
   # ----- WIDGET ------- 

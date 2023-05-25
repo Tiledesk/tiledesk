@@ -35,6 +35,8 @@ ARCHIVED_BUTTON: true
 SUPPORT_MODE: true
 EMAIL_SECTION: true
 FILE_UPLOAD_ACCEPT: "*/*"
+WHATSAPP_TEMPLATES_BASE_URL: '/api/'
+WHATSAPP_TEMPLATES_SECTION: false
 ###### ------CHAT IONIC : END------ ######
 
 
@@ -223,7 +225,7 @@ dashboard:
   resources: {}
   image:
     repository: tiledesk/tiledesk-dashboard
-    tag: 2.4.32
+    tag: 2.4.34
 
   service:
     type: ClusterIP
@@ -236,7 +238,7 @@ ionic:
   resources: {}
   image:
     repository: chat21/chat21-ionic
-    tag: 3.0.96
+    tag: 3.0.97
 
   service:
       type: ClusterIP
@@ -250,7 +252,7 @@ webwidget:
   resources: {}
   image:
     repository: chat21/chat21-web-widget
-    tag: 5.0.59
+    tag: 5.0.62
 
   service:
       type: ClusterIP
@@ -264,7 +266,7 @@ c21httpsrv:
   resources: {}
   image:  
     repository: chat21/chat21-http-server
-    tag: 0.2.26
+    tag: 0.2.28
     # tag: 0.2.27
     # pullPolicy: IfNotPresent  
 
@@ -279,7 +281,7 @@ c21srv:
   resources: {}
   image:  
     repository: chat21/chat21-server
-    tag: 0.2.38
+    tag: 0.2.45
     #tag: 0.2.41
     # pullPolicy: IfNotPresent  
 
@@ -458,7 +460,7 @@ rabbitmq: #consumer_timeout = 31622400000
   # onlineSchedulers: 3
   metrics:
     # enabled: false
-    enabled: false
+    enabled: true
   # resources:
   #   requests: 
   #     cpu: 4
