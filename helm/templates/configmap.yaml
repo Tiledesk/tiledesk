@@ -113,7 +113,11 @@ data:
   WEBHOOK_EVENTS: {{ .Values.WEBHOOK_EVENTS | quote }}
   CHAT21_MONGODB_URI: {{if .Values.CHAT21_MONGODB_URI}}{{ .Values.CHAT21_MONGODB_URI | quote }}{{ else }}mongodb://{{ include "tiledesk.fullname" . }}-mongodb/chat21{{ end }}
   CHAT21_SRV_RABBITMQ_URI: {{if .Values.CHAT21_SRV_RABBITMQ_URI}}{{ .Values.CHAT21_SRV_RABBITMQ_URI | quote }}{{ else }}amqp://{{ .Values.CHAT21_SRV_RABBITMQ_CREDENTIAL }}@{{ include "tiledesk.fullname" . }}-rabbitmq:5672?heartbeat=60{{ end }}
-  
+  PRESENCE_ENABLED: {{ .Values.PRESENCE_ENABLED | quote }}
+  CHAT21OBSERVER_REDIS_ENABLED:  {{ .Values.CHAT21OBSERVER_REDIS_ENABLED | quote }}
+  CHAT21OBSERVER_REDIS_HOST:  {{ include "tiledesk.fullname" . }}-redis-master
+  CHAT21OBSERVER_REDIS_PORT:  {{ .Values.CHAT21OBSERVER_REDIS_PORT | quote }}
+
   # ----- CHAT21HTTP SERVER -------
   JWT_KEY: {{ .Values.JWT_KEY | quote }}
   CHAT21_HTTPSRV_RABBITMQ_URI: {{if .Values.CHAT21_HTTPSRV_RABBITMQ_URI}}{{ .Values.CHAT21_HTTPSRV_RABBITMQ_URI | quote }}{{ else }}amqp://{{ .Values.CHAT21_HTTPSRV_RABBITMQ_CREDENTIAL }}@{{ include "tiledesk.fullname" . }}-rabbitmq:5672?heartbeat=60{{ end }}
@@ -124,6 +128,9 @@ data:
   WEB_CLICK_ACTION: {{ .Values.WEB_CLICK_ACTION | quote }}
   MOBILE_CLICK_ACTION: {{ .Values.MOBILE_CLICK_ACTION | quote }}
   CONTACTS_LOOKUP_ENDPOINT: http://{{ include "tiledesk.fullname" . }}-server/users_util
+  CHAT21HTTP_CACHE_ENABLED: {{ .Values.CHAT21HTTP_CACHE_ENABLED | quote }}
+  CHAT21HTTP_REDIS_HOST:  {{ include "tiledesk.fullname" . }}-redis-master
+  CHAT21HTTP_REDIS_PORT:  {{ .Values.CHAT21HTTP_REDIS_PORT | quote }}
 
   # ----- COMMON -------
   FEATURES_TOKEN: {{ .Values.FEATURES_TOKEN | quote }}
@@ -158,16 +165,10 @@ data:
   API_URL: {{if and .Values.EXTERNAL_BASE_URL (hasPrefix "/" .Values.API_URL)}}"{{ .Values.EXTERNAL_BASE_URL  }}{{ .Values.API_URL }}"{{ else }}{{ .Values.API_URL | quote }}{{ end }}
 
   MONGODB_URI: {{if .Values.MONGODB_URI}}{{ .Values.MONGODB_URI | quote }}{{ else }}mongodb://{{ include "tiledesk.fullname" . }}-mongodb/tiledesk{{ end }}
-  PREFETCH_MESSAGES: {{ .Values.PREFETCH_MESSAGES | quote }}
-  PRESENCE_ENABLED: {{ .Values.PRESENCE_ENABLED | quote }}
+  
 
   PAYMENT_STRIPE_APIKEY: {{ .Values.PAYMENT_STRIPE_APIKEY | quote }}
   PAYMENT_STRIPE_SECRET: {{ .Values.PAYMENT_STRIPE_SECRET | quote }}
   PAYMENT_STRIPE_API_SECRET_KEY: {{ .Values.PAYMENT_STRIPE_API_SECRET_KEY | quote }}
 
-  DURABLE_ENABLED: {{ .Values.DURABLE_ENABLED | quote }}
-
-
-  CHAT21HTTP_CACHE_ENABLED:  {{ .Values.CHAT21HTTP_CACHE_ENABLED | quote }}
-  OBSERVER_CACHE_ENABLED:  {{ .Values.OBSERVER_CACHE_ENABLED | quote }}
   

@@ -70,16 +70,21 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: PRESENCE_ENABLED
-            - name: PREFETCH_MESSAGES
+            - name: CHAT21OBSERVER_REDIS_ENABLED
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
-                  key: PREFETCH_MESSAGES
-            - name: DURABLE_ENABLED
+                  key: CHAT21OBSERVER_REDIS_ENABLED
+            - name: CHAT21OBSERVER_REDIS_HOST
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
-                  key: DURABLE_ENABLED
+                  key: CHAT21OBSERVER_REDIS_HOST
+            - name: CHAT21OBSERVER_REDIS_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: CHAT21OBSERVER_REDIS_PORT
           resources:
             {{- toYaml .Values.c21srv.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
