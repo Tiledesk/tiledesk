@@ -205,7 +205,7 @@ server:
   resources: {}
   image:  
     repository: tiledesk/tiledesk-server
-    tag: 2.4.14
+    tag: 2.4.18
 
   service:
     type: ClusterIP
@@ -218,7 +218,7 @@ serverworker:
   resources: {}
   image:  
     repository: tiledesk/tiledesk-server-worker
-    tag: 2.4.14
+    tag: 2.4.18
 
 dashboard:
   ## Enable deployment of Tiledesk Server
@@ -254,7 +254,7 @@ webwidget:
   resources: {}
   image:
     repository: chat21/chat21-web-widget
-    tag: 5.0.63
+    tag: 5.0.65
 
   service:
       type: ClusterIP
