@@ -70,11 +70,11 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: PRESENCE_ENABLED
-            - name: CHAT21OBSERVER_REDIS_ENABLED
+            - name: CHAT21OBSERVER_CACHE_ENABLED
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
-                  key: CHAT21OBSERVER_REDIS_ENABLED
+                  key: CHAT21OBSERVER_CACHE_ENABLED
             - name: CHAT21OBSERVER_REDIS_HOST
               valueFrom:
                 configMapKeyRef:
