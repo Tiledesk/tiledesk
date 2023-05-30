@@ -405,7 +405,17 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
-                  key: DISABLE_SEND_OFFLINE_EMAIL              
+                  key: DISABLE_SEND_OFFLINE_EMAIL         
+            - name: QUEUE_EXCHANGE_TOPIC
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: QUEUE_EXCHANGE_TOPIC
+            - name: QUEUE_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: QUEUE_NAME                     
           resources:
             {{- toYaml .Values.serverworker.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}

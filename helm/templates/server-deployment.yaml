@@ -442,7 +442,16 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: PAYMENT_STRIPE_API_SECRET_KEY
-                  
+            - name: QUEUE_EXCHANGE_TOPIC
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: QUEUE_EXCHANGE_TOPIC     
+            - name: QUEUE_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: QUEUE_NAME                                    
             # - name: BOT_RASA_ENDPOINT
             #   valueFrom:
             #     configMapKeyRef:

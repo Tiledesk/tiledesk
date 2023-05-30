@@ -170,4 +170,9 @@ data:
 
   CHAT21HTTP_CACHE_ENABLED:  {{ .Values.CHAT21HTTP_CACHE_ENABLED | quote }}
   OBSERVER_CACHE_ENABLED:  {{ .Values.OBSERVER_CACHE_ENABLED | quote }}
+
+  QUEUE_EXCHANGE_TOPIC:  {{ .Values.QUEUE_EXCHANGE_TOPIC | quote }}
+  QUEUE_NAME:  {{ .Values.QUEUE_NAME | quote }}
+  
+  
   
