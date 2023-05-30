@@ -109,7 +109,27 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
-                  key: LOG_LEVEL                                                                                       
+                  key: LOG_LEVEL
+            - name: LOG_LEVEL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: LOG_LEVEL
+            - name: CHAT21HTTP_CACHE_ENABLED
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: CHAT21HTTP_CACHE_ENABLED
+            - name: CHAT21HTTP_REDIS_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: CHAT21HTTP_REDIS_HOST
+            - name: CHAT21HTTP_REDIS_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: CHAT21HTTP_REDIS_PORT                                                                                     
           ports:
             - name: c21httpsrv-http
               containerPort: 8004
