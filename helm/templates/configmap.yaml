@@ -164,18 +164,11 @@ data:
   API_URL: {{if and .Values.EXTERNAL_BASE_URL (hasPrefix "/" .Values.API_URL)}}"{{ .Values.EXTERNAL_BASE_URL  }}{{ .Values.API_URL }}"{{ else }}{{ .Values.API_URL | quote }}{{ end }}
 
   MONGODB_URI: {{if .Values.MONGODB_URI}}{{ .Values.MONGODB_URI | quote }}{{ else }}mongodb://{{ include "tiledesk.fullname" . }}-mongodb/tiledesk{{ end }}
-  PREFETCH_MESSAGES: {{ .Values.PREFETCH_MESSAGES | quote }}
   PRESENCE_ENABLED: {{ .Values.PRESENCE_ENABLED | quote }}
 
   PAYMENT_STRIPE_APIKEY: {{ .Values.PAYMENT_STRIPE_APIKEY | quote }}
   PAYMENT_STRIPE_SECRET: {{ .Values.PAYMENT_STRIPE_SECRET | quote }}
   PAYMENT_STRIPE_API_SECRET_KEY: {{ .Values.PAYMENT_STRIPE_API_SECRET_KEY | quote }}
-
-  DURABLE_ENABLED: {{ .Values.DURABLE_ENABLED | quote }}
-
-
-  CHAT21HTTP_CACHE_ENABLED:  {{ .Values.CHAT21HTTP_CACHE_ENABLED | quote }}
-  OBSERVER_CACHE_ENABLED:  {{ .Values.OBSERVER_CACHE_ENABLED | quote }}
 
   QUEUE_EXCHANGE_TOPIC:  {{ .Values.QUEUE_EXCHANGE_TOPIC | quote }}
   QUEUE_NAME:  {{ .Values.QUEUE_NAME | quote }}
