@@ -451,7 +451,12 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
-                  key: QUEUE_NAME                                    
+                  key: QUEUE_NAME     
+            - name: BASE_FILE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: BASE_FILE_URL                                            
             # - name: BOT_RASA_ENDPOINT
             #   valueFrom:
             #     configMapKeyRef:

@@ -191,6 +191,7 @@ CHAT21_APPID: tilechat
 DASHBOARD_URL: /dashboard/
 API_BASEIMAGE_URL: /api/
 API_URL: /api/
+BASE_FILE_URL: /api/
 #MONGODB_URI: mongodb://tiledesk-mongo/tiledesk
 ###### ------COMMON CONF : END------ ######
 
@@ -207,7 +208,7 @@ server:
   resources: {}
   image:  
     repository: tiledesk/tiledesk-server
-    tag: 2.4.25
+    tag: 2.4.26
 
   service:
     type: ClusterIP
@@ -220,7 +221,7 @@ serverworker:
   resources: {}
   image:  
     repository: tiledesk/tiledesk-server-worker
-    tag: 2.4.25
+    tag: 2.4.26
 
 dashboard:
   ## Enable deployment of Tiledesk Server

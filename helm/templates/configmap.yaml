@@ -162,6 +162,8 @@ data:
   DASHBOARD_URL: {{ .Values.DASHBOARD_URL | quote }}
   API_BASEIMAGE_URL: {{if and .Values.EXTERNAL_BASE_URL (hasPrefix "/" .Values.API_BASEIMAGE_URL)}}"{{ .Values.EXTERNAL_BASE_URL  }}{{ .Values.API_BASEIMAGE_URL }}"{{ else }}{{ .Values.API_BASEIMAGE_URL | quote }}{{ end }}
   API_URL: {{if and .Values.EXTERNAL_BASE_URL (hasPrefix "/" .Values.API_URL)}}"{{ .Values.EXTERNAL_BASE_URL  }}{{ .Values.API_URL }}"{{ else }}{{ .Values.API_URL | quote }}{{ end }}
+  BASE_FILE_URL: {{if and .Values.EXTERNAL_BASE_URL (hasPrefix "/" .Values.BASE_FILE_URL)}}"{{ .Values.EXTERNAL_BASE_URL  }}{{ .Values.BASE_FILE_URL }}"{{ else }}{{ .Values.BASE_FILE_URL | quote }}{{ end }}
+
 
   MONGODB_URI: {{if .Values.MONGODB_URI}}{{ .Values.MONGODB_URI | quote }}{{ else }}mongodb://{{ include "tiledesk.fullname" . }}-mongodb/tiledesk{{ end }}
   PRESENCE_ENABLED: {{ .Values.PRESENCE_ENABLED | quote }}

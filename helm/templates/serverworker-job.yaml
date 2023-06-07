@@ -415,7 +415,12 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
-                  key: QUEUE_NAME                     
+                  key: QUEUE_NAME    
+            - name: BASE_FILE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: BASE_FILE_URL                 
           resources:
             {{- toYaml .Values.serverworker.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
