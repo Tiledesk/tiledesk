@@ -175,5 +175,12 @@ data:
   QUEUE_EXCHANGE_TOPIC:  {{ .Values.QUEUE_EXCHANGE_TOPIC | quote }}
   QUEUE_NAME:  {{ .Values.QUEUE_NAME | quote }}
   
+
+
+  GOOGLE_SIGNIN_ENABLED: {{ .Values.GOOGLE_SIGNIN_ENABLED | quote }}
+  GOOGLE_CLIENT_ID: {{ .Values.GOOGLE_CLIENT_ID | quote }}
+  GOOGLE_CLIENT_SECRET: {{ .Values.GOOGLE_CLIENT_SECRET | quote }}
+  GOOGLE_CALLBACK_URL: {{ .Values.GOOGLE_CALLBACK_URL | quote }}
+
   
   
