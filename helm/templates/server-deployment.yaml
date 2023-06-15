@@ -477,6 +477,11 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: GOOGLE_CALLBACK_URL
+            - name: CLOSE_BOT_UNRESPONSIVE_REQUESTS_ENABLE
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: CLOSE_BOT_UNRESPONSIVE_REQUESTS_ENABLE
             # - name: BOT_RASA_ENDPOINT
             #   valueFrom:
             #     configMapKeyRef:
