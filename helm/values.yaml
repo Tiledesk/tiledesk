@@ -208,6 +208,7 @@ GOOGLE_CLIENT_SECRET: CHANGEIT
 GOOGLE_CALLBACK_URL: CHANGEIT
 
 CLOSE_BOT_UNRESPONSIVE_REQUESTS_ENABLE: true
+ENABLE_REDIS_SESSION: false
 
 server:
   ## Enable deployment of Tiledesk Server
@@ -216,7 +217,7 @@ server:
   resources: {}
   image:  
     repository: tiledesk/tiledesk-server
-    tag: 2.4.29
+    tag: 2.4.33
 
   service:
     type: ClusterIP
@@ -229,7 +230,7 @@ serverworker:
   resources: {}
   image:  
     repository: tiledesk/tiledesk-server-worker
-    tag: 2.4.29
+    tag: 2.4.33
 
 dashboard:
   ## Enable deployment of Tiledesk Server
