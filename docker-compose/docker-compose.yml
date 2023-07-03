@@ -4,10 +4,10 @@ volumes:
    tiledesk-datadb:
 services:
   dashboard:
-   image: tiledesk/tiledesk-dashboard:2.4.36
+   image: tiledesk/tiledesk-dashboard:2.4.49
    container_name: tiledesk-dashboard 
    environment: 
-      - FEATURES_TOKEN=NAT:T-DEV:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-LBS:T-NOT:T-MTT:T-RAS:T-ANA:T-ACT:T-TIL:T-SUP:T-APP:T
+      - FEATURES_TOKEN=NAT:T-DEV:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-LBS:T-NOT:T-MTT:T-RAS:T-ANA:T-ACT:T-TIL:T-SUP:T-APP:T-BAN:false
       - "WIDGET_LOCATION=${EXTERNAL_BASE_URL:-http://localhost:8081}/widget/launch.js"
       - BOT_CREDENTIAL_URL=/api/modules/dialogflow/botcredendials/
       - RASA_BOT_CREDENTIAL_URL=/api/modules/rasa/botcredendials/
@@ -38,7 +38,7 @@ services:
       - "4500:80" #use expose if you want to block external access
 
   webwidget:
-   image: chat21/chat21-web-widget:5.0.62
+   image: chat21/chat21-web-widget:5.0.68
    container_name: chat21-web-widget 
    ports: 
       - "4200:80" # specify port forewarding
@@ -66,7 +66,7 @@ services:
       - AUTH_PERSISTENCE=LOCAL
       - ENBED_JS=true
   ionic:
-   image: chat21/chat21-ionic:3.0.97
+   image: chat21/chat21-ionic:3.0.101
    container_name: chat21-ionic
    ports:
       - "8082:80" #use expose if you want to block external access   
@@ -114,7 +114,7 @@ services:
     command: [nginx-debug, '-g', 'daemon off;']
     
   server:
-    image: tiledesk/tiledesk-server:2.4.16
+    image: tiledesk/tiledesk-server:2.4.36
     container_name: tiledesk-server
     restart: always       
     environment: 
@@ -156,7 +156,7 @@ services:
       - "3000:3000"
 
   chat21httpserver:
-    image: chat21/chat21-http-server:0.2.28
+    image: chat21/chat21-http-server:0.2.33
     container_name: chat21httpserver
     restart: always    
     environment: 
