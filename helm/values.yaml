@@ -280,8 +280,7 @@ c21httpsrv:
   resources: {}
   image:  
     repository: chat21/chat21-http-server
-    tag: 0.2.33
-    # tag: 0.2.27
+    tag: 0.2.34
     # pullPolicy: IfNotPresent  
 
   service:    

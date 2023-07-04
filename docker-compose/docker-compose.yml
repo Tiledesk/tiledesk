@@ -156,7 +156,7 @@ services:
       - "3000:3000"
 
   chat21httpserver:
-    image: chat21/chat21-http-server:0.2.33
+    image: chat21/chat21-http-server:0.2.34
     container_name: chat21httpserver
     restart: always    
     environment: 
