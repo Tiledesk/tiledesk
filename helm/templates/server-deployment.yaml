@@ -446,12 +446,12 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
-                  key: QUEUE_EXCHANGE_TOPIC     
+                  key: QUEUE_EXCHANGE_TOPIC
             - name: QUEUE_NAME
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
-                  key: QUEUE_NAME     
+                  key: QUEUE_NAME
             - name: BASE_FILE_URL
               valueFrom:
                 configMapKeyRef:

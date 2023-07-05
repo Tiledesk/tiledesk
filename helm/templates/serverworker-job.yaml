@@ -341,6 +341,21 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: META_GRAPH_URL
+            - name: FB_APP_ID
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: FB_APP_ID
+            - name: FB_APP_SECRET
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: FB_APP_SECRET
+            - name: MESSENGER_VERIFY_TOKEN
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: MESSENGER_VERIFY_TOKEN
             - name: WHATSAPP_LOG
               valueFrom:
                 configMapKeyRef:
@@ -405,7 +420,22 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
-                  key: DISABLE_SEND_OFFLINE_EMAIL         
+                  key: DISABLE_SEND_OFFLINE_EMAIL
+            - name: PAYMENT_STRIPE_SECRET
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: PAYMENT_STRIPE_SECRET
+            - name: PAYMENT_STRIPE_APIKEY
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: PAYMENT_STRIPE_APIKEY
+            - name: PAYMENT_STRIPE_API_SECRET_KEY
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: PAYMENT_STRIPE_API_SECRET_KEY
             - name: QUEUE_EXCHANGE_TOPIC
               valueFrom:
                 configMapKeyRef:
@@ -415,12 +445,47 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
-                  key: QUEUE_NAME    
+                  key: QUEUE_NAME
             - name: BASE_FILE_URL
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
-                  key: BASE_FILE_URL                 
+                  key: BASE_FILE_URL
+            - name: GOOGLE_SIGNIN_ENABLED
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: GOOGLE_SIGNIN_ENABLED
+            - name: GOOGLE_CLIENT_ID
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: GOOGLE_CLIENT_ID
+            - name: GOOGLE_CLIENT_SECRET
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: GOOGLE_CLIENT_SECRET
+            - name: GOOGLE_CALLBACK_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: GOOGLE_CALLBACK_URL
+            - name: CLOSE_BOT_UNRESPONSIVE_REQUESTS_ENABLE
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: CLOSE_BOT_UNRESPONSIVE_REQUESTS_ENABLE
+            - name: ENABLE_REDIS_SESSION
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: ENABLE_REDIS_SESSION
+            # - name: BOT_RASA_ENDPOINT
+            #   valueFrom:
+            #     configMapKeyRef:
+            #       name: {{ include "tiledesk.fullname" . }}-config
+            #       key: BOT_RASA_ENDPOINT              
           resources:
             {{- toYaml .Values.serverworker.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
