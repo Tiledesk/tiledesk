@@ -140,8 +140,8 @@ data:
   PUSH_ENGINE: {{ .Values.PUSH_ENGINE | quote }}
 
   LOG_LEVEL: {{ .Values.LOG_LEVEL | quote }}
-  WORKER_LOG_LEVEL: {{ .Values.LOG_LEVEL | quote }}
-  
+  WORKER_LOG_LEVEL: {{ .Values.WORKER_LOG_LEVEL | quote }}
+
   AUTH_PERSISTENCE: {{ .Values.AUTH_PERSISTENCE | quote }}
   CHAT_STORAGE_PREFIX: {{ .Values.CHAT_STORAGE_PREFIX | quote }}
   
