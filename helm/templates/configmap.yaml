@@ -138,7 +138,10 @@ data:
   CHAT21_ENGINE: {{ .Values.CHAT21_ENGINE | quote }}
   UPLOAD_ENGINE: {{ .Values.UPLOAD_ENGINE | quote }}
   PUSH_ENGINE: {{ .Values.PUSH_ENGINE | quote }}
+
   LOG_LEVEL: {{ .Values.LOG_LEVEL | quote }}
+  WORKER_LOG_LEVEL: {{ .Values.LOG_LEVEL | quote }}
+  
   AUTH_PERSISTENCE: {{ .Values.AUTH_PERSISTENCE | quote }}
   CHAT_STORAGE_PREFIX: {{ .Values.CHAT_STORAGE_PREFIX | quote }}
   
@@ -185,3 +188,5 @@ data:
   
   CLOSE_BOT_UNRESPONSIVE_REQUESTS_ENABLE: {{ .Values.CLOSE_BOT_UNRESPONSIVE_REQUESTS_ENABLE | quote }}
   ENABLE_REDIS_SESSION: {{ .Values.ENABLE_REDIS_SESSION | quote }}
+
+  {{if .Values.TILEBOT_ENDPOINT}}TILEBOT_ENDPOINT: {{ .Values.TILEBOT_ENDPOINT | quote }}{{ end }}

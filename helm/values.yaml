@@ -168,6 +168,8 @@ CHAT21_ENGINE: mqtt
 UPLOAD_ENGINE: native
 PUSH_ENGINE: none
 LOG_LEVEL: info # Log Config
+WORKER_LOG_LEVEL: verbose # Log Config
+
 AUTH_PERSISTENCE: LOCAL
 CHAT_STORAGE_PREFIX: chat_sv5
 
@@ -209,6 +211,7 @@ GOOGLE_CALLBACK_URL: CHANGEIT
 
 CLOSE_BOT_UNRESPONSIVE_REQUESTS_ENABLE: true
 ENABLE_REDIS_SESSION: false
+#TILEBOT_ENDPOINT: CHANGEIT
 
 server:
   ## Enable deployment of Tiledesk Server
@@ -217,7 +220,7 @@ server:
   resources: {}
   image:  
     repository: tiledesk/tiledesk-server
-    tag: 2.4.38
+    tag: 2.4.40
 
   service:
     type: ClusterIP
@@ -230,7 +233,7 @@ serverworker:
   resources: {}
   image:  
     repository: tiledesk/tiledesk-server-worker
-    tag: 2.4.38
+    tag: 2.4.40
 
 dashboard:
   ## Enable deployment of Tiledesk Server

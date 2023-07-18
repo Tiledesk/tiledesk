@@ -481,6 +481,16 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: ENABLE_REDIS_SESSION
+            - name: LOG_LEVEL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: WORKER_LOG_LEVEL
+            # - name: TILEBOT_ENDPOINT
+            #   valueFrom:
+            #     configMapKeyRef:
+            #       name: {{ include "tiledesk.fullname" . }}-config
+            #       key: TILEBOT_ENDPOINT                
             # - name: BOT_RASA_ENDPOINT
             #   valueFrom:
             #     configMapKeyRef:
