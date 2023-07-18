@@ -167,8 +167,8 @@ CHAT21_ENGINE: mqtt
 #CHAT21_ENGINE: firebase
 UPLOAD_ENGINE: native
 PUSH_ENGINE: none
-LOG_LEVEL: info # Log Config
-WORKER_LOG_LEVEL: verbose # Log Config
+LOG_LEVEL: info
+WORKER_LOG_LEVEL: verbose
 
 AUTH_PERSISTENCE: LOCAL
 CHAT_STORAGE_PREFIX: chat_sv5
