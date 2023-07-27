@@ -168,7 +168,7 @@ CHAT21_ENGINE: mqtt
 UPLOAD_ENGINE: native
 PUSH_ENGINE: none
 LOG_LEVEL: info
-WORKER_LOG_LEVEL: verbose
+WORKER_LOG_LEVEL: info
 
 AUTH_PERSISTENCE: LOCAL
 CHAT_STORAGE_PREFIX: chat_sv5
@@ -220,7 +220,7 @@ server:
   resources: {}
   image:  
     repository: tiledesk/tiledesk-server
-    tag: 2.4.40
+    tag: 2.4.43
 
   service:
     type: ClusterIP
@@ -233,7 +233,7 @@ serverworker:
   resources: {}
   image:  
     repository: tiledesk/tiledesk-server-worker
-    tag: 2.4.40
+    tag: 2.4.43
 
 dashboard:
   ## Enable deployment of Tiledesk Server
