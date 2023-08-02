@@ -220,7 +220,7 @@ server:
   resources: {}
   image:  
     repository: tiledesk/tiledesk-server
-    tag: 2.4.45
+    tag: 2.4.47
 
   service:
     type: ClusterIP
@@ -233,7 +233,7 @@ serverworker:
   resources: {}
   image:  
     repository: tiledesk/tiledesk-server-worker
-    tag: 2.4.45
+    tag: 2.4.47
 
 dashboard:
   ## Enable deployment of Tiledesk Server
