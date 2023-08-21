@@ -18,16 +18,10 @@ description:
       - no-code chatbot builder
       - adaptive multichannel technology for WhatsApp, FB Messenger and 
       many other messaging channels 
-      - 'integration with DialogFlow, Rasa and all major AI solutions'
-      - conversational ticketing
-      - multi-project management
-      - SLAs setting
-      - 'smart assignment of the queues'
-      - seamless conversation
       - dashboard
       - knowledge base
       - mobile apps
-    genericName: Live chat with integrated chatbots
+    genericName: No-code development platform to automate conversations
     longDescription: |
       To have fully satisfied customers is complex. Conversation’s actors
       (chatbots and humans) should handoff to each other many times during a
@@ -50,13 +44,7 @@ description:
 
       - Adaptive multichannel technology to design conversational flow once, 
       then run it on every channel, from Whatsapp Business to Company Website
-      
-      - Easy Integration with all major AI-platforms, cloud and Open source,
-      from DialogFlow to RASA; 
-
-      - Ticketing Management system fully integrated into the platform and
-      instant conversation flow; 
-
+     
       - Team Organization with multi-project management, SLAs setting, smart
       assignment of the queues, departments organization and much more;
       
@@ -91,7 +79,7 @@ it:
     cie: false
     pagopa: false
     spid: false
-landingURL: 'https://tiledesk.com/install'
+landingURL: 'https://tiledesk.com/'
 legal:
   license: MIT
 localisation:
