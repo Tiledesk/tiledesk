@@ -492,6 +492,11 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: LOG_LEVEL
+            - name: MONGOOSE_DEBUG
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: MONGOOSE_DEBUG            
             # - name: TILEBOT_ENDPOINT
             #   valueFrom:
             #     configMapKeyRef:
