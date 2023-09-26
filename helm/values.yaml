@@ -214,6 +214,9 @@ CLOSE_BOT_UNRESPONSIVE_REQUESTS_ENABLE: true
 ENABLE_REDIS_SESSION: false
 #TILEBOT_ENDPOINT: CHANGEIT
 
+GPT_ENDPOINT: CHANGEIT
+OPENAI_ENDPOINT: CHANGEIT
+
 server:
   ## Enable deployment of Tiledesk Server
   ##
@@ -221,7 +224,7 @@ server:
   resources: {}
   image:  
     repository: tiledesk/tiledesk-server
-    tag: 2.4.51
+    tag: 2.4.53
 
   service:
     type: ClusterIP
@@ -234,7 +237,7 @@ serverworker:
   resources: {}
   image:  
     repository: tiledesk/tiledesk-server-worker
-    tag: 2.4.51
+    tag: 2.4.53
 
 dashboard:
   ## Enable deployment of Tiledesk Server

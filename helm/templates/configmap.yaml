@@ -191,3 +191,6 @@ data:
   ENABLE_REDIS_SESSION: {{ .Values.ENABLE_REDIS_SESSION | quote }}
 
   {{if .Values.TILEBOT_ENDPOINT}}TILEBOT_ENDPOINT: {{ .Values.TILEBOT_ENDPOINT | quote }}{{ end }}
+  
+  GPT_ENDPOINT: {{ .Values.GPT_ENDPOINT | quote }}
+  OPENAI_ENDPOINT: {{ .Values.OPENAI_ENDPOINT | quote }}

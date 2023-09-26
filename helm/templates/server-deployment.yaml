@@ -496,7 +496,17 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
-                  key: MONGOOSE_DEBUG            
+                  key: MONGOOSE_DEBUG
+            - name: GPT_ENDPOINT
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: GPT_ENDPOINT   
+            - name: OPENAI_ENDPOINT
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: OPENAI_ENDPOINT                   
             # - name: TILEBOT_ENDPOINT
             #   valueFrom:
             #     configMapKeyRef:
