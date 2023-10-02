@@ -28,6 +28,7 @@ data:
   BRAND_SRC: {{ .Values.BRAND_SRC | quote }}
   REMOTE_JS_SRC: {{ .Values.REMOTE_JS_SRC | quote }}
   APPS_URL: {{ .Values.APPS_URL | quote }}
+  CDS_BASE_URL: {{ .Values.CDS_BASE_URL | quote }}
   PROMO_BANNER_URL: {{ .Values.PROMO_BANNER_URL | quote }}
   COMMUNITY_TEMPLATES_URL: {{ .Values.COMMUNITY_TEMPLATES_URL | quote }}
   TEMPLATES_URL: {{ .Values.TEMPLATES_URL | quote }}

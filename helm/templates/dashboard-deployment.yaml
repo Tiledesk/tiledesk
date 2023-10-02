@@ -70,11 +70,6 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: CHAT_BASE_URL
-            - name: WIDGET_TEST_LOCATION
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "tiledesk.fullname" . }}-config
-                  key: WIDGET_TEST_LOCATION
             - name: WS_URL_RELATIVE
               valueFrom:
                 configMapKeyRef:
@@ -115,6 +110,11 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: APPS_URL
+            - name: CDS_BASE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: CDS_BASE_URL
             - name: PROMO_BANNER_URL
               valueFrom:
                 configMapKeyRef:
