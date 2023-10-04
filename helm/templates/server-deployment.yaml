@@ -506,7 +506,27 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
-                  key: OPENAI_ENDPOINT                   
+                  key: OPENAI_ENDPOINT
+            - name: KB_ENDPOINT
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: KB_ENDPOINT
+            - name: TELEGRAM_API_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: TELEGRAM_API_URL 
+            - name: TELEGRAM_FILE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: TELEGRAM_FILE_URL 
+            - name: TELEGRAM_LOG
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: TELEGRAM_LOG                  
             # - name: TILEBOT_ENDPOINT
             #   valueFrom:
             #     configMapKeyRef:

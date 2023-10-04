@@ -125,7 +125,12 @@ EMAIL_INBOUND_DOMAIN: ""
 # BOT_DIALOGFLOW_ENDPOINT: ""
 DISABLE_SEND_OFFLINE_EMAIL: false
 # BOT_RASA_ENDPOINT: ""
-
+GPT_ENDPOINT: CHANGEIT
+OPENAI_ENDPOINT: CHANGEIT
+KB_ENDPOINT: CHANGEIT
+TELEGRAM_API_URL: https://api.telegram.org/bot
+TELEGRAM_FILE_URL: https://api.telegram.org/file/bot
+TELEGRAM_LOG: debug
 ###### ------SERVER : END------ ######
 
 
@@ -215,8 +220,6 @@ CLOSE_BOT_UNRESPONSIVE_REQUESTS_ENABLE: true
 ENABLE_REDIS_SESSION: false
 #TILEBOT_ENDPOINT: CHANGEIT
 
-GPT_ENDPOINT: CHANGEIT
-OPENAI_ENDPOINT: CHANGEIT
 
 server:
   ## Enable deployment of Tiledesk Server
@@ -225,7 +228,7 @@ server:
   resources: {}
   image:  
     repository: tiledesk/tiledesk-server
-    tag: 2.4.53
+    tag: 2.4.57
 
   service:
     type: ClusterIP
@@ -238,7 +241,7 @@ serverworker:
   resources: {}
   image:  
     repository: tiledesk/tiledesk-server-worker
-    tag: 2.4.53
+    tag: 2.4.57
 
 dashboard:
   ## Enable deployment of Tiledesk Server

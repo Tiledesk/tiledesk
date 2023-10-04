@@ -106,6 +106,12 @@ data:
   EMAIL_INBOUND_DOMAIN: {{ .Values.EMAIL_INBOUND_DOMAIN | quote }}
   DISABLE_SEND_OFFLINE_EMAIL: {{ .Values.DISABLE_SEND_OFFLINE_EMAIL | quote }}
   # BOT_RASA_ENDPOINT: {{ .Values.BOT_RASA_ENDPOINT | quote }}
+  GPT_ENDPOINT: {{ .Values.GPT_ENDPOINT | quote }}
+  OPENAI_ENDPOINT: {{ .Values.OPENAI_ENDPOINT | quote }}
+  KB_ENDPOINT: {{ .Values.KB_ENDPOINT | quote }}
+  TELEGRAM_API_URL: {{ .Values.TELEGRAM_API_URL | quote }}
+  TELEGRAM_FILE_URL: {{ .Values.TELEGRAM_FILE_URL | quote }}
+  TELEGRAM_LOG: {{ .Values.TELEGRAM_LOG | quote }}
 
   # ----- CHAT21 SERVER -------
   APP_ID: {{ .Values.APP_ID | quote }}
@@ -193,5 +199,4 @@ data:
 
   {{if .Values.TILEBOT_ENDPOINT}}TILEBOT_ENDPOINT: {{ .Values.TILEBOT_ENDPOINT | quote }}{{ end }}
   
-  GPT_ENDPOINT: {{ .Values.GPT_ENDPOINT | quote }}
-  OPENAI_ENDPOINT: {{ .Values.OPENAI_ENDPOINT | quote }}
+  
