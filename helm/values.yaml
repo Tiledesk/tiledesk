@@ -14,7 +14,7 @@ serverReplicaCount: 1
 FIREBASE_PRIVATE_KEY: -----BEGIN PRIVATE KEY-----\nCHANGEIT\n-----END PRIVATE KEY-----\n
 
 ###### ------DASHBOARD : START------ ######
-WIDGET_LOCATION: /widget/launch.js
+WIDGET_LOCATION: /widget/
 #EXTERNAL_BASE_URL: http://console.tiledesk.local
 DIALOGFLOW_BOT_CREDENTIAL_URL: /api/modules/dialogflow/botcredendials/
 RASA_BOT_CREDENTIAL_URL: /api/modules/rasa/botcredendials/
@@ -23,7 +23,7 @@ CHAT_BASE_URL: /chat/
 BRAND_SRC: ''
 REMOTE_JS_SRC: ''
 APPS_URL: /api/modules/apps/
-CDS_BASE_URL: /cds/
+CDS_BASE_URL: /
 PROMO_BANNER_URL: ''
 COMMUNITY_TEMPLATES_URL: 'https://chatbot-templates-app-v3.herokuapp.com/chatbots/public/community'
 TEMPLATES_URL: 'https://chatbot-templates-app-v3.herokuapp.com/chatbots/public/templates'
@@ -228,7 +228,7 @@ server:
   resources: {}
   image:  
     repository: tiledesk/tiledesk-server
-    tag: 2.4.57
+    tag: 2.4.59
 
   service:
     type: ClusterIP
@@ -241,7 +241,7 @@ serverworker:
   resources: {}
   image:  
     repository: tiledesk/tiledesk-server-worker
-    tag: 2.4.57
+    tag: 2.4.59
 
 dashboard:
   ## Enable deployment of Tiledesk Server
@@ -250,7 +250,7 @@ dashboard:
   resources: {}
   image:
     repository: tiledesk/tiledesk-dashboard
-    tag: 2.4.50
+    tag: 2.4.80
 
   service:
     type: ClusterIP
