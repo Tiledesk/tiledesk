@@ -165,7 +165,7 @@ CHAT21HTTP_REDIS_PORT: 6379
 
 
 ###### ------COMMON CONF : START------ ######
-FEATURES_TOKEN: "NAT:T-DEV:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-LBS:T-NOT:T-MTT:T-RAS:T-TIL:T-RAS:T"                                
+FEATURES_TOKEN: "NAT:T-DEV:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-LBS:T-NOT:T-MTT:T-SUP:T-RAS:T-TIL:T-RAS:T"                                
 WIDGET_TEST_LOCATION: /widget/assets/twp/index.html
 WS_URL_RELATIVE: /ws/
 #choose one of the following:

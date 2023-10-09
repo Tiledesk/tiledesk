@@ -74,7 +74,7 @@ services:
       - DASHBOARD_URL=/dashboard/      
       - API_BASEIMAGE_URL=/api/
       - API_URL=/api/
-      - FEATURES_TOKEN=NAT:T-DEV:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-LBS:T-NOT:T-MTT:T-RAS:T-ANA:T-ACT:T-TIL:T
+      - FEATURES_TOKEN=NAT:T-DEV:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-LBS:T-NOT:T-MTT:T-SUP:T-RAS:T-ANA:T-ACT:T-TIL:T
       - WIDGET_TEST_LOCATION=/widget/assets/twp/index.html
       - PUSH_ENGINE=none
       - LOG_LEVEL=info
