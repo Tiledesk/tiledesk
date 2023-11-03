@@ -250,7 +250,7 @@ dashboard:
   resources: {}
   image:
     repository: tiledesk/tiledesk-dashboard
-    tag: 2.4.70
+    tag: 2.4.72
 
   service:
     type: ClusterIP
