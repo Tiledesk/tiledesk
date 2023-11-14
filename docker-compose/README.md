@@ -29,7 +29,7 @@ docker-compose up
 
 4. Signin as admin with :
 * email: admin@tiledesk.com
-* password: adminadmin
+* password: superadmin
 
 ### Tips & Troubleshooting
 * If you have a public ip specify it in the EXTERNAL_BASE_URL and EXTERNAL_MQTT_BASE_URL env parameters as follow:  ```EXTERNAL_BASE_URL="http://99.88.77.66:8081" EXTERNAL_MQTT_BASE_URL="ws://99.88.77.66:8081" docker-compose up```

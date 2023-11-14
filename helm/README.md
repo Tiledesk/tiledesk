@@ -55,7 +55,7 @@ The command deploys Tiledesk on the Kubernetes cluster in the default namespace.
 Open the browser at http://<YOUR_INGRESS_IP>*/dashboard/* (ATTENTION the final slash is required) and signin as admin with :
 
 * email: admin@tiledesk.com
-* password: adminadmin
+* password: superadmin
 
 You can get the Ingress Ip from the Address column running ```kubectl get ingress my-tiledesk-proxy-nginx```
 
