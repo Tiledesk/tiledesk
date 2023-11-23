@@ -1,0 +1,17 @@
+{{- if .Values.cds.enabled -}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "tiledesk.fullname" . }}-cds
+  labels: {{ include "tiledesk.labels" . | nindent 4 }}
+    app.kubernetes.io/component: design-studio
+spec:
+  type: {{ .Values.cds.service.type }}
+  ports:
+    - port: {{ .Values.cds.service.port }}
+      targetPort: cds-http
+      protocol: TCP
+      name: cds-http
+  selector: {{ include "tiledesk.selectorLabels" . | nindent 4 }}
+    app.kubernetes.io/component: design-studio
+{{- end -}}

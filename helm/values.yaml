@@ -23,11 +23,17 @@ CHAT_BASE_URL: /chat/
 BRAND_SRC: ''
 REMOTE_JS_SRC: ''
 APPS_URL: /api/modules/apps/
-CDS_BASE_URL: /
+CDS_BASE_URL: /cds/
 PROMO_BANNER_URL: ''
 COMMUNITY_TEMPLATES_URL: 'https://chatbot-templates-app-v3.herokuapp.com/chatbots/public/community'
 TEMPLATES_URL: 'https://chatbot-templates-app-v3.herokuapp.com/chatbots/public/templates'
 ###### ------DASHBOARD : END------ ######
+
+
+###### ------DESIGN STUDIO : START------ ######
+CDS_STORAGE_PREFIX: cds_sv5
+###### ------DESIGN STUDIO : END------ ######
+
 
 
 ###### ------CHAT IONIC : START------ ######
@@ -125,7 +131,6 @@ EMAIL_INBOUND_DOMAIN: ""
 # BOT_DIALOGFLOW_ENDPOINT: ""
 DISABLE_SEND_OFFLINE_EMAIL: false
 # BOT_RASA_ENDPOINT: ""
-GPT_ENDPOINT: CHANGEIT
 OPENAI_ENDPOINT: CHANGEIT
 KB_ENDPOINT: CHANGEIT
 TELEGRAM_API_URL: https://api.telegram.org/bot
@@ -165,8 +170,7 @@ CHAT21HTTP_REDIS_PORT: 6379
 
 
 ###### ------COMMON CONF : START------ ######
-FEATURES_TOKEN: "NAT:T-DEV:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-LBS:T-NOT:T-MTT:T-SUP:T-RAS:T-TIL:T-RAS:T"                                
-WIDGET_TEST_LOCATION: /widget/assets/twp/index.html
+FEATURES_TOKEN: "NAT:T-DEV:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-LBS:T-NOT:T-MTT:T-SUP:T-RAS:T-TIL:T-RAS:T"
 WS_URL_RELATIVE: /ws/
 #choose one of the following:
 CHAT21_ENGINE: mqtt
@@ -250,7 +254,20 @@ dashboard:
   resources: {}
   image:
     repository: tiledesk/tiledesk-dashboard
-    tag: 2.4.72
+    tag: 2.4.78
+
+  service:
+    type: ClusterIP
+    port: 80
+
+cds:
+  ## Enable deployment of Tiledesk Server
+  ##
+  enabled: true
+  resources: {}
+  image:
+    repository: tiledesk/design-studio
+    tag: 1.0.6
 
   service:
     type: ClusterIP
@@ -263,7 +280,7 @@ ionic:
   resources: {}
   image:
     repository: chat21/chat21-ionic
-    tag: 3.0.101
+    tag: 3.0.106
 
   service:
       type: ClusterIP
@@ -362,6 +379,8 @@ ingress:
           service: server
         - path: /dashboard/(.*)
           service: dashboard
+        - path: /cds/(.*)
+          service: cds
         - path: /chat/(.*)
           service: ionic
         - path: /widget/(.*)
@@ -385,6 +404,8 @@ ingress:
           service: server
         - path: /dashboard/(.*)
           service: dashboard
+        - path: /cds/(.*)
+          service: cds
         - path: /chat/(.*)
           service: ionic
         - path: /widget/(.*)

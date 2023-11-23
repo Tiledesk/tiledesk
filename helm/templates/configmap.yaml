@@ -20,7 +20,6 @@ data:
 
   
   # ----- DASHBOARD ------- 
-  WIDGET_LOCATION: {{if and .Values.EXTERNAL_BASE_URL (hasPrefix "/" .Values.WIDGET_LOCATION)}}"{{ .Values.EXTERNAL_BASE_URL  }}{{ .Values.WIDGET_LOCATION }}"{{ else }}{{ .Values.WIDGET_LOCATION | quote }}{{ end }}
   DIALOGFLOW_BOT_CREDENTIAL_URL: {{ .Values.DIALOGFLOW_BOT_CREDENTIAL_URL | quote }}
   RASA_BOT_CREDENTIAL_URL: {{ .Values.RASA_BOT_CREDENTIAL_URL | quote }}
   SERVER_BASE_URL: {{ .Values.SERVER_BASE_URL | quote }}
@@ -32,6 +31,9 @@ data:
   PROMO_BANNER_URL: {{ .Values.PROMO_BANNER_URL | quote }}
   COMMUNITY_TEMPLATES_URL: {{ .Values.COMMUNITY_TEMPLATES_URL | quote }}
   TEMPLATES_URL: {{ .Values.TEMPLATES_URL | quote }}
+
+  # ----- DESIGN STUDIO ------- 
+  CDS_STORAGE_PREFIX: {{ .Values.CDS_STORAGE_PREFIX | quote }}
   
   # ----- CHAT IONIC ------- 
   WHATSAPP_TEMPLATES_BASE_URL: {{ .Values.WHATSAPP_TEMPLATES_BASE_URL | quote }}
@@ -106,7 +108,6 @@ data:
   EMAIL_INBOUND_DOMAIN: {{ .Values.EMAIL_INBOUND_DOMAIN | quote }}
   DISABLE_SEND_OFFLINE_EMAIL: {{ .Values.DISABLE_SEND_OFFLINE_EMAIL | quote }}
   # BOT_RASA_ENDPOINT: {{ .Values.BOT_RASA_ENDPOINT | quote }}
-  GPT_ENDPOINT: {{ .Values.GPT_ENDPOINT | quote }}
   OPENAI_ENDPOINT: {{ .Values.OPENAI_ENDPOINT | quote }}
   KB_ENDPOINT: {{ .Values.KB_ENDPOINT | quote }}
   TELEGRAM_API_URL: {{ .Values.TELEGRAM_API_URL | quote }}
@@ -140,7 +141,7 @@ data:
 
   # ----- COMMON -------
   FEATURES_TOKEN: {{ .Values.FEATURES_TOKEN | quote }}
-  WIDGET_TEST_LOCATION: {{if and .Values.EXTERNAL_BASE_URL (hasPrefix "/" .Values.WIDGET_TEST_LOCATION)}}"{{ .Values.EXTERNAL_BASE_URL  }}{{ .Values.WIDGET_TEST_LOCATION }}"{{ else }}{{ .Values.WIDGET_TEST_LOCATION | quote }}{{ end }}
+  WIDGET_LOCATION: {{if and .Values.EXTERNAL_BASE_URL (hasPrefix "/" .Values.WIDGET_LOCATION)}}"{{ .Values.EXTERNAL_BASE_URL  }}{{ .Values.WIDGET_LOCATION }}"{{ else }}{{ .Values.WIDGET_LOCATION | quote }}{{ end }}
   WS_URL_RELATIVE: {{ .Values.WS_URL_RELATIVE | quote }}
   CHAT21_ENGINE: {{ .Values.CHAT21_ENGINE | quote }}
   UPLOAD_ENGINE: {{ .Values.UPLOAD_ENGINE | quote }}

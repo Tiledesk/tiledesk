@@ -194,12 +194,7 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
-                  key: WIDGET_LOCATION
-            - name: WIDGET_TEST_LOCATION
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "tiledesk.fullname" . }}-config
-                  key: WIDGET_TEST_LOCATION                  
+                  key: WIDGET_LOCATION                  
             - name: MONGODB_URI
               valueFrom:
                 configMapKeyRef:
@@ -496,12 +491,7 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
-                  key: MONGOOSE_DEBUG
-            - name: GPT_ENDPOINT
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "tiledesk.fullname" . }}-config
-                  key: GPT_ENDPOINT   
+                  key: MONGOOSE_DEBUG 
             - name: OPENAI_ENDPOINT
               valueFrom:
                 configMapKeyRef:

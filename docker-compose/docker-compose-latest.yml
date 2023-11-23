@@ -8,12 +8,12 @@ services:
    container_name: tiledesk-dashboard 
    environment: 
       - FEATURES_TOKEN=NAT:T-DEV:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-LBS:T-NOT:T-MTT:T-SUP:T-RAS:T-ANA:T-ACT:T-TIL:T-SUP:T-APP:T
-      - "WIDGET_LOCATION=${EXTERNAL_BASE_URL:-http://localhost:8081}/widget/"
       - BOT_CREDENTIAL_URL=/api/modules/dialogflow/botcredendials/
       - RASA_BOT_CREDENTIAL_URL=/api/modules/rasa/botcredendials/
+      - "WIDGET_LOCATION=${EXTERNAL_BASE_URL:-http://localhost:8081}/widget/"
       - SERVER_BASE_URL=/api/
       - CHAT_BASE_URL=/chat/
-      - CDS_BASE_URL=/
+      - CDS_BASE_URL=/cds/
       - WS_URL
       - WS_URL_RELATIVE=/ws/
       - BRAND_SRC
@@ -32,10 +32,36 @@ services:
       - FIREBASE_MESSAGINGSENDERID
       - FIREBASE_APP_ID
       - FIREBASE_VAPID
-      - CHAT_STORAGE_PREFIX=chat_sv5
       - "API_BASEIMAGE_URL=${EXTERNAL_BASE_URL:-http://localhost:8081}/api/"
    ports:
       - "4500:80" #use expose if you want to block external access
+
+  cds:
+   image: tiledesk/design-studio:1.0.6
+   container_name: tiledesk-cds 
+   environment: 
+      - FEATURES_TOKEN=NAT:T-DEV:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-LBS:T-NOT:T-MTT:T-RAS:T-ANA:T-ACT:T-TIL:T-SUP:T-APP:T-BAN:F
+      - "WIDGET_LOCATION=${EXTERNAL_BASE_URL:-http://localhost:8081}/widget/"
+      - "API_URL=${EXTERNAL_BASE_URL:-http://localhost:8081}/api/"
+      - DASHBOARD_URL=/dashboard/
+      - WS_URL
+      - WS_URL_RELATIVE=/ws/
+      - BRAND_SRC
+      - REMOTE_JS_SRC
+      - UPLOAD_ENGINE=native
+      - LOG_LEVEL=info
+      - FIREBASE_APIKEY
+      - FIREBASE_AUTHDOMAIN
+      - FIREBASE_DATABASEURL
+      - FIREBASE_PROJECT_ID
+      - FIREBASE_STORAGEBUCKET
+      - FIREBASE_MESSAGINGSENDERID
+      - FIREBASE_APP_ID
+      - FIREBASE_VAPID
+      - CDS_STORAGE_PREFIX=cds_sv5
+      - "API_BASEIMAGE_URL=${EXTERNAL_BASE_URL:-http://localhost:8081}/api/"
+   ports:
+      - "4502:80" #use expose if you want to block external access
 
   webwidget:
    image: chat21/chat21-web-widget:latest
@@ -73,9 +99,9 @@ services:
    environment: 
       - DASHBOARD_URL=/dashboard/      
       - API_BASEIMAGE_URL=/api/
-      - API_URL=/api/
+      - "API_URL=${EXTERNAL_BASE_URL:-http://localhost:8081}/api/"
       - FEATURES_TOKEN=NAT:T-DEV:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-LBS:T-NOT:T-MTT:T-RAS:T-ANA:T-ACT:T-TIL:T
-      - WIDGET_TEST_LOCATION=/widget/assets/twp/index.html
+      - WIDGET_LOCATION=/widget/
       - PUSH_ENGINE=none
       - LOG_LEVEL=info
       - FILE_UPLOAD_ACCEPT=*/*
@@ -137,8 +163,7 @@ services:
       - EMAIL_FROM_ADDRESS
       - "EMAIL_BASEURL=${EXTERNAL_BASE_URL:-http://localhost:8081}/dashboard"
       - "WEBHOOK_ORIGIN=${EXTERNAL_BASE_URL:-http://localhost:8081}/api/"
-      - "WIDGET_LOCATION=${EXTERNAL_BASE_URL:-http://localhost:8081}/widget/launch.js"
-      - "WIDGET_TEST_LOCATION=${EXTERNAL_BASE_URL:-http://localhost:8081}/widget/assets/test_widget_page/index.html"
+      - "WIDGET_LOCATION=${EXTERNAL_BASE_URL:-http://localhost:8081}/widget/"
       - WS_SERVER_PATH
       #PLEASE DON'T PASTE THE LICENSE KEY HERE USE .ENV FILE. DOCKER ISSUE WITH /n char
       - LICENSE_KEY
@@ -153,6 +178,12 @@ services:
       - TELEGRAM_API_URL=https://api.telegram.org/bot
       - TELEGRAM_FILE_URL=https://api.telegram.org/file/bot
       - TELEGRAM_LOG=info
+      - FB_APP_ID
+      - FB_APP_SECRET
+      - "API_URL=${EXTERNAL_BASE_URL:-http://localhost:8081}/api/"
+      - BASE_FILE_URL=${EXTERNAL_BASE_URL:-http://localhost:8081}/api/"
+      - OPENAI_ENDPOINT
+      - KB_ENDPOINT
     depends_on:
       - mongo
     ports:
