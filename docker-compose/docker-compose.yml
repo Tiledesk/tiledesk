@@ -7,7 +7,7 @@ services:
    image: tiledesk/tiledesk-dashboard:2.4.78
    container_name: tiledesk-dashboard 
    environment: 
-      - FEATURES_TOKEN=NAT:T-DEV:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-LBS:T-NOT:T-MTT:T-RAS:T-ANA:T-ACT:T-TIL:T-SUP:T-APP:T-BAN:F
+      - FEATURES_TOKEN=NAT:T-DEV:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-LBS:T-NOT:T-MTT:T-RAS:T-ANA:T-ACT:T-TIL:T-SUP:T-APP:T-BAN:F-KNB:F
       - BOT_CREDENTIAL_URL=/api/modules/dialogflow/botcredendials/
       - RASA_BOT_CREDENTIAL_URL=/api/modules/rasa/botcredendials/
       - "WIDGET_LOCATION=${EXTERNAL_BASE_URL:-http://localhost:8081}/widget/"
