@@ -180,7 +180,6 @@ services:
       - TELEGRAM_LOG=info
       - FB_APP_ID
       - FB_APP_SECRET
-      - "API_URL=${EXTERNAL_BASE_URL:-http://localhost:8081}/api/"
       - BASE_FILE_URL=${EXTERNAL_BASE_URL:-http://localhost:8081}/api/"
       - OPENAI_ENDPOINT
       - KB_ENDPOINT
