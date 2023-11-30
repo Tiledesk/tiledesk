@@ -83,6 +83,24 @@ tiledesk-helm-1593793077 is for example the name of the Tiledesk deployment.
 
 The default Tiledesk Ingress is configured whitout the hostname, so the rule applies to all inbound HTTP traffic through the IP address specified. There are other ingress hosts in the configuration but they are disabled by default. See the values.yaml file.
 
+# Parameters
+## Common Parameters
+| Name               | Description                                            | Value                                                                        |
+|--------------------|--------------------------------------------------------|------------------------------------------------------------------------------|
+| mongodb.enabled    | Enable MongoDB® chart                                  | true                                                                         |
+| MONGODB_URI        | The mongodb connection uri for Tiledesk server         | mongodb://{{tiledesk.fullname}}-mongodb/tiledesk                             |
+| CHAT21_MONGODB_URI | The mongodb connection uri for chat21 messaging system | mongodb://{{tiledesk.fullname}}-mongodb/chat21                               |
+| WEB_CLICK_ACTION   | The Web click action url for web push notification     |                                                                              |
+| EMAIL_ENABLED      | Enable email module                                    | false                                                                        |
+| EMAIL_HOST         | The smtp email host                                    |                                                                              |
+| EMAIL_USERNAME     | The smtp email username                                |                                                                              |
+| EMAIL_PASSWORD     | The smtp email password                                |                                                                              |
+| EMAIL_FROM_ADDRESS | The smtp email from address                            |                                                                              |
+| EMAIL_BASEURL      | The dashboard base url used by email template          | http://console.tiledesk.local/dashboard                                      |
+| CACHE_ENABLED      | Enable the redis cache module                          | true                                                                         |
+| SUPER_PASSWORD     | Specify the Super Admin password                       | superadmin                                                                   |
+| CLOUDAMQP_URL      | The Rabbit MQ connection string                        | amqp://{{QUEUE_CREDENTIAL}}@{{tiledesk.fullname}}-rabbitmq:5672?heartbeat=60 |
+
 # Other configurations (Optional)
 
 ## Create an nginx Ingress controller
