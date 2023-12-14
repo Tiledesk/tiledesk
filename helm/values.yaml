@@ -254,7 +254,7 @@ dashboard:
   resources: {}
   image:
     repository: tiledesk/tiledesk-dashboard
-    tag: 2.4.79
+    tag: 2.4.78
 
   service:
     type: ClusterIP
@@ -525,8 +525,6 @@ rabbitmq: #consumer_timeout = 31622400000
     # periodSeconds: 60
     # failureThreshold: 3
     # successThreshold: 1
-  persistence:
-    size: 30Gi
   auth:
     username: rabbitmq
     password: rabbitmq-password-changeit
