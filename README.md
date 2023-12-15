@@ -27,12 +27,13 @@ This project contains the code for starting the entire Tiledesk product with **D
 Tiledesk deployed via `docker-compose` or Kubernetes contains the following:
 1. Tiledesk Server
 2. Tiledesk Dashboard
-3. Chat21 ionic
-4. Chat21 Web Widget
-5. Chat21 Server
-6. Chat21 Http Server
-7. A Mongo DB  
-8. A proxy
+3. Tiledesk Design Studio
+4. Chat21 ionic
+5. Chat21 Web Widget
+6. Chat21 Server
+7. Chat21 Http Server
+8. A Mongo DB  
+9. A proxy
 
 ## Production environments
 Tiledesk provides tested Helm charts as a "deployment template" for customers who want to take advantage of the container orchestration benefits of Kubernetes. These Helm charts are undergoing continual development and improvement, and should not be used "as is" for your production environments, but should help you save time and effort deploying Tiledesk for your organisation.

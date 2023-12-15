@@ -25,8 +25,8 @@ REMOTE_JS_SRC: ''
 APPS_URL: /api/modules/apps/
 CDS_BASE_URL: /cds/
 PROMO_BANNER_URL: ''
-COMMUNITY_TEMPLATES_URL: 'https://chatbot-templates-app-v3.herokuapp.com/chatbots/public/community'
-TEMPLATES_URL: 'https://chatbot-templates-app-v3.herokuapp.com/chatbots/public/templates'
+COMMUNITY_TEMPLATES_URL: ''
+TEMPLATES_URL: ''
 ###### ------DASHBOARD : END------ ######
 
 
