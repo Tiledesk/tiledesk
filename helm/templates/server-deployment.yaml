@@ -492,6 +492,11 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: MONGOOSE_DEBUG 
+            - name: GPT_ENDPOINT
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: GPT_ENDPOINT
             - name: OPENAI_ENDPOINT
               valueFrom:
                 configMapKeyRef:
@@ -516,7 +521,17 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
-                  key: TELEGRAM_LOG                  
+                  key: TELEGRAM_LOG
+            - name: AMQP_MANAGER_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: AMQP_MANAGER_URL   
+            - name: JOB_TOPIC_EXCHANGE
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: JOB_TOPIC_EXCHANGE               
             # - name: TILEBOT_ENDPOINT
             #   valueFrom:
             #     configMapKeyRef:

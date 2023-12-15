@@ -481,6 +481,16 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: WORKER_LOG_LEVEL
+            - name: AMQP_MANAGER_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: AMQP_MANAGER_URL   
+            - name: JOB_TOPIC_EXCHANGE
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: JOB_TOPIC_EXCHANGE
             # - name: TILEBOT_ENDPOINT
             #   valueFrom:
             #     configMapKeyRef:
