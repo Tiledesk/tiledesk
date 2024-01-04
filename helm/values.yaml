@@ -173,7 +173,7 @@ CHAT21HTTP_REDIS_PORT: 6379
 
 
 ###### ------COMMON CONF : START------ ######
-FEATURES_TOKEN: PAY:F-ANA:F-ACT:F-TRI:T-GRO:F-DEP:F-OPH:F-MTL:T-CAR:F-V1L:T-PSA:F-MTT:T-SUP:T-LBS:T-APP:T-DEV:F-NOT:T-IPS:F-ETK:F-RAS:T-PPB:F-PET:F-MTS:F-TIL:T-DGF:T-NAT:T-HPB:F-TOW:T-KNB:F-BAN:F-AST:F-MON:F-CNT:F
+FEATURES_TOKEN: PAY:T-ANA:T-ACT:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-V1L:T-PSA:T-MTT:T-SUP:T-LBS:T-APP:T-DEV:T-NOT:T-IPS:T-ETK:T-RAS:T-PPB:T-PET:T-MTS:T-TIL:T-DGF:T-NAT:T-HPB:F-TOW:T-KNB:T-BAN:T-AST:T-MON:T-CNT:T-AUT:T
 WS_URL_RELATIVE: /ws/
 #choose one of the following:
 CHAT21_ENGINE: mqtt
@@ -235,7 +235,7 @@ server:
   resources: {}
   image:  
     repository: tiledesk/tiledesk-server
-    tag: 2.4.83
+    tag: 2.4.85
 
   service:
     type: ClusterIP
@@ -248,7 +248,7 @@ serverworker:
   resources: {}
   image:  
     repository: tiledesk/tiledesk-server-worker
-    tag: 2.4.83
+    tag: 2.4.85
 
 dashboard:
   ## Enable deployment of Tiledesk Server
@@ -270,7 +270,7 @@ cds:
   resources: {}
   image:
     repository: tiledesk/design-studio
-    tag: 1.0.6
+    tag: 1.0.7-rc.10
 
   service:
     type: ClusterIP
