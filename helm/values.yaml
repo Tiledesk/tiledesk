@@ -25,8 +25,8 @@ REMOTE_JS_SRC: ''
 APPS_URL: /api/modules/apps/
 CDS_BASE_URL: /cds/
 PROMO_BANNER_URL: ''
-COMMUNITY_TEMPLATES_URL: ''
-TEMPLATES_URL: ''
+COMMUNITY_TEMPLATES_URL: /api/modules/templates/public/community
+TEMPLATES_URL: /api/modules/templates/public/templates
 ###### ------DASHBOARD : END------ ######
 
 
@@ -235,7 +235,7 @@ server:
   resources: {}
   image:  
     repository: tiledesk/tiledesk-server
-    tag: 2.4.87
+    tag: 2.4.89
   service:
     type: ClusterIP
     port: 80
@@ -247,7 +247,7 @@ serverworker:
   resources: {}
   image:  
     repository: tiledesk/tiledesk-server-worker
-    tag: 2.4.87
+    tag: 2.4.89
 
 dashboard:
   ## Enable deployment of Tiledesk Server
@@ -256,7 +256,7 @@ dashboard:
   resources: {}
   image:
     repository: tiledesk/tiledesk-dashboard
-    tag: 2.4.86
+    tag: 2.4.92
 
   service:
     type: ClusterIP
@@ -269,7 +269,7 @@ cds:
   resources: {}
   image:
     repository: tiledesk/design-studio
-    tag: 1.0.7-rc.10
+    tag: 1.0.9
 
   service:
     type: ClusterIP
