@@ -4,7 +4,7 @@ volumes:
    tiledesk-datadb:
 services:
   dashboard:
-   image: tiledesk/tiledesk-dashboard:2.4.86
+   image: tiledesk/tiledesk-dashboard:2.4.92
    container_name: tiledesk-dashboard 
    environment: 
       - FEATURES_TOKEN=PAY:F-ANA:F-ACT:F-TRI:T-GRO:F-DEP:F-OPH:F-MTL:T-CAR:F-V1L:T-PSA:F-MTT:T-SUP:T-LBS:T-APP:T-DEV:F-NOT:T-IPS:F-ETK:F-RAS:T-PPB:F-PET:F-MTS:F-TIL:T-DGF:T-NAT:T-HPB:F-TOW:T-KNB:T-BAN:F-AST:F-MON:F-CNT:F-AUT:F
@@ -33,6 +33,8 @@ services:
       - FIREBASE_APP_ID
       - FIREBASE_VAPID
       - "API_BASEIMAGE_URL=${EXTERNAL_BASE_URL:-http://localhost:8081}/api/"
+      - COMMUNITY_TEMPLATES_URL=/api/modules/templates/public/community
+      - TEMPLATES_URL=/api/modules/templates/public/templates
    ports:
       - "4500:80" #use expose if you want to block external access
   
@@ -142,7 +144,7 @@ services:
     command: [nginx-debug, '-g', 'daemon off;']
     
   server:
-    image: tiledesk/tiledesk-server:2.4.78
+    image: tiledesk/tiledesk-server:2.4.89
     container_name: tiledesk-server
     restart: always       
     environment: 

@@ -33,6 +33,8 @@ services:
       - FIREBASE_APP_ID
       - FIREBASE_VAPID
       - "API_BASEIMAGE_URL=${EXTERNAL_BASE_URL:-http://localhost:8081}/api/"
+      - COMMUNITY_TEMPLATES_URL=/api/modules/templates/public/community
+      - TEMPLATES_URL=/api/modules/templates/public/templates
    ports:
       - "4500:80" #use expose if you want to block external access
 
