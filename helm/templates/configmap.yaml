@@ -90,7 +90,7 @@ data:
 
   GLOBAL_SECRET_ALGORITHM: {{ .Values.GLOBAL_SECRET_ALGORITHM | quote }}
 
-  CHATBOT_TEMPLATES_API_URL: {{ .Values.CHATBOT_TEMPLATES_API_URL | quote }}
+  CHATBOT_TEMPLATES_API_URL: {{if and .Values.EXTERNAL_BASE_URL (hasPrefix "/" .Values.CHATBOT_TEMPLATES_API_URL)}}"{{ .Values.EXTERNAL_BASE_URL  }}{{ .Values.CHATBOT_TEMPLATES_API_URL }}"{{ else if hasPrefix "/" .Values.CHATBOT_TEMPLATES_API_URL }}"http://{{ include "tiledesk.fullname" . }}-server{{ .Values.CHATBOT_TEMPLATES_API_URL }}"{{ else }}{{ .Values.CHATBOT_TEMPLATES_API_URL | quote }}{{ end }}
   # APPS_ACCESS_TOKEN_SECRET: {{ .Values.APPS_ACCESS_TOKEN_SECRET | quote }}
   BOOT_LOADING: {{ .Values.BOOT_LOADING | quote }}
   META_GRAPH_URL: {{ .Values.META_GRAPH_URL | quote }}
