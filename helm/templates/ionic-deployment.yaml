@@ -189,7 +189,12 @@ spec:
               valueFrom:
                   configMapKeyRef:
                     name: {{ include "tiledesk.fullname" . }}-config
-                    key: WIDGET_LOCATION                    
+                    key: WIDGET_LOCATION
+            - name: BRAND_SRC
+              valueFrom:
+                  configMapKeyRef:
+                    name: {{ include "tiledesk.fullname" . }}-config
+                    key: BRAND_SRC                     
           ports:
             - name: ionic-http
               containerPort: 80

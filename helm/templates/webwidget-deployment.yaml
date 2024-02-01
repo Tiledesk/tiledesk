@@ -134,7 +134,12 @@ spec:
               valueFrom:
                   configMapKeyRef:
                     name: {{ include "tiledesk.fullname" . }}-config
-                    key: ENBED_JS                    
+                    key: ENBED_JS       
+            - name: BRAND_SRC
+              valueFrom:
+                  configMapKeyRef:
+                    name: {{ include "tiledesk.fullname" . }}-config
+                    key: BRAND_SRC                
           ports:
             - name: webwidget-http
               containerPort: 80
