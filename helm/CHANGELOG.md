@@ -1,5 +1,5 @@
 5.0.71.1
-# 1.1.23 ( app v. 2.4.99 )
+# 1.1.23 ( app v. 2.4.98 )
 - Updated Tiledesk Widget: 5.0.71.1
     - Bug fix: tiledesk_token overwritten for other clients
 

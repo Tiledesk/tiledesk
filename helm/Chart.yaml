@@ -20,7 +20,7 @@ version: 1.1.23
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
 # follow Semantic Versioning. They should reflect the version the application is using.
-appVersion: 2.4.99
+appVersion: 2.4.98
 
 keywords:
 - live chat
