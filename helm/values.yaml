@@ -296,7 +296,7 @@ webwidget:
   resources: {}
   image:
     repository: chat21/chat21-web-widget
-    tag: 5.0.71
+    tag: 5.0.71.1
 
   service:
       type: ClusterIP
