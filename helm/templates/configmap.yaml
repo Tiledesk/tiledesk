@@ -113,10 +113,15 @@ data:
   GPT_ENDPOINT: {{ .Values.GPT_ENDPOINT | quote }}
   OPENAI_ENDPOINT: {{ .Values.OPENAI_ENDPOINT | quote }}
   KB_ENDPOINT: {{ .Values.KB_ENDPOINT | quote }}
+  KB_ENDPOINT_DEV: {{ .Values.KB_ENDPOINT_DEV | quote }}
+  GPTKEY: {{ .Values.GPTKEY | quote }}
+
   TELEGRAM_API_URL: {{ .Values.TELEGRAM_API_URL | quote }}
   TELEGRAM_FILE_URL: {{ .Values.TELEGRAM_FILE_URL | quote }}
   TELEGRAM_LOG: {{ .Values.TELEGRAM_LOG | quote }}
-
+  QUOTES_ENABLED: {{ .Values.QUOTES_ENABLED | quote }}
+  HUBSPOT_ENDPOINT: {{ .Values.HUBSPOT_ENDPOINT | quote }}
+  
   # ----- CHAT21 SERVER -------
   APP_ID: {{ .Values.APP_ID | quote }}
   WEBHOOK_ENDPOINTS: http://{{ include "tiledesk.fullname" . }}-server/chat21/requests,http://{{ include "tiledesk.fullname" . }}-c21httpsrv/api/tilechat/push/webhook/endpoint/WHFyAhecCMkYsvldLFWbSrJt7lAZFAmrp7O5QVMvGQsLVn9SkfT

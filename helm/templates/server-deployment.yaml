@@ -507,6 +507,11 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: KB_ENDPOINT
+            - name: KB_ENDPOINT_DEV
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: KB_ENDPOINT_DEV
             - name: TELEGRAM_API_URL
               valueFrom:
                 configMapKeyRef:
@@ -531,7 +536,22 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
-                  key: JOB_TOPIC_EXCHANGE               
+                  key: JOB_TOPIC_EXCHANGE
+            - name: GPTKEY
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: GPTKEY
+            - name: QUOTES_ENABLED
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: QUOTES_ENABLED
+            - name: HUBSPOT_ENDPOINT
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: HUBSPOT_ENDPOINT               
             # - name: TILEBOT_ENDPOINT
             #   valueFrom:
             #     configMapKeyRef:

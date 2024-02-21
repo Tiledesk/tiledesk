@@ -110,11 +110,6 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: LOG_LEVEL
-            - name: LOG_LEVEL
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "tiledesk.fullname" . }}-config
-                  key: LOG_LEVEL
             - name: CHAT21HTTP_CACHE_ENABLED
               valueFrom:
                 configMapKeyRef:

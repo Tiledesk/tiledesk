@@ -491,6 +491,11 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: JOB_TOPIC_EXCHANGE
+            - name: GPTKEY
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: GPTKEY
             # - name: TILEBOT_ENDPOINT
             #   valueFrom:
             #     configMapKeyRef:
