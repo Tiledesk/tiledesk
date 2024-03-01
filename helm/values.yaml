@@ -108,9 +108,10 @@ QUEUE_CREDENTIAL: ignored:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJhYjE4N
 JOB_TOPIC_EXCHANGE: changeit
 GLOBAL_SECRET: nodeauthsecret
 
-GLOBAL_SECRET_OR_PRIVATE_KEY: "" #if value is an empty string node evaluates it as an undefined env variable
-GLOBAL_SECRET_OR_PUB_KEY: "" #if value is an empty string node evaluates it an undefined env variable
-GLOBAL_SECRET_ALGORITHM: HS256
+GLOBAL_SECRET_OR_PRIVATE_KEY: "" #if value is an empty string node evaluates it as an undefined env variable. If you want to use Private Key please set GLOBAL_SECRET_ALGORITHM=RS256. You can generate the private key with: openssl genrsa -out tiledesk-jwt-private.pem 2048
+GLOBAL_SECRET_OR_PUB_KEY: "" #if value is an empty string node evaluates it an undefined env variable. You can export the public key with : openssl rsa -in tiledesk-jwt-private.pem -pubout > tiledesk-jwt-public.pem
+GLOBAL_SECRET_ALGORITHM: HS256  #if you want to use Asymmetric keys (Public and Private) set this to RS256.
+
 CHATBOT_TEMPLATES_API_URL: /modules/templates/public/templates
 
 # APPS_ACCESS_TOKEN_SECRET: nodeauthsecret
