@@ -261,7 +261,7 @@ dashboard:
   resources: {}
   image:
     repository: tiledesk/tiledesk-dashboard
-    tag: 2.5.5
+    tag: 2.5.15
 
   service:
     type: ClusterIP
@@ -274,7 +274,7 @@ cds:
   resources: {}
   image:
     repository: tiledesk/design-studio
-    tag: 1.1.0
+    tag: 1.1.2
 
   service:
     type: ClusterIP
@@ -301,7 +301,7 @@ webwidget:
   resources: {}
   image:
     repository: chat21/chat21-web-widget
-    tag: 5.0.71.2
+    tag: 5.0.71.5
 
   service:
       type: ClusterIP

@@ -1,7 +1,13 @@
-5.0.71.1
+
+# 1.1.24 ( app v. 2.5.3 )
+- Updated Tiledesk Dashboard: 2.5.15
+- Updated Tiledesk Server: 2.5.3
+- Updated Tiledesk Widget: 5.0.71.5
+- Updated Tildesk CDS: 1.1.2
+
 # 1.1.23 ( app v. 2.4.98 )
 - Updated Tiledesk Widget: 5.0.71.1
-    - Bug fix: tiledesk_token overwritten for other clients
+- Bug fix: tiledesk_token overwritten for other clients
 
 # 1.1.22 ( app v. 2.4.99 )
 - Updated Tiledesk Server: 2.4.99
