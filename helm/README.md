@@ -172,6 +172,34 @@ To install the `my-tiledesk` deployment passing the parameters inline without mo
 helm install my-tiledesk tiledesk/tiledesk --set EMAIL_ENABLED=true --set EMAIL_HOST=YOUR_EMAIL_HOST 
 ```
 
+## Security
+
+You can also set your own jwt secret key to sign mqtt tokens into Tiledesk system to communicate with RABBITMQ over AMQP and MQTT protocols.
+
+Steps to configure your own secret are:
+- First of all, download *[tdchatserver](https://github.com/chat21/tdchatserver)* chat21 git project or use:
+```
+git repo clone tdchatserver
+```
+- Follow the instructions into README file in the same repo and take note to:
+    - JWT_RABBIT_SECRET value (choose by you)
+    - OBSERVER TOKEN, CHAT21 HTTP SERVER TOKEN and RABBIT ADMIN (WEB CONSOLE) TOKEN values generated after repo is launched
+
+- Replace the following variables with the created ones:
+    - **CHAT21_JWT_SECRET** --> JWT_RABBIT_SECRET
+    - **CHAT21_ADMIN_TOKEN** --> 'ignored:' + CHAT21 HTTP SERVER TOKEN
+    - **QUEUE_CREDENTIAL** --> 'ignored:' + CHAT21 HTTP SERVER TOKEN
+    - **CHAT21_SRV_RABBITMQ_CREDENTIAL** --> 'ignored:' + OBSERVER TOKEN
+    - **JWT_KEY** --> JWT_RABBIT_SECRET 
+    - **CHAT21_HTTPSRV_RABBITMQ_CREDENTIAL** --> 'ignored:' + CHAT21 HTTP SERVER TOKEN
+    - **<<"value">>** into rabbitmq.advancedConfiguration --> JWT_RABBIT_SECRET
+    
+- Upgrade the `my-tiledesk` deployment:
+
+```console
+helm upgrade --recreate-pods my-tiledesk tiledesk/tiledesk
+```
+
 ## Uninstalling the Chart
 
 To uninstall/delete the `my-tiledesk` deployment:
