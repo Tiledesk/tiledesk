@@ -41,11 +41,11 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: FEATURES_TOKEN
-            - name: API_URL
+            - name: SERVER_BASE_URL
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
-                  key: API_URL
+                  key: SERVER_BASE_URL
             - name: BRAND_SRC
               valueFrom:
                 configMapKeyRef:
@@ -91,6 +91,11 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: CDS_STORAGE_PREFIX
+            - name: PHONE_NUMBER
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: PHONE_NUMBER
             - name: FIREBASE_APIKEY 
               valueFrom:
                 configMapKeyRef:

@@ -492,11 +492,6 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: MONGOOSE_DEBUG 
-            - name: GPT_ENDPOINT
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "tiledesk.fullname" . }}-config
-                  key: GPT_ENDPOINT
             - name: OPENAI_ENDPOINT
               valueFrom:
                 configMapKeyRef:
@@ -507,11 +502,16 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: KB_ENDPOINT
-            - name: KB_ENDPOINT_DEV
+            - name: KB_ENDPOINT_QA
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
-                  key: KB_ENDPOINT_DEV
+                  key: KB_ENDPOINT_QA
+            - name: KB_ENDPOINT_TRAIN
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: KB_ENDPOINT_TRAIN
             - name: TELEGRAM_API_URL
               valueFrom:
                 configMapKeyRef:
@@ -537,6 +537,11 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: JOB_TOPIC_EXCHANGE
+            - name: JOB_TOPIC_EXCHANGE_TRAIN
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: JOB_TOPIC_EXCHANGE_TRAIN
             - name: GPTKEY
               valueFrom:
                 configMapKeyRef:
@@ -547,6 +552,16 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: QUOTES_ENABLED
+            - name: MQTT_APIENDPOINT
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: MQTT_APIENDPOINT
+            - name: MQTT_ENDPOINT
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: MQTT_ENDPOINT
             - name: HUBSPOT_ENDPOINT
               valueFrom:
                 configMapKeyRef:

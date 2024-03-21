@@ -32,6 +32,7 @@ TEMPLATES_URL: /api/modules/templates/public/templates
 
 ###### ------DESIGN STUDIO : START------ ######
 CDS_STORAGE_PREFIX: cds_sv5
+PHONE_NUMBER: CHANGEIT
 ###### ------DESIGN STUDIO : END------ ######
 
 
@@ -137,7 +138,8 @@ GPT_ENDPOINT: CHANGEIT
 OPENAI_ENDPOINT: CHANGEIT
 GPTKEY: CHANGEIT
 KB_ENDPOINT: CHANGEIT
-KB_ENDPOINT_DEV: CHANGEIT
+KB_ENDPOINT_QA: CHANGEIT
+KB_ENDPOINT_TRAIN: CHANGEIT
 TELEGRAM_API_URL: https://api.telegram.org/bot
 TELEGRAM_FILE_URL: https://api.telegram.org/file/bot
 TELEGRAM_LOG: info
@@ -261,7 +263,7 @@ dashboard:
   resources: {}
   image:
     repository: tiledesk/tiledesk-dashboard
-    tag: 2.5.15
+    tag: 2.6.0
 
   service:
     type: ClusterIP
@@ -274,7 +276,7 @@ cds:
   resources: {}
   image:
     repository: tiledesk/design-studio
-    tag: 1.1.2
+    tag: 1.1.4
 
   service:
     type: ClusterIP
@@ -287,7 +289,7 @@ ionic:
   resources: {}
   image:
     repository: chat21/chat21-ionic
-    tag: 3.1.0
+    tag: 3.2.2
 
   service:
       type: ClusterIP
@@ -301,7 +303,7 @@ webwidget:
   resources: {}
   image:
     repository: chat21/chat21-web-widget
-    tag: 5.0.71.5
+    tag: 5.0.72
 
   service:
       type: ClusterIP
@@ -315,7 +317,7 @@ c21httpsrv:
   resources: {}
   image:  
     repository: chat21/chat21-http-server
-    tag: 0.2.36
+    tag: 0.2.37
     # pullPolicy: IfNotPresent  
 
   service:    

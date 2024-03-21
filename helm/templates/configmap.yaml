@@ -31,9 +31,11 @@ data:
   PROMO_BANNER_URL: {{ .Values.PROMO_BANNER_URL | quote }}
   COMMUNITY_TEMPLATES_URL: {{ .Values.COMMUNITY_TEMPLATES_URL | quote }}
   TEMPLATES_URL: {{ .Values.TEMPLATES_URL | quote }}
+  TICKETING_EMAIL: {{ .Values.TICKETING_EMAIL | quote }}
 
   # ----- DESIGN STUDIO ------- 
   CDS_STORAGE_PREFIX: {{ .Values.CDS_STORAGE_PREFIX | quote }}
+  PHONE_NUMBER: {{ .Values.PHONE_NUMBER | quote }}
   
   # ----- CHAT IONIC ------- 
   WHATSAPP_TEMPLATES_BASE_URL: {{ .Values.WHATSAPP_TEMPLATES_BASE_URL | quote }}

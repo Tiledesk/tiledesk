@@ -35,11 +35,11 @@ spec:
           image: "{{ .Values.ionic.image.repository }}:{{ .Values.ionic.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.ionic.image.pullPolicy }}
           env:      
-            - name: API_URL
+            - name: SERVER_BASE_URL
               valueFrom:
                   configMapKeyRef:
                     name: {{ include "tiledesk.fullname" . }}-config
-                    key: API_URL
+                    key: SERVER_BASE_URL
             - name: WHATSAPP_TEMPLATES_BASE_URL
               valueFrom:
                   configMapKeyRef:

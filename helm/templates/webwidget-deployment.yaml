@@ -90,11 +90,11 @@ spec:
                   configMapKeyRef:
                     name: {{ include "tiledesk.fullname" . }}-config
                     key: DASHBOARD_URL                                           
-            - name: API_URL
+            - name: SERVER_BASE_URL
               valueFrom:
                   configMapKeyRef:
                     name: {{ include "tiledesk.fullname" . }}-config
-                    key: API_URL
+                    key: SERVER_BASE_URL
             - name: FIREBASE_PROJECT_ID
               valueFrom:
                   configMapKeyRef:
