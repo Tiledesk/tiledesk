@@ -566,7 +566,12 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
-                  key: HUBSPOT_ENDPOINT               
+                  key: HUBSPOT_ENDPOINT    
+            - name: BRAND_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: BRAND_NAME            
             # - name: TILEBOT_ENDPOINT
             #   valueFrom:
             #     configMapKeyRef:

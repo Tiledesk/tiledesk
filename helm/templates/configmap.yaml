@@ -87,6 +87,7 @@ data:
   CLOUDAMQP_URL: {{if .Values.CLOUDAMQP_URL}}{{ .Values.CLOUDAMQP_URL | quote }}{{ else }}amqp://{{ .Values.QUEUE_CREDENTIAL }}@{{ include "tiledesk.fullname" . }}-rabbitmq:5672?heartbeat=60{{ end }}
   AMQP_MANAGER_URL: {{if .Values.AMQP_MANAGER_URL}}{{ .Values.AMQP_MANAGER_URL | quote }}{{ else }}amqp://{{ .Values.QUEUE_CREDENTIAL }}@{{ include "tiledesk.fullname" . }}-rabbitmq:5672?heartbeat=60{{ end }}
   JOB_TOPIC_EXCHANGE: {{ .Values.JOB_TOPIC_EXCHANGE | quote }}
+  JOB_TOPIC_EXCHANGE_TRAIN: {{ .Values.JOB_TOPIC_EXCHANGE_TRAIN | quote }}
   # CACHE_REDIS_PASSWORD: {{ .Values.CACHE_REDIS_PASSWORD | quote }}
   GLOBAL_SECRET: {{ .Values.GLOBAL_SECRET | quote }}
 
@@ -112,10 +113,10 @@ data:
   EMAIL_INBOUND_DOMAIN: {{ .Values.EMAIL_INBOUND_DOMAIN | quote }}
   DISABLE_SEND_OFFLINE_EMAIL: {{ .Values.DISABLE_SEND_OFFLINE_EMAIL | quote }}
   # BOT_RASA_ENDPOINT: {{ .Values.BOT_RASA_ENDPOINT | quote }}
-  GPT_ENDPOINT: {{ .Values.GPT_ENDPOINT | quote }}
   OPENAI_ENDPOINT: {{ .Values.OPENAI_ENDPOINT | quote }}
   KB_ENDPOINT: {{ .Values.KB_ENDPOINT | quote }}
-  KB_ENDPOINT_DEV: {{ .Values.KB_ENDPOINT_DEV | quote }}
+  KB_ENDPOINT_QA: {{ .Values.KB_ENDPOINT_QA | quote }}
+  KB_ENDPOINT_TRAIN: {{ .Values.KB_ENDPOINT_TRAIN | quote }}
   GPTKEY: {{ .Values.GPTKEY | quote }}
 
   TELEGRAM_API_URL: {{ .Values.TELEGRAM_API_URL | quote }}

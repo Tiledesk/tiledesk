@@ -134,7 +134,6 @@ EMAIL_INBOUND_DOMAIN: ""
 # BOT_DIALOGFLOW_ENDPOINT: ""
 DISABLE_SEND_OFFLINE_EMAIL: false
 # BOT_RASA_ENDPOINT: ""
-GPT_ENDPOINT: CHANGEIT
 OPENAI_ENDPOINT: CHANGEIT
 GPTKEY: CHANGEIT
 KB_ENDPOINT: CHANGEIT
@@ -145,7 +144,6 @@ TELEGRAM_FILE_URL: https://api.telegram.org/file/bot
 TELEGRAM_LOG: info
 QUOTES_ENABLED: false
 HUBSPOT_ENDPOINT: https://api.hubapi.com/crm/v3/
-
 ###### ------SERVER : END------ ######
 
 
@@ -242,7 +240,7 @@ server:
   resources: {}
   image:  
     repository: tiledesk/tiledesk-server
-    tag: 2.5.3
+    tag: 2.7.1
   service:
     type: ClusterIP
     port: 80
@@ -254,7 +252,7 @@ serverworker:
   resources: {}
   image:  
     repository: tiledesk/tiledesk-server-worker
-    tag: 2.5.3
+    tag: 2.7.1
 
 dashboard:
   ## Enable deployment of Tiledesk Server
@@ -263,7 +261,7 @@ dashboard:
   resources: {}
   image:
     repository: tiledesk/tiledesk-dashboard
-    tag: 2.6.0
+    tag: 2.6.1
 
   service:
     type: ClusterIP
@@ -303,7 +301,7 @@ webwidget:
   resources: {}
   image:
     repository: chat21/chat21-web-widget
-    tag: 5.0.72
+    tag: 5.0.73
 
   service:
       type: ClusterIP
