@@ -87,7 +87,7 @@ data:
   CLOUDAMQP_URL: {{if .Values.CLOUDAMQP_URL}}{{ .Values.CLOUDAMQP_URL | quote }}{{ else }}amqp://{{ .Values.QUEUE_CREDENTIAL }}@{{ include "tiledesk.fullname" . }}-rabbitmq:5672?heartbeat=60{{ end }}
   AMQP_MANAGER_URL: {{if .Values.AMQP_MANAGER_URL}}{{ .Values.AMQP_MANAGER_URL | quote }}{{ else }}amqp://{{ .Values.QUEUE_CREDENTIAL }}@{{ include "tiledesk.fullname" . }}-rabbitmq:5672?heartbeat=60{{ end }}
   JOB_TOPIC_EXCHANGE: {{ .Values.JOB_TOPIC_EXCHANGE | quote }}
-  JOB_TOPIC_EXCHANGE_TRAIN: {{if .Values.JOB_TOPIC_EXCHANGE_TRAIN}}{{ .Values.JOB_TOPIC_EXCHANGE_TRAIN | quote }}
+  JOB_TOPIC_EXCHANGE_TRAIN: {{if .Values.JOB_TOPIC_EXCHANGE_TRAIN}}{{ .Values.JOB_TOPIC_EXCHANGE_TRAIN | quote }}{{ end }}
   # CACHE_REDIS_PASSWORD: {{ .Values.CACHE_REDIS_PASSWORD | quote }}
   GLOBAL_SECRET: {{ .Values.GLOBAL_SECRET | quote }}
 
@@ -125,7 +125,7 @@ data:
   QUOTES_ENABLED: {{ .Values.QUOTES_ENABLED | quote }}
   HUBSPOT_ENDPOINT: {{ .Values.HUBSPOT_ENDPOINT | quote }}
   BRAND_NAME: {{ .Values.BRAND_NAME | quote }}
-  
+
   # ----- CHAT21 SERVER -------
   APP_ID: {{ .Values.APP_ID | quote }}
   WEBHOOK_ENDPOINTS: http://{{ include "tiledesk.fullname" . }}-server/chat21/requests,http://{{ include "tiledesk.fullname" . }}-c21httpsrv/api/tilechat/push/webhook/endpoint/WHFyAhecCMkYsvldLFWbSrJt7lAZFAmrp7O5QVMvGQsLVn9SkfT
@@ -211,5 +211,3 @@ data:
   ENABLE_REDIS_SESSION: {{ .Values.ENABLE_REDIS_SESSION | quote }}
 
   {{if .Values.TILEBOT_ENDPOINT}}TILEBOT_ENDPOINT: {{ .Values.TILEBOT_ENDPOINT | quote }}{{ end }}
-  
-  
