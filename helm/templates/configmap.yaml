@@ -124,6 +124,7 @@ data:
   TELEGRAM_LOG: {{ .Values.TELEGRAM_LOG | quote }}
   QUOTES_ENABLED: {{ .Values.QUOTES_ENABLED | quote }}
   HUBSPOT_ENDPOINT: {{ .Values.HUBSPOT_ENDPOINT | quote }}
+  BRAND_NAME: {{ .Values.BRAND_NAME | quote }}
   
   # ----- CHAT21 SERVER -------
   APP_ID: {{ .Values.APP_ID | quote }}
