@@ -170,7 +170,7 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: TEMPLATES_URL
-             - name: TICKETING_EMAIL
+            - name: TICKETING_EMAIL
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
