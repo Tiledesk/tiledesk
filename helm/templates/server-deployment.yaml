@@ -571,7 +571,17 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
-                  key: BRAND_NAME            
+                  key: BRAND_NAME
+            - name: ADMIN_EMAIL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: ADMIN_EMAIL
+            - name: ADMIN_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: ADMIN_PASSWORD           
             # - name: TILEBOT_ENDPOINT
             #   valueFrom:
             #     configMapKeyRef:

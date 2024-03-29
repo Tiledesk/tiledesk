@@ -125,6 +125,8 @@ data:
   QUOTES_ENABLED: {{ .Values.QUOTES_ENABLED | quote }}
   HUBSPOT_ENDPOINT: {{ .Values.HUBSPOT_ENDPOINT | quote }}
   BRAND_NAME: {{ .Values.BRAND_NAME | quote }}
+  {{if .Values.ADMIN_EMAIL}}ADMIN_EMAIL: {{ .Values.ADMIN_EMAIL | quote }}{{ end }}
+  {{if .Values.ADMIN_PASSWORD}}ADMIN_PASSWORD: {{ .Values.ADMIN_PASSWORD | quote }}{{ end }}
 
   # ----- CHAT21 SERVER -------
   APP_ID: {{ .Values.APP_ID | quote }}
