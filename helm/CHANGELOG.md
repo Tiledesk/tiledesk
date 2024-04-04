@@ -1,3 +1,10 @@
+# 1.1.29 ( app v. 2.7.6 )
+- Updated Tiledesk Dashboard: 2.6.6
+- Updated Tiledesk Server: 2.7.6
+- Updated Tiledesk Widget: 5.0.73
+- Updated Tildesk CDS: 1.3.1
+- Updated Tiledesk Ionic 3.2.3
+
 # 1.1.25 ( app v. 2.7.1 )
 - Updated Tiledesk Dashboard: 2.6.1
 - Updated Tiledesk Server: 2.7.1

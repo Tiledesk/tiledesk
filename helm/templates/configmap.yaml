@@ -87,7 +87,7 @@ data:
   CLOUDAMQP_URL: {{if .Values.CLOUDAMQP_URL}}{{ .Values.CLOUDAMQP_URL | quote }}{{ else }}amqp://{{ .Values.QUEUE_CREDENTIAL }}@{{ include "tiledesk.fullname" . }}-rabbitmq:5672?heartbeat=60{{ end }}
   AMQP_MANAGER_URL: {{if .Values.AMQP_MANAGER_URL}}{{ .Values.AMQP_MANAGER_URL | quote }}{{ else }}amqp://{{ .Values.QUEUE_CREDENTIAL }}@{{ include "tiledesk.fullname" . }}-rabbitmq:5672?heartbeat=60{{ end }}
   JOB_TOPIC_EXCHANGE: {{ .Values.JOB_TOPIC_EXCHANGE | quote }}
-  {{if .Values.JOB_TOPIC_EXCHANGE_TRAIN}} JOB_TOPIC_EXCHANGE_TRAIN: {{ .Values.JOB_TOPIC_EXCHANGE_TRAIN | quote }}{{ end }}
+  {{if .Values.JOB_TOPIC_EXCHANGE_TRAIN}}JOB_TOPIC_EXCHANGE_TRAIN: {{ .Values.JOB_TOPIC_EXCHANGE_TRAIN | quote }}{{ end }}
   # CACHE_REDIS_PASSWORD: {{ .Values.CACHE_REDIS_PASSWORD | quote }}
   GLOBAL_SECRET: {{ .Values.GLOBAL_SECRET | quote }}
 
