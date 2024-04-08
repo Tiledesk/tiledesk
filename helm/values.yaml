@@ -261,7 +261,7 @@ dashboard:
   resources: {}
   image:
     repository: tiledesk/tiledesk-dashboard
-    tag: 2.6.6
+    tag: 2.6.8
 
   service:
     type: ClusterIP
@@ -274,7 +274,7 @@ cds:
   resources: {}
   image:
     repository: tiledesk/design-studio
-    tag: 1.3.1
+    tag: 1.3.2
 
   service:
     type: ClusterIP
