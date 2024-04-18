@@ -240,7 +240,7 @@ server:
   resources: {}
   image:  
     repository: tiledesk/tiledesk-server
-    tag: 2.7.6
+    tag: 2.7.9
   service:
     type: ClusterIP
     port: 80
@@ -252,7 +252,7 @@ serverworker:
   resources: {}
   image:  
     repository: tiledesk/tiledesk-server-worker
-    tag: 2.7.6
+    tag: 2.7.9
 
 dashboard:
   ## Enable deployment of Tiledesk Server
@@ -261,7 +261,7 @@ dashboard:
   resources: {}
   image:
     repository: tiledesk/tiledesk-dashboard
-    tag: 2.6.8
+    tag: 2.6.12
 
   service:
     type: ClusterIP
@@ -274,7 +274,7 @@ cds:
   resources: {}
   image:
     repository: tiledesk/design-studio
-    tag: 1.3.2
+    tag: 1.4.0
 
   service:
     type: ClusterIP
@@ -301,7 +301,7 @@ webwidget:
   resources: {}
   image:
     repository: chat21/chat21-web-widget
-    tag: 5.0.73
+    tag: 5.0.74
 
   service:
       type: ClusterIP
