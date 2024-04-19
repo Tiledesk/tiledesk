@@ -125,7 +125,7 @@ spec:
             #     configMapKeyRef:
             #       name: {{ include "tiledesk.fullname" . }}-config
             #       key: EMAIL_BCC    
-                        - name: EMAIL_ASSIGN_REQUEST_HTML_TEMPLATE
+            - name: EMAIL_ASSIGN_REQUEST_HTML_TEMPLATE
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
