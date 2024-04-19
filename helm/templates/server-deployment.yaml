@@ -115,6 +115,11 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: EMAIL_PORT
+            - name: EMAIL_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: EMAIL_PASSWORD
             - name: EMAIL_FROM_ADDRESS
               valueFrom:
                 configMapKeyRef:
@@ -125,81 +130,76 @@ spec:
             #     configMapKeyRef:
             #       name: {{ include "tiledesk.fullname" . }}-config
             #       key: EMAIL_BCC    
-            - name: EMAIL_ASSIGN_REQUEST_HTML_TEMPLATE
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "tiledesk.fullname" . }}-config
-                  key: EMAIL_ASSIGN_REQUEST_HTML_TEMPLATE
-            - name: EMAIL_ASSIGN_MESSAGE_EMAIL_HTML_TEMPLATE
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "tiledesk.fullname" . }}-config
-                  key: EMAIL_ASSIGN_MESSAGE_EMAIL_HTML_TEMPLATE
-            - name: EMAIL_POOLED_REQUEST_HTML_TEMPLATE
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "tiledesk.fullname" . }}-config
-                  key: EMAIL_POOLED_REQUEST_HTML_TEMPLATE
-            - name: EMAIL_POOLED_MESSAGE_EMAIL_HTML_TEMPLATE
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "tiledesk.fullname" . }}-config
-                  key: EMAIL_POOLED_MESSAGE_EMAIL_HTML_TEMPLATE
-            - name: EMAIL_NEW_MESSAGE_HTML_TEMPLATE
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "tiledesk.fullname" . }}-config
-                  key: EMAIL_NEW_MESSAGE_HTML_TEMPLATE
-            - name: EMAIL_TICKET_HTML_TEMPLATE
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "tiledesk.fullname" . }}-config
-                  key: EMAIL_TICKET_HTML_TEMPLATE
-            - name: EMAIL_FOLLOWER_HTML_TEMPLATE
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "tiledesk.fullname" . }}-config
-                  key: EMAIL_FOLLOWER_HTML_TEMPLATE
-            - name: EMAIL_DIRECT_HTML_TEMPLATE
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "tiledesk.fullname" . }}-config
-                  key: EMAIL_DIRECT_HTML_TEMPLATE
-            - name: EMAIL_RESET_PASSWORD_HTML_TEMPLATE
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "tiledesk.fullname" . }}-config
-                  key: EMAIL_RESET_PASSWORD_HTML_TEMPLATE
-            - name: EMAIL_PASSWORD_CHANGED_HTML_TEMPLATE
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "tiledesk.fullname" . }}-config
-                  key: EMAIL_PASSWORD_CHANGED_HTML_TEMPLATE
-            - name: EMAIL_EXUSER_INVITED_HTML_TEMPLATE
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "tiledesk.fullname" . }}-config
-                  key: EMAIL_EXUSER_INVITED_HTML_TEMPLATE
-            - name: EMAIL_NEWUSER_INVITED_HTML_TEMPLATE
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "tiledesk.fullname" . }}-config
-                  key: EMAIL_NEWUSER_INVITED_HTML_TEMPLATE
-            - name: EMAIL_VERIFY_HTML_TEMPLATE
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "tiledesk.fullname" . }}-config
-                  key: EMAIL_VERIFY_HTML_TEMPLATE
-            - name: EMAIL_SEND_TRANSCRIPT_HTML_TEMPLATE
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "tiledesk.fullname" . }}-config
-                  key: EMAIL_SEND_TRANSCRIPT_HTML_TEMPLATE                                                    
-            - name: EMAIL_PASSWORD
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "tiledesk.fullname" . }}-config
-                  key: EMAIL_PASSWORD    
+            # - name: EMAIL_ASSIGN_REQUEST_HTML_TEMPLATE
+            #   valueFrom:
+            #     configMapKeyRef:
+            #       name: {{ include "tiledesk.fullname" . }}-config
+            #       key: EMAIL_ASSIGN_REQUEST_HTML_TEMPLATE
+            # - name: EMAIL_ASSIGN_MESSAGE_EMAIL_HTML_TEMPLATE
+            #   valueFrom:
+            #     configMapKeyRef:
+            #       name: {{ include "tiledesk.fullname" . }}-config
+            #       key: EMAIL_ASSIGN_MESSAGE_EMAIL_HTML_TEMPLATE
+            # - name: EMAIL_POOLED_REQUEST_HTML_TEMPLATE
+            #   valueFrom:
+            #     configMapKeyRef:
+            #       name: {{ include "tiledesk.fullname" . }}-config
+            #       key: EMAIL_POOLED_REQUEST_HTML_TEMPLATE
+            # - name: EMAIL_POOLED_MESSAGE_EMAIL_HTML_TEMPLATE
+            #   valueFrom:
+            #     configMapKeyRef:
+            #       name: {{ include "tiledesk.fullname" . }}-config
+            #       key: EMAIL_POOLED_MESSAGE_EMAIL_HTML_TEMPLATE
+            # - name: EMAIL_NEW_MESSAGE_HTML_TEMPLATE
+            #   valueFrom:
+            #     configMapKeyRef:
+            #       name: {{ include "tiledesk.fullname" . }}-config
+            #       key: EMAIL_NEW_MESSAGE_HTML_TEMPLATE
+            # - name: EMAIL_TICKET_HTML_TEMPLATE
+            #   valueFrom:
+            #     configMapKeyRef:
+            #       name: {{ include "tiledesk.fullname" . }}-config
+            #       key: EMAIL_TICKET_HTML_TEMPLATE
+            # - name: EMAIL_FOLLOWER_HTML_TEMPLATE
+            #   valueFrom:
+            #     configMapKeyRef:
+            #       name: {{ include "tiledesk.fullname" . }}-config
+            #       key: EMAIL_FOLLOWER_HTML_TEMPLATE
+            # - name: EMAIL_DIRECT_HTML_TEMPLATE
+            #   valueFrom:
+            #     configMapKeyRef:
+            #       name: {{ include "tiledesk.fullname" . }}-config
+            #       key: EMAIL_DIRECT_HTML_TEMPLATE
+            # - name: EMAIL_RESET_PASSWORD_HTML_TEMPLATE
+            #   valueFrom:
+            #     configMapKeyRef:
+            #       name: {{ include "tiledesk.fullname" . }}-config
+            #       key: EMAIL_RESET_PASSWORD_HTML_TEMPLATE
+            # - name: EMAIL_PASSWORD_CHANGED_HTML_TEMPLATE
+            #   valueFrom:
+            #     configMapKeyRef:
+            #       name: {{ include "tiledesk.fullname" . }}-config
+            #       key: EMAIL_PASSWORD_CHANGED_HTML_TEMPLATE
+            # - name: EMAIL_EXUSER_INVITED_HTML_TEMPLATE
+            #   valueFrom:
+            #     configMapKeyRef:
+            #       name: {{ include "tiledesk.fullname" . }}-config
+            #       key: EMAIL_EXUSER_INVITED_HTML_TEMPLATE
+            # - name: EMAIL_NEWUSER_INVITED_HTML_TEMPLATE
+            #   valueFrom:
+            #     configMapKeyRef:
+            #       name: {{ include "tiledesk.fullname" . }}-config
+            #       key: EMAIL_NEWUSER_INVITED_HTML_TEMPLATE
+            # - name: EMAIL_VERIFY_HTML_TEMPLATE
+            #   valueFrom:
+            #     configMapKeyRef:
+            #       name: {{ include "tiledesk.fullname" . }}-config
+            #       key: EMAIL_VERIFY_HTML_TEMPLATE
+            # - name: EMAIL_SEND_TRANSCRIPT_HTML_TEMPLATE
+            #   valueFrom:
+            #     configMapKeyRef:
+            #       name: {{ include "tiledesk.fullname" . }}-config
+            #       key: EMAIL_SEND_TRANSCRIPT_HTML_TEMPLATE                                                    
             - name: SUPER_PASSWORD
               valueFrom:
                 configMapKeyRef:
