@@ -144,6 +144,7 @@ TELEGRAM_FILE_URL: https://api.telegram.org/file/bot
 TELEGRAM_LOG: info
 QUOTES_ENABLED: false
 HUBSPOT_ENDPOINT: https://api.hubapi.com/crm/v3/
+TRAINER_LOG: info
 ###### ------SERVER : END------ ######
 
 
