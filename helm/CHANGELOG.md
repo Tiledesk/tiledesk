@@ -1,3 +1,16 @@
+# 1.1.34 ( app v. 2.7.10 )
+- Updated Tiledesk Server: 2.7.10
+
+# 1.1.33 ( app v. 2.7.9 )
+# 1.1.32 ( app v. 2.7.9 )
+- bug-fixed on helm deployment
+
+# 1.1.31 ( app v. 2.7.9 )
+- Updated Tiledesk Dashboard: 2.6.12
+- Updated Tildesk CDS: 1.4.0
+- Updated Tiledesk Widget: 5.0.74
+- Updated Tiledesk Server: 2.7.9
+
 # 1.1.30 ( app v. 2.7.6 )
 - Updated Tiledesk Dashboard: 2.6.8
 - Updated Tildesk CDS: 1.3.2

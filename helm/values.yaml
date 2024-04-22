@@ -72,17 +72,7 @@ EMAIL_PORT: 587
 EMAIL_PASSWORD: CHANGEIT
 EMAIL_FROM_ADDRESS: CHANGEIT
 #EMAIL_BCC:
-#EMAIL_ASSIGN_REQUEST_HTML_TEMPLATE: 
-#EMAIL_ASSIGN_MESSAGE_EMAIL_HTML_TEMPLATE:
-#EMAIL_POOLED_REQUEST_HTML_TEMPLATE:
-#EMAIL_POOLED_MESSAGE_EMAIL_HTML_TEMPLATE:
-#EMAIL_NEW_MESSAGE_HTML_TEMPLATE:
-#EMAIL_TICKET_HTML_TEMPLATE:
-#EMAIL_RESET_PASSWORD_HTML_TEMPLATE:
-#EMAIL_PASSWORD_CHANGED_HTML_TEMPLATE:
-#EMAIL_NEWUSER_INVITED_HTML_TEMPLATE:
-#EMAIL_VERIFY_HTML_TEMPLATE:
-#EMAIL_SEND_TRANSCRIPT_HTML_TEMPLATE:
+EMAIL_TEMPLATE_CUSTOM: false #enable/disable custom EMAIL_TEMPLATE_* config env variables
 
 SUPER_PASSWORD: superadmin
 
@@ -241,7 +231,7 @@ server:
   resources: {}
   image:  
     repository: tiledesk/tiledesk-server
-    tag: 2.7.9
+    tag: 2.7.10
   service:
     type: ClusterIP
     port: 80
@@ -253,7 +243,7 @@ serverworker:
   resources: {}
   image:  
     repository: tiledesk/tiledesk-server-worker
-    tag: 2.7.9
+    tag: 2.7.10
 
 dashboard:
   ## Enable deployment of Tiledesk Server
