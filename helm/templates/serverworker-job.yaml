@@ -510,6 +510,7 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: JOB_TOPIC_EXCHANGE
+                  optional: true
             - name: GPTKEY
               valueFrom:
                 configMapKeyRef:

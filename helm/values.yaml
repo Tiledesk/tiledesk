@@ -72,7 +72,7 @@ EMAIL_PORT: 587
 EMAIL_PASSWORD: CHANGEIT
 EMAIL_FROM_ADDRESS: CHANGEIT
 #EMAIL_BCC:
-EMAIL_TEMPLATE_CUSTOM: false #enable/disable custom EMAIL_TEMPLATE_* config env variables
+EMAIL_TEMPLATE_CUSTOM: true #enable/disable custom EMAIL_TEMPLATE_* config env variables
 
 SUPER_PASSWORD: superadmin
 
