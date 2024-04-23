@@ -27,6 +27,7 @@ CDS_BASE_URL: /cds/
 PROMO_BANNER_URL: ''
 COMMUNITY_TEMPLATES_URL: /api/modules/templates/public/community
 TEMPLATES_URL: /api/modules/templates/public/templates
+TICKETING_EMAIL: example.com
 ###### ------DASHBOARD : END------ ######
 
 
