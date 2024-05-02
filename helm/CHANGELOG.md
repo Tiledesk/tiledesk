@@ -1,3 +1,10 @@
+# 1.1.37 ( app v. 2.7.16 )
+- Updated Tiledesk Dashboard: 2.6.20
+- Updated Tiledesk Widget: 5.0.75
+- Updated Tiledesk Server: 2.7.16
+- Updated Tildesk CDS: 1.5.0
+
+# 1.1.36 ( app v. 2.7.10 )
 # 1.1.35 ( app v. 2.7.10 )
 # 1.1.34 ( app v. 2.7.10 )
 - Updated Tiledesk Server: 2.7.10
