@@ -4,7 +4,7 @@ volumes:
    tiledesk-datadb:
 services:
   dashboard:
-   image: tiledesk/tiledesk-dashboard:2.4.92
+   image: tiledesk/tiledesk-dashboard:2.6.21
    container_name: tiledesk-dashboard 
    environment: 
       - FEATURES_TOKEN=PAY:F-ANA:F-ACT:F-TRI:T-GRO:F-DEP:F-OPH:F-MTL:T-CAR:F-V1L:T-PSA:F-MTT:T-SUP:T-LBS:T-APP:T-DEV:F-NOT:T-IPS:F-ETK:F-RAS:T-PPB:F-PET:F-MTS:F-TIL:T-DGF:T-NAT:T-HPB:F-TOW:T-KNB:F-BAN:F-AST:F-MON:F-CNT:F-AUT:F-WUN:F
@@ -39,12 +39,12 @@ services:
       - "4500:80" #use expose if you want to block external access
   
   cds:
-   image: tiledesk/design-studio:1.0.6
+   image: tiledesk/design-studio:1.5.2
    container_name: tiledesk-cds 
    environment: 
       - FEATURES_TOKEN=PAY:F-ANA:F-ACT:F-TRI:T-GRO:F-DEP:F-OPH:F-MTL:T-CAR:F-V1L:T-PSA:F-MTT:T-SUP:T-LBS:T-APP:T-DEV:F-NOT:T-IPS:F-ETK:F-RAS:T-PPB:F-PET:F-MTS:F-TIL:T-DGF:T-NAT:T-HPB:F-TOW:T-KNB:F-BAN:F-AST:F-MON:F-CNT:F-AUT:F-WUN:F
       - "WIDGET_LOCATION=${EXTERNAL_BASE_URL:-http://localhost:8081}/widget/"
-      - "API_URL=${EXTERNAL_BASE_URL:-http://localhost:8081}/api/"
+      - "SERVER_BASE_URL=${EXTERNAL_BASE_URL:-http://localhost:8081}/api/"
       - DASHBOARD_URL=/dashboard/
       - WS_URL
       - WS_URL_RELATIVE=/ws/
@@ -66,7 +66,7 @@ services:
       - "4502:80" #use expose if you want to block external access
 
   webwidget:
-   image: chat21/chat21-web-widget:5.0.70
+   image: chat21/chat21-web-widget:5.0.76
    container_name: chat21-web-widget 
    ports: 
       - "4200:80" # specify port forewarding
@@ -86,7 +86,7 @@ services:
       - FIREBASE_MESSAGINGSENDERID
       - FIREBASE_TENANT=tilechat
       - UPLOAD_ENGINE=native
-      - "API_URL=${EXTERNAL_BASE_URL:-http://localhost:8081}/api/"
+      - "SERVER_BASE_URL=${EXTERNAL_BASE_URL:-http://localhost:8081}/api/"
       - "TRANSLATIONS_URL=${EXTERNAL_BASE_URL:-http://localhost:8081}/api/"
       #- API_BASEIMAGE_URL=https://firebasestorage.googleapis.com/v0/b/    For firebase
       - "API_BASEIMAGE_URL=${EXTERNAL_BASE_URL:-http://localhost:8081}/api/"   
@@ -95,14 +95,14 @@ services:
       - ENBED_JS=true
 
   ionic:
-   image: chat21/chat21-ionic:3.0.106
+   image: chat21/chat21-ionic:3.2.3
    container_name: chat21-ionic
    ports:
       - "8082:80" #use expose if you want to block external access   
    environment: 
       - DASHBOARD_URL=/dashboard/      
       - API_BASEIMAGE_URL=/api/
-      - "API_URL=${EXTERNAL_BASE_URL:-http://localhost:8081}/api/"
+      - "SERVER_BASE_URL=${EXTERNAL_BASE_URL:-http://localhost:8081}/api/"
       - FEATURES_TOKEN=PAY:F-ANA:F-ACT:F-TRI:T-GRO:F-DEP:F-OPH:F-MTL:T-CAR:F-V1L:T-PSA:F-MTT:T-SUP:T-LBS:T-APP:T-DEV:F-NOT:T-IPS:F-ETK:F-RAS:T-PPB:F-PET:F-MTS:F-TIL:T-DGF:T-NAT:T-HPB:F-TOW:T-KNB:F-BAN:F-AST:F-MON:F-CNT:F-AUT:F-WUN:F
       - WIDGET_LOCATION=/widget/
       - PUSH_ENGINE=none
@@ -144,7 +144,7 @@ services:
     command: [nginx-debug, '-g', 'daemon off;']
     
   server:
-    image: tiledesk/tiledesk-server:2.4.89
+    image: tiledesk/tiledesk-server:2.7.16
     container_name: tiledesk-server
     restart: always       
     environment: 
@@ -193,7 +193,7 @@ services:
       - "3000:3000"
 
   chat21httpserver:
-    image: chat21/chat21-http-server:0.2.34
+    image: chat21/chat21-http-server:0.2.37
     container_name: chat21httpserver
     restart: always    
     environment: 
@@ -234,7 +234,8 @@ services:
     depends_on:
       - mongo
       - rabbitmq
-      - server 
+      - server
+
   rabbitmq:
     image: chat21/chat21-rabbitmq
     container_name: rabbitmq

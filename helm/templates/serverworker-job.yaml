@@ -516,6 +516,11 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: GPTKEY
+            - name: KB_TRAIN_INTERVAL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: KB_TRAIN_INTERVAL
             # - name: TILEBOT_ENDPOINT
             #   valueFrom:
             #     configMapKeyRef:

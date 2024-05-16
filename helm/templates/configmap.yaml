@@ -105,6 +105,7 @@ data:
   KB_ENDPOINT: {{ .Values.KB_ENDPOINT | quote }}
   KB_ENDPOINT_QA: {{ .Values.KB_ENDPOINT_QA | quote }}
   KB_ENDPOINT_TRAIN: {{ .Values.KB_ENDPOINT_TRAIN | quote }}
+  KB_TRAIN_INTERVAL: {{ .Values.KB_TRAIN_INTERVAL | quote}}
   GPTKEY: {{ .Values.GPTKEY | quote }}
 
   TELEGRAM_API_URL: {{ .Values.TELEGRAM_API_URL | quote }}
