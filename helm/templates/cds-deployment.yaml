@@ -66,6 +66,11 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: DASHBOARD_URL
+            - name: WHATSAPP_TEMPLATES_BASE_URL
+              valueFrom:
+                  configMapKeyRef:
+                    name: {{ include "tiledesk.fullname" . }}-config
+                    key: WHATSAPP_TEMPLATES_BASE_URL
             - name: WS_URL_RELATIVE
               valueFrom:
                 configMapKeyRef:
