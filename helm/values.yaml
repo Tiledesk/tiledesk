@@ -270,7 +270,7 @@ dashboard:
   resources: {}
   image:
     repository: tiledesk/tiledesk-dashboard
-    tag: 2.6.26
+    tag: 2.6.31
 
   service:
     type: ClusterIP
@@ -283,7 +283,7 @@ cds:
   resources: {}
   image:
     repository: tiledesk/design-studio
-    tag: 1.7.0
+    tag: 1.9.0
 
   service:
     type: ClusterIP
@@ -296,7 +296,7 @@ ionic:
   resources: {}
   image:
     repository: chat21/chat21-ionic
-    tag: 3.3.0
+    tag: 3.4.0
 
   service:
       type: ClusterIP
@@ -310,7 +310,7 @@ webwidget:
   resources: {}
   image:
     repository: chat21/chat21-web-widget
-    tag: 5.0.78
+    tag: 5.0.79
 
   service:
       type: ClusterIP
