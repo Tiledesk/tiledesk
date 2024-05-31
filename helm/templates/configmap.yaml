@@ -103,9 +103,8 @@ data:
   # BOT_RASA_ENDPOINT: {{ .Values.BOT_RASA_ENDPOINT | quote }}
   OPENAI_ENDPOINT: {{ .Values.OPENAI_ENDPOINT | quote }}
   KB_ENDPOINT: {{ .Values.KB_ENDPOINT | quote }}
-  KB_ENDPOINT_QA: {{ .Values.KB_ENDPOINT_QA | quote }}
-  KB_ENDPOINT_TRAIN: {{ .Values.KB_ENDPOINT_TRAIN | quote }}
-  KB_TRAIN_INTERVAL: {{ .Values.KB_TRAIN_INTERVAL | quote}}
+  KB_ENDPOINT_QA: {{if .Values.KB_ENDPOINT_QA}}{{ .Values.KB_ENDPOINT_QA | quote }}{{ else }}http://{{ include "tiledesk.fullname" . }}-backendllm-qa/api{{ end }}
+  KB_ENDPOINT_TRAIN: {{if .Values.KB_ENDPOINT_TRAIN}}{{ .Values.KB_ENDPOINT_TRAIN | quote }}{{ else }}http://{{ include "tiledesk.fullname" . }}-backendllm-train/api{{ end }}
   GPTKEY: {{ .Values.GPTKEY | quote }}
 
   TELEGRAM_API_URL: {{ .Values.TELEGRAM_API_URL | quote }}

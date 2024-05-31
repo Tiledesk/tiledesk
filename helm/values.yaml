@@ -146,7 +146,6 @@ GPTKEY: CHANGEIT
 KB_ENDPOINT: CHANGEIT
 KB_ENDPOINT_QA: CHANGEIT
 KB_ENDPOINT_TRAIN: CHANGEIT
-KB_TRAIN_INTERVAL: 2000
 TELEGRAM_API_URL: https://api.telegram.org/bot
 TELEGRAM_FILE_URL: https://api.telegram.org/file/bot
 TELEGRAM_LOG: info
@@ -249,7 +248,7 @@ server:
   resources: {}
   image:  
     repository: tiledesk/tiledesk-server
-    tag: 2.7.19
+    tag: 2.7.25
   service:
     type: ClusterIP
     port: 80
@@ -261,7 +260,7 @@ serverworker:
   resources: {}
   image:  
     repository: tiledesk/tiledesk-server-worker
-    tag: 2.7.19
+    tag: 2.7.25
 
 dashboard:
   ## Enable deployment of Tiledesk Server
@@ -270,7 +269,7 @@ dashboard:
   resources: {}
   image:
     repository: tiledesk/tiledesk-dashboard
-    tag: 2.6.31
+    tag: 2.6.34
 
   service:
     type: ClusterIP
@@ -283,7 +282,7 @@ cds:
   resources: {}
   image:
     repository: tiledesk/design-studio
-    tag: 1.9.0
+    tag: 1.11.0
 
   service:
     type: ClusterIP
