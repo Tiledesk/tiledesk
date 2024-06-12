@@ -296,7 +296,7 @@ ionic:
   resources: {}
   image:
     repository: chat21/chat21-ionic
-    tag: 3.4.0
+    tag: 3.4.1
 
   service:
       type: ClusterIP
