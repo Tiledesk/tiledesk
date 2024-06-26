@@ -10,7 +10,7 @@ data:
   # ----- DASHBOARD ------- 
   DIALOGFLOW_BOT_CREDENTIAL_URL: {{ .Values.DIALOGFLOW_BOT_CREDENTIAL_URL | quote }}
   RASA_BOT_CREDENTIAL_URL: {{ .Values.RASA_BOT_CREDENTIAL_URL | quote }}
-  SERVER_BASE_URL: {{ .Values.SERVER_BASE_URL | quote }}
+  SERVER_BASE_URL: {{if and .Values.EXTERNAL_BASE_URL (hasPrefix "/" .Values.SERVER_BASE_URL)}}"{{ .Values.EXTERNAL_BASE_URL  }}{{ .Values.SERVER_BASE_URL }}"{{ else }}{{ .Values.SERVER_BASE_URL | quote }}{{ end }}
   CHAT_BASE_URL: {{ .Values.CHAT_BASE_URL | quote }}
   BRAND_SRC: {{ .Values.BRAND_SRC | quote }}
   REMOTE_JS_SRC: {{ .Values.REMOTE_JS_SRC | quote }}
@@ -81,7 +81,7 @@ data:
 
   GLOBAL_SECRET_ALGORITHM: {{ .Values.GLOBAL_SECRET_ALGORITHM | quote }}
 
-  CHATBOT_TEMPLATES_API_URL: {{if and .Values.EXTERNAL_BASE_URL (hasPrefix "/" .Values.CHATBOT_TEMPLATES_API_URL)}}"{{ .Values.EXTERNAL_BASE_URL  }}{{ .Values.CHATBOT_TEMPLATES_API_URL }}"{{ else if hasPrefix "/" .Values.CHATBOT_TEMPLATES_API_URL }}"http://{{ include "tiledesk.fullname" . }}-server{{ .Values.CHATBOT_TEMPLATES_API_URL }}"{{ else }}{{ .Values.CHATBOT_TEMPLATES_API_URL | quote }}{{ end }}
+  CHATBOT_TEMPLATES_API_URL: {{if and .Values.EXTERNAL_BASE_URL (hasPrefix "/" .Values.CHATBOT_TEMPLATES_API_URL)}}"{{ .Values.EXTERNAL_BASE_URL  }}/api{{ .Values.CHATBOT_TEMPLATES_API_URL }}"{{ else if hasPrefix "/" .Values.CHATBOT_TEMPLATES_API_URL }}"http://{{ include "tiledesk.fullname" . }}-server{{ .Values.CHATBOT_TEMPLATES_API_URL }}"{{ else }}{{ .Values.CHATBOT_TEMPLATES_API_URL | quote }}{{ end }}
   # APPS_ACCESS_TOKEN_SECRET: {{ .Values.APPS_ACCESS_TOKEN_SECRET | quote }}
   BOOT_LOADING: {{ .Values.BOOT_LOADING | quote }}
   META_GRAPH_URL: {{ .Values.META_GRAPH_URL | quote }}
@@ -106,7 +106,6 @@ data:
   KB_ENDPOINT_QA: {{if .Values.KB_ENDPOINT_QA}}{{ .Values.KB_ENDPOINT_QA | quote }}{{ else }}http://{{ include "tiledesk.fullname" . }}-backendllm-qa/api{{ end }}
   KB_ENDPOINT_TRAIN: {{if .Values.KB_ENDPOINT_TRAIN}}{{ .Values.KB_ENDPOINT_TRAIN | quote }}{{ else }}http://{{ include "tiledesk.fullname" . }}-backendllm-train/api{{ end }}
   GPTKEY: {{ .Values.GPTKEY | quote }}
-
   TELEGRAM_API_URL: {{ .Values.TELEGRAM_API_URL | quote }}
   TELEGRAM_FILE_URL: {{ .Values.TELEGRAM_FILE_URL | quote }}
   TELEGRAM_LOG: {{ .Values.TELEGRAM_LOG | quote }}
