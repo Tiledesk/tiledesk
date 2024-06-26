@@ -609,6 +609,11 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: TRAINER_LOG
+            - name: AI_MODELS
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: AI_MODELS
             # - name: TILEBOT_ENDPOINT
             #   valueFrom:
             #     configMapKeyRef:

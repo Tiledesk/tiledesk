@@ -197,6 +197,7 @@ PUSH_ENGINE: none
 LOG_LEVEL: info
 MONGOOSE_DEBUG: false
 WORKER_LOG_LEVEL: info
+AI_MODELS: CHANGEIT
 
 AUTH_PERSISTENCE: LOCAL
 CHAT_STORAGE_PREFIX: chat_sv5
@@ -270,7 +271,7 @@ dashboard:
   resources: {}
   image:
     repository: tiledesk/tiledesk-dashboard
-    tag: 2.6.35
+    tag: 2.6.37
 
   service:
     type: ClusterIP

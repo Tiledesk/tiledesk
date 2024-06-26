@@ -516,6 +516,7 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: BRAND_NAME
+                  optional: true
             - name: GPTKEY
               valueFrom:
                 configMapKeyRef:

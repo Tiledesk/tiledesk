@@ -174,7 +174,12 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
-                  key: TICKETING_EMAIL                 
+                  key: TICKETING_EMAIL
+            - name: AI_MODELS
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: AI_MODELS                 
           ports:
             - name: dashboard-http
               containerPort: 80

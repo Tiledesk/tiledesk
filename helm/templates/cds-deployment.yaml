@@ -140,7 +140,12 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
-                  key: FIREBASE_VAPID                
+                  key: FIREBASE_VAPID
+            - name: AI_MODELS
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: AI_MODELS                
           ports:
             - name: cds-http
               containerPort: 80

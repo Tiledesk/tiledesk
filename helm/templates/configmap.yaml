@@ -153,6 +153,7 @@ data:
   LOG_LEVEL: {{ .Values.LOG_LEVEL | quote }}
   MONGOOSE_DEBUG: {{ .Values.MONGOOSE_DEBUG | quote }}
   WORKER_LOG_LEVEL: {{ .Values.WORKER_LOG_LEVEL | quote }}
+  AI_MODELS: {{ .Values.AI_MODELS | quote }}
 
   AUTH_PERSISTENCE: {{ .Values.AUTH_PERSISTENCE | quote }}
   CHAT_STORAGE_PREFIX: {{ .Values.CHAT_STORAGE_PREFIX | quote }}
