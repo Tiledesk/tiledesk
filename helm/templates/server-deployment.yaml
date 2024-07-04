@@ -500,6 +500,11 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: ENABLE_REDIS_SESSION
+            - name: DISABLE_SESSION_STRATEGY
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: DISABLE_SESSION_STRATEGY
             - name: LOG_LEVEL
               valueFrom:
                 configMapKeyRef:
