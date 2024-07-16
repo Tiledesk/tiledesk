@@ -115,6 +115,13 @@ data:
   {{if .Values.ADMIN_EMAIL}}ADMIN_EMAIL: {{ .Values.ADMIN_EMAIL | quote }}{{ end }}
   {{if .Values.ADMIN_PASSWORD}}ADMIN_PASSWORD: {{ .Values.ADMIN_PASSWORD | quote }}{{ end }}
   TRAINER_LOG: {{ .Values.TRAINER_LOG | quote }}
+  #VOICE CHANNEL
+  VXML_LOG: {{ .Values.VXML_LOG | quote }}
+  {{if .Values.VOICE_SECRET}}VOICE_SECRET: {{ .Values.VOICE_SECRET | quote }}{{ end }}
+  {{if .Values.VOICE_ENABLED}}VOICE_ENABLED: {{ .Values.VOICE_ENABLED | quote }}{{ end }}
+  {{if .Values.BASE_POOLING_DELAY}}BASE_POOLING_DELAY: {{ .Values.BASE_POOLING_DELAY | quote }}{{ end }}
+  #SMS CHANNEL
+  SMS_LOG: {{ .Values.SMS_LOG | quote }}
 
   # ----- CHAT21 SERVER -------
   APP_ID: {{ .Values.APP_ID | quote }}

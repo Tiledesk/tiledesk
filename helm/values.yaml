@@ -153,6 +153,11 @@ TELEGRAM_LOG: info
 QUOTES_ENABLED: false
 HUBSPOT_ENDPOINT: https://api.hubapi.com/crm/v3/
 TRAINER_LOG: info
+#VOICE CHANNEL
+VXML_LOG: info
+BASE_POOLING_DELAY: 25
+#SMS CHANNEL
+SMS_LOG: info
 ###### ------SERVER : END------ ######
 
 
@@ -251,7 +256,7 @@ server:
   resources: {}
   image:  
     repository: tiledesk/tiledesk-server
-    tag: 2.7.25
+    tag: 2.9.0
   service:
     type: ClusterIP
     port: 80
@@ -263,7 +268,7 @@ serverworker:
   resources: {}
   image:  
     repository: tiledesk/tiledesk-server-worker
-    tag: 2.7.25
+    tag: 2.9.0
 
 dashboard:
   ## Enable deployment of Tiledesk Server
@@ -272,7 +277,7 @@ dashboard:
   resources: {}
   image:
     repository: tiledesk/tiledesk-dashboard
-    tag: 2.6.37
+    tag: 2.7.0
 
   service:
     type: ClusterIP
@@ -285,7 +290,7 @@ cds:
   resources: {}
   image:
     repository: tiledesk/design-studio
-    tag: 1.12.0
+    tag: 1.17.1
 
   service:
     type: ClusterIP
@@ -312,7 +317,7 @@ webwidget:
   resources: {}
   image:
     repository: chat21/chat21-web-widget
-    tag: 5.0.79
+    tag: 5.0.80
 
   service:
       type: ClusterIP

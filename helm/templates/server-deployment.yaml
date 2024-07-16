@@ -619,6 +619,34 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: AI_MODELS
+            - name: VOICE_SECRET
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: VOICE_SECRET
+                  optional: true
+            - name: VXML_LOG
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: VXML_LOG    
+            - name: BASE_POOLING_DELAY
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: BASE_POOLING_DELAY
+                  optional: true
+            - name: VOICE_ENABLED
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: VOICE_ENABLED
+                  optional: true
+            - name: SMS_LOG
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: SMS_LOG
             # - name: TILEBOT_ENDPOINT
             #   valueFrom:
             #     configMapKeyRef:
