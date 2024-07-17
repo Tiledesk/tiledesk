@@ -90,6 +90,7 @@ EMAIL_EXUSER_INVITED_HTML_TEMPLATE: CHANGEIT
 EMAIL_NEWUSER_INVITED_HTML_TEMPLATE: CHANGEIT
 EMAIL_VERIFY_HTML_TEMPLATE: CHANGEIT
 EMAIL_SEND_TRANSCRIPT_HTML_TEMPLATE: CHANGEIT
+EMAIL_QUOTA_CHECKPOINT_REACHED_TEMPLATE: CHANGEIT
 
 SUPER_PASSWORD: superadmin
 
@@ -154,7 +155,7 @@ QUOTES_ENABLED: false
 HUBSPOT_ENDPOINT: https://api.hubapi.com/crm/v3/
 TRAINER_LOG: info
 #VOICE CHANNEL
-VXML_LOG: info
+VOICE_LOG: info
 BASE_POOLING_DELAY: 25
 #SMS CHANNEL
 SMS_LOG: info
@@ -256,7 +257,7 @@ server:
   resources: {}
   image:  
     repository: tiledesk/tiledesk-server
-    tag: 2.9.0
+    tag: 2.9.1
   service:
     type: ClusterIP
     port: 80
@@ -268,7 +269,7 @@ serverworker:
   resources: {}
   image:  
     repository: tiledesk/tiledesk-server-worker
-    tag: 2.9.0
+    tag: 2.9.1
 
 dashboard:
   ## Enable deployment of Tiledesk Server
@@ -277,7 +278,7 @@ dashboard:
   resources: {}
   image:
     repository: tiledesk/tiledesk-dashboard
-    tag: 2.7.0
+    tag: 2.7.1
 
   service:
     type: ClusterIP

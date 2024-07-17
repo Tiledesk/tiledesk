@@ -116,7 +116,7 @@ data:
   {{if .Values.ADMIN_PASSWORD}}ADMIN_PASSWORD: {{ .Values.ADMIN_PASSWORD | quote }}{{ end }}
   TRAINER_LOG: {{ .Values.TRAINER_LOG | quote }}
   #VOICE CHANNEL
-  VXML_LOG: {{ .Values.VXML_LOG | quote }}
+  VOICE_LOG: {{ .Values.VOICE_LOG | quote }}
   {{if .Values.VOICE_SECRET}}VOICE_SECRET: {{ .Values.VOICE_SECRET | quote }}{{ end }}
   {{if .Values.VOICE_ENABLED}}VOICE_ENABLED: {{ .Values.VOICE_ENABLED | quote }}{{ end }}
   {{if .Values.BASE_POOLING_DELAY}}BASE_POOLING_DELAY: {{ .Values.BASE_POOLING_DELAY | quote }}{{ end }}
