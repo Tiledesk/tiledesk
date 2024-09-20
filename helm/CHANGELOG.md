@@ -1,3 +1,8 @@
+# 1.1.54 ( app v. 2.9.25 )
+- Updated Tiledesk Dashboard: 2.7.24
+- Updated Tiledesk Server: 2.9.25
+- Updated Tildesk CDS: 1.20.3
+
 # 1.1.53 ( app v. 2.9.22 )
 - Updated Tiledesk Dashboard: 2.7.23
 - Updated Tiledesk Server: 2.9.22
