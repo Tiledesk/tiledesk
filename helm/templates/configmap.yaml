@@ -115,6 +115,7 @@ data:
   {{if .Values.ADMIN_EMAIL}}ADMIN_EMAIL: {{ .Values.ADMIN_EMAIL | quote }}{{ end }}
   {{if .Values.ADMIN_PASSWORD}}ADMIN_PASSWORD: {{ .Values.ADMIN_PASSWORD | quote }}{{ end }}
   TRAINER_LOG: {{ .Values.TRAINER_LOG | quote }}
+  JWT_SECRET_KEY_LLM: {{ .Values.JWT_SECRET_KEY_LLM | quote}}
   #VOICE CHANNEL
   VOICE_LOG: {{ .Values.VOICE_LOG | quote }}
   {{if .Values.VOICE_SECRET}}VOICE_SECRET: {{ .Values.VOICE_SECRET | quote }}{{ end }}

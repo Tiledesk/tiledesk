@@ -652,6 +652,16 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: SMS_LOG
+            - name: JWT_SECRET_KEY
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: JWT_SECRET_KEY_LLM
+            - name: PINECONE_INDEX
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: PINECONE_INDEX      
             # - name: TILEBOT_ENDPOINT
             #   valueFrom:
             #     configMapKeyRef:

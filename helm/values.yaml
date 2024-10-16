@@ -159,6 +159,7 @@ VOICE_LOG: info
 BASE_POOLING_DELAY: 25
 #SMS CHANNEL
 SMS_LOG: info
+JWT_SECRET_KEY_LLM: KVre2xnGU1YvpvcuwhL90YWwETeWFYuD
 ###### ------SERVER : END------ ######
 
 
@@ -257,7 +258,7 @@ server:
   resources: {}
   image:  
     repository: tiledesk/tiledesk-server
-    tag: 2.9.32
+    tag: 2.10.0
   service:
     type: ClusterIP
     port: 80
@@ -269,7 +270,7 @@ serverworker:
   resources: {}
   image:
     repository: tiledesk/tiledesk-server-worker
-    tag: 2.9.32
+    tag: 2.10.0
 
 dashboard:
   ## Enable deployment of Tiledesk Server
@@ -278,7 +279,7 @@ dashboard:
   resources: {}
   image:
     repository: tiledesk/tiledesk-dashboard
-    tag: 2.7.33
+    tag: 2.7.34
 
   service:
     type: ClusterIP
@@ -291,7 +292,7 @@ cds:
   resources: {}
   image:
     repository: tiledesk/design-studio
-    tag: 1.20.6
+    tag: 1.21.0
 
   service:
     type: ClusterIP
@@ -304,7 +305,7 @@ ionic:
   resources: {}
   image:
     repository: chat21/chat21-ionic
-    tag: 3.4.4
+    tag: 3.4.5
 
   service:
       type: ClusterIP
@@ -318,7 +319,7 @@ webwidget:
   resources: {}
   image:
     repository: chat21/chat21-web-widget
-    tag: 5.0.82
+    tag: 5.0.83
 
   service:
       type: ClusterIP
