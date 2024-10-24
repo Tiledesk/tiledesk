@@ -257,7 +257,7 @@ server:
   enabled: true
   resources: {}
   image:  
-    repository: tiledesk/tiledesk-server
+    repository: tiledesk.docker.scarf.sh/tiledesk/tiledesk-server
     tag: 2.10.0
   service:
     type: ClusterIP
@@ -269,7 +269,7 @@ serverworker:
   enabled: true
   resources: {}
   image:
-    repository: tiledesk/tiledesk-server-worker
+    repository: tiledesk.docker.scarf.sh/tiledesk/tiledesk-server-worker
     tag: 2.10.0
 
 dashboard:
@@ -278,7 +278,7 @@ dashboard:
   enabled: true
   resources: {}
   image:
-    repository: tiledesk/tiledesk-dashboard
+    repository: tiledesk.docker.scarf.sh/tiledesk/tiledesk-dashboard
     tag: 2.7.34
 
   service:
@@ -291,7 +291,7 @@ cds:
   enabled: true
   resources: {}
   image:
-    repository: tiledesk/design-studio
+    repository: tiledesk.docker.scarf.sh/tiledesk/design-studio
     tag: 1.21.0
 
   service:
