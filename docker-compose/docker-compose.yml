@@ -4,7 +4,7 @@ volumes:
    tiledesk-datadb:
 services:
   dashboard:
-   image: tiledesk/tiledesk-dashboard:2.6.43
+   image: tiledesk.docker.scarf.sh/tiledesk/tiledesk-dashboard:2.6.43
    container_name: tiledesk-dashboard 
    environment: 
       - FEATURES_TOKEN=PAY:F-ANA:F-ACT:F-TRI:T-GRO:F-DEP:F-OPH:F-MTL:T-CAR:F-V1L:T-PSA:F-MTT:T-SUP:T-LBS:T-APP:T-DEV:F-NOT:T-IPS:F-ETK:F-RAS:T-PPB:F-PET:F-MTS:F-TIL:T-DGF:T-NAT:T-HPB:F-TOW:T-KNB:F-BAN:F-AST:F-MON:F-CNT:F-AUT:F-WUN:F
@@ -39,7 +39,7 @@ services:
       - "4500:80" #use expose if you want to block external access
   
   cds:
-   image: tiledesk/design-studio:1.17.0
+   image: tiledesk.docker.scarf.sh/tiledesk/design-studio:1.17.0
    container_name: tiledesk-cds 
    environment: 
       - FEATURES_TOKEN=PAY:F-ANA:F-ACT:F-TRI:T-GRO:F-DEP:F-OPH:F-MTL:T-CAR:F-V1L:T-PSA:F-MTT:T-SUP:T-LBS:T-APP:T-DEV:F-NOT:T-IPS:F-ETK:F-RAS:T-PPB:F-PET:F-MTS:F-TIL:T-DGF:T-NAT:T-HPB:F-TOW:T-KNB:F-BAN:F-AST:F-MON:F-CNT:F-AUT:F-WUN:F
@@ -131,7 +131,7 @@ services:
       - "8082:80" #use expose if you want to block external access
 
   proxy:
-    image: tiledesk/tiledesk-docker-proxy:v1.1.2
+    image: tiledesk.docker.scarf.sh/tiledesk/tiledesk-docker-proxy:v1.1.2
     container_name: tiledesk-docker-proxy   
     ports:
       - "8081:80" # specify port forewarding
@@ -145,7 +145,7 @@ services:
     command: [nginx-debug, '-g', 'daemon off;']
     
   server:
-    image: tiledesk/tiledesk-server:2.8.7
+    image: tiledesk.docker.scarf.sh/tiledesk/tiledesk-server:2.8.7
     container_name: tiledesk-server
     restart: always       
     environment: 
