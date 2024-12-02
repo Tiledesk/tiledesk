@@ -440,6 +440,11 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: API_URL
+            - name: API_ENDPOINT
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: API_ENDPOINT
             - name: DISABLE_SEND_OFFLINE_EMAIL
               valueFrom:
                 configMapKeyRef:
@@ -661,7 +666,8 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
-                  key: PINECONE_INDEX      
+                  key: PINECONE_INDEX
+                  optional: true
             # - name: TILEBOT_ENDPOINT
             #   valueFrom:
             #     configMapKeyRef:

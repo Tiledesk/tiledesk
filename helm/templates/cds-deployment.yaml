@@ -86,6 +86,11 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: API_BASEIMAGE_URL
+            - name: FILE_UPLOAD_ACCEPT
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: FILE_UPLOAD_ACCEPT
             - name: LOG_LEVEL
               valueFrom:
                 configMapKeyRef:
