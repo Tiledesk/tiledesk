@@ -292,7 +292,7 @@ cds:
   resources: {}
   image:
     repository: tiledesk.docker.scarf.sh/tiledesk/design-studio
-    tag: 1.23.1
+    tag: 1.23.2
 
   service:
     type: ClusterIP
