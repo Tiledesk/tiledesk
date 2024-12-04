@@ -668,6 +668,12 @@ spec:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: PINECONE_INDEX
                   optional: true
+            - name: PINECONE_TYPE
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: PINECONE_TYPE
+                  optional: true
             # - name: TILEBOT_ENDPOINT
             #   valueFrom:
             #     configMapKeyRef:
