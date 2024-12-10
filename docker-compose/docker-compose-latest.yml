@@ -4,7 +4,7 @@ volumes:
    tiledesk-datadb:
 services:
   dashboard:
-   image: tiledesk/tiledesk-dashboard
+   image: tiledesk/tiledesk-dashboard:latest
    container_name: tiledesk-dashboard 
    environment: 
       - FEATURES_TOKEN=PAY:F-ANA:F-ACT:F-TRI:T-GRO:F-DEP:F-OPH:F-MTL:T-CAR:F-V1L:T-PSA:F-MTT:T-SUP:T-LBS:T-APP:T-DEV:F-NOT:T-IPS:F-ETK:F-RAS:T-PPB:F-PET:F-MTS:F-TIL:T-DGF:T-NAT:T-HPB:F-TOW:T-KNB:F-BAN:F-AST:F-MON:F-CNT:F-AUT:F-WUN:F
@@ -35,11 +35,12 @@ services:
       - "API_BASEIMAGE_URL=${EXTERNAL_BASE_URL:-http://localhost:8081}/api/"
       - COMMUNITY_TEMPLATES_URL=/api/modules/templates/public/community
       - TEMPLATES_URL=/api/modules/templates/public/templates
+      - FILE_UPLOAD_ACCEPT=*/*
    ports:
       - "4500:80" #use expose if you want to block external access
 
   cds:
-   image: tiledesk/design-studio
+   image: tiledesk/design-studio:latest
    container_name: tiledesk-cds 
    environment: 
       - FEATURES_TOKEN=PAY:F-ANA:F-ACT:F-TRI:T-GRO:F-DEP:F-OPH:F-MTL:T-CAR:F-V1L:T-PSA:F-MTT:T-SUP:T-LBS:T-APP:T-DEV:F-NOT:T-IPS:F-ETK:F-RAS:T-PPB:F-PET:F-MTS:F-TIL:T-DGF:T-NAT:T-HPB:F-TOW:T-KNB:F-BAN:F-AST:F-MON:F-CNT:F-AUT:F-WUN:F
@@ -62,12 +63,16 @@ services:
       - FIREBASE_VAPID
       - CDS_STORAGE_PREFIX=cds_sv5
       - "API_BASEIMAGE_URL=${EXTERNAL_BASE_URL:-http://localhost:8081}/api/"
+      - FILE_UPLOAD_ACCEPT=*/*
+      - AI_MODELS=gpt-3.5-turbo:0.6;gpt-4:25;gpt-4-turbo-preview:12;gpt-4o:6;gpt-4o-mini:0.3
    ports:
       - "4502:80" #use expose if you want to block external access
 
   webwidget:
    image: chat21/chat21-web-widget:latest
    container_name: chat21-web-widget  
+   ports: 
+      - "4200:80" # specify port forewarding
    environment: 
       - CHAT21_ENGINE=mqtt
       - MQTT_APPID=tilechat
@@ -91,12 +96,13 @@ services:
       - DASHBOARD_URL=/dashboard/   
       - AUTH_PERSISTENCE=LOCAL
       - ENBED_JS=true
-   ports: 
-      - "4200:80" # specify port forewarding
+      - FILE_UPLOAD_ACCEPT=*/*
 
   ionic:
    image: chat21/chat21-ionic:latest
    container_name: chat21-ionic
+   ports:
+      - "8082:80" #use expose if you want to block external access   
    environment: 
       - DASHBOARD_URL=/dashboard/      
       - API_BASEIMAGE_URL=/api/
@@ -105,6 +111,7 @@ services:
       - WIDGET_LOCATION=/widget/
       - PUSH_ENGINE=none
       - LOG_LEVEL=info
+      - FILE_UPLOAD_ACCEPT=*/*
       - FILE_UPLOAD_ACCEPT=*/*
       - CHAT21_ENGINE=mqtt
       - MQTT_APPID=tilechat
@@ -127,9 +134,7 @@ services:
       - EMAIL_SECTION=true
       - CHAT_STORAGE_PREFIX=chat_sv5
       - WS_URL_RELATIVE=/ws/
-   ports:
-      - "8082:80" #use expose if you want to block external access   
-   
+
   proxy:
     image: tiledesk/tiledesk-docker-proxy
     container_name: tiledesk-docker-proxy   
@@ -157,6 +162,7 @@ services:
       - RESTHOOK_ENABLED=true
       - ALLOW_REOPEN_CHAT=true
       - CHAT21_ADMIN_TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIzNDU2MTBkNy03MmYxLTQ5OWUtODQzMS0xMTNhZWJkOWVmOTgiLCJzdWIiOiIxMDAtQVBJQURNSU4iLCJzY29wZSI6WyJyYWJiaXRtcS5yZWFkOiovKi8qIiwicmFiYml0bXEud3JpdGU6Ki8qLyoiLCJyYWJiaXRtcS5jb25maWd1cmU6Ki8qLyoiXSwiY2xpZW50X2lkIjoiMTAwLUFQSUFETUlOIiwiY2lkIjoiMTAwLUFQSUFETUlOIiwiYXpwIjoiMTAwLUFQSUFETUlOIiwidXNlcl9pZCI6IjEwMC1BUElBRE1JTiIsImFwcF9pZCI6InRpbGVjaGF0IiwiaWF0IjoxNjE0OTQzNDkyLCJleHAiOjE5MjU5ODM0OTIsImF1ZCI6WyJyYWJiaXRtcSIsIjEwMC1BUElBRE1JTiJdLCJraWQiOiJ0aWxlZGVzay1rZXkiLCJ0aWxlZGVza19hcGlfcm9sZXMiOiJhZG1pbiJ9.KptGMsTKjd3wUiiP1GGSTYqW1XXK1vjSRJnetC3wjxU
+      - AMQP_MANAGER_URL=amqp://ignored:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI3NjMwYTAwZS0xNTUxLTQ3Y2ItYmEzMC02NGRlNjJmYmNmNGYiLCJzdWIiOiIwMS1PQlNFUlZFUiIsInNjb3BlIjpbInJhYmJpdG1xLnJlYWQ6Ki8qLyoiLCJyYWJiaXRtcS53cml0ZToqLyovKiIsInJhYmJpdG1xLmNvbmZpZ3VyZToqLyovKiJdLCJjbGllbnRfaWQiOiIwMS1PQlNFUlZFUiIsImNpZCI6IjAxLU9CU0VSVkVSIiwiYXpwIjoiMDEtT0JTRVJWRVIiLCJ1c2VyX2lkIjoiMDEtT0JTRVJWRVIiLCJhcHBfaWQiOiJ0aWxlY2hhdCIsImlhdCI6MTY5NjQ5MjI4NywiZXhwIjoyMDA3NTMyMjg3LCJhdWQiOlsicmFiYml0bXEiLCIwMS1PQlNFUlZFUiJdLCJraWQiOiJ0aWxlZGVzay1rZXkiLCJ0aWxlZGVza19hcGlfcm9sZXMiOiJ1c2VyIn0.Lq0MLTYny7tIYVQ-KEDLlL-h7gAqofCfC2IDgI_0TOE@rabbitmq:5672?heartbeat=60
       - MONGODB_URI=mongodb://mongo/tiledesk
       - EMAIL_ENABLED
       - EMAIL_HOST
@@ -185,9 +191,9 @@ services:
       - FB_APP_ID
       - FB_APP_SECRET
       - BASE_FILE_URL=${EXTERNAL_BASE_URL:-http://localhost:8081}/api/"
-      - OPENAI_ENDPOINT
+      - GPTKEY=CHANGEIT
+      - OPENAI_ENDPOINT=https://api.openai.com/v1
       - KB_ENDPOINT
-      - AMQP_MANAGER_URL=amqp://ignored:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI3NjMwYTAwZS0xNTUxLTQ3Y2ItYmEzMC02NGRlNjJmYmNmNGYiLCJzdWIiOiIwMS1PQlNFUlZFUiIsInNjb3BlIjpbInJhYmJpdG1xLnJlYWQ6Ki8qLyoiLCJyYWJiaXRtcS53cml0ZToqLyovKiIsInJhYmJpdG1xLmNvbmZpZ3VyZToqLyovKiJdLCJjbGllbnRfaWQiOiIwMS1PQlNFUlZFUiIsImNpZCI6IjAxLU9CU0VSVkVSIiwiYXpwIjoiMDEtT0JTRVJWRVIiLCJ1c2VyX2lkIjoiMDEtT0JTRVJWRVIiLCJhcHBfaWQiOiJ0aWxlY2hhdCIsImlhdCI6MTY5NjQ5MjI4NywiZXhwIjoyMDA3NTMyMjg3LCJhdWQiOlsicmFiYml0bXEiLCIwMS1PQlNFUlZFUiJdLCJraWQiOiJ0aWxlZGVzay1rZXkiLCJ0aWxlZGVza19hcGlfcm9sZXMiOiJ1c2VyIn0.Lq0MLTYny7tIYVQ-KEDLlL-h7gAqofCfC2IDgI_0TOE@rabbitmq:5672?heartbeat=60
     depends_on:
       - mongo
     ports:
@@ -236,6 +242,7 @@ services:
       - mongo
       - rabbitmq
       - server 
+
   rabbitmq:
     image: chat21/chat21-rabbitmq:latest
     container_name: rabbitmq
@@ -253,9 +260,10 @@ services:
     #     interval: 5s
     #     timeout: 15s
     #     retries: 1
+    
   mongo:
     container_name: mongo
-    image: mongo:4.0.23
+    image: mongo:7.0.2
     command: --bind_ip_all
     volumes:
       - tiledesk-datadb:/data/db
