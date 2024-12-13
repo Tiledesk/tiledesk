@@ -123,6 +123,10 @@ data:
   {{if .Values.BASE_POOLING_DELAY}}BASE_POOLING_DELAY: {{ .Values.BASE_POOLING_DELAY | quote }}{{ end }}
   #SMS CHANNEL
   SMS_LOG: {{ .Values.SMS_LOG | quote }}
+  # BACKEND-LLM
+  {{if .Values.PINECONE_INDEX}}PINECONE_INDEX: {{ .Values.PINECONE_INDEX | quote }}{{ end }}
+  {{if .Values.PINECONE_TYPE}}PINECONE_TYPE: {{ .Values.PINECONE_TYPE | quote }}{{ end }}
+  
 
   # ----- CHAT21 SERVER -------
   APP_ID: {{ .Values.APP_ID | quote }}
