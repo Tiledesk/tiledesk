@@ -1,0 +1,22 @@
+{{- if .Values.SCHEDULER_ENABLED }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name:  {{ include "tiledesk.fullname" . }}-config-scheduler
+  labels:  {{ include "tiledesk.labels" . | nindent 4 }}
+data:
+  # ----- SERVER: start  -------
+  SCHEDULER_BASEURL: {{if .Values.SCHEDULER_BASEURL}}{{ .Values.SCHEDULER_BASEURL | quote }}{{else}}http://{{ include "tiledesk.fullname" . }}-scheduler:12345/dolphinscheduler{{ end }}
+  SCHEDULER_TOKEN: {{ .Values.SCHEDULER_TOKEN | quote }}
+  SCHEDULER_PROJECT: {{ .Values.SCHEDULER_PROJECT | quote }}
+  KB_WEBHOOK_TOKEN: {{ .Values.KB_WEBHOOK_TOKEN | quote }}
+  # ----- SERVER: end  -------
+
+  SPRING_PROFILES_ACTIVE: {{ .Values.SPRING_PROFILES_ACTIVE | quote }}
+  SPRING_DATASOURCE_URL: {{if .Values.SPRING_DATASOURCE_URL}}{{ .Values.SPRING_DATASOURCE_URL | quote }}{{else}}jdbc:postgresql://{{ include "tiledesk.fullname" . }}-postgresql:5432/{{ .Values.postgresql.auth.database }}{{ end }}
+  SPRING_DATASOURCE_USERNAME: {{ .Values.postgresql.auth.username  | quote }}
+  SPRING_DATASOURCE_PASSWORD: {{ .Values.postgresql.auth.password  | quote }}
+  
+  DOLPHIN_TZ: {{ .Values.DOLPHIN_TZ | quote }}
+  
+{{- end -}}
