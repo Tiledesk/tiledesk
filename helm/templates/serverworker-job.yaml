@@ -539,6 +539,12 @@ spec:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: PINECONE_TYPE
                   optional: true
+            - name: CONVERSATION_TAGS_TASK_PREFETCH
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: CONVERSATION_TAGS_TASK_PREFETCH
+                  optional: true
             # - name: TILEBOT_ENDPOINT
             #   valueFrom:
             #     configMapKeyRef:

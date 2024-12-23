@@ -674,6 +674,33 @@ spec:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: PINECONE_TYPE
                   optional: true
+            
+
+            ######   SCHEDULER: start  ######
+            {{- if .Values.SCHEDULER_ENABLED }}
+            - name: SCHEDULER_BASEURL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config-scheduler
+                  key: SCHEDULER_BASEURL
+            - name: SCHEDULER_TOKEN
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config-scheduler
+                  key: SCHEDULER_TOKEN
+            - name: SCHEDULER_PROJECT
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config-scheduler
+                  key: SCHEDULER_PROJECT
+            - name: KB_WEBHOOK_TOKEN
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: KB_WEBHOOK_TOKEN
+            {{- end }} 
+            ######   SCHEDULER: end  ######
+
             # - name: TILEBOT_ENDPOINT
             #   valueFrom:
             #     configMapKeyRef:

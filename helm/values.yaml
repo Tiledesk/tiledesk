@@ -160,6 +160,27 @@ BASE_POOLING_DELAY: 25
 #SMS CHANNEL
 SMS_LOG: info
 JWT_SECRET_KEY_LLM: CHANGEIT
+# TILEBOT_ENDPOINT: CHANGEIT
+
+CLOSE_BOT_UNRESPONSIVE_REQUESTS_ENABLE: true
+ENABLE_REDIS_SESSION: false
+DISABLE_SESSION_STRATEGY: false
+
+PAYMENT_STRIPE_APIKEY: CHANGEIT
+PAYMENT_STRIPE_SECRET: CHANGEIT
+PAYMENT_STRIPE_API_SECRET_KEY: CHANGEIT
+
+GOOGLE_SIGNIN_ENABLED: false
+GOOGLE_CLIENT_ID: CHANGEIT
+GOOGLE_CLIENT_SECRET: CHANGEIT
+GOOGLE_CALLBACK_URL: CHANGEIT
+
+QUEUE_EXCHANGE_TOPIC: tdserverex
+QUEUE_NAME: tdserverqueue
+
+SCHEDULER_ENABLED: false
+#MULTI-WORKER
+# CONVERSATION_TAGS_TASK_PREFETCH: 10
 ###### ------SERVER : END------ ######
 
 
@@ -233,22 +254,9 @@ BASE_FILE_URL: /api/
 #MONGODB_URI: mongodb://tiledesk-mongo/tiledesk
 ###### ------COMMON CONF : END------ ######
 
-PAYMENT_STRIPE_APIKEY: CHANGEIT
-PAYMENT_STRIPE_SECRET: CHANGEIT
-PAYMENT_STRIPE_API_SECRET_KEY: CHANGEIT
-QUEUE_EXCHANGE_TOPIC: tdserverex
-QUEUE_NAME: tdserverqueue
-
-
-GOOGLE_SIGNIN_ENABLED: false
-GOOGLE_CLIENT_ID: CHANGEIT
-GOOGLE_CLIENT_SECRET: CHANGEIT
-GOOGLE_CALLBACK_URL: CHANGEIT
-
-CLOSE_BOT_UNRESPONSIVE_REQUESTS_ENABLE: true
-ENABLE_REDIS_SESSION: false
-DISABLE_SESSION_STRATEGY: true
-#TILEBOT_ENDPOINT: CHANGEIT
+###### ------DOLPHIN-SCHEDULER : START------ ######
+DOLPHIN_TZ: "Europe/Rome"
+###### ------DOLPHIN-SCHEDULER : START------ ######
 
 
 server:
@@ -292,7 +300,7 @@ cds:
   resources: {}
   image:
     repository: tiledesk.docker.scarf.sh/tiledesk/design-studio
-    tag: 1.23.2
+    tag: 1.25.0
 
   service:
     type: ClusterIP
@@ -305,7 +313,7 @@ ionic:
   resources: {}
   image:
     repository: chat21/chat21-ionic
-    tag: 3.4.8
+    tag: 3.4.11
 
   service:
       type: ClusterIP
@@ -520,6 +528,9 @@ mongodb:
     enabled: true
     resourcePolicy: "keep"
     size: 8Gi
+
+postgresql:
+  enabled: false
 
 rabbitmq: #consumer_timeout = 31622400000
   #fullnameOverride: rabbitmq
