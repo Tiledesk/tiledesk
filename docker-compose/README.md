@@ -34,7 +34,7 @@ docker-compose up
 ### Tips & Troubleshooting
 * If you have a public ip specify it in the EXTERNAL_BASE_URL and EXTERNAL_MQTT_BASE_URL env parameters as follow:  ```EXTERNAL_BASE_URL="http://99.88.77.66:8081" EXTERNAL_MQTT_BASE_URL="ws://99.88.77.66:8081" docker-compose up```
 * Make sure that exposed ports are open on your host. Check the _docker-compose.yml_ file to determine the exposed ports - refer to the ```host:container``` port definitions. You'll see they include 3000, 4200, 4500, 8082, 8004, 8081 and 5672,15672,1883,15675 for rabbitmq and 27017 for mongodb. Use for example ```sudo lsof -i -P -n | grep LISTEN``` linux command to check the ports are unused when Tiledesk is stopped.
-* If you want to use GPT actions in your chatbot flows, you need to edit the previously downloaded *docker-compose.yaml* file, replacing the **GPT_KEY** environment variable with your key from [OpenAI](https://openai.com/index/openai-api/). You can find the **GPT_KEY** environment variable under the server container declaration of the *docker-compose.yaml* file.
+* If you want to use GPT actions in your chatbot flows, you need to edit the previously downloaded *docker-compose.yaml* file, replacing the **GPTKEY** environment variable with your key from [OpenAI](https://openai.com/index/openai-api/). You can find the **GPTKEY** environment variable under the server container declaration of the *docker-compose.yaml* file.
 
 # Run in background
 To start Tiledesk in background: ```docker-compose up -d```. If you want to see the log: ```docker-compose logs -t -f --tail 5```
