@@ -696,7 +696,7 @@ spec:
             - name: KB_WEBHOOK_TOKEN
               valueFrom:
                 configMapKeyRef:
-                  name: {{ include "tiledesk.fullname" . }}-config
+                  name: {{ include "tiledesk.fullname" . }}-config-scheduler
                   key: KB_WEBHOOK_TOKEN
             {{- end }} 
             ######   SCHEDULER: end  ######
