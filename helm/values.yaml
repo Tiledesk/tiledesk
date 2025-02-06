@@ -164,7 +164,7 @@ JWT_SECRET_KEY_LLM: CHANGEIT
 
 CLOSE_BOT_UNRESPONSIVE_REQUESTS_ENABLE: true
 ENABLE_REDIS_SESSION: false
-DISABLE_SESSION_STRATEGY: false
+DISABLE_SESSION_STRATEGY: true
 
 PAYMENT_STRIPE_APIKEY: CHANGEIT
 PAYMENT_STRIPE_SECRET: CHANGEIT
@@ -266,7 +266,7 @@ server:
   resources: {}
   image:  
     repository: tiledesk.docker.scarf.sh/tiledesk/tiledesk-server
-    tag: 2.10.47
+    tag: 2.10.50
   service:
     type: ClusterIP
     port: 80
@@ -278,7 +278,7 @@ serverworker:
   resources: {}
   image:
     repository: tiledesk.docker.scarf.sh/tiledesk/tiledesk-server-worker
-    tag: 2.10.47
+    tag: 2.10.50
 
 dashboard:
   ## Enable deployment of Tiledesk Server
@@ -288,7 +288,6 @@ dashboard:
   image:
     repository: tiledesk.docker.scarf.sh/tiledesk/tiledesk-dashboard
     tag: 2.7.69
-
   service:
     type: ClusterIP
     port: 80
@@ -301,7 +300,6 @@ cds:
   image:
     repository: tiledesk.docker.scarf.sh/tiledesk/design-studio
     tag: 1.26.0
-
   service:
     type: ClusterIP
     port: 80
@@ -314,7 +312,6 @@ ionic:
   image:
     repository: chat21/chat21-ionic
     tag: 3.4.11
-
   service:
       type: ClusterIP
       port: 80
@@ -328,7 +325,6 @@ webwidget:
   image:
     repository: chat21/chat21-web-widget
     tag: 5.0.90
-
   service:
       type: ClusterIP
       port: 80
@@ -343,7 +339,6 @@ c21httpsrv:
     repository: chat21/chat21-http-server
     tag: 0.2.37
     # pullPolicy: IfNotPresent  
-
   service:    
     type: ClusterIP
     port: 80

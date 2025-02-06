@@ -1,3 +1,6 @@
+# 1.1.65 ( app v. 2.10.50 )
+- Updated Tiledesk Server: 2.10.50
+
 # 1.1.64 ( app v. 2.10.47 )
 - Updated Tiledesk Server: 2.10.47
 
