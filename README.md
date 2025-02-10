@@ -6,9 +6,9 @@ Designed to be open source since the beginning, we actively worked on it to crea
 
 What is Tiledesk today? It became the open source “conversational app development” platform that everyone needs to automate the Customer Service!
 
-You can use Tiledesk to increase sales for your website or for post-sales customer service. Every conversation can be automated using our first class native chatbot technology (powered by AI). You can also connect your own applications using our APIs or Webhooks. Moreover you can deploy entire visual applications inside a conversation. And your applications can converse with your chatbots or your end-users! We know this is cool 😎
+You can use Tiledesk to increase sales for your website or for post-sales customer service. Every conversation can be automated using our first class native chatbot technology (powered by AI). You can also connect your own applications using our APIs or Webhooks. Moreover, you can deploy entire visual applications inside a conversation. And your applications can converse with your chatbots or your end-users! We know this is cool 😎
 
-Tiledesk is multichannel in a totally new way. You can write your chatbot scripts with images, buttons and other cool elements that your channels support. But you will configureyour chatbot replies only once. They will run on every channel, auto-adapting the responses to the target channel whatever it is, Whatsapp, Facebook Messenger, Telegram etc.
+Tiledesk is multichannel in a totally new way. You can write your chatbot scripts with images, buttons and other cool elements that your channels support. But you will configure your chatbot replies only once. They will run on every channel, auto-adapting the responses to the target channel whatever it is, WhatsApp, Facebook Messenger, Telegram, etc.
 
 # Install Tiledesk
 
@@ -32,7 +32,7 @@ Tiledesk deployed via `docker-compose` or Kubernetes contains the following:
 5. Chat21 Web Widget
 6. Chat21 Server
 7. Chat21 Http Server
-8. A Mongo DB  
+8. A MongoDB  
 9. A proxy
 
 ## Production environments
@@ -50,5 +50,5 @@ Another typical change would be the integration of your company-wide monitoring 
 # Enterprise version
 Tiledesk Enterprise customers can request enterprise credentials sending and email at: info@tiledesk.com. These credentials are required to pull private (Enterprise-only) Docker images.
 
-# Community? Questions? Support ?
+# Community? Questions? Support?
 If you need help or just want to hang out, come, say hi on our [<img width="15" alt="Tiledesk discord" src="https://seeklogo.com/images/D/discord-color-logo-E5E6DFEF80-seeklogo.com.png"> Discord](https://discord.gg/nERZEZ7SmG) server or make a post on our [Forum](https://tiledesk.discourse.group).
