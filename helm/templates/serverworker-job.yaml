@@ -201,6 +201,11 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config-email-template
                   key: EMAIL_QUOTA_CHECKPOINT_REACHED_TEMPLATE
+            - name: EMAIL_REDIRECT_TO_DESKTOP_TEMPLATE
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config-email-template
+                  key: EMAIL_REDIRECT_TO_DESKTOP_TEMPLATE
             {{- end }}
                                         
             - name: SUPER_PASSWORD
