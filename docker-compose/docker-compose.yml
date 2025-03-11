@@ -4,10 +4,10 @@ volumes:
    tiledesk-datadb:
 services:
   dashboard:
-   image: tiledesk/tiledesk-dashboard:2.7.70
+   image: tiledesk/tiledesk-dashboard:2.7.84
    container_name: tiledesk-dashboard 
    environment: 
-      - FEATURES_TOKEN=PAY:F-ANA:F-ACT:F-TRI:T-GRO:F-DEP:F-OPH:F-MTL:T-CAR:F-V1L:T-PSA:F-MTT:T-SUP:T-LBS:T-APP:T-DEV:F-NOT:T-IPS:F-ETK:F-RAS:T-PPB:F-PET:F-MTS:F-TIL:T-DGF:T-NAT:T-HPB:F-TOW:T-KNB:F-BAN:F-AST:F-MON:F-CNT:F-AUT:F-WUN:F
+      - FEATURES_TOKEN=PAY:F-ANA:T-ACT:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-PSA:F-MTT:T-SUP:T-LBS:T-APP:T-DEV:F-NOT:T-IPS:F-ETK:F-RAS:T-PPB:F-PET:F-MTS:F-TIL:T-DGF:T-NAT:T-HPB:F-TOW:F-KNB:F-GPT:T-BAN:F-AST:F-MON:T-CNT:F-AUT:F-WUN:F-QIN:F-INT:T-DPA:T
       - BOT_CREDENTIAL_URL=/api/modules/dialogflow/botcredendials/
       - RASA_BOT_CREDENTIAL_URL=/api/modules/rasa/botcredendials/
       - "WIDGET_LOCATION=${EXTERNAL_BASE_URL:-http://localhost:8081}/widget/"
@@ -32,7 +32,7 @@ services:
       - FIREBASE_MESSAGINGSENDERID
       - FIREBASE_APP_ID
       - FIREBASE_VAPID
-      - "API_BASEIMAGE_URL=${EXTERNAL_BASE_URL:-http://localhost:8081}/api/"
+      - API_BASEIMAGE_URL=/api/
       - COMMUNITY_TEMPLATES_URL=/api/modules/templates/public/community
       - TEMPLATES_URL=/api/modules/templates/public/templates
       - FILE_UPLOAD_ACCEPT=*/*
@@ -40,12 +40,12 @@ services:
       - "4500:80" #use expose if you want to block external access
   
   cds:
-   image: tiledesk/design-studio:1.27.0
+   image: tiledesk/design-studio:1.29.0
    container_name: tiledesk-cds 
    environment: 
-      - FEATURES_TOKEN=PAY:F-ANA:F-ACT:F-TRI:T-GRO:F-DEP:F-OPH:F-MTL:T-CAR:F-V1L:T-PSA:F-MTT:T-SUP:T-LBS:T-APP:T-DEV:F-NOT:T-IPS:F-ETK:F-RAS:T-PPB:F-PET:F-MTS:F-TIL:T-DGF:T-NAT:T-HPB:F-TOW:T-KNB:F-BAN:F-AST:F-MON:F-CNT:F-AUT:F-WUN:F
+      - FEATURES_TOKEN=PAY:F-ANA:T-ACT:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-PSA:F-MTT:T-SUP:T-LBS:T-APP:T-DEV:F-NOT:T-IPS:F-ETK:F-RAS:T-PPB:F-PET:F-MTS:F-TIL:T-DGF:T-NAT:T-HPB:F-TOW:F-KNB:F-GPT:T-BAN:F-AST:F-MON:T-CNT:F-AUT:F-WUN:F-QIN:F-INT:T-DPA:T
       - "WIDGET_LOCATION=${EXTERNAL_BASE_URL:-http://localhost:8081}/widget/"
-      - "SERVER_BASE_URL=${EXTERNAL_BASE_URL:-http://localhost:8081}/api/"
+      - SERVER_BASE_URL=/api/
       - DASHBOARD_URL=/dashboard/
       - WS_URL
       - WS_URL_RELATIVE=/ws/
@@ -62,14 +62,14 @@ services:
       - FIREBASE_APP_ID
       - FIREBASE_VAPID
       - CDS_STORAGE_PREFIX=cds_sv5
-      - "API_BASEIMAGE_URL=${EXTERNAL_BASE_URL:-http://localhost:8081}/api/"
+      - API_BASEIMAGE_URL=/api/
       - FILE_UPLOAD_ACCEPT=*/*
       - AI_MODELS=gpt-3.5-turbo:0.6;gpt-4:25;gpt-4-turbo-preview:12;gpt-4o:6;gpt-4o-mini:0.3
    ports:
       - "4502:80" #use expose if you want to block external access
 
   webwidget:
-   image: chat21/chat21-web-widget:5.0.90
+   image: chat21/chat21-web-widget:5.0.91
    container_name: chat21-web-widget 
    ports: 
       - "4200:80" # specify port forewarding
@@ -99,15 +99,15 @@ services:
       - FILE_UPLOAD_ACCEPT=*/*
 
   ionic:
-   image: chat21/chat21-ionic:3.4.11
+   image: chat21/chat21-ionic:3.4.13
    container_name: chat21-ionic
    ports:
       - "8082:80" #use expose if you want to block external access   
    environment: 
       - DASHBOARD_URL=/dashboard/      
       - API_BASEIMAGE_URL=/api/
-      - "SERVER_BASE_URL=${EXTERNAL_BASE_URL:-http://localhost:8081}/api/"
-      - FEATURES_TOKEN=PAY:F-ANA:F-ACT:F-TRI:T-GRO:F-DEP:F-OPH:F-MTL:T-CAR:F-V1L:T-PSA:F-MTT:T-SUP:T-LBS:T-APP:T-DEV:F-NOT:T-IPS:F-ETK:F-RAS:T-PPB:F-PET:F-MTS:F-TIL:T-DGF:T-NAT:T-HPB:F-TOW:T-KNB:F-BAN:F-AST:F-MON:F-CNT:F-AUT:F-WUN:F
+      - SERVER_BASE_URL=/api/
+      - FEATURES_TOKEN=PAY:F-ANA:T-ACT:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-PSA:F-MTT:T-SUP:T-LBS:T-APP:T-DEV:F-NOT:T-IPS:F-ETK:F-RAS:T-PPB:F-PET:F-MTS:F-TIL:T-DGF:T-NAT:T-HPB:F-TOW:F-KNB:F-GPT:T-BAN:F-AST:F-MON:T-CNT:F-AUT:F-WUN:F-QIN:F-INT:T-DPA:T
       - WIDGET_LOCATION=/widget/
       - PUSH_ENGINE=none
       - LOG_LEVEL=info
@@ -133,7 +133,6 @@ services:
       - EMAIL_SECTION=true
       - CHAT_STORAGE_PREFIX=chat_sv5
       - WS_URL_RELATIVE=/ws/
-
   proxy:
     image: tiledesk/tiledesk-docker-proxy:v1.1.2
     container_name: tiledesk-docker-proxy   
@@ -149,7 +148,7 @@ services:
     command: [nginx-debug, '-g', 'daemon off;']
     
   server:
-    image: tiledesk/tiledesk-server:2.10.50
+    image: tiledesk/tiledesk-server:2.10.67
     container_name: tiledesk-server
     restart: always       
     environment: 
@@ -242,7 +241,6 @@ services:
       - mongo
       - rabbitmq
       - server
-
   rabbitmq:
     image: chat21/chat21-rabbitmq
     container_name: rabbitmq
