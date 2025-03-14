@@ -40,7 +40,7 @@ services:
       - "4500:80" #use expose if you want to block external access
   
   cds:
-   image: tiledesk/design-studio:1.29.0
+   image: tiledesk/design-studio:1.29.2
    container_name: cds 
    environment: 
       - FEATURES_TOKEN=PAY:F-ANA:T-ACT:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-PSA:F-MTT:T-SUP:T-LBS:T-APP:T-DEV:F-NOT:T-IPS:F-ETK:F-RAS:T-PPB:F-PET:F-MTS:F-TIL:T-DGF:T-NAT:T-HPB:F-TOW:F-KNB:F-GPT:T-BAN:F-AST:F-MON:T-CNT:F-AUT:F-WUN:F-QIN:F-INT:T-DPA:T
