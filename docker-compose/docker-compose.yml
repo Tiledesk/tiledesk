@@ -4,8 +4,8 @@ volumes:
    tiledesk-datadb:
 services:
   dashboard:
-   image: tiledesk/tiledesk-dashboard:2.7.84
-   container_name: tiledesk-dashboard 
+   image: tiledesk/tiledesk-dashboard:2.7.88
+   container_name: dashboard 
    environment: 
       - FEATURES_TOKEN=PAY:F-ANA:T-ACT:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-PSA:F-MTT:T-SUP:T-LBS:T-APP:T-DEV:F-NOT:T-IPS:F-ETK:F-RAS:T-PPB:F-PET:F-MTS:F-TIL:T-DGF:T-NAT:T-HPB:F-TOW:F-KNB:F-GPT:T-BAN:F-AST:F-MON:T-CNT:F-AUT:F-WUN:F-QIN:F-INT:T-DPA:T
       - BOT_CREDENTIAL_URL=/api/modules/dialogflow/botcredendials/
@@ -41,7 +41,7 @@ services:
   
   cds:
    image: tiledesk/design-studio:1.29.0
-   container_name: tiledesk-cds 
+   container_name: cds 
    environment: 
       - FEATURES_TOKEN=PAY:F-ANA:T-ACT:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-PSA:F-MTT:T-SUP:T-LBS:T-APP:T-DEV:F-NOT:T-IPS:F-ETK:F-RAS:T-PPB:F-PET:F-MTS:F-TIL:T-DGF:T-NAT:T-HPB:F-TOW:F-KNB:F-GPT:T-BAN:F-AST:F-MON:T-CNT:F-AUT:F-WUN:F-QIN:F-INT:T-DPA:T
       - "WIDGET_LOCATION=${EXTERNAL_BASE_URL:-http://localhost:8081}/widget/"
@@ -67,7 +67,7 @@ services:
       - AI_MODELS=gpt-3.5-turbo:0.6;gpt-4:25;gpt-4-turbo-preview:12;gpt-4o:6;gpt-4o-mini:0.3
    ports:
       - "4502:80" #use expose if you want to block external access
-
+      
   webwidget:
    image: chat21/chat21-web-widget:5.0.91
    container_name: chat21-web-widget 
@@ -133,6 +133,7 @@ services:
       - EMAIL_SECTION=true
       - CHAT_STORAGE_PREFIX=chat_sv5
       - WS_URL_RELATIVE=/ws/
+      
   proxy:
     image: tiledesk/tiledesk-docker-proxy:v1.1.2
     container_name: tiledesk-docker-proxy   
@@ -147,9 +148,23 @@ services:
       - cds
     command: [nginx-debug, '-g', 'daemon off;']
     
+  chatbot:
+   image: tiledesk/tiledesk-chatbot:1.3.0
+   container_name: chatbot 
+   environment: 
+      - API_ENDPOINT=http://server:3000
+      - TILEBOT_ENDPOINT=http://chatbot:3000
+      - "API_URL=${EXTERNAL_BASE_URL:-http://localhost:8081}/api"
+      - MONGODB_URI=mongodb://mongo/tiledesk
+      - CACHE_ENABLED=true
+      - CACHE_REDIS_HOST=redis
+      - CACHE_REDIS_PORT=6379
+      - TILEBOT_LOG=info
+      - AI_ENDPOINT=http://ai:8000/api
+      
   server:
-    image: tiledesk/tiledesk-server:2.10.67
-    container_name: tiledesk-server
+    image: tiledesk/tiledesk-server:2.10.69
+    container_name: server
     restart: always       
     environment: 
       - LOG_LEVEL=info
@@ -189,10 +204,12 @@ services:
       - TELEGRAM_LOG=info
       - FB_APP_ID
       - FB_APP_SECRET
-      - BASE_FILE_URL=${EXTERNAL_BASE_URL:-http://localhost:8081}/api/"
+      - "BASE_FILE_URL=${EXTERNAL_BASE_URL:-http://localhost:8081}/api/"
       - GPTKEY=CHANGEIT
       - OPENAI_ENDPOINT=https://api.openai.com/v1
       - KB_ENDPOINT
+      - QUOTES_ENABLED=false
+      - TILEBOT_ENDPOINT=http://chatbot:3000
     depends_on:
       - mongo
     ports:
@@ -241,6 +258,20 @@ services:
       - mongo
       - rabbitmq
       - server
+      
+  ai:
+    image: tiledesk/tiledeskai-lite:0.1.0
+    container_name: ai
+    restart: always
+    environment:
+      - WORKERS=3
+      - TIMEOUT=180
+      - MAXREQUESTS=1200
+      - MAXRJITTER=5
+      - GRACEFULTIMEOUT=30
+    ports:
+      - 8000:8000
+      
   rabbitmq:
     image: chat21/chat21-rabbitmq
     container_name: rabbitmq
@@ -264,6 +295,7 @@ services:
     command: --bind_ip_all
     volumes:
       - tiledesk-datadb:/data/db
+
   redis:
     container_name: redis
     image: redis:7.0.5
