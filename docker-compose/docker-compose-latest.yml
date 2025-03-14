@@ -5,9 +5,9 @@ volumes:
 services:
   dashboard:
    image: tiledesk/tiledesk-dashboard:latest
-   container_name: tiledesk-dashboard 
+   container_name: dashboard 
    environment: 
-      - FEATURES_TOKEN=PAY:F-ANA:F-ACT:F-TRI:T-GRO:F-DEP:F-OPH:F-MTL:T-CAR:F-V1L:T-PSA:F-MTT:T-SUP:T-LBS:T-APP:T-DEV:F-NOT:T-IPS:F-ETK:F-RAS:T-PPB:F-PET:F-MTS:F-TIL:T-DGF:T-NAT:T-HPB:F-TOW:T-KNB:F-BAN:F-AST:F-MON:F-CNT:F-AUT:F-WUN:F
+      - FEATURES_TOKEN=PAY:F-ANA:T-ACT:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-PSA:F-MTT:T-SUP:T-LBS:T-APP:T-DEV:F-NOT:T-IPS:F-ETK:F-RAS:T-PPB:F-PET:F-MTS:F-TIL:T-DGF:T-NAT:T-HPB:F-TOW:F-KNB:F-GPT:T-BAN:F-AST:F-MON:T-CNT:F-AUT:F-WUN:F-QIN:F-INT:T-DPA:T
       - BOT_CREDENTIAL_URL=/api/modules/dialogflow/botcredendials/
       - RASA_BOT_CREDENTIAL_URL=/api/modules/rasa/botcredendials/
       - "WIDGET_LOCATION=${EXTERNAL_BASE_URL:-http://localhost:8081}/widget/"
@@ -32,7 +32,7 @@ services:
       - FIREBASE_MESSAGINGSENDERID
       - FIREBASE_APP_ID
       - FIREBASE_VAPID
-      - "API_BASEIMAGE_URL=${EXTERNAL_BASE_URL:-http://localhost:8081}/api/"
+      - API_BASEIMAGE_URL=/api/
       - COMMUNITY_TEMPLATES_URL=/api/modules/templates/public/community
       - TEMPLATES_URL=/api/modules/templates/public/templates
       - FILE_UPLOAD_ACCEPT=*/*
@@ -41,11 +41,11 @@ services:
 
   cds:
    image: tiledesk/design-studio:latest
-   container_name: tiledesk-cds 
+   container_name: cds 
    environment: 
-      - FEATURES_TOKEN=PAY:F-ANA:F-ACT:F-TRI:T-GRO:F-DEP:F-OPH:F-MTL:T-CAR:F-V1L:T-PSA:F-MTT:T-SUP:T-LBS:T-APP:T-DEV:F-NOT:T-IPS:F-ETK:F-RAS:T-PPB:F-PET:F-MTS:F-TIL:T-DGF:T-NAT:T-HPB:F-TOW:T-KNB:F-BAN:F-AST:F-MON:F-CNT:F-AUT:F-WUN:F
+      - FEATURES_TOKEN=PAY:F-ANA:T-ACT:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-PSA:F-MTT:T-SUP:T-LBS:T-APP:T-DEV:F-NOT:T-IPS:F-ETK:F-RAS:T-PPB:F-PET:F-MTS:F-TIL:T-DGF:T-NAT:T-HPB:F-TOW:F-KNB:F-GPT:T-BAN:F-AST:F-MON:T-CNT:F-AUT:F-WUN:F-QIN:F-INT:T-DPA:T
       - "WIDGET_LOCATION=${EXTERNAL_BASE_URL:-http://localhost:8081}/widget/"
-      - "SERVER_BASE_URL=${EXTERNAL_BASE_URL:-http://localhost:8081}/api/"
+      - SERVER_BASE_URL=/api/
       - DASHBOARD_URL=/dashboard/
       - WS_URL
       - WS_URL_RELATIVE=/ws/
@@ -62,7 +62,7 @@ services:
       - FIREBASE_APP_ID
       - FIREBASE_VAPID
       - CDS_STORAGE_PREFIX=cds_sv5
-      - "API_BASEIMAGE_URL=${EXTERNAL_BASE_URL:-http://localhost:8081}/api/"
+      - API_BASEIMAGE_URL=/api/
       - FILE_UPLOAD_ACCEPT=*/*
       - AI_MODELS=gpt-3.5-turbo:0.6;gpt-4:25;gpt-4-turbo-preview:12;gpt-4o:6;gpt-4o-mini:0.3
    ports:
@@ -106,12 +106,11 @@ services:
    environment: 
       - DASHBOARD_URL=/dashboard/      
       - API_BASEIMAGE_URL=/api/
-      - "SERVER_BASE_URL=${EXTERNAL_BASE_URL:-http://localhost:8081}/api/"
-      - FEATURES_TOKEN=PAY:F-ANA:F-ACT:F-TRI:T-GRO:F-DEP:F-OPH:F-MTL:T-CAR:F-V1L:T-PSA:F-MTT:T-SUP:T-LBS:T-APP:T-DEV:F-NOT:T-IPS:F-ETK:F-RAS:T-PPB:F-PET:F-MTS:F-TIL:T-DGF:T-NAT:T-HPB:F-TOW:T-KNB:F-BAN:F-AST:F-MON:F-CNT:F-AUT:F-WUN:F
+      - SERVER_BASE_URL=/api/
+      - FEATURES_TOKEN=PAY:F-ANA:T-ACT:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-PSA:F-MTT:T-SUP:T-LBS:T-APP:T-DEV:F-NOT:T-IPS:F-ETK:F-RAS:T-PPB:F-PET:F-MTS:F-TIL:T-DGF:T-NAT:T-HPB:F-TOW:F-KNB:F-GPT:T-BAN:F-AST:F-MON:T-CNT:F-AUT:F-WUN:F-QIN:F-INT:T-DPA:T
       - WIDGET_LOCATION=/widget/
       - PUSH_ENGINE=none
       - LOG_LEVEL=info
-      - FILE_UPLOAD_ACCEPT=*/*
       - FILE_UPLOAD_ACCEPT=*/*
       - CHAT21_ENGINE=mqtt
       - MQTT_APPID=tilechat
@@ -147,10 +146,24 @@ services:
       - chat21httpserver
       - rabbitmq
     command: [nginx-debug, '-g', 'daemon off;']
-    
+
+  chatbot:
+    image: tiledesk/tiledesk-chatbot:latest
+    container_name: chatbot 
+    environment: 
+      - API_ENDPOINT=http://server:3000
+      - TILEBOT_ENDPOINT=http://chatbot:3000
+      - "API_URL=${EXTERNAL_BASE_URL:-http://localhost:8081}/api"
+      - MONGODB_URI=mongodb://mongo/tiledesk
+      - CACHE_ENABLED=true
+      - CACHE_REDIS_HOST=redis
+      - CACHE_REDIS_PORT=6379
+      - TILEBOT_LOG=info
+      - AI_ENDPOINT=http://ai:8000/api
+
   server:
     image: tiledesk/tiledesk-server:latest
-    container_name: tiledesk-server
+    container_name: server
     restart: always       
     environment: 
       - LOG_LEVEL=info
@@ -190,10 +203,12 @@ services:
       - TELEGRAM_LOG=info
       - FB_APP_ID
       - FB_APP_SECRET
-      - BASE_FILE_URL=${EXTERNAL_BASE_URL:-http://localhost:8081}/api/"
+      - "BASE_FILE_URL=${EXTERNAL_BASE_URL:-http://localhost:8081}/api/"
       - GPTKEY=CHANGEIT
       - OPENAI_ENDPOINT=https://api.openai.com/v1
       - KB_ENDPOINT
+      - QUOTES_ENABLED=false
+      - TILEBOT_ENDPOINT=http://chatbot:3000
     depends_on:
       - mongo
     ports:
@@ -267,6 +282,7 @@ services:
     command: --bind_ip_all
     volumes:
       - tiledesk-datadb:/data/db
+      
   redis:
     container_name: redis
     image: redis:7.0.5

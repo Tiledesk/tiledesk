@@ -149,9 +149,9 @@ services:
     command: [nginx-debug, '-g', 'daemon off;']
     
   chatbot:
-   image: tiledesk/tiledesk-chatbot:1.3.0
-   container_name: chatbot 
-   environment: 
+    image: tiledesk/tiledesk-chatbot:1.3.0
+    container_name: chatbot 
+    environment: 
       - API_ENDPOINT=http://server:3000
       - TILEBOT_ENDPOINT=http://chatbot:3000
       - "API_URL=${EXTERNAL_BASE_URL:-http://localhost:8081}/api"
