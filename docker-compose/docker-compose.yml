@@ -4,7 +4,7 @@ volumes:
    tiledesk-datadb:
 services:
   dashboard:
-   image: tiledesk/tiledesk-dashboard:2.7.90
+   image: tiledesk/tiledesk-dashboard:2.7.93
    container_name: dashboard 
    environment: 
       - FEATURES_TOKEN=PAY:F-ANA:T-ACT:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-PSA:F-MTT:T-SUP:T-LBS:T-APP:T-DEV:F-NOT:T-IPS:F-ETK:F-RAS:T-PPB:F-PET:F-MTS:F-TIL:T-DGF:T-NAT:T-HPB:F-TOW:F-KNB:F-GPT:T-BAN:F-AST:F-MON:T-CNT:F-AUT:F-WUN:F-QIN:F-INT:T-DPA:T
@@ -40,7 +40,7 @@ services:
       - "4500:80" #use expose if you want to block external access
   
   cds:
-   image: tiledesk/design-studio:1.29.2
+   image: tiledesk/design-studio:1.30.4
    container_name: cds 
    environment: 
       - FEATURES_TOKEN=PAY:F-ANA:T-ACT:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-PSA:F-MTT:T-SUP:T-LBS:T-APP:T-DEV:F-NOT:T-IPS:F-ETK:F-RAS:T-PPB:F-PET:F-MTS:F-TIL:T-DGF:T-NAT:T-HPB:F-TOW:F-KNB:F-GPT:T-BAN:F-AST:F-MON:T-CNT:F-AUT:F-WUN:F-QIN:F-INT:T-DPA:T
@@ -69,7 +69,7 @@ services:
       - "4502:80" #use expose if you want to block external access
       
   webwidget:
-   image: chat21/chat21-web-widget:5.0.91
+   image: chat21/chat21-web-widget:5.0.93
    container_name: chat21-web-widget 
    ports: 
       - "4200:80" # specify port forewarding
@@ -149,7 +149,7 @@ services:
     command: [nginx-debug, '-g', 'daemon off;']
     
   chatbot:
-    image: tiledesk/tiledesk-chatbot:1.3.0
+    image: tiledesk/tiledesk-chatbot:2.0.7
     container_name: chatbot 
     environment: 
       - API_ENDPOINT=http://server:3000
@@ -163,7 +163,7 @@ services:
       - AI_ENDPOINT=http://ai:8000/api
       
   server:
-    image: tiledesk/tiledesk-server:2.10.69
+    image: tiledesk/tiledesk-server:2.10.75
     container_name: server
     restart: always       
     environment: 
