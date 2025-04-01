@@ -32,7 +32,7 @@ spec:
         paths:
           {{- range .Values.ingress.hosts.hostip.paths }}
           - path: {{ .path }}
-            pathType: Prefix          
+            pathType: ImplementationSpecific          
             backend:
               service:
                 name: {{ $fullName }}-{{ .service }}
@@ -47,7 +47,7 @@ spec:
         paths:
           {{- range .Values.ingress.hosts.hostconsole.paths }}
           - path: {{ .path }}
-            pathType: Prefix          
+            pathType: ImplementationSpecific          
             backend:
               service:
                 name: {{ $fullName }}-{{ .service }}
@@ -62,7 +62,7 @@ spec:
         paths:
           {{- range .Values.ingress.hosts.hostapi.paths }}
           - path: {{ .path }}
-            pathType: Prefix          
+            pathType: ImplementationSpecific          
             backend:
               service:
                 name: {{ $fullName }}-{{ .service }}
@@ -77,7 +77,7 @@ spec:
         paths:
           {{- range .Values.ingress.hosts.hostrtm.paths }}
           - path: {{ .path }}
-            pathType: Prefix          
+            pathType: ImplementationSpecific          
             backend:
               service:
                 name: {{ $fullName }}-{{ .service }}
@@ -92,7 +92,7 @@ spec:
         paths:
           {{- range .Values.ingress.hosts.hostwidget.paths }}
           - path: {{ .path }}
-            pathType: Prefix          
+            pathType: ImplementationSpecific          
             backend:
               service:
                 name: {{ $fullName }}-{{ .service }}
