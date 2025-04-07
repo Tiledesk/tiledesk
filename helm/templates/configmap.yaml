@@ -105,6 +105,7 @@ data:
   KB_ENDPOINT: {{ .Values.KB_ENDPOINT | quote }}
   KB_ENDPOINT_QA: {{if .Values.KB_ENDPOINT_QA}}{{ .Values.KB_ENDPOINT_QA | quote }}{{ else }}http://{{ include "tiledesk.fullname" . }}-backendllm-qa/api{{ end }}
   KB_ENDPOINT_TRAIN: {{if .Values.KB_ENDPOINT_TRAIN}}{{ .Values.KB_ENDPOINT_TRAIN | quote }}{{ else }}http://{{ include "tiledesk.fullname" . }}-backendllm-train/api{{ end }}
+  AI_ENDPOINT: {{if .Values.AI_ENDPOINT}}{{ .Values.AI_ENDPOINT | quote }}{{ else }}http://{{ include "tiledesk.fullname" . }}-backendllm-qa/api{{ end }}
   GPTKEY: {{ .Values.GPTKEY | quote }}
   TELEGRAM_API_URL: {{ .Values.TELEGRAM_API_URL | quote }}
   TELEGRAM_FILE_URL: {{ .Values.TELEGRAM_FILE_URL | quote }}

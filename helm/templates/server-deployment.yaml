@@ -550,6 +550,11 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: KB_ENDPOINT_TRAIN
+            - name: AI_ENDPOINT
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: AI_ENDPOINT
             - name: TELEGRAM_API_URL
               valueFrom:
                 configMapKeyRef:
