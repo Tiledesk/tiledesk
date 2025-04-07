@@ -1,3 +1,6 @@
+# 1.1.70 ( app v. 2.10.78 )
+- Updated Tiledesk Server: 2.10.78
+
 # 1.1.69 ( app v. 2.10.58 )
 - Updated ingress-proxy-nginx
 

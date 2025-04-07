@@ -612,6 +612,12 @@ spec:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: BRAND_NAME
                   optional: true
+            - name: BRAND_LOGO
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: BRAND_LOGO
+                  optional: true
             - name: ADMIN_EMAIL
               valueFrom:
                 configMapKeyRef:
@@ -634,6 +640,7 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: AI_MODELS
+            ######   VOICE VXML: start  ######
             - name: VOICE_SECRET
               valueFrom:
                 configMapKeyRef:
@@ -651,12 +658,19 @@ spec:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: BASE_POOLING_DELAY
                   optional: true
+            - name: MAX_POLLING_TIME
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: MAX_POLLING_TIME
+                  optional: true
             - name: VOICE_ENABLED
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: VOICE_ENABLED
                   optional: true
+            ######   VOICE VXML: end  ######
             - name: SMS_LOG
               valueFrom:
                 configMapKeyRef:

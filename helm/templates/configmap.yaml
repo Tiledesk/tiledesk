@@ -112,6 +112,7 @@ data:
   QUOTES_ENABLED: {{ .Values.QUOTES_ENABLED | quote }}
   HUBSPOT_ENDPOINT: {{ .Values.HUBSPOT_ENDPOINT | quote }}
   {{if .Values.BRAND_NAME}}BRAND_NAME: {{ .Values.BRAND_NAME | quote }}{{ end }}
+  {{if .Values.BRAND_LOGO}}BRAND_LOGO: {{ .Values.BRAND_LOGO | quote }}{{ end }}
   {{if .Values.ADMIN_EMAIL}}ADMIN_EMAIL: {{ .Values.ADMIN_EMAIL | quote }}{{ end }}
   {{if .Values.ADMIN_PASSWORD}}ADMIN_PASSWORD: {{ .Values.ADMIN_PASSWORD | quote }}{{ end }}
   TRAINER_LOG: {{ .Values.TRAINER_LOG | quote }}
@@ -121,6 +122,7 @@ data:
   {{if .Values.VOICE_SECRET}}VOICE_SECRET: {{ .Values.VOICE_SECRET | quote }}{{ end }}
   {{if .Values.VOICE_ENABLED}}VOICE_ENABLED: {{ .Values.VOICE_ENABLED | quote }}{{ end }}
   {{if .Values.BASE_POOLING_DELAY}}BASE_POOLING_DELAY: {{ .Values.BASE_POOLING_DELAY | quote }}{{ end }}
+  {{if .Values.MAX_POLLING_TIME}}MAX_POLLING_TIME: {{ .Values.MAX_POLLING_TIME | quote }}{{ end }}
   #SMS CHANNEL
   SMS_LOG: {{ .Values.SMS_LOG | quote }}
   #MULTI-WORKER
