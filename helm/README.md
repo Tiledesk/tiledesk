@@ -23,6 +23,7 @@ The requirements of the single pods can vary dependent on the model size and the
 | tiledesk-server    | 1   | 1GB    |
 | mongodb            | 0,5 | 512MB  |
 | tiledesk-dashboard | 0,2 | 200MB  |
+| tiledesk-cds       | 0,2 | 200MB  |
 | chat21-web-widget  | 0,2 | 200MB  |
 | chat21-ionic       | 0,2 | 200MB  |
 | chat21-server      | 0,5 | 512MB  |
