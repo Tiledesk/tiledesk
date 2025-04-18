@@ -33,6 +33,16 @@ The requirements of the single pods can vary dependent on the model size and the
 
 We recommend a size at least 30 GiB for the database volume claim.
 
+Recommented size for your production environment could be the follow:
+| Storage                        | Volume |
+|--------------------------------|--------|
+| rabbitmq                       | 8GB    |
+| redis                          | 8GB    | 
+| mongodb                        | 100GB  |
+
+
+
+
 N1-standard-1 type is the minimum cluster type if you choose GKE.
 
 ## Adding repo
