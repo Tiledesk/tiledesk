@@ -21,9 +21,6 @@ The requirements of the single pods can vary dependent on the model size and the
 | Deployment                     | CPU | Memory |
 |--------------------------------|-----|--------|
 | tiledesk-server                | 1   | 1GB    |
-| tiledesk-backend-llm-train     | 1   | 10GB   |
-| tiledesk-backend-llm-qa        | 1   | 10GB   |
-| tiledesk-chatbot               | 0,2 | 200MB  |
 | tiledesk-dashboard             | 0,2 | 200MB  |
 | tiledesk-cds                   | 0,2 | 200MB  |
 | chat21-server                  | 0,5 | 512MB  |
