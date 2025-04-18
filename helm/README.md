@@ -18,17 +18,21 @@ To install the Tiledesk chart, you need an existing Kubernetes cluster.
 The requirements of the single pods can vary dependent on the model size and the number of users. We recommend providing at least the following resources:
 
 
-| Deployment         | CPU | Memory |
-|--------------------|-----|--------|
-| tiledesk-server    | 1   | 1GB    |
-| mongodb            | 0,5 | 512MB  |
-| tiledesk-dashboard | 0,2 | 200MB  |
-| tiledesk-cds       | 0,2 | 200MB  |
-| chat21-web-widget  | 0,2 | 200MB  |
-| chat21-ionic       | 0,2 | 200MB  |
-| chat21-server      | 0,5 | 512MB  |
-| chat21-http-server | 0,2 | 200MB  |
-| rabbitmq           | 0,2 | 512MB  |
+| Deployment                     | CPU | Memory |
+|--------------------------------|-----|--------|
+| tiledesk-server                | 1   | 1GB    |
+| tiledesk-backend-llm-train     | 1   | 10GB   |
+| tiledesk-backend-llm-qa        | 1   | 10GB   |
+| tiledesk-chatbot               | 0,2 | 200MB  |
+| tiledesk-dashboard             | 0,2 | 200MB  |
+| tiledesk-cds                   | 0,2 | 200MB  |
+| chat21-server                  | 0,5 | 512MB  |
+| chat21-http-server             | 0,2 | 200MB  |
+| chat21-web-widget              | 0,2 | 200MB  |
+| chat21-ionic                   | 0,2 | 200MB  |
+| rabbitmq                       | 0,5 | 1GB    |
+| redis                          | 0,5 | 8GB    |
+| mongodb                        | 0,5 | 4GB    |
 
 We recommend a size at least 30 GiB for the database volume claim.
 
