@@ -1,11 +1,17 @@
-{{- if .Values.server.enabled -}}
-apiVersion: batch/v1
-kind: Job
+{{- if .Values.serverworker.enabled -}}
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   name: {{ include "tiledesk.fullname" . }}-serverworker
   labels: {{ include "tiledesk.labels" . | nindent 4 }}
-    app.kubernetes.io/component: server
-spec:  
+    app.kubernetes.io/component: serverworker
+spec: 
+{{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.serverReplicaCount }}
+{{- end }}
+  selector:
+    matchLabels: {{ include "tiledesk.selectorLabels" . | nindent 6 }}
+      app.kubernetes.io/component: serverworker
   template:
     metadata:
     {{- with .Values.podAnnotations }}
@@ -109,11 +115,6 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: EMAIL_PORT
-            - name: EMAIL_PASSWORD
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "tiledesk.fullname" . }}-config
-                  key: EMAIL_PASSWORD
             - name: EMAIL_FROM_ADDRESS
               valueFrom:
                 configMapKeyRef:
@@ -123,9 +124,8 @@ spec:
             #   valueFrom:
             #     configMapKeyRef:
             #       name: {{ include "tiledesk.fullname" . }}-config
-            #       key: EMAIL_BCC
-
-            {{- if .Values.EMAIL_TEMPLATE_CUSTOM }}
+            #       key: EMAIL_BCC   
+            {{- if .Values.EMAIL_TEMPLATE_CUSTOM }} 
             - name: EMAIL_ASSIGN_REQUEST_HTML_TEMPLATE
               valueFrom:
                 configMapKeyRef:
@@ -201,13 +201,17 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config-email-template
                   key: EMAIL_QUOTA_CHECKPOINT_REACHED_TEMPLATE
-            - name: EMAIL_REDIRECT_TO_DESKTOP_TEMPLATE
+            {{- end }} 
+            - name: WS_HISTORY_REQUESTS_LIMIT
               valueFrom:
                 configMapKeyRef:
-                  name: {{ include "tiledesk.fullname" . }}-config-email-template
-                  key: EMAIL_REDIRECT_TO_DESKTOP_TEMPLATE
-            {{- end }}
-                                        
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: WS_HISTORY_REQUESTS_LIMIT                           
+            - name: EMAIL_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: EMAIL_PASSWORD    
             - name: SUPER_PASSWORD
               valueFrom:
                 configMapKeyRef:
@@ -390,11 +394,6 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: MESSENGER_LOG
-            # - name: TILEBOT_LOG
-            #   valueFrom:
-            #     configMapKeyRef:
-            #       name: {{ include "tiledesk.fullname" . }}-config
-            #       key: TILEBOT_LOG
             - name: WRITE_LOG_TO_MONGODB
               valueFrom:
                 configMapKeyRef:
@@ -520,29 +519,11 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: JOB_TOPIC_EXCHANGE
-                  optional: true
             - name: BRAND_NAME
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: BRAND_NAME
-                  optional: true
-            - name: GPTKEY
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "tiledesk.fullname" . }}-config
-                  key: GPTKEY
-            - name: PINECONE_INDEX
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "tiledesk.fullname" . }}-config
-                  key: PINECONE_INDEX
-                  optional: true
-            - name: PINECONE_TYPE
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "tiledesk.fullname" . }}-config
-                  key: PINECONE_TYPE
                   optional: true
             - name: CONVERSATION_TAGS_TASK_PREFETCH
               valueFrom:
@@ -559,7 +540,23 @@ spec:
             #   valueFrom:
             #     configMapKeyRef:
             #       name: {{ include "tiledesk.fullname" . }}-config
-            #       key: BOT_RASA_ENDPOINT              
+            #       key: BOT_RASA_ENDPOINT
+          livenessProbe:
+            exec:
+              command:
+                - pgrep
+                - -f  # This tells pgrep to search the full command line
+                - "node jobs.js"
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          readinessProbe:
+            exec:
+              command:
+                - pgrep
+                - -f
+                - "node jobs.js"
+            initialDelaySeconds: 5
+            periodSeconds: 10         
           resources:
             {{- toYaml .Values.serverworker.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
@@ -570,7 +567,6 @@ spec:
       affinity:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      restartPolicy: OnFailure
       {{- with .Values.tolerations }}
       tolerations:
         {{- toYaml . | nindent 8 }}

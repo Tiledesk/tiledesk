@@ -24,7 +24,8 @@ data:
   # ----- DESIGN STUDIO ------- 
   CDS_STORAGE_PREFIX: {{ .Values.CDS_STORAGE_PREFIX | quote }}
   PHONE_NUMBER: {{ .Values.PHONE_NUMBER | quote }}
-  
+  MQTT_MANAGER_URL: {{if and .Values.EXTERNAL_MQTT_BASE_URL (hasPrefix "/" .Values.MQTT_MANAGER_URL)}}"{{ .Values.EXTERNAL_MQTT_BASE_URL }}{{ .Values.MQTT_MANAGER_URL }}"{{ else }}{{ .Values.MQTT_MANAGER_URL | quote }}{{ end }}
+
   # ----- CHAT IONIC ------- 
   WHATSAPP_TEMPLATES_BASE_URL: {{ .Values.WHATSAPP_TEMPLATES_BASE_URL | quote }}
   WRITE_TO_BUTTON: {{ .Values.WRITE_TO_BUTTON | quote }}
@@ -107,6 +108,7 @@ data:
   KB_ENDPOINT_TRAIN: {{if .Values.KB_ENDPOINT_TRAIN}}{{ .Values.KB_ENDPOINT_TRAIN | quote }}{{ else }}http://{{ include "tiledesk.fullname" . }}-backendllm-train/api{{ end }}
   AI_ENDPOINT: {{if .Values.AI_ENDPOINT}}{{ .Values.AI_ENDPOINT | quote }}{{ else }}http://{{ include "tiledesk.fullname" . }}-backendllm-qa/api{{ end }}
   GPTKEY: {{ .Values.GPTKEY | quote }}
+  FLOW_LOGS_ENABLED: {{ .Values.FLOW_LOGS_ENABLED | quote }}
   TELEGRAM_API_URL: {{ .Values.TELEGRAM_API_URL | quote }}
   TELEGRAM_FILE_URL: {{ .Values.TELEGRAM_FILE_URL | quote }}
   TELEGRAM_LOG: {{ .Values.TELEGRAM_LOG | quote }}
@@ -196,6 +198,15 @@ data:
   API_URL: {{if and .Values.EXTERNAL_BASE_URL (hasPrefix "/" .Values.API_URL)}}"{{ .Values.EXTERNAL_BASE_URL  }}{{ .Values.API_URL }}"{{ else }}{{ .Values.API_URL | quote }}{{ end }}
   BASE_FILE_URL: {{if and .Values.EXTERNAL_BASE_URL (hasPrefix "/" .Values.BASE_FILE_URL)}}"{{ .Values.EXTERNAL_BASE_URL  }}{{ .Values.BASE_FILE_URL }}"{{ else }}{{ .Values.BASE_FILE_URL | quote }}{{ end }}
   API_ENDPOINT: {{if .Values.API_ENDPOINT}}{{ .Values.API_ENDPOINT | quote }}{{else}}http://{{ include "tiledesk.fullname" . }}-server{{ end }}
+  BASE_URL: {{ if .Values.EXTERNAL_BASE_URL }}
+              {{- if hasSuffix "/" .Values.EXTERNAL_BASE_URL }}
+                "{{ trimSuffix "/" .Values.EXTERNAL_BASE_URL }}"
+              {{- else }}
+                "{{ .Values.EXTERNAL_BASE_URL }}"
+              {{- end }}
+            {{- else }}
+              "{{ .Values.BASE_URL }}"
+            {{- end }}
 
   MONGODB_URI: {{if .Values.MONGODB_URI}}{{ .Values.MONGODB_URI | quote }}{{ else }}mongodb://{{ include "tiledesk.fullname" . }}-mongodb/tiledesk{{ end }}
   PRESENCE_ENABLED: {{ .Values.PRESENCE_ENABLED | quote }}

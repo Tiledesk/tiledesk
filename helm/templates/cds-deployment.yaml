@@ -96,6 +96,11 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: LOG_LEVEL
+            - name: AI_MODELS
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: AI_MODELS 
             - name: CDS_STORAGE_PREFIX
               valueFrom:
                 configMapKeyRef:
@@ -106,6 +111,17 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: PHONE_NUMBER
+            - name: MQTT_APPID
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: MQTT_APPID
+            - name: MQTT_ENDPOINT
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: MQTT_MANAGER_URL
+            ######   FIREBASE: start  ######
             - name: FIREBASE_APIKEY 
               valueFrom:
                 configMapKeyRef:
@@ -146,11 +162,7 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: FIREBASE_VAPID
-            - name: AI_MODELS
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "tiledesk.fullname" . }}-config
-                  key: AI_MODELS                
+            ######   FIREBASE: end  ######                
           ports:
             - name: cds-http
               containerPort: 80

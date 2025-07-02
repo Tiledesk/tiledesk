@@ -34,6 +34,7 @@ TICKETING_EMAIL: example.com
 ###### ------DESIGN STUDIO : START------ ######
 CDS_STORAGE_PREFIX: cds_sv5
 PHONE_NUMBER: CHANGEIT
+MQTT_MANAGER_URL: /mqtt/ws
 ###### ------DESIGN STUDIO : END------ ######
 
 
@@ -183,6 +184,9 @@ QUEUE_NAME: tdserverqueue
 SCHEDULER_ENABLED: false
 #MULTI-WORKER
 # CONVERSATION_TAGS_TASK_PREFETCH: 10
+
+#CHATBOT
+FLOW_LOGS_ENABLED: true
 ###### ------SERVER : END------ ######
 
 
@@ -253,6 +257,7 @@ DASHBOARD_URL: /dashboard/
 API_BASEIMAGE_URL: /api/
 API_URL: /api/
 BASE_FILE_URL: /api/
+BASE_URL: /
 #MONGODB_URI: mongodb://tiledesk-mongo/tiledesk
 ###### ------COMMON CONF : END------ ######
 
@@ -268,19 +273,17 @@ server:
   resources: {}
   image:  
     repository: tiledesk.docker.scarf.sh/tiledesk/tiledesk-server
-    tag: 2.10.79
+    tag: 2.10.101
   service:
     type: ClusterIP
     port: 80
 
 serverworker:
-  ## Enable deployment of Tiledesk Server Worker
-  ##
-  enabled: true
-  resources: {}
-  image:
+  enabled: true ## Enable deployment of Tiledesk Server Worker
+  resources: {} 
+  image:  
     repository: tiledesk.docker.scarf.sh/tiledesk/tiledesk-server-worker
-    tag: 2.10.79
+    tag: 2.10.101
 
 dashboard:
   ## Enable deployment of Tiledesk Server
@@ -289,7 +292,7 @@ dashboard:
   resources: {}
   image:
     repository: tiledesk.docker.scarf.sh/tiledesk/tiledesk-dashboard
-    tag: 2.7.78
+    tag: 2.7.114
   service:
     type: ClusterIP
     port: 80
@@ -301,7 +304,7 @@ cds:
   resources: {}
   image:
     repository: tiledesk.docker.scarf.sh/tiledesk/design-studio
-    tag: 1.26.0
+    tag: 1.37.2
   service:
     type: ClusterIP
     port: 80
@@ -313,7 +316,7 @@ ionic:
   resources: {}
   image:
     repository: chat21/chat21-ionic
-    tag: 3.4.11
+    tag: 3.4.18
   service:
       type: ClusterIP
       port: 80
@@ -326,11 +329,11 @@ webwidget:
   resources: {}
   image:
     repository: chat21/chat21-web-widget
-    tag: 5.0.90
+    tag: 5.0.100
+    pullPolicy: Always
   service:
       type: ClusterIP
       port: 80
-    # pullPolicy: IfNotPresent
 
 c21httpsrv:
   ## Enable deployment of Chat21 http Server
@@ -420,8 +423,10 @@ ingress:
         - path: /mqws/(.*)
           service: rabbitmq
           servicePort: 15675
-        # - path: /mq
-        #   service: rabbitmq
+        - path: /mqtt/(.*)
+          service: rabbitmq
+          servicePort: 15675
+          enabled: true
         - path: /chatapi/(.*)
           service: c21httpsrv
     hostconsole:
@@ -445,8 +450,10 @@ ingress:
         - path: /mqws/(.*)
           service: rabbitmq
           servicePort: 15675
-        # - path: /mq/(.*)
-        #   service: rabbitmq
+        - path: /mqtt/(.*)
+          service: rabbitmq
+          servicePort: 15675
+          enabled: true
         - path: /chatapi/(.*)
           service: c21httpsrv
     hostapi: 
@@ -570,7 +577,7 @@ rabbitmq: #consumer_timeout = 31622400000
         targetPort: 1883
       - name: mqtt-web
         port: 15675
-        targetPort: 15675     
+        targetPort: 15675   
   extraPlugins: "rabbitmq_mqtt rabbitmq_web_mqtt rabbitmq_auth_backend_oauth2 rabbitmq_federation_management rabbitmq_stomp"
   extraConfiguration: |-
     mqtt.listeners.tcp.default = 1883

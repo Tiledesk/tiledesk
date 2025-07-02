@@ -450,6 +450,11 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: API_ENDPOINT
+            - name: BASE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: BASE_URL
             - name: DISABLE_SEND_OFFLINE_EMAIL
               valueFrom:
                 configMapKeyRef:
@@ -697,6 +702,12 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: PINECONE_TYPE
+                  optional: true
+            - name: FLOW_LOGS_ENABLED
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: FLOW_LOGS_ENABLED
                   optional: true
             
 
