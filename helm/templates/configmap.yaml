@@ -114,6 +114,7 @@ data:
   TELEGRAM_LOG: {{ .Values.TELEGRAM_LOG | quote }}
   QUOTES_ENABLED: {{ .Values.QUOTES_ENABLED | quote }}
   HUBSPOT_ENDPOINT: {{ .Values.HUBSPOT_ENDPOINT | quote }}
+  WS_HISTORY_REQUESTS_LIMIT: {{ .Values.WS_HISTORY_REQUESTS_LIMIT | quote }}
   {{if .Values.BRAND_NAME}}BRAND_NAME: {{ .Values.BRAND_NAME | quote }}{{ end }}
   {{if .Values.BRAND_LOGO}}BRAND_LOGO: {{ .Values.BRAND_LOGO | quote }}{{ end }}
   {{if .Values.ADMIN_EMAIL}}ADMIN_EMAIL: {{ .Values.ADMIN_EMAIL | quote }}{{ end }}

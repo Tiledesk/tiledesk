@@ -1,3 +1,6 @@
+# 1.1.74 ( app v. 2.10.102 )
+👉 bug fixed: WS_HISTORY_REQUESTS_LIMIT is not in configMap
+
 # 1.1.73 ( app v. 2.10.102 )
 👉 Updated Tiledesk Dashboard: 2.7.115
 👉 Updated Tiledesk CDS: 1.37.2

@@ -155,6 +155,7 @@ TELEGRAM_FILE_URL: https://api.telegram.org/file/bot
 TELEGRAM_LOG: info
 QUOTES_ENABLED: false
 HUBSPOT_ENDPOINT: https://api.hubapi.com/crm/v3/
+WS_HISTORY_REQUESTS_LIMIT: 100
 TRAINER_LOG: info
 #VOICE CHANNEL
 VOICE_LOG: info

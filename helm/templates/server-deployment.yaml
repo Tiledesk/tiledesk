@@ -615,7 +615,12 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
-                  key: HUBSPOT_ENDPOINT    
+                  key: HUBSPOT_ENDPOINT
+            - name: WS_HISTORY_REQUESTS_LIMIT
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: WS_HISTORY_REQUESTS_LIMIT     
             - name: BRAND_NAME
               valueFrom:
                 configMapKeyRef:
