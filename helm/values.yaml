@@ -516,7 +516,7 @@ redis:
 ## https://github.com/bitnami/charts/blob/master/bitnami/mongodb/values.yaml
 ##
 mongodb:
-  enabled: false
+  enabled: true
   nameOverride: mongodb
 
   # replicaSet: 
