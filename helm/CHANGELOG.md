@@ -1,10 +1,11 @@
 # 1.1.77 ( app v. 2.11.4 )
-👉 Updated redis chart: 17.17.1
-👉 Updated mongodb chart: 13.x.x
-👉 Updated postgresql chart: 12.8.1
+👉 Added common chart: 2.11.1
 
 # 1.1.76 ( app v. 2.11.4 )
 👉 Updated Tiledesk Dashboard: 2.7.120
+👉 Updated redis chart: 17.17.1
+👉 Updated mongodb chart: 13.x.x
+👉 Updated postgresql chart: 12.8.1
 
 # 1.1.75 ( app v. 2.11.4 )
 👉 Updated Tiledesk Dashboard: 2.7.119

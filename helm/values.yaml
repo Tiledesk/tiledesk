@@ -506,7 +506,7 @@ redis:
   architecture: standalone
   # master:
   #   livenessProbe:
-  #     enabled: true	
+  # enabled: true	
   auth:
     enabled: false
 
@@ -516,7 +516,7 @@ redis:
 ## https://github.com/bitnami/charts/blob/master/bitnami/mongodb/values.yaml
 ##
 mongodb:
-  enabled: true
+  enabled: false
   nameOverride: mongodb
 
   # replicaSet: 

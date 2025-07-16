@@ -1,4 +1,7 @@
 dependencies:
+- name: common
+  repository: oci://registry-1.docker.io/bitnamicharts
+  version: 2.11.1
 - name: mongodb
   repository: https://charts.bitnami.com/bitnami
   version: 13.18.5
@@ -11,5 +14,5 @@ dependencies:
 - name: postgresql
   repository: https://charts.bitnami.com/bitnami
   version: 12.8.1
-digest: sha256:c845e420fde879c41a8cfda5a455280b0420322ffd29fad4c39f7d6395570afc
-generated: "2025-07-16T10:55:18.785155+02:00"
+digest: sha256:3c5b18325edaadb1e05caa56231f1ce207a5479828fe12cd966acf564533640b
+generated: "2025-07-16T12:44:34.275498+02:00"
