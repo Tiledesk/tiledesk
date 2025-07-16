@@ -63,6 +63,6 @@ dependencies:
       #version: 17.x.x change to this
       repository: https://charts.bitnami.com/bitnami
     - name: postgresql
-      version: 12.1.13 
+      version: 12.5.1
       repository: https://charts.bitnami.com/bitnami
       condition: postgresql.enabled

@@ -293,7 +293,7 @@ dashboard:
   resources: {}
   image:
     repository: tiledesk.docker.scarf.sh/tiledesk/tiledesk-dashboard
-    tag: 2.7.119
+    tag: 2.7.120
   service:
     type: ClusterIP
     port: 80
