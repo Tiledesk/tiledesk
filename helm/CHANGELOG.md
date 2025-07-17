@@ -1,3 +1,6 @@
+# 1.1.78 ( app v. 2.11.8 )
+👉 Updated Tiledesk Server: 2.11.8
+
 # 1.1.77 ( app v. 2.11.4 )
 👉 Added common chart: 2.11.1
 
