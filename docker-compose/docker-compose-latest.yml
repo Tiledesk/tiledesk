@@ -7,9 +7,8 @@ services:
    image: tiledesk/tiledesk-dashboard:latest
    container_name: dashboard 
    environment: 
-      - FEATURES_TOKEN=PAY:F-ANA:T-ACT:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-PSA:F-MTT:T-SUP:T-LBS:T-APP:T-DEV:F-NOT:T-IPS:F-ETK:F-RAS:T-PPB:F-PET:F-MTS:F-TIL:T-DGF:T-NAT:T-HPB:F-TOW:F-KNB:F-GPT:T-BAN:F-AST:F-MON:T-CNT:F-AUT:F-WUN:F-QIN:F-INT:T-DPA:T
+      - FEATURES_TOKEN=PAY:F-ANA:T-ACT:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-PSA:F-MTT:T-SUP:T-LBS:T-APP:T-DEV:F-NOT:T-IPS:F-ETK:F-RAS:F-PPB:F-PET:F-MTS:F-TIL:T-DGF:T-NAT:T-HPB:F-TOW:F-KNB:T-GPT:T-BAN:F-AST:F-MON:T-CNT:F-AUT:F-WUN:F-INT:T-DPA:T
       - BOT_CREDENTIAL_URL=/api/modules/dialogflow/botcredendials/
-      - RASA_BOT_CREDENTIAL_URL=/api/modules/rasa/botcredendials/
       - "WIDGET_LOCATION=${EXTERNAL_BASE_URL:-http://localhost:8081}/widget/"
       - SERVER_BASE_URL=/api/
       - CHAT_BASE_URL=/chat/
@@ -43,7 +42,7 @@ services:
    image: tiledesk/design-studio:latest
    container_name: cds 
    environment: 
-      - FEATURES_TOKEN=PAY:F-ANA:T-ACT:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-PSA:F-MTT:T-SUP:T-LBS:T-APP:T-DEV:F-NOT:T-IPS:F-ETK:F-RAS:T-PPB:F-PET:F-MTS:F-TIL:T-DGF:T-NAT:T-HPB:F-TOW:F-KNB:F-GPT:T-BAN:F-AST:F-MON:T-CNT:F-AUT:F-WUN:F-QIN:F-INT:T-DPA:T
+      - FEATURES_TOKEN=PAY:F-ANA:T-ACT:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-PSA:F-MTT:T-SUP:T-LBS:T-APP:T-DEV:F-NOT:T-IPS:F-ETK:F-RAS:F-PPB:F-PET:F-MTS:F-TIL:T-DGF:T-NAT:T-HPB:F-TOW:F-KNB:T-GPT:T-BAN:F-AST:F-MON:T-CNT:F-AUT:F-WUN:F-INT:T-DPA:T
       - "WIDGET_LOCATION=${EXTERNAL_BASE_URL:-http://localhost:8081}/widget/"
       - SERVER_BASE_URL=/api/
       - DASHBOARD_URL=/dashboard/
@@ -64,7 +63,9 @@ services:
       - CDS_STORAGE_PREFIX=cds_sv5
       - API_BASEIMAGE_URL=/api/
       - FILE_UPLOAD_ACCEPT=*/*
-      - AI_MODELS=gpt-3.5-turbo:0.6;gpt-4:25;gpt-4-turbo-preview:12;gpt-4o:6;gpt-4o-mini:0.3
+      - AI_MODELS=gpt-5:4;gpt-5-mini:0.8;gpt-5-nano:0.16;gpt-4.1:3;gpt-4.1-mini:0.6;gpt-4.1-nano:0.16;gpt-4o:4;gpt-4o-mini:0.3;gpt-4:25;gpt-4-turbo-preview:12;gpt-3.5-turbo:0.6
+      - MQTT_APPID=tilechat
+      - "MQTT_ENDPOINT=${EXTERNAL_MQTT_BASE_URL:-ws://localhost:8081}/mqws/ws"
    ports:
       - "4502:80" #use expose if you want to block external access
 
@@ -91,7 +92,6 @@ services:
       - UPLOAD_ENGINE=native
       - "SERVER_BASE_URL=${EXTERNAL_BASE_URL:-http://localhost:8081}/api/"
       - "TRANSLATIONS_URL=${EXTERNAL_BASE_URL:-http://localhost:8081}/api/"
-      #- API_BASEIMAGE_URL=https://firebasestorage.googleapis.com/v0/b/    For firebase
       - "API_BASEIMAGE_URL=${EXTERNAL_BASE_URL:-http://localhost:8081}/api/"   
       - DASHBOARD_URL=/dashboard/   
       - AUTH_PERSISTENCE=LOCAL
@@ -107,7 +107,7 @@ services:
       - DASHBOARD_URL=/dashboard/      
       - API_BASEIMAGE_URL=/api/
       - SERVER_BASE_URL=/api/
-      - FEATURES_TOKEN=PAY:F-ANA:T-ACT:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-PSA:F-MTT:T-SUP:T-LBS:T-APP:T-DEV:F-NOT:T-IPS:F-ETK:F-RAS:T-PPB:F-PET:F-MTS:F-TIL:T-DGF:T-NAT:T-HPB:F-TOW:F-KNB:F-GPT:T-BAN:F-AST:F-MON:T-CNT:F-AUT:F-WUN:F-QIN:F-INT:T-DPA:T
+      - FEATURES_TOKEN=PAY:F-ANA:T-ACT:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-PSA:F-MTT:T-SUP:T-LBS:T-APP:T-DEV:F-NOT:T-IPS:F-ETK:F-RAS:F-PPB:F-PET:F-MTS:F-TIL:T-DGF:T-NAT:T-HPB:F-TOW:F-KNB:T-GPT:T-BAN:F-AST:F-MON:T-CNT:F-AUT:F-WUN:F-INT:T-DPA:T
       - WIDGET_LOCATION=/widget/
       - PUSH_ENGINE=none
       - LOG_LEVEL=info
@@ -116,7 +116,6 @@ services:
       - MQTT_APPID=tilechat
       - "MQTT_ENDPOINT=${EXTERNAL_MQTT_BASE_URL:-ws://localhost:8081}/mqws/ws"
       - MQTT_APIENDPOINT=/chatapi/api
-      #- MQTT_LOGINSERVICE_ENDPOINT=/api/chat21/native/auth/createCustomToken
       - UPLOAD_ENGINE=native
       - FIREBASE_APIKEY
       - FIREBASE_AUTHDOMAIN
@@ -134,18 +133,6 @@ services:
       - CHAT_STORAGE_PREFIX=chat_sv5
       - WS_URL_RELATIVE=/ws/
 
-  proxy:
-    image: tiledesk/tiledesk-docker-proxy
-    container_name: tiledesk-docker-proxy   
-    ports:
-      - "8081:80" # specify port forewarding
-    depends_on:
-      - server
-      - dashboard
-      - webwidget
-      - chat21httpserver
-      - rabbitmq
-    command: [nginx-debug, '-g', 'daemon off;']
 
   chatbot:
     image: tiledesk/tiledesk-chatbot:latest
@@ -159,7 +146,12 @@ services:
       - CACHE_REDIS_HOST=redis
       - CACHE_REDIS_PORT=6379
       - TILEBOT_LOG=info
-      - AI_ENDPOINT=http://ai:8000/api
+      - FLOW_LOGS_ENABLED=true
+      - AMQP_MANAGER_URL=amqp://ignored:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI3NjMwYTAwZS0xNTUxLTQ3Y2ItYmEzMC02NGRlNjJmYmNmNGYiLCJzdWIiOiIwMS1PQlNFUlZFUiIsInNjb3BlIjpbInJhYmJpdG1xLnJlYWQ6Ki8qLyoiLCJyYWJiaXRtcS53cml0ZToqLyovKiIsInJhYmJpdG1xLmNvbmZpZ3VyZToqLyovKiJdLCJjbGllbnRfaWQiOiIwMS1PQlNFUlZFUiIsImNpZCI6IjAxLU9CU0VSVkVSIiwiYXpwIjoiMDEtT0JTRVJWRVIiLCJ1c2VyX2lkIjoiMDEtT0JTRVJWRVIiLCJhcHBfaWQiOiJ0aWxlY2hhdCIsImlhdCI6MTY5NjQ5MjI4NywiZXhwIjoyMDA3NTMyMjg3LCJhdWQiOlsicmFiYml0bXEiLCIwMS1PQlNFUlZFUiJdLCJraWQiOiJ0aWxlZGVzay1rZXkiLCJ0aWxlZGVza19hcGlfcm9sZXMiOiJ1c2VyIn0.Lq0MLTYny7tIYVQ-KEDLlL-h7gAqofCfC2IDgI_0TOE@rabbitmq:5672?heartbeat=60
+      - AI_ENDPOINT=http://backend-llm-train:8000/api
+      - GPTKEY=CHANGEIT
+      - KB_ENDPOINT_TRAIN=http://backend-llm-train:8000/api
+      - KB_ENDPOINT_QA=http://backend-llm-qa:8000/api
 
   server:
     image: tiledesk/tiledesk-server:latest
@@ -196,8 +188,7 @@ services:
       - CACHE_REDIS_PORT=6379
       - APPS_ACCESS_TOKEN_SECRET=nodeauthsecret
       - BOOT_LOADING=true
-      - META_GRAPH_URL=https://graph.facebook.com/v14.0/
-      - WHATSAPP_LOG=false
+      - META_GRAPH_URL=https://graph.facebook.com/v20.0/
       - TELEGRAM_API_URL=https://api.telegram.org/bot
       - TELEGRAM_FILE_URL=https://api.telegram.org/file/bot
       - TELEGRAM_LOG=info
@@ -205,8 +196,20 @@ services:
       - FB_APP_SECRET
       - "BASE_FILE_URL=${EXTERNAL_BASE_URL:-http://localhost:8081}/api/"
       - GPTKEY=CHANGEIT
+      - AI_MODELS=gpt-5:4;gpt-5-mini:0.8;gpt-5-nano:0.16;gpt-4.1:3;gpt-4.1-mini:0.6;gpt-4.1-nano:0.16;gpt-4o:4;gpt-4o-mini:0.3;gpt-4:25;gpt-4-turbo-preview:12;gpt-3.5-turbo:0.6
       - OPENAI_ENDPOINT=https://api.openai.com/v1
-      - KB_ENDPOINT
+      - KB_ENDPOINT_TRAIN=http://backend-llm-train:8000/api
+      - KB_ENDPOINT_QA=http://backend-llm-qa:8000/api
+      - VECTOR_STORE_NAME=qdrant
+      - INDEX_TYPE=serverless
+      - INDEX_NAME=tiledesk-llm
+      - VECTOR_SIZE=1536
+      - VECTOR_STORE_HOST=qdrant
+      - VECTOR_STORE_PORT=6333
+      - VECTOR_STORE_DEPLOYMENT=local
+      - JOB_TOPIC_EXCHANGE_TRAIN=tiledesk-trainer
+      - JWT_SECRET_KEY=tokenKey
+      - COMMUNITY_VERSION=true
       - QUOTES_ENABLED=false
       - TILEBOT_ENDPOINT=http://chatbot:3000
     depends_on:
@@ -232,7 +235,7 @@ services:
       - PUSH_WH_CHAT21_API_ADMIN_TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI5NGFjNjNmNy1hOGM3LTRkZGMtYjJkNS01MWE2MjBmNTdhNmIiLCJzdWIiOiIxMDAtQVBJQURNSU4iLCJzY29wZSI6WyJyYWJiaXRtcS5yZWFkOiovKi8qIiwicmFiYml0bXEud3JpdGU6Ki8qLyoiLCJyYWJiaXRtcS5jb25maWd1cmU6Ki8qLyoiXSwiY2xpZW50X2lkIjoiMTAwLUFQSUFETUlOIiwiY2lkIjoiMTAwLUFQSUFETUlOIiwiYXpwIjoiMTAwLUFQSUFETUlOIiwidXNlcl9pZCI6IjEwMC1BUElBRE1JTiIsImFwcF9pZCI6InRpbGVjaGF0IiwiaWF0IjoxNjM3NzYxNDM0LCJleHAiOjE5NDg4MDE0MzQsImF1ZCI6WyJyYWJiaXRtcSIsIjEwMC1BUElBRE1JTiJdLCJraWQiOiJ0aWxlZGVzay1rZXkiLCJ0aWxlZGVza19hcGlfcm9sZXMiOiJhZG1pbiJ9.fLPrGArRlnyC04552oBsUjohf6l_BIpxwB847xWvugo
       - PUSH_WH_NOTIFY_URL=http://localhost:8004/api/tilechat/notify
       - PUSH_WH_WEBHOOK_TOKEN=WHFyAhecCMkYsvldLFWbSrJt7lAZFAmrp7O5QVMvGQsLVn9SkfT
-      - CACHE_ENABLED=false
+      - CHAT21HTTP_CACHE_ENABLED=false
       - CONTACTS_LOOKUP_ENDPOINT=http://server:3000/users_util
     depends_on:
       - mongo
@@ -257,6 +260,67 @@ services:
       - mongo
       - rabbitmq
       - server 
+  
+  backend-llm-train:
+    image: tiledesk/tiledesk-backend-llm:0.5.1
+    container_name: backend-llm-train
+    environment:
+      - TIMEOUT=240
+      - REDIS_URL=redis://host.docker.internal:6379
+      - TILELLM_ROLE=train
+      - WORKERS=3
+      # WORKER_CONFIGURATION
+      - MONGODB_URL=mongodb://mongo/tiledesk
+      - AMQP_MANAGER_URL=amqp://ignored:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI3NjMwYTAwZS0xNTUxLTQ3Y2ItYmEzMC02NGRlNjJmYmNmNGYiLCJzdWIiOiIwMS1PQlNFUlZFUiIsInNjb3BlIjpbInJhYmJpdG1xLnJlYWQ6Ki8qLyoiLCJyYWJiaXRtcS53cml0ZToqLyovKiIsInJhYmJpdG1xLmNvbmZpZ3VyZToqLyovKiJdLCJjbGllbnRfaWQiOiIwMS1PQlNFUlZFUiIsImNpZCI6IjAxLU9CU0VSVkVSIiwiYXpwIjoiMDEtT0JTRVJWRVIiLCJ1c2VyX2lkIjoiMDEtT0JTRVJWRVIiLCJhcHBfaWQiOiJ0aWxlY2hhdCIsImlhdCI6MTY5NjQ5MjI4NywiZXhwIjoyMDA3NTMyMjg3LCJhdWQiOlsicmFiYml0bXEiLCIwMS1PQlNFUlZFUiJdLCJraWQiOiJ0aWxlZGVzay1rZXkiLCJ0aWxlZGVza19hcGlfcm9sZXMiOiJ1c2VyIn0.Lq0MLTYny7tIYVQ-KEDLlL-h7gAqofCfC2IDgI_0TOE@rabbitmq:5672?heartbeat=60
+      - JOB_TOPIC_EXCHANGE_TRAIN=tiledesk-trainer
+      - GPTKEY=CHANGEIT
+      - TRAIN_PREFETCH=4
+      - JWT_SECRET_KEY=tokenKey
+      - TRAINER_LOG=info
+    ports:
+      - "3007:8000"
+      - "3009:3009"
+
+  backend-llm-qa:
+    image: tiledesk/tiledesk-backend-llm:0.5.1
+    container_name: backend-llm-qa
+    environment:
+      - TIMEOUT=240
+      - REDIS_URL=redis://host.docker.internal:6379
+      - TILELLM_ROLE=qa
+      - WORKERS=3
+      # WORKER_CONFIGURATION
+      - MONGODB_URL=mongodb://mongo/tiledesk
+      - AMQP_MANAGER_URL=amqp://ignored:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI3NjMwYTAwZS0xNTUxLTQ3Y2ItYmEzMC02NGRlNjJmYmNmNGYiLCJzdWIiOiIwMS1PQlNFUlZFUiIsInNjb3BlIjpbInJhYmJpdG1xLnJlYWQ6Ki8qLyoiLCJyYWJiaXRtcS53cml0ZToqLyovKiIsInJhYmJpdG1xLmNvbmZpZ3VyZToqLyovKiJdLCJjbGllbnRfaWQiOiIwMS1PQlNFUlZFUiIsImNpZCI6IjAxLU9CU0VSVkVSIiwiYXpwIjoiMDEtT0JTRVJWRVIiLCJ1c2VyX2lkIjoiMDEtT0JTRVJWRVIiLCJhcHBfaWQiOiJ0aWxlY2hhdCIsImlhdCI6MTY5NjQ5MjI4NywiZXhwIjoyMDA3NTMyMjg3LCJhdWQiOlsicmFiYml0bXEiLCIwMS1PQlNFUlZFUiJdLCJraWQiOiJ0aWxlZGVzay1rZXkiLCJ0aWxlZGVza19hcGlfcm9sZXMiOiJ1c2VyIn0.Lq0MLTYny7tIYVQ-KEDLlL-h7gAqofCfC2IDgI_0TOE@rabbitmq:5672?heartbeat=60
+      - JOB_TOPIC_EXCHANGE_TRAIN=tiledesk-trainer
+      - GPTKEY=CHANGEIT
+      - TRAIN_PREFETCH=4
+      - JWT_SECRET_KEY=tokenKey
+      - TRAINER_LOG=info
+    ports:
+      - "3008:8000"
+  
+  proxy:
+    image: tiledesk/tiledesk-docker-proxy
+    container_name: tiledesk-docker-proxy   
+    ports:
+      - "8081:80" # specify port forewarding
+    depends_on:
+      - server
+      - dashboard
+      - webwidget
+      - chat21httpserver
+      - rabbitmq
+    command: [nginx-debug, '-g', 'daemon off;']
+  
+  qdrant:
+    image: qdrant/qdrant:latest
+    ports:
+      - "6333:6333"
+      - "6334:6334"
+    volumes:
+      - ./qdrant_storage:/qdrant/storage
+    restart: unless-stopped
 
   rabbitmq:
     image: chat21/chat21-rabbitmq:latest
