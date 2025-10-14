@@ -503,10 +503,24 @@ ingress:
 # Redis chart configuration
 #
 redis:
+  enabled: true	
+  image:
+    repository: bitnamilegacy/redis
+  sentinel:
+    image:
+      repository: bitnamilegacy/redis-sentinel
+  metrics:
+    image:
+      repository: bitnamilegacy/redis-exporter
+  volumePermissions:
+    image:
+      repository: bitnamilegacy/os-shell
+  sysctl:
+    image:
+      repository: bitnamilegacy/os-shell
   architecture: standalone
   # master:
   #   livenessProbe:
-  # enabled: true	
   auth:
     enabled: false
 
@@ -517,6 +531,24 @@ redis:
 ##
 mongodb:
   enabled: true
+  global:
+    security:
+      allowInsecureImages: true
+  tls:
+    image:
+      repository: bitnamilegacy/nginx
+  externalAccess:
+    autoDiscovery:
+      image:
+        repository: bitnamilegacy/kubectl
+  volumePermissions:
+    image:
+      repository: bitnamilegacy/os-shell
+  metrics:
+    image:
+      repository: bitnamilegacy/mongodb-exporter
+  image:
+    repository: bitnamilegacy/mongodb
   nameOverride: mongodb
 
   # replicaSet: 
@@ -536,10 +568,29 @@ mongodb:
 
 postgresql:
   enabled: false
-
+  global:
+    security:
+      allowInsecureImages: true
+  image:
+    repository: bitnamilegacy/postgresql
+  volumePermissions:
+    image:
+      repository: bitnamilegacy/os-shell
+  metrics:
+    image:
+      repository: bitnamilegacy/postgres-exporter
+      
 rabbitmq: #consumer_timeout = 31622400000
   #fullnameOverride: rabbitmq
   enabled: true
+  global:
+    security:
+      allowInsecureImages: true
+  image:
+    repository: bitnamilegacy/rabbitmq
+  volumePermissions:
+    image:
+      repository: bitnamilegacy/os-shell
   replicaCount: 1
   # maxAvailableSchedulers: 3
   # onlineSchedulers: 3
