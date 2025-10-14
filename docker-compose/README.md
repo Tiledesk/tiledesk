@@ -61,7 +61,7 @@ Before you begin, ensure that the following software is installed:
 
 ## 🧠 Using RAG (Retrieval-Augmented Generation)
 
-Tiledesk supports **RAG (Retrieval-Augmented Generation)** to enhance chatbot answers using your own data sources. The Community version use Qdrant as vectore store.
+Tiledesk supports **RAG (Retrieval-Augmented Generation)** to enhance chatbot answers using your own data sources. The Community version uses [Qdrant](https://qdrant.tech/) as vectore store.
 
 
 ### ⚙️ Configuration Steps
