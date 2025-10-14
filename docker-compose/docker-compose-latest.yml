@@ -262,7 +262,7 @@ services:
       - server 
   
   backend-llm-train:
-    image: tiledesk/tiledesk-backend-llm:0.5.1
+    image: tiledesk/tiledesk-backend-llm:latest
     container_name: backend-llm-train
     environment:
       - TIMEOUT=240
@@ -282,7 +282,7 @@ services:
       - "3009:3009"
 
   backend-llm-qa:
-    image: tiledesk/tiledesk-backend-llm:0.5.1
+    image: tiledesk/tiledesk-backend-llm:latest
     container_name: backend-llm-qa
     environment:
       - TIMEOUT=240
