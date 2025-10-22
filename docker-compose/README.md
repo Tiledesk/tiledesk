@@ -145,10 +145,23 @@ You can configure a custom domain (e.g., `http://mydomain.com`) using **NGINX** 
        server_name mydomain.com;
 
        location / {
-           proxy_pass http://localhost:8081;
-           proxy_http_version 1.1;
-           proxy_set_header Upgrade $http_upgrade;
-           proxy_set_header Connection $connection_upgrade;
+            proxy_pass http://localhost:8081;
+            proxy_http_version 1.1;
+
+            # preserve original host and client/proto info
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+            proxy_set_header X-Forwarded-Host $host;
+            proxy_set_header X-Forwarded-Port $server_port;
+
+            # WebSocket/HTTP1.1 keepalive
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection $connection_upgrade;
+
+            # SINGLE proxy_redirect rule: rewrite any ":8081" in upstream Location to the public host/scheme (due to tiledesk redirect to :8081/dashboard ata the start)
+            proxy_redirect ~^https?://[^/]+:8081(/.*)$ $scheme://$host$1;
        }
    }
    ```
