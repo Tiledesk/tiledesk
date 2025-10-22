@@ -160,7 +160,7 @@ You can configure a custom domain (e.g., `http://mydomain.com`) using **NGINX** 
             proxy_set_header Upgrade $http_upgrade;
             proxy_set_header Connection $connection_upgrade;
 
-            # SINGLE proxy_redirect rule: rewrite any ":8081" in upstream Location to the public host/scheme (due to tiledesk redirect to :8081/dashboard ata the start)
+            # SINGLE proxy_redirect rule: rewrite any ":8081" in upstream Location to the public host/scheme (due to tiledesk redirect to :8081/dashboard at the start)
             proxy_redirect ~^https?://[^/]+:8081(/.*)$ $scheme://$host$1;
        }
    }
