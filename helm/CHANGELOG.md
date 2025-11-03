@@ -1,3 +1,11 @@
+# 1.1.83 ( app v. 2.13.28 )
+👉 Updated Tiledesk CDS: 1.38.4
+👉 Updated Tiledesk Ionic: 3.4.26
+👉 Updated Tiledesk Server: 2.13.28
+
+# 1.1.82 ( app v. 2.13.13 )
+👉 Updated bitnami images
+
 # 1.1.81 ( app v. 2.13.13 )
 👉 Updated Tiledesk Server: 2.13.13
 👉 Updated Tiledesk CDS: 1.38.2
