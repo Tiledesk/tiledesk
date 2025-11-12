@@ -201,8 +201,6 @@ WEBHOOK_EVENTS: message-sent,message-delivered
 CHAT21_SRV_RABBITMQ_CREDENTIAL: ignored:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI3NjMwYTAwZS0xNTUxLTQ3Y2ItYmEzMC02NGRlNjJmYmNmNGYiLCJzdWIiOiIwMS1PQlNFUlZFUiIsInNjb3BlIjpbInJhYmJpdG1xLnJlYWQ6Ki8qLyoiLCJyYWJiaXRtcS53cml0ZToqLyovKiIsInJhYmJpdG1xLmNvbmZpZ3VyZToqLyovKiJdLCJjbGllbnRfaWQiOiIwMS1PQlNFUlZFUiIsImNpZCI6IjAxLU9CU0VSVkVSIiwiYXpwIjoiMDEtT0JTRVJWRVIiLCJ1c2VyX2lkIjoiMDEtT0JTRVJWRVIiLCJhcHBfaWQiOiJ0aWxlY2hhdCIsImlhdCI6MTY5NjQ5MjI4NywiZXhwIjoyMDA3NTMyMjg3LCJhdWQiOlsicmFiYml0bXEiLCIwMS1PQlNFUlZFUiJdLCJraWQiOiJ0aWxlZGVzay1rZXkiLCJ0aWxlZGVza19hcGlfcm9sZXMiOiJ1c2VyIn0.Lq0MLTYny7tIYVQ-KEDLlL-h7gAqofCfC2IDgI_0TOE
 PRESENCE_ENABLED: true
 CHAT21OBSERVER_CACHE_ENABLED: false
-# CHAT21OBSERVER_REDIS_HOST: my-tiledesk-redis-master
-CHAT21OBSERVER_REDIS_PORT: 6379
 ###### ------CHAT21 SERVER : END------ ######
 
 
@@ -216,8 +214,6 @@ PUSH_WH_CHAT21_API_ADMIN_TOKEN: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI
 WEB_CLICK_ACTION: CHANGEIT #move to another section
 MOBILE_CLICK_ACTION: CHANGEIT #move to another section
 CHAT21HTTP_CACHE_ENABLED: false
-# CHAT21HTTP_REDIS_HOST: my-tiledesk-redis-master
-CHAT21HTTP_REDIS_PORT: 6379
 ###### ------CHAT21HTTP SERVER : END------ ######
 
 
@@ -343,7 +339,7 @@ c21httpsrv:
   resources: {}
   image:  
     repository: chat21/chat21-http-server
-    tag: 0.2.37
+    tag: 0.2.41
     # pullPolicy: IfNotPresent  
   service:    
     type: ClusterIP
@@ -356,7 +352,7 @@ c21srv:
   resources: {}
   image:  
     repository: chat21/chat21-server
-    tag: 0.2.53
+    tag: 0.2.54
     #tag: 0.2.41
     # pullPolicy: IfNotPresent  
 

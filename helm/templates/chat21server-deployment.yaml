@@ -70,21 +70,28 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: PRESENCE_ENABLED
-            - name: CHAT21OBSERVER_CACHE_ENABLED
+            - name: LOG_LEVEL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: LOG_LEVEL
+            ######   CACHE REDIS: start  ######
+            - name: CACHE_ENABLED
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: CHAT21OBSERVER_CACHE_ENABLED
-            - name: CHAT21OBSERVER_REDIS_HOST
+            - name: CACHE_REDIS_HOST
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
-                  key: CHAT21OBSERVER_REDIS_HOST
-            - name: CHAT21OBSERVER_REDIS_PORT
+                  key: CACHE_REDIS_HOST
+            - name: CACHE_REDIS_PORT
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
-                  key: CHAT21OBSERVER_REDIS_PORT
+                  key: CACHE_REDIS_PORT
+            ######   CACHE REDIS: end  ######
           resources:
             {{- toYaml .Values.c21srv.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}

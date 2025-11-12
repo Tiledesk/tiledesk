@@ -49,7 +49,13 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
-                  key: CHAT21_HTTPSRV_RABBITMQ_URI       
+                  key: CHAT21_HTTPSRV_RABBITMQ_URI
+            ######   FIREBASE: start  ######       
+            - name: FIREBASE_APIKEY
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: FIREBASE_APIKEY
             - name: FIREBASE_PRIVATE_KEY
               valueFrom:
                 secretKeyRef:
@@ -65,11 +71,7 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: FIREBASE_PROJECT_ID      
-            - name: FIREBASE_APIKEY
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "tiledesk.fullname" . }}-config
-                  key: FIREBASE_APIKEY
+            ######   FIREBASE: end  ######
             - name: PUSH_ENABLED
               valueFrom:
                 configMapKeyRef:
@@ -110,21 +112,23 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: LOG_LEVEL
-            - name: CHAT21HTTP_CACHE_ENABLED
+            ######   CACHE REDIS: start  ######
+            - name: CACHE_ENABLED
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: CHAT21HTTP_CACHE_ENABLED
-            - name: CHAT21HTTP_REDIS_HOST
+            - name: CACHE_REDIS_HOST
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
-                  key: CHAT21HTTP_REDIS_HOST
-            - name: CHAT21HTTP_REDIS_PORT
+                  key: CACHE_REDIS_HOST
+            - name: CACHE_REDIS_PORT
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
-                  key: CHAT21HTTP_REDIS_PORT                                                                                     
+                  key: CACHE_REDIS_PORT 
+            ######   CACHE REDIS: end  ######                                                                                    
           ports:
             - name: c21httpsrv-http
               containerPort: 8004

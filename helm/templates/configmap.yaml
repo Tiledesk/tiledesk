@@ -144,8 +144,7 @@ data:
   CHAT21_MONGODB_URI: {{if .Values.CHAT21_MONGODB_URI}}{{ .Values.CHAT21_MONGODB_URI | quote }}{{ else }}mongodb://{{ include "tiledesk.fullname" . }}-mongodb/chat21{{ end }}
   CHAT21_SRV_RABBITMQ_URI: {{if .Values.CHAT21_SRV_RABBITMQ_URI}}{{ .Values.CHAT21_SRV_RABBITMQ_URI | quote }}{{ else }}amqp://{{ .Values.CHAT21_SRV_RABBITMQ_CREDENTIAL }}@{{ include "tiledesk.fullname" . }}-rabbitmq:5672?heartbeat=60{{ end }}
   CHAT21OBSERVER_CACHE_ENABLED:  {{ .Values.CHAT21OBSERVER_CACHE_ENABLED | quote }}
-  CHAT21OBSERVER_REDIS_HOST:  {{ include "tiledesk.fullname" . }}-redis-master
-  CHAT21OBSERVER_REDIS_PORT:  {{ .Values.CHAT21OBSERVER_REDIS_PORT | quote }}
+
   
   # ----- CHAT21HTTP SERVER -------
   JWT_KEY: {{ .Values.JWT_KEY | quote }}
@@ -158,8 +157,7 @@ data:
   MOBILE_CLICK_ACTION: {{ .Values.MOBILE_CLICK_ACTION | quote }}
   CONTACTS_LOOKUP_ENDPOINT: http://{{ include "tiledesk.fullname" . }}-server/users_util
   CHAT21HTTP_CACHE_ENABLED: {{ .Values.CHAT21HTTP_CACHE_ENABLED | quote }}
-  CHAT21HTTP_REDIS_HOST:  {{ include "tiledesk.fullname" . }}-redis-master
-  CHAT21HTTP_REDIS_PORT:  {{ .Values.CHAT21HTTP_REDIS_PORT | quote }}
+ 
 
   # ----- COMMON -------
   FEATURES_TOKEN: {{ .Values.FEATURES_TOKEN | quote }}
