@@ -1,3 +1,7 @@
+# 1.1.85 ( app v. 2.13.30 )
+👉 Updated Tiledesk C21 Http Server: 0.2.41
+👉 Updated Tiledesk C21 Server: 0.2.54
+
 # 1.1.84 ( app v. 2.13.30 )
 👉 Updated Tiledesk CDS: 1.38.6
 👉 Updated Tiledesk Dashboard: 2.7.123
