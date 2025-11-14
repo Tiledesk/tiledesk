@@ -270,7 +270,7 @@ server:
   resources: {}
   image:  
     repository: tiledesk.docker.scarf.sh/tiledesk/tiledesk-server
-    tag: 2.13.30
+    tag: 2.13.32
   service:
     type: ClusterIP
     port: 80
@@ -280,7 +280,7 @@ serverworker:
   resources: {} 
   image:  
     repository: tiledesk.docker.scarf.sh/tiledesk/tiledesk-server-worker
-    tag: 2.13.30
+    tag: 2.13.32
 
 dashboard:
   ## Enable deployment of Tiledesk Server
