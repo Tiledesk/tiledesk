@@ -1,13 +1,13 @@
 version: "3.7"
-
 volumes:
-   tiledesk-datadb:
+  tiledesk-datadb:
 services:
   dashboard:
-   image: tiledesk/tiledesk-dashboard:2.7.134-stage
-   container_name: dashboard 
-   environment: 
-      - FEATURES_TOKEN=PAY:F-ANA:T-ACT:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-PSA:F-MTT:T-SUP:T-LBS:T-APP:T-DEV:F-NOT:T-IPS:F-ETK:F-RAS:F-PPB:F-PET:F-MTS:F-TIL:T-DGF:T-NAT:T-HPB:F-TOW:F-KNB:T-GPT:T-BAN:F-AST:F-MON:T-CNT:F-AUT:F-WUN:F-INT:T-DPA:T
+    image: "tiledesk/tiledesk-dashboard:2.7.134-stage"
+    container_name: dashboard
+    environment:
+      - >-
+        FEATURES_TOKEN=PAY:F-ANA:T-ACT:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-PSA:F-MTT:T-SUP:T-LBS:T-APP:T-DEV:F-NOT:T-IPS:F-ETK:F-RAS:F-PPB:F-PET:F-MTS:F-TIL:T-DGF:T-NAT:T-HPB:F-TOW:F-KNB:T-GPT:T-BAN:F-AST:F-MON:T-CNT:F-AUT:F-WUN:F-INT:T-DPA:T
       - BOT_CREDENTIAL_URL=/api/modules/dialogflow/botcredendials/
       - "WIDGET_LOCATION=${EXTERNAL_BASE_URL:-http://localhost:8081}/widget/"
       - SERVER_BASE_URL=/api/
@@ -35,14 +35,14 @@ services:
       - COMMUNITY_TEMPLATES_URL=/api/modules/templates/public/community
       - TEMPLATES_URL=/api/modules/templates/public/templates
       - FILE_UPLOAD_ACCEPT=*/*
-   ports:
+    ports:
       - "4500:80" #use expose if you want to block external access
-  
   cds:
-   image: tiledesk/design-studio:1.39.9-rc3
-   container_name: cds 
-   environment: 
-      - FEATURES_TOKEN=PAY:F-ANA:T-ACT:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-PSA:F-MTT:T-SUP:T-LBS:T-APP:T-DEV:F-NOT:T-IPS:F-ETK:F-RAS:F-PPB:F-PET:F-MTS:F-TIL:T-DGF:T-NAT:T-HPB:F-TOW:F-KNB:T-GPT:T-BAN:F-AST:F-MON:T-CNT:F-AUT:F-WUN:F-INT:T-DPA:T
+    image: "tiledesk/design-studio:1.39.9-rc3"
+    container_name: cds
+    environment:
+      - >-
+        FEATURES_TOKEN=PAY:F-ANA:T-ACT:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-PSA:F-MTT:T-SUP:T-LBS:T-APP:T-DEV:F-NOT:T-IPS:F-ETK:F-RAS:F-PPB:F-PET:F-MTS:F-TIL:T-DGF:T-NAT:T-HPB:F-TOW:F-KNB:T-GPT:T-BAN:F-AST:F-MON:T-CNT:F-AUT:F-WUN:F-INT:T-DPA:T
       - "WIDGET_LOCATION=${EXTERNAL_BASE_URL:-http://localhost:8081}/widget/"
       - SERVER_BASE_URL=/api/
       - DASHBOARD_URL=/dashboard/
@@ -63,25 +63,25 @@ services:
       - CDS_STORAGE_PREFIX=cds_sv5
       - API_BASEIMAGE_URL=/api/
       - FILE_UPLOAD_ACCEPT=*/*
-      - AI_MODELS=gpt-5:4;gpt-5-mini:0.8;gpt-5-nano:0.16;gpt-4.1:3;gpt-4.1-mini:0.6;gpt-4.1-nano:0.16;gpt-4o:4;gpt-4o-mini:0.3;gpt-4:25;gpt-4-turbo-preview:12;gpt-3.5-turbo:0.6
+      - >-
+        AI_MODELS=gpt-5:4;gpt-5-mini:0.8;gpt-5-nano:0.16;gpt-4.1:3;gpt-4.1-mini:0.6;gpt-4.1-nano:0.16;gpt-4o:4;gpt-4o-mini:0.3;gpt-4:25;gpt-4-turbo-preview:12;gpt-3.5-turbo:0.6
       - MQTT_APPID=tilechat
       - "MQTT_ENDPOINT=${EXTERNAL_MQTT_BASE_URL:-ws://localhost:8081}/mqws/ws"
-   ports:
+    ports:
       - "4502:80" #use expose if you want to block external access
-      
   webwidget:
-   image: chat21/chat21-web-widget:5.1.2
-   container_name: chat21-web-widget 
-   ports: 
+    image: "chat21/chat21-web-widget:5.1.2"
+    container_name: chat21-web-widget
+    ports:
       - "4200:80" # specify port forewarding
-   environment: 
+    environment:
       - CHAT21_ENGINE=mqtt
       - MQTT_APPID=tilechat
       - PUSH_ENGINE=none
       - LOG_LEVEL=info
       - "MQTT_ENDPOINT=${EXTERNAL_MQTT_BASE_URL:-ws://localhost:8081}/mqws/ws"
-      - "MQTT_APIENDPOINT=${EXTERNAL_BASE_URL:-http://localhost:8081}/chatapi/api"      
-      #- MQTT_LOGINSERVICE_ENDPOINT=/api/chat21/native/auth/createCustomToken      
+      - "MQTT_APIENDPOINT=${EXTERNAL_BASE_URL:-http://localhost:8081}/chatapi/api"
+      #- MQTT_LOGINSERVICE_ENDPOINT=/api/chat21/native/auth/createCustomToken  
       - FIREBASE_APIKEY
       - FIREBASE_AUTHDOMAIN
       - FIREBASE_DATABASEURL
@@ -92,22 +92,22 @@ services:
       - UPLOAD_ENGINE=native
       - "SERVER_BASE_URL=${EXTERNAL_BASE_URL:-http://localhost:8081}/api/"
       - "TRANSLATIONS_URL=${EXTERNAL_BASE_URL:-http://localhost:8081}/api/"
-      - "API_BASEIMAGE_URL=${EXTERNAL_BASE_URL:-http://localhost:8081}/api/"   
-      - DASHBOARD_URL=/dashboard/   
+      - "API_BASEIMAGE_URL=${EXTERNAL_BASE_URL:-http://localhost:8081}/api/"
+      - DASHBOARD_URL=/dashboard/
       - AUTH_PERSISTENCE=LOCAL
       - ENBED_JS=true
       - FILE_UPLOAD_ACCEPT=*/*
-
   ionic:
-   image: chat21/chat21-ionic:3.4.22
-   container_name: chat21-ionic
-   ports:
+    image: "chat21/chat21-ionic:3.4.22"
+    container_name: chat21-ionic
+    ports:
       - "8082:80" #use expose if you want to block external access   
-   environment: 
-      - DASHBOARD_URL=/dashboard/      
+    environment:
+      - DASHBOARD_URL=/dashboard/
       - API_BASEIMAGE_URL=/api/
       - SERVER_BASE_URL=/api/
-      - FEATURES_TOKEN=PAY:F-ANA:T-ACT:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-PSA:F-MTT:T-SUP:T-LBS:T-APP:T-DEV:F-NOT:T-IPS:F-ETK:F-RAS:F-PPB:F-PET:F-MTS:F-TIL:T-DGF:T-NAT:T-HPB:F-TOW:F-KNB:T-GPT:T-BAN:F-AST:F-MON:T-CNT:F-AUT:F-WUN:F-INT:T-DPA:T
+      - >-
+        FEATURES_TOKEN=PAY:F-ANA:T-ACT:T-TRI:T-GRO:T-DEP:T-OPH:T-MTL:T-CAR:T-PSA:F-MTT:T-SUP:T-LBS:T-APP:T-DEV:F-NOT:T-IPS:F-ETK:F-RAS:F-PPB:F-PET:F-MTS:F-TIL:T-DGF:T-NAT:T-HPB:F-TOW:F-KNB:T-GPT:T-BAN:F-AST:F-MON:T-CNT:F-AUT:F-WUN:F-INT:T-DPA:T
       - WIDGET_LOCATION=/widget/
       - PUSH_ENGINE=none
       - LOG_LEVEL=info
@@ -132,42 +132,43 @@ services:
       - EMAIL_SECTION=true
       - CHAT_STORAGE_PREFIX=chat_sv5
       - WS_URL_RELATIVE=/ws/
-          
   chatbot:
-   image: tiledesk/tiledesk-chatbot:2.0.32-rc8
-   container_name: chatbot 
-   environment: 
-      - API_ENDPOINT=http://server:3000
-      - TILEBOT_ENDPOINT=http://chatbot:3000
+    image: "tiledesk/tiledesk-chatbot:2.0.32-rc8"
+    container_name: chatbot
+    environment:
+      - "API_ENDPOINT=http://server:3000"
+      - "TILEBOT_ENDPOINT=http://chatbot:3000"
       - "API_URL=${EXTERNAL_BASE_URL:-http://localhost:8081}/api"
-      - MONGODB_URI=mongodb://mongo/tiledesk
+      - "MONGODB_URI=mongodb://mongo/tiledesk"
       - CACHE_ENABLED=true
       - CACHE_REDIS_HOST=redis
       - CACHE_REDIS_PORT=6379
       - TILEBOT_LOG=info
       - FLOW_LOGS_ENABLED=true
-      - AMQP_MANAGER_URL=amqp://ignored:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI3NjMwYTAwZS0xNTUxLTQ3Y2ItYmEzMC02NGRlNjJmYmNmNGYiLCJzdWIiOiIwMS1PQlNFUlZFUiIsInNjb3BlIjpbInJhYmJpdG1xLnJlYWQ6Ki8qLyoiLCJyYWJiaXRtcS53cml0ZToqLyovKiIsInJhYmJpdG1xLmNvbmZpZ3VyZToqLyovKiJdLCJjbGllbnRfaWQiOiIwMS1PQlNFUlZFUiIsImNpZCI6IjAxLU9CU0VSVkVSIiwiYXpwIjoiMDEtT0JTRVJWRVIiLCJ1c2VyX2lkIjoiMDEtT0JTRVJWRVIiLCJhcHBfaWQiOiJ0aWxlY2hhdCIsImlhdCI6MTY5NjQ5MjI4NywiZXhwIjoyMDA3NTMyMjg3LCJhdWQiOlsicmFiYml0bXEiLCIwMS1PQlNFUlZFUiJdLCJraWQiOiJ0aWxlZGVzay1rZXkiLCJ0aWxlZGVza19hcGlfcm9sZXMiOiJ1c2VyIn0.Lq0MLTYny7tIYVQ-KEDLlL-h7gAqofCfC2IDgI_0TOE@rabbitmq:5672?heartbeat=60
-      - AI_ENDPOINT=http://backend-llm-train:8000/api
+      - >-
+        AMQP_MANAGER_URL=amqp://ignored:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI3NjMwYTAwZS0xNTUxLTQ3Y2ItYmEzMC02NGRlNjJmYmNmNGYiLCJzdWIiOiIwMS1PQlNFUlZFUiIsInNjb3BlIjpbInJhYmJpdG1xLnJlYWQ6Ki8qLyoiLCJyYWJiaXRtcS53cml0ZToqLyovKiIsInJhYmJpdG1xLmNvbmZpZ3VyZToqLyovKiJdLCJjbGllbnRfaWQiOiIwMS1PQlNFUlZFUiIsImNpZCI6IjAxLU9CU0VSVkVSIiwiYXpwIjoiMDEtT0JTRVJWRVIiLCJ1c2VyX2lkIjoiMDEtT0JTRVJWRVIiLCJhcHBfaWQiOiJ0aWxlY2hhdCIsImlhdCI6MTY5NjQ5MjI4NywiZXhwIjoyMDA3NTMyMjg3LCJhdWQiOlsicmFiYml0bXEiLCIwMS1PQlNFUlZFUiJdLCJraWQiOiJ0aWxlZGVzay1rZXkiLCJ0aWxlZGVza19hcGlfcm9sZXMiOiJ1c2VyIn0.Lq0MLTYny7tIYVQ-KEDLlL-h7gAqofCfC2IDgI_0TOE@rabbitmq:5672?heartbeat=60
+      - "AI_ENDPOINT=http://backend-llm-train:8000/api"
       - GPTKEY=CHANGEIT
-      - KB_ENDPOINT_TRAIN=http://backend-llm-train:8000/api
-      - KB_ENDPOINT_QA=http://backend-llm-qa:8000/api
-      
+      - "KB_ENDPOINT_TRAIN=http://backend-llm-train:8000/api"
+      - "KB_ENDPOINT_QA=http://backend-llm-qa:8000/api"
   server:
-    image: tiledesk/tiledesk-server:2.13.23-op1
+    image: "tiledesk/tiledesk-server:2.13.23-op1"
     container_name: server
-    restart: always       
-    environment: 
+    restart: always
+    environment:
       - LOG_LEVEL=info
       - CHAT21_ENABLED=true
       - CHAT21_ENGINE=mqtt
-      - CHAT21_URL=http://chat21httpserver:8004
+      - "CHAT21_URL=http://chat21httpserver:8004"
       - CHAT21_JWT_SECRET=tokenKey
       - CHAT21_APPID=tilechat
       - RESTHOOK_ENABLED=true
       - ALLOW_REOPEN_CHAT=true
-      - CHAT21_ADMIN_TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIzNDU2MTBkNy03MmYxLTQ5OWUtODQzMS0xMTNhZWJkOWVmOTgiLCJzdWIiOiIxMDAtQVBJQURNSU4iLCJzY29wZSI6WyJyYWJiaXRtcS5yZWFkOiovKi8qIiwicmFiYml0bXEud3JpdGU6Ki8qLyoiLCJyYWJiaXRtcS5jb25maWd1cmU6Ki8qLyoiXSwiY2xpZW50X2lkIjoiMTAwLUFQSUFETUlOIiwiY2lkIjoiMTAwLUFQSUFETUlOIiwiYXpwIjoiMTAwLUFQSUFETUlOIiwidXNlcl9pZCI6IjEwMC1BUElBRE1JTiIsImFwcF9pZCI6InRpbGVjaGF0IiwiaWF0IjoxNjE0OTQzNDkyLCJleHAiOjE5MjU5ODM0OTIsImF1ZCI6WyJyYWJiaXRtcSIsIjEwMC1BUElBRE1JTiJdLCJraWQiOiJ0aWxlZGVzay1rZXkiLCJ0aWxlZGVza19hcGlfcm9sZXMiOiJhZG1pbiJ9.KptGMsTKjd3wUiiP1GGSTYqW1XXK1vjSRJnetC3wjxU
-      - AMQP_MANAGER_URL=amqp://ignored:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI3NjMwYTAwZS0xNTUxLTQ3Y2ItYmEzMC02NGRlNjJmYmNmNGYiLCJzdWIiOiIwMS1PQlNFUlZFUiIsInNjb3BlIjpbInJhYmJpdG1xLnJlYWQ6Ki8qLyoiLCJyYWJiaXRtcS53cml0ZToqLyovKiIsInJhYmJpdG1xLmNvbmZpZ3VyZToqLyovKiJdLCJjbGllbnRfaWQiOiIwMS1PQlNFUlZFUiIsImNpZCI6IjAxLU9CU0VSVkVSIiwiYXpwIjoiMDEtT0JTRVJWRVIiLCJ1c2VyX2lkIjoiMDEtT0JTRVJWRVIiLCJhcHBfaWQiOiJ0aWxlY2hhdCIsImlhdCI6MTY5NjQ5MjI4NywiZXhwIjoyMDA3NTMyMjg3LCJhdWQiOlsicmFiYml0bXEiLCIwMS1PQlNFUlZFUiJdLCJraWQiOiJ0aWxlZGVzay1rZXkiLCJ0aWxlZGVza19hcGlfcm9sZXMiOiJ1c2VyIn0.Lq0MLTYny7tIYVQ-KEDLlL-h7gAqofCfC2IDgI_0TOE@rabbitmq:5672?heartbeat=60
-      - MONGODB_URI=mongodb://mongo/tiledesk
+      - >-
+        CHAT21_ADMIN_TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIzNDU2MTBkNy03MmYxLTQ5OWUtODQzMS0xMTNhZWJkOWVmOTgiLCJzdWIiOiIxMDAtQVBJQURNSU4iLCJzY29wZSI6WyJyYWJiaXRtcS5yZWFkOiovKi8qIiwicmFiYml0bXEud3JpdGU6Ki8qLyoiLCJyYWJiaXRtcS5jb25maWd1cmU6Ki8qLyoiXSwiY2xpZW50X2lkIjoiMTAwLUFQSUFETUlOIiwiY2lkIjoiMTAwLUFQSUFETUlOIiwiYXpwIjoiMTAwLUFQSUFETUlOIiwidXNlcl9pZCI6IjEwMC1BUElBRE1JTiIsImFwcF9pZCI6InRpbGVjaGF0IiwiaWF0IjoxNjE0OTQzNDkyLCJleHAiOjE5MjU5ODM0OTIsImF1ZCI6WyJyYWJiaXRtcSIsIjEwMC1BUElBRE1JTiJdLCJraWQiOiJ0aWxlZGVzay1rZXkiLCJ0aWxlZGVza19hcGlfcm9sZXMiOiJhZG1pbiJ9.KptGMsTKjd3wUiiP1GGSTYqW1XXK1vjSRJnetC3wjxU
+      - >-
+        AMQP_MANAGER_URL=amqp://ignored:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI3NjMwYTAwZS0xNTUxLTQ3Y2ItYmEzMC02NGRlNjJmYmNmNGYiLCJzdWIiOiIwMS1PQlNFUlZFUiIsInNjb3BlIjpbInJhYmJpdG1xLnJlYWQ6Ki8qLyoiLCJyYWJiaXRtcS53cml0ZToqLyovKiIsInJhYmJpdG1xLmNvbmZpZ3VyZToqLyovKiJdLCJjbGllbnRfaWQiOiIwMS1PQlNFUlZFUiIsImNpZCI6IjAxLU9CU0VSVkVSIiwiYXpwIjoiMDEtT0JTRVJWRVIiLCJ1c2VyX2lkIjoiMDEtT0JTRVJWRVIiLCJhcHBfaWQiOiJ0aWxlY2hhdCIsImlhdCI6MTY5NjQ5MjI4NywiZXhwIjoyMDA3NTMyMjg3LCJhdWQiOlsicmFiYml0bXEiLCIwMS1PQlNFUlZFUiJdLCJraWQiOiJ0aWxlZGVzay1rZXkiLCJ0aWxlZGVza19hcGlfcm9sZXMiOiJ1c2VyIn0.Lq0MLTYny7tIYVQ-KEDLlL-h7gAqofCfC2IDgI_0TOE@rabbitmq:5672?heartbeat=60
+      - "MONGODB_URI=mongodb://mongo/tiledesk"
       - EMAIL_ENABLED
       - EMAIL_HOST
       - EMAIL_USERNAME
@@ -187,18 +188,19 @@ services:
       - CACHE_REDIS_PORT=6379
       - APPS_ACCESS_TOKEN_SECRET=nodeauthsecret
       - BOOT_LOADING=true
-      - META_GRAPH_URL=https://graph.facebook.com/v20.0/
-      - TELEGRAM_API_URL=https://api.telegram.org/bot
-      - TELEGRAM_FILE_URL=https://api.telegram.org/file/bot
+      - "META_GRAPH_URL=https://graph.facebook.com/v20.0/"
+      - "TELEGRAM_API_URL=https://api.telegram.org/bot"
+      - "TELEGRAM_FILE_URL=https://api.telegram.org/file/bot"
       - TELEGRAM_LOG=info
       - FB_APP_ID
       - FB_APP_SECRET
       - "BASE_FILE_URL=${EXTERNAL_BASE_URL:-http://localhost:8081}/api/"
       - GPTKEY=CHANGEIT
-      - AI_MODELS=gpt-5:4;gpt-5-mini:0.8;gpt-5-nano:0.16;gpt-4.1:3;gpt-4.1-mini:0.6;gpt-4.1-nano:0.16;gpt-4o:4;gpt-4o-mini:0.3;gpt-4:25;gpt-4-turbo-preview:12;gpt-3.5-turbo:0.6
-      - OPENAI_ENDPOINT=https://api.openai.com/v1
-      - KB_ENDPOINT_TRAIN=http://backend-llm-train:8000/api
-      - KB_ENDPOINT_QA=http://backend-llm-qa:8000/api
+      - >-
+        AI_MODELS=gpt-5:4;gpt-5-mini:0.8;gpt-5-nano:0.16;gpt-4.1:3;gpt-4.1-mini:0.6;gpt-4.1-nano:0.16;gpt-4o:4;gpt-4o-mini:0.3;gpt-4:25;gpt-4-turbo-preview:12;gpt-3.5-turbo:0.6
+      - "OPENAI_ENDPOINT=https://api.openai.com/v1"
+      - "KB_ENDPOINT_TRAIN=http://backend-llm-train:8000/api"
+      - "KB_ENDPOINT_QA=http://backend-llm-qa:8000/api"
       - VECTOR_STORE_NAME=qdrant
       - INDEX_TYPE=serverless
       - INDEX_NAME=tiledesk-llm
@@ -210,132 +212,176 @@ services:
       - JWT_SECRET_KEY=tokenKey
       - COMMUNITY_VERSION=true
       - QUOTES_ENABLED=false
-      - TILEBOT_ENDPOINT=http://chatbot:3000
+      - "TILEBOT_ENDPOINT=http://chatbot:3000"
     depends_on:
-      - mongo
+      mongo:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
     ports:
       - "3000:3000"
-
+    healthcheck:
+          test: ["CMD", "curl", "-f", "http://localhost:3000/"]
+          interval: 10s
+          timeout: 5s
+          retries: 5
+          start_period: 40s
   chat21httpserver:
-    image: chat21/chat21-http-server:0.2.37
+    image: "chat21/chat21-http-server:0.2.37"
     #image: chat21http-gab:0.1.11
     container_name: chat21httpserver
     #restart: always    
-    environment: 
+    environment:
       - LOG_LEVEL=info
       #- AUTO_RESTART=false
-      - MONGODB_URI=mongodb://mongo/chat21
+      - "MONGODB_URI=mongodb://mongo/chat21"
       - JWT_KEY=tokenKey
-      - RABBITMQ_URI=amqp://ignored:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJiMjM1OTFmZS05N2FhLTRmNWQtOGVlOS0yNjQ2NzljYmM0M2YiLCJzdWIiOiIxMDAtQVBJQURNSU4iLCJzY29wZSI6WyJyYWJiaXRtcS5yZWFkOiovKi8qIiwicmFiYml0bXEud3JpdGU6Ki8qLyoiLCJyYWJiaXRtcS5jb25maWd1cmU6Ki8qLyoiXSwiY2xpZW50X2lkIjoiMTAwLUFQSUFETUlOIiwiY2lkIjoiMTAwLUFQSUFETUlOIiwiYXpwIjoiMTAwLUFQSUFETUlOIiwidXNlcl9pZCI6IjEwMC1BUElBRE1JTiIsImFwcF9pZCI6InRpbGVjaGF0IiwiaWF0IjoxNjk2NDkyMjg3LCJleHAiOjIwMDc1MzIyODcsImF1ZCI6WyJyYWJiaXRtcSIsIjEwMC1BUElBRE1JTiJdLCJraWQiOiJ0aWxlZGVzay1rZXkiLCJ0aWxlZGVza19hcGlfcm9sZXMiOiJhZG1pbiJ9.Ee-TpAPsoC7Dm7qsbUojeHud3E4OCtJZkpupu_R0Aic@rabbitmq:5672?heartbeat=60
+      - >-
+        RABBITMQ_URI=amqp://ignored:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJiMjM1OTFmZS05N2FhLTRmNWQtOGVlOS0yNjQ2NzljYmM0M2YiLCJzdWIiOiIxMDAtQVBJQURNSU4iLCJzY29wZSI6WyJyYWJiaXRtcS5yZWFkOiovKi8qIiwicmFiYml0bXEud3JpdGU6Ki8qLyoiLCJyYWJiaXRtcS5jb25maWd1cmU6Ki8qLyoiXSwiY2xpZW50X2lkIjoiMTAwLUFQSUFETUlOIiwiY2lkIjoiMTAwLUFQSUFETUlOIiwiYXpwIjoiMTAwLUFQSUFETUlOIiwidXNlcl9pZCI6IjEwMC1BUElBRE1JTiIsImFwcF9pZCI6InRpbGVjaGF0IiwiaWF0IjoxNjk2NDkyMjg3LCJleHAiOjIwMDc1MzIyODcsImF1ZCI6WyJyYWJiaXRtcSIsIjEwMC1BUElBRE1JTiJdLCJraWQiOiJ0aWxlZGVzay1rZXkiLCJ0aWxlZGVza19hcGlfcm9sZXMiOiJhZG1pbiJ9.Ee-TpAPsoC7Dm7qsbUojeHud3E4OCtJZkpupu_R0Aic@rabbitmq:5672?heartbeat=60
       - PUSH_ENABLED=true
       - FIREBASE_PRIVATE_KEY
       - FIREBASE_APIKEY
       - FIREBASE_PROJECT_ID
       - FIREBASE_CLIENT_EMAIL
-      - PUSH_WH_CHAT21_API_ADMIN_TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI5NGFjNjNmNy1hOGM3LTRkZGMtYjJkNS01MWE2MjBmNTdhNmIiLCJzdWIiOiIxMDAtQVBJQURNSU4iLCJzY29wZSI6WyJyYWJiaXRtcS5yZWFkOiovKi8qIiwicmFiYml0bXEud3JpdGU6Ki8qLyoiLCJyYWJiaXRtcS5jb25maWd1cmU6Ki8qLyoiXSwiY2xpZW50X2lkIjoiMTAwLUFQSUFETUlOIiwiY2lkIjoiMTAwLUFQSUFETUlOIiwiYXpwIjoiMTAwLUFQSUFETUlOIiwidXNlcl9pZCI6IjEwMC1BUElBRE1JTiIsImFwcF9pZCI6InRpbGVjaGF0IiwiaWF0IjoxNjM3NzYxNDM0LCJleHAiOjE5NDg4MDE0MzQsImF1ZCI6WyJyYWJiaXRtcSIsIjEwMC1BUElBRE1JTiJdLCJraWQiOiJ0aWxlZGVzay1rZXkiLCJ0aWxlZGVza19hcGlfcm9sZXMiOiJhZG1pbiJ9.fLPrGArRlnyC04552oBsUjohf6l_BIpxwB847xWvugo
-      - PUSH_WH_NOTIFY_URL=http://localhost:8004/api/tilechat/notify
-      - PUSH_WH_WEBHOOK_TOKEN=WHFyAhecCMkYsvldLFWbSrJt7lAZFAmrp7O5QVMvGQsLVn9SkfT
+      - >-
+        PUSH_WH_CHAT21_API_ADMIN_TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI5NGFjNjNmNy1hOGM3LTRkZGMtYjJkNS01MWE2MjBmNTdhNmIiLCJzdWIiOiIxMDAtQVBJQURNSU4iLCJzY29wZSI6WyJyYWJiaXRtcS5yZWFkOiovKi8qIiwicmFiYml0bXEud3JpdGU6Ki8qLyoiLCJyYWJiaXRtcS5jb25maWd1cmU6Ki8qLyoiXSwiY2xpZW50X2lkIjoiMTAwLUFQSUFETUlOIiwiY2lkIjoiMTAwLUFQSUFETUlOIiwiYXpwIjoiMTAwLUFQSUFETUlOIiwidXNlcl9pZCI6IjEwMC1BUElBRE1JTiIsImFwcF9pZCI6InRpbGVjaGF0IiwiaWF0IjoxNjM3NzYxNDM0LCJleHAiOjE5NDg4MDE0MzQsImF1ZCI6WyJyYWJiaXRtcSIsIjEwMC1BUElBRE1JTiJdLCJraWQiOiJ0aWxlZGVzay1rZXkiLCJ0aWxlZGVza19hcGlfcm9sZXMiOiJhZG1pbiJ9.fLPrGArRlnyC04552oBsUjohf6l_BIpxwB847xWvugo
+      - "PUSH_WH_NOTIFY_URL=http://localhost:8004/api/tilechat/notify"
+      - >-
+        PUSH_WH_WEBHOOK_TOKEN=WHFyAhecCMkYsvldLFWbSrJt7lAZFAmrp7O5QVMvGQsLVn9SkfT
       - CHAT21HTTP_CACHE_ENABLED=false
-      - CONTACTS_LOOKUP_ENDPOINT=http://server:3000/users_util
+      - "CONTACTS_LOOKUP_ENDPOINT=http://server:3000/users_util"
     depends_on:
-      - mongo
-      - rabbitmq
+      mongo:
+        condition: service_started
+      rabbitmq:
+        condition: service_healthy
     ports:
       - "8004:8004"
-
   chat21server:
-    image: chat21/chat21-server:0.2.53
+    image: "chat21/chat21-server:0.2.53"
     container_name: chat21server
     #restart: always
-    environment: 
+    environment:
       #- AUTO_RESTART=false
       - LOG_LEVEL=info
-      - MONGODB_URI=mongodb://mongo/chat21
+      - "MONGODB_URI=mongodb://mongo/chat21"
       - APP_ID=tilechat
-      - WEBHOOK_ENDPOINTS=http://server:3000/chat21/requests,http://chat21httpserver:8004/api/tilechat/push/webhook/endpoint/WHFyAhecCMkYsvldLFWbSrJt7lAZFAmrp7O5QVMvGQsLVn9SkfT
+      - >-
+        WEBHOOK_ENDPOINTS=http://server:3000/chat21/requests,http://chat21httpserver:8004/api/tilechat/push/webhook/endpoint/WHFyAhecCMkYsvldLFWbSrJt7lAZFAmrp7O5QVMvGQsLVn9SkfT
       - WEBHOOK_ENABLED=true
-      - WEBHOOK_EVENTS=message-sent,message-delivered,conversation-unarchived
-      - RABBITMQ_URI=amqp://ignored:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI3NjMwYTAwZS0xNTUxLTQ3Y2ItYmEzMC02NGRlNjJmYmNmNGYiLCJzdWIiOiIwMS1PQlNFUlZFUiIsInNjb3BlIjpbInJhYmJpdG1xLnJlYWQ6Ki8qLyoiLCJyYWJiaXRtcS53cml0ZToqLyovKiIsInJhYmJpdG1xLmNvbmZpZ3VyZToqLyovKiJdLCJjbGllbnRfaWQiOiIwMS1PQlNFUlZFUiIsImNpZCI6IjAxLU9CU0VSVkVSIiwiYXpwIjoiMDEtT0JTRVJWRVIiLCJ1c2VyX2lkIjoiMDEtT0JTRVJWRVIiLCJhcHBfaWQiOiJ0aWxlY2hhdCIsImlhdCI6MTY5NjQ5MjI4NywiZXhwIjoyMDA3NTMyMjg3LCJhdWQiOlsicmFiYml0bXEiLCIwMS1PQlNFUlZFUiJdLCJraWQiOiJ0aWxlZGVzay1rZXkiLCJ0aWxlZGVza19hcGlfcm9sZXMiOiJ1c2VyIn0.Lq0MLTYny7tIYVQ-KEDLlL-h7gAqofCfC2IDgI_0TOE@rabbitmq:5672?heartbeat=60
+      - "WEBHOOK_EVENTS=message-sent,message-delivered,conversation-unarchived"
+      - >-
+        RABBITMQ_URI=amqp://ignored:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI3NjMwYTAwZS0xNTUxLTQ3Y2ItYmEzMC02NGRlNjJmYmNmNGYiLCJzdWIiOiIwMS1PQlNFUlZFUiIsInNjb3BlIjpbInJhYmJpdG1xLnJlYWQ6Ki8qLyoiLCJyYWJiaXRtcS53cml0ZToqLyovKiIsInJhYmJpdG1xLmNvbmZpZ3VyZToqLyovKiJdLCJjbGllbnRfaWQiOiIwMS1PQlNFUlZFUiIsImNpZCI6IjAxLU9CU0VSVkVSIiwiYXpwIjoiMDEtT0JTRVJWRVIiLCJ1c2VyX2lkIjoiMDEtT0JTRVJWRVIiLCJhcHBfaWQiOiJ0aWxlY2hhdCIsImlhdCI6MTY5NjQ5MjI4NywiZXhwIjoyMDA3NTMyMjg3LCJhdWQiOlsicmFiYml0bXEiLCIwMS1PQlNFUlZFUiJdLCJraWQiOiJ0aWxlZGVzay1rZXkiLCJ0aWxlZGVza19hcGlfcm9sZXMiOiJ1c2VyIn0.Lq0MLTYny7tIYVQ-KEDLlL-h7gAqofCfC2IDgI_0TOE@rabbitmq:5672?heartbeat=60
     depends_on:
-      - mongo
-      - rabbitmq
-      - server
-      
-
+      rabbitmq:
+        condition: service_healthy
+      mongo:
+        condition: service_started
+      server:
+        condition: service_started
   backend-llm-train:
-    image: tiledesk/tiledesk-backend-llm:0.5.3-rc1
+    image: "tiledesk/tiledesk-backend-llm:0.5.3-rc1"
     container_name: backend-llm-train
     environment:
       - TIMEOUT=240
-      - REDIS_URL=redis://host.docker.internal:6379
+      # - 'REDIS_URL=redis://host.docker.internal:6379'
+      - REDIS_URL=redis://redis:6379
       - TILELLM_ROLE=train
       - WORKERS=3
       # WORKER_CONFIGURATION
-      - MONGODB_URL=mongodb://mongo/tiledesk
-      - AMQP_MANAGER_URL=amqp://ignored:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI3NjMwYTAwZS0xNTUxLTQ3Y2ItYmEzMC02NGRlNjJmYmNmNGYiLCJzdWIiOiIwMS1PQlNFUlZFUiIsInNjb3BlIjpbInJhYmJpdG1xLnJlYWQ6Ki8qLyoiLCJyYWJiaXRtcS53cml0ZToqLyovKiIsInJhYmJpdG1xLmNvbmZpZ3VyZToqLyovKiJdLCJjbGllbnRfaWQiOiIwMS1PQlNFUlZFUiIsImNpZCI6IjAxLU9CU0VSVkVSIiwiYXpwIjoiMDEtT0JTRVJWRVIiLCJ1c2VyX2lkIjoiMDEtT0JTRVJWRVIiLCJhcHBfaWQiOiJ0aWxlY2hhdCIsImlhdCI6MTY5NjQ5MjI4NywiZXhwIjoyMDA3NTMyMjg3LCJhdWQiOlsicmFiYml0bXEiLCIwMS1PQlNFUlZFUiJdLCJraWQiOiJ0aWxlZGVzay1rZXkiLCJ0aWxlZGVza19hcGlfcm9sZXMiOiJ1c2VyIn0.Lq0MLTYny7tIYVQ-KEDLlL-h7gAqofCfC2IDgI_0TOE@rabbitmq:5672?heartbeat=60
+      - "MONGODB_URL=mongodb://mongo/tiledesk"
+      - >-
+        AMQP_MANAGER_URL=amqp://ignored:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI3NjMwYTAwZS0xNTUxLTQ3Y2ItYmEzMC02NGRlNjJmYmNmNGYiLCJzdWIiOiIwMS1PQlNFUlZFUiIsInNjb3BlIjpbInJhYmJpdG1xLnJlYWQ6Ki8qLyoiLCJyYWJiaXRtcS53cml0ZToqLyovKiIsInJhYmJpdG1xLmNvbmZpZ3VyZToqLyovKiJdLCJjbGllbnRfaWQiOiIwMS1PQlNFUlZFUiIsImNpZCI6IjAxLU9CU0VSVkVSIiwiYXpwIjoiMDEtT0JTRVJWRVIiLCJ1c2VyX2lkIjoiMDEtT0JTRVJWRVIiLCJhcHBfaWQiOiJ0aWxlY2hhdCIsImlhdCI6MTY5NjQ5MjI4NywiZXhwIjoyMDA3NTMyMjg3LCJhdWQiOlsicmFiYml0bXEiLCIwMS1PQlNFUlZFUiJdLCJraWQiOiJ0aWxlZGVzay1rZXkiLCJ0aWxlZGVza19hcGlfcm9sZXMiOiJ1c2VyIn0.Lq0MLTYny7tIYVQ-KEDLlL-h7gAqofCfC2IDgI_0TOE@rabbitmq:5672?heartbeat=60
       - JOB_TOPIC_EXCHANGE_TRAIN=tiledesk-trainer
       - GPTKEY=CHANGEIT
       - TRAIN_PREFETCH=4
       - JWT_SECRET_KEY=tokenKey
       - TRAINER_LOG=info
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
     ports:
       - "3007:8000"
       - "3009:3009"
-
   backend-llm-qa:
-    image: tiledesk/tiledesk-backend-llm:0.5.3-rc1
+    image: "tiledesk/tiledesk-backend-llm:0.5.3-rc1"
     container_name: backend-llm-qa
     environment:
       - TIMEOUT=240
-      - REDIS_URL=redis://host.docker.internal:6379
+      # - 'REDIS_URL=redis://host.docker.internal:6379'
+      - REDIS_URL=redis://redis:6379
       - TILELLM_ROLE=qa
       - WORKERS=3
       # WORKER_CONFIGURATION
-      - MONGODB_URL=mongodb://mongo/tiledesk
-      - AMQP_MANAGER_URL=amqp://ignored:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI3NjMwYTAwZS0xNTUxLTQ3Y2ItYmEzMC02NGRlNjJmYmNmNGYiLCJzdWIiOiIwMS1PQlNFUlZFUiIsInNjb3BlIjpbInJhYmJpdG1xLnJlYWQ6Ki8qLyoiLCJyYWJiaXRtcS53cml0ZToqLyovKiIsInJhYmJpdG1xLmNvbmZpZ3VyZToqLyovKiJdLCJjbGllbnRfaWQiOiIwMS1PQlNFUlZFUiIsImNpZCI6IjAxLU9CU0VSVkVSIiwiYXpwIjoiMDEtT0JTRVJWRVIiLCJ1c2VyX2lkIjoiMDEtT0JTRVJWRVIiLCJhcHBfaWQiOiJ0aWxlY2hhdCIsImlhdCI6MTY5NjQ5MjI4NywiZXhwIjoyMDA3NTMyMjg3LCJhdWQiOlsicmFiYml0bXEiLCIwMS1PQlNFUlZFUiJdLCJraWQiOiJ0aWxlZGVzay1rZXkiLCJ0aWxlZGVza19hcGlfcm9sZXMiOiJ1c2VyIn0.Lq0MLTYny7tIYVQ-KEDLlL-h7gAqofCfC2IDgI_0TOE@rabbitmq:5672?heartbeat=60
+      - "MONGODB_URL=mongodb://mongo/tiledesk"
+      - >-
+        AMQP_MANAGER_URL=amqp://ignored:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI3NjMwYTAwZS0xNTUxLTQ3Y2ItYmEzMC02NGRlNjJmYmNmNGYiLCJzdWIiOiIwMS1PQlNFUlZFUiIsInNjb3BlIjpbInJhYmJpdG1xLnJlYWQ6Ki8qLyoiLCJyYWJiaXRtcS53cml0ZToqLyovKiIsInJhYmJpdG1xLmNvbmZpZ3VyZToqLyovKiJdLCJjbGllbnRfaWQiOiIwMS1PQlNFUlZFUiIsImNpZCI6IjAxLU9CU0VSVkVSIiwiYXpwIjoiMDEtT0JTRVJWRVIiLCJ1c2VyX2lkIjoiMDEtT0JTRVJWRVIiLCJhcHBfaWQiOiJ0aWxlY2hhdCIsImlhdCI6MTY5NjQ5MjI4NywiZXhwIjoyMDA3NTMyMjg3LCJhdWQiOlsicmFiYml0bXEiLCIwMS1PQlNFUlZFUiJdLCJraWQiOiJ0aWxlZGVzay1rZXkiLCJ0aWxlZGVza19hcGlfcm9sZXMiOiJ1c2VyIn0.Lq0MLTYny7tIYVQ-KEDLlL-h7gAqofCfC2IDgI_0TOE@rabbitmq:5672?heartbeat=60
       - JOB_TOPIC_EXCHANGE_TRAIN=tiledesk-trainer
       - GPTKEY=CHANGEIT
       - TRAIN_PREFETCH=4
       - JWT_SECRET_KEY=tokenKey
       - TRAINER_LOG=info
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+      redis:
+          condition: service_healthy
     ports:
       - "3008:8000"
-
   proxy:
-    image: tiledesk/tiledesk-docker-proxy:v1.1.2
-    container_name: tiledesk-docker-proxy   
+    image: "tiledesk/tiledesk-docker-proxy:v1.1.2"
+    container_name: tiledesk-docker-proxy
     ports:
       - "8081:80" # specify port forewarding
     depends_on:
-      - server
-      - dashboard
-      - webwidget
-      - chat21httpserver
-      - rabbitmq
-      - cds
-    command: [nginx-debug, '-g', 'daemon off;']
-
+      server:
+        condition: service_healthy
+      dashboard:
+        condition: service_started
+      webwidget:
+        condition: service_started
+      chat21httpserver:
+        condition: service_started
+      rabbitmq:
+        condition: service_started
+      cds:
+        condition: service_started
+    command:
+      - nginx-debug
+      - "-g"
+      - daemon off;
   qdrant:
-    image: qdrant/qdrant:latest
+    image: "qdrant/qdrant:latest"
     ports:
       - "6333:6333"
       - "6334:6334"
     volumes:
-      - ./qdrant_storage:/qdrant/storage
+      - "./qdrant_storage:/qdrant/storage"
     restart: unless-stopped
-
   rabbitmq:
     image: chat21/chat21-rabbitmq
     container_name: rabbitmq
     environment:
-        RABBITMQ_ERLANG_COOKIE: ${RABBITMQ_ERLANG_COOKIE}
-        RABBITMQ_DEFAULT_USER: ${RABBITMQ_DEFAULT_USER}
-        RABBITMQ_DEFAULT_PASS: ${RABBITMQ_DEFAULT_PASS}
+      RABBITMQ_ERLANG_COOKIE: "${RABBITMQ_ERLANG_COOKIE}"
+      RABBITMQ_DEFAULT_USER: "${RABBITMQ_DEFAULT_USER}"
+      RABBITMQ_DEFAULT_PASS: "${RABBITMQ_DEFAULT_PASS}"
     ports:
-        - 5672:5672
-        - 15672:15672
-        - 1883:1883
-        - 15675:15675
+      - "5672:5672"
+      - "15672:15672"
+      - "1883:1883"
+      - "15675:15675"
+    healthcheck:
+      test:
+        - CMD
+        - nc
+        - "-z"
+        - localhost
+        - "5672"
+      interval: 5s
+      timeout: 15s
+      retries: 1
     # healthcheck:
     #   test: ["CMD", "rabbitmq-diagnostics", "ping"]
     #   interval: 10s
@@ -348,23 +394,38 @@ services:
     #     retries: 1
   mongo:
     container_name: mongo
-    image: mongo:7.0.2
-    command: --bind_ip_all
+    image: "mongo:7.0.2"
+    command: "--bind_ip_all"
     volumes:
-      - tiledesk-datadb:/data/db
+      - "tiledesk-datadb:/data/db"
     ports:
       - "27017:27017"
+    healthcheck:
+      test:
+        - CMD
+        - mongosh
+        - "--eval"
+        - db.adminCommand("ping")
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
     # healthcheck:
     #   test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
     #   interval: 5s
     #   timeout: 5s
     #   retries: 5
-      
   redis:
     container_name: redis
-    image: redis:7.0.5
+    image: "redis:7.0.5"
     ports:
       - "6379:6379"
+    healthcheck:
+          test: ["CMD", "redis-cli", "ping"]
+          interval: 5s
+          timeout: 3s
+          retries: 5
+          start_period: 5s
     # healthcheck:
     #   test: ["CMD", "redis-cli", "ping"]
     #   interval: 5s
