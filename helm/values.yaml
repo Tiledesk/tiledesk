@@ -270,7 +270,7 @@ server:
   resources: {}
   image:  
     repository: tiledesk.docker.scarf.sh/tiledesk/tiledesk-server
-    tag: 2.13.32
+    tag: 2.13.38
   service:
     type: ClusterIP
     port: 80
@@ -280,7 +280,7 @@ serverworker:
   resources: {} 
   image:  
     repository: tiledesk.docker.scarf.sh/tiledesk/tiledesk-server-worker
-    tag: 2.13.32
+    tag: 2.13.38
 
 dashboard:
   ## Enable deployment of Tiledesk Server
@@ -289,7 +289,7 @@ dashboard:
   resources: {}
   image:
     repository: tiledesk.docker.scarf.sh/tiledesk/tiledesk-dashboard
-    tag: 2.7.123
+    tag: 2.7.142
   service:
     type: ClusterIP
     port: 80
@@ -301,7 +301,7 @@ cds:
   resources: {}
   image:
     repository: tiledesk.docker.scarf.sh/tiledesk/design-studio
-    tag: 1.38.6
+    tag: 1.39.15
   service:
     type: ClusterIP
     port: 80
@@ -313,7 +313,7 @@ ionic:
   resources: {}
   image:
     repository: chat21/chat21-ionic
-    tag: 3.4.26
+    tag: 3.4.27
   service:
       type: ClusterIP
       port: 80
