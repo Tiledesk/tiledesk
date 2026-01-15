@@ -228,6 +228,11 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: MONGODB_URI
+            - name: MONGOOSE_UNIFIED_TOPOLOGY
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: MONGOOSE_UNIFIED_TOPOLOGY
             - name: MONGODB_LOGS_URI
               valueFrom:
                 configMapKeyRef:

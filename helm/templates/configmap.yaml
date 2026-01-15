@@ -208,6 +208,7 @@ data:
             {{- end }}
 
   MONGODB_URI: {{if .Values.MONGODB_URI}}{{ .Values.MONGODB_URI | quote }}{{ else }}mongodb://{{ include "tiledesk.fullname" . }}-mongodb/tiledesk{{ end }}
+  MONGOOSE_UNIFIED_TOPOLOGY: {{ .Values.MONGOOSE_UNIFIED_TOPOLOGY | quote }}
   PRESENCE_ENABLED: {{ .Values.PRESENCE_ENABLED | quote }}
 
   PAYMENT_STRIPE_APIKEY: {{ .Values.PAYMENT_STRIPE_APIKEY | quote }}
