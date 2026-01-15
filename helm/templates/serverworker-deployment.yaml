@@ -564,7 +564,7 @@ spec:
             periodSeconds: 10         
           resources:
             {{- toYaml .Values.serverworker.resources | nindent 12 }}
-      {{- with .Values.nodeSelector }}
+      {{- with (.Values.serverworker.nodeSelector | default .Values.nodeSelector) }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
       {{- end }}
@@ -572,7 +572,7 @@ spec:
       affinity:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      {{- with .Values.tolerations }}
+      {{- with (.Values.serverworker.tolerations | default .Values.tolerations) }}
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}

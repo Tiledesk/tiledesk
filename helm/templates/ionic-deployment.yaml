@@ -209,7 +209,7 @@ spec:
               port: ionic-http
           resources:
             {{- toYaml .Values.ionic.resources | nindent 12 }}
-      {{- with .Values.nodeSelector }}
+      {{- with (.Values.ionic.nodeSelector | default .Values.nodeSelector) }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
       {{- end }}
@@ -217,7 +217,7 @@ spec:
       affinity:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      {{- with .Values.tolerations }}
+      {{- with (.Values.ionic.tolerations | default .Values.tolerations) }}
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}

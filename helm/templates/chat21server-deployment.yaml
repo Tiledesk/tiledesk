@@ -94,7 +94,7 @@ spec:
             ######   CACHE REDIS: end  ######
           resources:
             {{- toYaml .Values.c21srv.resources | nindent 12 }}
-      {{- with .Values.nodeSelector }}
+      {{- with (.Values.c21srv.nodeSelector | default .Values.nodeSelector) }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
       {{- end }}
@@ -102,7 +102,7 @@ spec:
       affinity:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      {{- with .Values.tolerations }}
+      {{- with (.Values.c21srv.tolerations | default .Values.tolerations) }}
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}

@@ -154,7 +154,7 @@ spec:
               port: webwidget-http
           resources:
             {{- toYaml .Values.webwidget.resources | nindent 12 }}
-      {{- with .Values.nodeSelector }}
+      {{- with (.Values.webwidget.nodeSelector | default .Values.nodeSelector) }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
       {{- end }}
@@ -162,7 +162,7 @@ spec:
       affinity:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      {{- with .Values.tolerations }}
+      {{- with (.Values.webwidget.tolerations | default .Values.tolerations) }}
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
