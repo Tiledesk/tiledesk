@@ -263,13 +263,12 @@ DOLPHIN_TZ: "Europe/Rome"
 
 
 server:
-  
   enabled: true ## Enable deployment of Tiledesk Server
   replicas: 1
   resources: {}
   image:  
     repository: tiledesk.docker.scarf.sh/tiledesk/tiledesk-server
-    tag: 2.13.38
+    tag: 2.14.5
   service:
     type: ClusterIP
     port: 80
@@ -282,7 +281,7 @@ serverworker:
   resources: {} 
   image:  
     repository: tiledesk.docker.scarf.sh/tiledesk/tiledesk-server-worker
-    tag: 2.13.38
+    tag: 2.14.5
   autoscaling:
     enabled: false
   
@@ -293,7 +292,7 @@ dashboard:
   resources: {}
   image:
     repository: tiledesk.docker.scarf.sh/tiledesk/tiledesk-dashboard
-    tag: 2.7.142
+    tag: 2.7.146
   service:
     type: ClusterIP
     port: 80
@@ -302,13 +301,12 @@ dashboard:
   
 
 cds:
-  
   enabled: true ## Enable deployment of Tiledesk Design Studio
   replicas: 1
   resources: {}
   image:
     repository: tiledesk.docker.scarf.sh/tiledesk/design-studio
-    tag: 1.39.15
+    tag: 1.39.23
   service:
     type: ClusterIP
     port: 80
@@ -317,13 +315,12 @@ cds:
   
 
 ionic:
-  
   enabled: true ## Enable deployment of Tiledesk Chat Ionic
   replicas: 1
   resources: {}
   image:
     repository: chat21/chat21-ionic
-    tag: 3.4.27
+    tag: 3.4.28
   service:
       type: ClusterIP
       port: 80
@@ -333,13 +330,12 @@ ionic:
   
  
 webwidget:
-  
   enabled: true ## Enable deployment of Tiledesk Web Widget
   replicas: 1
   resources: {}
   image:
     repository: chat21/chat21-web-widget
-    tag: 5.0.103
+    tag: 5.1.19
     # pullPolicy: Always
   service:
     type: ClusterIP
