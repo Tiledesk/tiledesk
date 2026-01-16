@@ -6,8 +6,8 @@ metadata:
   labels: {{ include "tiledesk.labels" . | nindent 4 }}
     app.kubernetes.io/component: dashboard
 spec:
-{{- if not .Values.autoscaling.enabled }}
-  replicas: {{ .Values.replicaCount }}
+{{- if not (dig "autoscaling" "enabled" false .Values.dashboard) }}
+  replicas: {{ .Values.dashboard.replicas | default .Values.replicaCount }}
 {{- end }}
   selector:
     matchLabels: {{ include "tiledesk.selectorLabels" . | nindent 6 }}

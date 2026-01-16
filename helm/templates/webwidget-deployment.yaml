@@ -6,8 +6,8 @@ metadata:
   labels: {{ include "tiledesk.labels" . | nindent 4 }}
     app.kubernetes.io/component: webwidget
 spec:
-{{- if not .Values.autoscaling.enabled }}
-  replicas: {{ .Values.replicaCount }}
+{{- if not (dig "autoscaling" "enabled" false .Values.webwidget) }}
+  replicas: {{ .Values.webwidget.replicas | default .Values.replicaCount }}
 {{- end }}
   selector:
     matchLabels: {{ include "tiledesk.selectorLabels" . | nindent 6 }}

@@ -6,8 +6,8 @@ metadata:
   labels: {{ include "tiledesk.labels" . | nindent 4 }}
     app.kubernetes.io/component: c21srv
 spec:
-{{- if not .Values.autoscaling.enabled }}
-  replicas: {{ .Values.chatReplicaCount }}
+{{- if not (dig "autoscaling" "enabled" false .Values.c21srv) }}
+  replicas: {{ .Values.c21srv.replicas | default .Values.replicaCount }}
 {{- end }}
   selector:
     matchLabels: {{ include "tiledesk.selectorLabels" . | nindent 6 }}
