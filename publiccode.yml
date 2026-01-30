@@ -6,9 +6,9 @@ publiccodeYmlVersion: '0.2'
 categories:
   - customer-service-and-support
   - communications
-  - marketing
-  - mobile-marketing
-  - conversational-commerce
+  - collaboration
+  - it-development
+  - data-collection
 description:
   it:
     apiDocumentation: 'https://developer.tiledesk.com/apis/rest-api'
@@ -20,8 +20,9 @@ description:
       - dashboard
       - knowledge base
       - mobile apps
-      - RAG engine
-    genericName: No-code development platform to automate conversations
+    shortDescription: |-
+      Open source platform that combines chatbots and human operators to manage
+      multichannel conversations and customer support.
     longDescription: |
       To have fully satisfied customers is complex. Conversation’s actors
       (chatbots and humans) should handoff to each other many times during a
@@ -62,23 +63,9 @@ description:
 
       Tiledesk is an **open source** project, made with passion in Salento
       (Southern Italy).
-    shortDescription: |-
-      Tiledesk è la piattaforma Chatbot e Umani open source che connette 
-      cittadini e PA nell’era dell’instant messaging e dell’Intelligenza 
-      Artificiale
 developmentStatus: stable
-it:
-  conforme:
-    gdpr: false
-    lineeGuidaDesign: false
-    misureMinimeSicurezza: false
-    modelloInteroperabilita: false
-  countryExtensionVersion: '0.2'
-  piattaforme:
-    anpr: false
-    cie: false
-    pagopa: false
-    spid: false
+IT:
+  countryExtensionVersion: "0.2"
 landingURL: 'https://tiledesk.com/'
 legal:
   license: MIT
