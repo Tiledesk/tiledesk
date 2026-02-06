@@ -1,24 +1,19 @@
-# This repository adheres to the publiccode.yml standard by including this 
-# metadata file that makes public software easily discoverable.
-# More info at https://github.com/italia/publiccode.yml
-
-publiccodeYmlVersion: '0.2'
+publiccodeYmlVersion: "0.5"
+name: Tiledesk
+url: https://github.com/Tiledesk/tiledesk-deployment
+landingURL: https://tiledesk.com/
+releaseDate: 2022-06-15
+platforms:
+  - web
 categories:
   - customer-service-and-support
   - communications
   - collaboration
   - it-development
+developmentStatus: stable
+softwareType: standalone/web
 description:
   it:
-    apiDocumentation: 'https://developer.tiledesk.com/apis/rest-api'
-    documentation: 'https://gethelp.tiledesk.com'
-    features:
-      - live chat widget
-      - no-code AI Agent builder
-      - adaptive multichannel technology for WhatsApp, FB Messenger and many other messaging channels 
-      - dashboard
-      - knowledge base
-      - mobile apps
     shortDescription: |-
       Open source platform that combines chatbots and human operators to manage
       multichannel conversations and customer support.
@@ -44,13 +39,13 @@ description:
 
       - Adaptive multichannel technology to design conversational flow once, 
       then run it on every channel, from Whatsapp Business to Company Website
-     
+
       - Team Organization with multi-project management, SLAs setting, smart
       assignment of the queues, departments organization and much more;
-      
+
       - Seamless conversation to “jump” between different channels in a
       transparent way for end customers and agents; 
-      
+
       - Chat Tools like typing indicator, off-line access, delivery receipts,
       contact list and much more; 
 
@@ -62,13 +57,24 @@ description:
 
       Tiledesk is an **open source** project, made with passion in Salento
       (Southern Italy).
-developmentStatus: stable
-IT:
-  countryExtensionVersion: "0.2"
-landingURL: 'https://tiledesk.com/'
+    documentation: https://gethelp.tiledesk.com
+    apiDocumentation: https://developer.tiledesk.com/apis/rest-api
+    features:
+      - live chat widget
+      - no-code AI Agent builder
+      - adaptive multichannel technology for WhatsApp, FB Messenger and many
+        other messaging channels
+      - dashboard
+      - knowledge base
+      - mobile apps
 legal:
   license: MIT
+maintenance:
+  type: internal
+  contacts:
+    - name: Andrea Sponziello
 localisation:
+  localisationReady: true
   availableLanguages:
     - it
     - en
@@ -87,14 +93,3 @@ localisation:
     - kk
     - az
     - he
-  localisationReady: true
-maintenance:
-  contacts:
-    - name: Andrea Sponziello
-  type: internal
-name: Tiledesk
-platforms:
-  - web
-releaseDate: '2022-06-15'
-softwareType: standalone/web
-url: 'https://github.com/Tiledesk/tiledesk-deployment'
