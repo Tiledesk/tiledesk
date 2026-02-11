@@ -1,6 +1,6 @@
 publiccodeYmlVersion: "0.5"
 name: Tiledesk
-url: https://github.com/Tiledesk/tiledesk-deployment
+url: https://github.com/Tiledesk/tiledesk
 landingURL: https://tiledesk.com/
 releaseDate: 2022-06-15
 platforms:
