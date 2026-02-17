@@ -6,10 +6,10 @@ releaseDate: 2022-06-15
 platforms:
   - web
 categories:
-  - Gestione_Flusso_di_Lavoro
-  - Gestione_Processi_Aziendali
-  - Servizio_e_Supporto_Clienti
-  - Gestione_Conoscenza
+  - Workflow-Management
+  - Business-Process-Management
+  - Customer-Service-and-Support
+  - Knowledge-Management
 
 developmentStatus: stable
 softwareType: standalone/web
