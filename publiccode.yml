@@ -6,10 +6,10 @@ releaseDate: 2022-06-15
 platforms:
   - web
 categories:
-  - Conversational AI and agentic AI
-  - Knowledge management and self-service (RAG)
-  - Customer service automation
-  - Lead generation and sales enablement
+  - Gestione Flusso di Lavoro
+  - Gestione Processi Aziendali
+  - Servizio e Supporto Clienti
+  - Gestione Conoscenza
 
 developmentStatus: stable
 softwareType: standalone/web
