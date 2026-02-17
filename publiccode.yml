@@ -6,17 +6,17 @@ releaseDate: 2022-06-15
 platforms:
   - web
 categories:
-  - Gestione Flusso di Lavoro
-  - Gestione Processi Aziendali
-  - Servizio e Supporto Clienti
-  - Gestione Conoscenza
+  - Gestione_Flusso_di_Lavoro
+  - Gestione_Processi_Aziendali
+  - Servizio_e_Supporto_Clienti
+  - Gestione_Conoscenza
 
 developmentStatus: stable
 softwareType: standalone/web
 description:
   it:
     shortDescription: |-
-      Open‑source agentic AI platform with drag‑and‑drop tools to automate everyday workflows from support to engagement to operations. No technical skills needed. Multichannel and multilingual.
+      Open‑source agentic AI platform with drag‑and‑drop tools to automate everyday workflows. No technical skills needed. Multichannel and multilingual.
     longDescription: |
       Tiledesk is an AI platform that helps businesses build AI Agents to automate customer support and business processes across multiple channels, improving engagement and operational efficiency. 
       With an intuitive drag-and-drop builder and a no-code approach, teams can create, customize, and deploy AI-powered experiences without technical expertise. Tiledesk supports multiple use cases including customer service, marketing and sales, and internal support. 
