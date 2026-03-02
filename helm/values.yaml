@@ -323,7 +323,7 @@ ionic:
   resources: {}
   image:
     repository: chat21/chat21-ionic
-    tag: 3.4.29
+    tag: 3.4.31
   service:
       type: ClusterIP
       port: 80
@@ -338,7 +338,7 @@ webwidget:
   resources: {}
   image:
     repository: chat21/chat21-web-widget
-    tag: 5.1.19
+    tag: 5.1.24
     # pullPolicy: Always
   service:
     type: ClusterIP
