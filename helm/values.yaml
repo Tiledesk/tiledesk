@@ -155,6 +155,9 @@ TELEGRAM_LOG: info
 QUOTES_ENABLED: false
 HUBSPOT_ENDPOINT: https://api.hubapi.com/crm/v3/
 WS_HISTORY_REQUESTS_LIMIT: 100
+MAX_UPLOAD_FILE_SIZE: "10240000"
+CHAT_FILES_ALLOW_LIST: ".jpg,.jpeg,.png,.gif,.pdf,.txt,.webp,.mpeg,.mp3,.mp4,.wav,.svg"
+ASSETS_FILES_ALLOW_LIST: ".jpg,.jpeg,.png,.gif,.pdf,.txt,.csv,.doc,.docx,.webp,.mpeg,.mp4,.wav,.svg"
 TRAINER_LOG: info
 #VOICE CHANNEL
 VOICE_LOG: info

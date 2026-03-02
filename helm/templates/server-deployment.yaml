@@ -719,6 +719,23 @@ spec:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: FLOW_LOGS_ENABLED
                   optional: true
+            - name: MAX_UPLOAD_FILE_SIZE
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: MAX_UPLOAD_FILE_SIZE
+            - name: CHAT_FILES_ALLOW_LIST
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: CHAT_FILES_ALLOW_LIST
+                  optional: true
+            - name: ASSETS_FILES_ALLOW_LIST
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: ASSETS_FILES_ALLOW_LIST
+                  optional: true
             
 
             ######   SCHEDULER: start  ######
