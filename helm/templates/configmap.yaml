@@ -120,6 +120,9 @@ data:
   {{if .Values.ADMIN_EMAIL}}ADMIN_EMAIL: {{ .Values.ADMIN_EMAIL | quote }}{{ end }}
   {{if .Values.ADMIN_PASSWORD}}ADMIN_PASSWORD: {{ .Values.ADMIN_PASSWORD | quote }}{{ end }}
   TRAINER_LOG: {{ .Values.TRAINER_LOG | quote }}
+  MAX_UPLOAD_FILE_SIZE: {{ .Values.MAX_UPLOAD_FILE_SIZE | quote }}
+  {{if .Values.CHAT_FILES_ALLOW_LIST}}CHAT_FILES_ALLOW_LIST: {{ .Values.CHAT_FILES_ALLOW_LIST | quote }}{{ end }}
+  {{if .Values.ASSETS_FILES_ALLOW_LIST}}ASSETS_FILES_ALLOW_LIST: {{ .Values.ASSETS_FILES_ALLOW_LIST | quote }}{{ end }}
   JWT_SECRET_KEY_LLM: {{ .Values.JWT_SECRET_KEY_LLM | quote}}
   #VOICE CHANNEL
   VOICE_LOG: {{ .Values.VOICE_LOG | quote }}
