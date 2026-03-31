@@ -63,7 +63,7 @@ description:
 
       Tiledesk is an **open source** project, made with passion in Salento
       (Southern Italy).
-    documentation: https://gethelp.tiledesk.com
+    documentation: https://guide.tiledesk.com/
     apiDocumentation: https://developer.tiledesk.com/apis/rest-api
     features:
       - No-code AI Agent builder
