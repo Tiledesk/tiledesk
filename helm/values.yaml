@@ -187,6 +187,8 @@ QUEUE_NAME: tdserverqueue
 SCHEDULER_ENABLED: false
 #MULTI-WORKER
 # CONVERSATION_TAGS_TASK_PREFETCH: 10
+MULTI_WORKER_DEBUG: true
+
 
 #CHATBOT
 FLOW_LOGS_ENABLED: true
@@ -271,7 +273,7 @@ server:
   resources: {}
   image:  
     repository: tiledesk.docker.scarf.sh/tiledesk/tiledesk-server
-    tag: 2.15.7
+    tag: 2.17.0
   service:
     type: ClusterIP
     port: 80
@@ -284,7 +286,7 @@ serverworker:
   resources: {} 
   image:  
     repository: tiledesk.docker.scarf.sh/tiledesk/tiledesk-server-worker
-    tag: 2.15.7
+    tag: 2.17.0
   autoscaling:
     enabled: false
   
@@ -295,7 +297,7 @@ dashboard:
   resources: {}
   image:
     repository: tiledesk.docker.scarf.sh/tiledesk/tiledesk-dashboard
-    tag: 2.7.159
+    tag: 2.7.165
   service:
     type: ClusterIP
     port: 80
@@ -309,7 +311,7 @@ cds:
   resources: {}
   image:
     repository: tiledesk.docker.scarf.sh/tiledesk/design-studio
-    tag: 1.39.32
+    tag: 1.39.40
   service:
     type: ClusterIP
     port: 80
@@ -338,7 +340,7 @@ webwidget:
   resources: {}
   image:
     repository: chat21/chat21-web-widget
-    tag: 5.1.24
+    tag: 5.1.30
     # pullPolicy: Always
   service:
     type: ClusterIP

@@ -121,6 +121,12 @@ spec:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: MQTT_MANAGER_URL
+            - name: PINECONE_RERANKING
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: PINECONE_RERANKING
+                  optional: true
             ######   FIREBASE: start  ######
             - name: FIREBASE_APIKEY 
               valueFrom:

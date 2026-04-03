@@ -713,6 +713,18 @@ spec:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: PINECONE_TYPE
                   optional: true
+            - name: PINECONE_RERANKING
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: PINECONE_RERANKING
+                  optional: true
+            - name: PINECONE_API_KEY
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: PINECONE_API_KEY
+                  optional: true
             - name: FLOW_LOGS_ENABLED
               valueFrom:
                 configMapKeyRef:
@@ -736,7 +748,18 @@ spec:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: ASSETS_FILES_ALLOW_LIST
                   optional: true
-            
+            - name: REQUEST_RETENTION_ENABLED
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: REQUEST_RETENTION_ENABLED
+                  optional: true
+            - name: DEFAULT_RETENTION_DAYS
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: DEFAULT_RETENTION_DAYS
+                  optional: true
 
             ######   SCHEDULER: start  ######
             {{- if .Values.SCHEDULER_ENABLED }}

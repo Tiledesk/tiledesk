@@ -124,6 +124,9 @@ data:
   {{if .Values.CHAT_FILES_ALLOW_LIST}}CHAT_FILES_ALLOW_LIST: {{ .Values.CHAT_FILES_ALLOW_LIST | quote }}{{ end }}
   {{if .Values.ASSETS_FILES_ALLOW_LIST}}ASSETS_FILES_ALLOW_LIST: {{ .Values.ASSETS_FILES_ALLOW_LIST | quote }}{{ end }}
   JWT_SECRET_KEY_LLM: {{ .Values.JWT_SECRET_KEY_LLM | quote}}
+  {{if .Values.REQUEST_RETENTION_ENABLED}}REQUEST_RETENTION_ENABLED: {{ .Values.REQUEST_RETENTION_ENABLED | quote }}{{ end }}
+  {{if .Values.DEFAULT_RETENTION_DAYS}}DEFAULT_RETENTION_DAYS: {{ .Values.DEFAULT_RETENTION_DAYS | quote }}{{ end }}
+
   #VOICE CHANNEL
   VOICE_LOG: {{ .Values.VOICE_LOG | quote }}
   {{if .Values.VOICE_SECRET}}VOICE_SECRET: {{ .Values.VOICE_SECRET | quote }}{{ end }}
@@ -134,10 +137,15 @@ data:
   SMS_LOG: {{ .Values.SMS_LOG | quote }}
   #MULTI-WORKER
   {{if .Values.CONVERSATION_TAGS_TASK_PREFETCH}}CONVERSATION_TAGS_TASK_PREFETCH: {{ .Values.CONVERSATION_TAGS_TASK_PREFETCH | quote }}{{ end }}
-  
+  MULTI_WORKER_DEBUG: {{ .Values.MULTI_WORKER_DEBUG | quote }}
+
   # ----- BACKEND-LLM -----
+  {{if .Values.PINECONE_API_KEY}}PINECONE_API_KEY: {{ .Values.PINECONE_API_KEY | quote }}{{ end }}
   {{if .Values.PINECONE_INDEX}}PINECONE_INDEX: {{ .Values.PINECONE_INDEX | quote }}{{ end }}
   {{if .Values.PINECONE_TYPE}}PINECONE_TYPE: {{ .Values.PINECONE_TYPE | quote }}{{ end }}
+  {{if .Values.PINECONE_RERANKING}}PINECONE_RERANKING: {{ .Values.PINECONE_RERANKING | quote }}{{ end }}
+  {{if .Values.LOG_LEVEL_LLM}}LOG_LEVEL_LLM: {{ .Values.LOG_LEVEL_LLM | quote }}{{ end }}
+  {{if .Values.KB_ENDPOINT_DEV}}KB_ENDPOINT_DEV: {{ .Values.KB_ENDPOINT_DEV | quote }}{{ end }}
 
   # ----- CHAT21 SERVER -------
   APP_ID: {{ .Values.APP_ID | quote }}

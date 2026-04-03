@@ -184,7 +184,13 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "tiledesk.fullname" . }}-config
-                  key: AI_MODELS                 
+                  key: AI_MODELS
+            - name: PINECONE_RERANKING
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: PINECONE_RERANKING
+                  optional: true                 
           ports:
             - name: dashboard-http
               containerPort: 80

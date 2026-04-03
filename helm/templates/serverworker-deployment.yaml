@@ -34,6 +34,7 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.serverworker.image.repository }}:{{ .Values.serverworker.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.serverworker.image.pullPolicy }}
+          command: ["node", "jobs.js"]
           env:   
             - name: WS_SERVER_PATH
               valueFrom:
@@ -536,6 +537,11 @@ spec:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: CONVERSATION_TAGS_TASK_PREFETCH
                   optional: true
+            - name: MULTI_WORKER_DEBUG
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: MULTI_WORKER_DEBUG
             # - name: TILEBOT_ENDPOINT
             #   valueFrom:
             #     configMapKeyRef:
