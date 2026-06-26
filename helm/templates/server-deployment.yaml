@@ -684,6 +684,12 @@ spec:
                   name: {{ include "tiledesk.fullname" . }}-config
                   key: MAX_POLLING_TIME
                   optional: true
+            - name: BATCH_WINDOW_MS
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: BATCH_WINDOW_MS
+                  optional: true
             - name: VOICE_ENABLED
               valueFrom:
                 configMapKeyRef:

@@ -163,6 +163,7 @@ TRAINER_LOG: info
 VOICE_LOG: info
 BASE_POOLING_DELAY: 25
 MAX_POLLING_TIME: 30000
+BATCH_WINDOW_MS: 50
 #SMS CHANNEL
 SMS_LOG: info
 JWT_SECRET_KEY_LLM: CHANGEIT
@@ -273,7 +274,7 @@ server:
   resources: {}
   image:  
     repository: tiledesk.docker.scarf.sh/tiledesk/tiledesk-server
-    tag: 2.17.1
+    tag: 2.17.6
   service:
     type: ClusterIP
     port: 80
@@ -286,7 +287,7 @@ serverworker:
   resources: {} 
   image:  
     repository: tiledesk.docker.scarf.sh/tiledesk/tiledesk-server-worker
-    tag: 2.17.1
+    tag: 2.17.6
   autoscaling:
     enabled: false
   

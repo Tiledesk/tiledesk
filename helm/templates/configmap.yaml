@@ -133,6 +133,8 @@ data:
   {{if .Values.VOICE_ENABLED}}VOICE_ENABLED: {{ .Values.VOICE_ENABLED | quote }}{{ end }}
   {{if .Values.BASE_POOLING_DELAY}}BASE_POOLING_DELAY: {{ .Values.BASE_POOLING_DELAY | quote }}{{ end }}
   {{if .Values.MAX_POLLING_TIME}}MAX_POLLING_TIME: {{ .Values.MAX_POLLING_TIME | quote }}{{ end }}
+  {{if .Values.BATCH_WINDOW_MS}}BATCH_WINDOW_MS: {{ .Values.BATCH_WINDOW_MS | quote }}{{ end }}
+  
   #SMS CHANNEL
   SMS_LOG: {{ .Values.SMS_LOG | quote }}
   #MULTI-WORKER
