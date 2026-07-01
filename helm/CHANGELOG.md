@@ -1,3 +1,6 @@
+# 1.1.95 ( app v. 2.17.7 )
+👉 Updated Tiledesk Server: 2.17.7
+
 # 1.1.95 ( app v. 2.17.6 )
 👉 Updated Tiledesk Server: 2.17.6
 
