@@ -312,7 +312,7 @@ cds:
   resources: {}
   image:
     repository: tiledesk.docker.scarf.sh/tiledesk/design-studio
-    tag: 1.39.40
+    tag: 1.40.7
   service:
     type: ClusterIP
     port: 80
