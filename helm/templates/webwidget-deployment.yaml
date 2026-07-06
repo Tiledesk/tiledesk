@@ -139,7 +139,12 @@ spec:
               valueFrom:
                   configMapKeyRef:
                     name: {{ include "tiledesk.fullname" . }}-config
-                    key: BRAND_SRC                
+                    key: BRAND_SRC
+            - name: CLOSE_CHAT_IN_CONVERSATION      
+              valueFrom:
+                  configMapKeyRef:
+                    name: {{ include "tiledesk.fullname" . }}-config
+                    key: CLOSE_CHAT_IN_CONVERSATION                
           ports:
             - name: webwidget-http
               containerPort: 80

@@ -51,6 +51,7 @@ WHATSAPP_TEMPLATES_SECTION: false
 ###### ------WIDGET : START------ ######
 TRANSLATIONS_URL: /api/
 ENBED_JS: true
+CLOSE_CHAT_IN_CONVERSATION: false
 ###### ------WIDGET : END------ ######
 
 
@@ -274,7 +275,7 @@ server:
   resources: {}
   image:  
     repository: tiledesk.docker.scarf.sh/tiledesk/tiledesk-server
-    tag: 2.17.7
+    tag: 2.17.8
   service:
     type: ClusterIP
     port: 80
@@ -287,7 +288,7 @@ serverworker:
   resources: {} 
   image:  
     repository: tiledesk.docker.scarf.sh/tiledesk/tiledesk-server-worker
-    tag: 2.17.7 
+    tag: 2.17.8 
   autoscaling:
     enabled: false
   
@@ -341,7 +342,7 @@ webwidget:
   resources: {}
   image:
     repository: chat21/chat21-web-widget
-    tag: 5.1.30
+    tag: 5.2.3
     # pullPolicy: Always
   service:
     type: ClusterIP

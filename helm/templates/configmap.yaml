@@ -38,6 +38,7 @@ data:
   # ----- WIDGET ------- 
   TRANSLATIONS_URL: {{if and .Values.EXTERNAL_BASE_URL (hasPrefix "/" .Values.TRANSLATIONS_URL)}}"{{ .Values.EXTERNAL_BASE_URL  }}{{ .Values.TRANSLATIONS_URL }}"{{ else }}{{ .Values.TRANSLATIONS_URL | quote }}{{ end }}
   ENBED_JS: {{ .Values.ENBED_JS | quote }}
+  CLOSE_CHAT_IN_CONVERSATION: {{ .Values.CLOSE_CHAT_IN_CONVERSATION | quote }}
 
   # ----- SERVER ------- 
   WS_SERVER_PATH: {{ .Values.WS_SERVER_PATH | quote }}
