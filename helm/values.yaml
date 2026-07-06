@@ -275,7 +275,7 @@ server:
   resources: {}
   image:  
     repository: tiledesk.docker.scarf.sh/tiledesk/tiledesk-server
-    tag: 2.17.8
+    tag: 2.17.9
   service:
     type: ClusterIP
     port: 80
@@ -288,7 +288,7 @@ serverworker:
   resources: {} 
   image:  
     repository: tiledesk.docker.scarf.sh/tiledesk/tiledesk-server-worker
-    tag: 2.17.8 
+    tag: 2.17.9
   autoscaling:
     enabled: false
   
