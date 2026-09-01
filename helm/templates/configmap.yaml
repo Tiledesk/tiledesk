@@ -127,7 +127,8 @@ data:
   JWT_SECRET_KEY_LLM: {{ .Values.JWT_SECRET_KEY_LLM | quote}}
   {{if .Values.REQUEST_RETENTION_ENABLED}}REQUEST_RETENTION_ENABLED: {{ .Values.REQUEST_RETENTION_ENABLED | quote }}{{ end }}
   {{if .Values.DEFAULT_RETENTION_DAYS}}DEFAULT_RETENTION_DAYS: {{ .Values.DEFAULT_RETENTION_DAYS | quote }}{{ end }}
-
+  {{if .Values.FLOW_ATTRIBUTES_TTL}}FLOW_ATTRIBUTES_TTL: {{ .Values.FLOW_ATTRIBUTES_TTL | quote }}{{ end }}
+  
   #VOICE CHANNEL
   VOICE_LOG: {{ .Values.VOICE_LOG | quote }}
   {{if .Values.VOICE_SECRET}}VOICE_SECRET: {{ .Values.VOICE_SECRET | quote }}{{ end }}

@@ -792,6 +792,12 @@ spec:
             {{- end }} 
             ######   SCHEDULER: end  ######
 
+            - name: FLOW_ATTRIBUTES_TTL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "tiledesk.fullname" . }}-config
+                  key: FLOW_ATTRIBUTES_TTL
+                  optional: true
             # - name: TILEBOT_ENDPOINT
             #   valueFrom:
             #     configMapKeyRef:
