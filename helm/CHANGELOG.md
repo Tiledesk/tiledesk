@@ -1,7 +1,6 @@
 # 1.1.102 ( app v. 2.17.18 )
 👉 Updated Tiledesk Server: 2.17.18
 
-
 # 1.1.101 ( app v. 2.17.17 )
 👉 Updated Tiledesk Server: 2.17.17
 
