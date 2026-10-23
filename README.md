@@ -23,6 +23,10 @@ This project contains the code for starting the entire Tiledesk product with **D
 [Kubernetes with Helm](helm/README.md) (latest): 
 
 
+## One-click deploy
+
+[![Deploy on RepoCloud](https://d16t0pc4846x52.cloudfront.net/deploylobe.svg)](https://repocloud.io/details/Tiledesk/)
+
 ## Contents of the deployment
 Tiledesk deployed via `docker-compose` or Kubernetes contains the following:
 1. Tiledesk Server
