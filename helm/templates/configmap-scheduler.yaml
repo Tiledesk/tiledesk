@@ -18,5 +18,9 @@ data:
   SPRING_DATASOURCE_PASSWORD: {{ .Values.postgresql.auth.password  | quote }}
   
   DOLPHIN_TZ: {{ .Values.DOLPHIN_TZ | quote }}
+
+  SPRING_CLOUD_KUBERNETES_CONFIG_ENABLED: {{ .Values.SPRING_CLOUD_KUBERNETES_CONFIG_ENABLED | quote }}
+  SPRING_CLOUD_KUBERNETES_SECRETS_ENABLED: {{ .Values.SPRING_CLOUD_KUBERNETES_SECRETS_ENABLED | quote }}
+
   
 {{- end -}}
