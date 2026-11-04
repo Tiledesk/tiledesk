@@ -1,3 +1,7 @@
+# 1.1.107 ( app v. 2.17.22 )
+👉 Updated Tiledesk Server: 2.17.22
+👉 Updated Tiledesk CDS: 1.40.9-im
+
 # 1.1.106 ( app v. 2.17.21 )
 👉 Updated Tiledesk Server: 2.17.21
 
