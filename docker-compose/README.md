@@ -134,23 +134,41 @@ You can configure a custom domain (e.g., `http://mydomain.com`) using **NGINX** 
    ```
 
 2. **Add the following configuration (replace `mydomain.com` with your domain):**
+   You need to save it at /etc/nginx/sites-available/domain.com
    ```nginx
-   map $http_upgrade $connection_upgrade {
-       default upgrade;
-       '' close;
+   # Redirect all HTTP to HTTPS
+      server {
+    listen 80;
+    server_name domain.com;
+
+    # Redirect HTTP → HTTPS
+    return 301 https://$host$request_uri;
    }
 
+   # HTTPS server
    server {
-       listen 80;
-       server_name mydomain.com;
+    listen 443 ssl http2;
+    server_name domain.com;
 
-       location / {
-           proxy_pass http://localhost:8081;
-           proxy_http_version 1.1;
-           proxy_set_header Upgrade $http_upgrade;
-           proxy_set_header Connection $connection_upgrade;
-       }
-   }
+    # SSL Certificates from Let's Encrypt
+    ssl_certificate /etc/letsencrypt/live/tile.megaversepro.app/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/tile.megaversepro.app/privkey.pem;
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_ciphers HIGH:!aNULL:!MD5;
+
+    # Proxy to Tiledesk dashboard
+    location / {
+        proxy_pass http://localhost:8081/;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+    }
+}
+
    ```
 
 3. **Validate and restart NGINX:**
